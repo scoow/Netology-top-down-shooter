@@ -1,6 +1,5 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
+using TDShooter.Weapons;
 
 namespace TDShooter.Input
 {
@@ -9,7 +8,8 @@ namespace TDShooter.Input
         private Controls _controls;
         [SerializeField]
         private float _speed;
-        //private Vector2 _direction;
+        private Weapon _weapon;//ссылка на оружие игрока. В будующем убрать ссылку в отдельный класс Player
+
         private void Awake()
         {
             _controls = new Controls();
@@ -18,18 +18,15 @@ namespace TDShooter.Input
         {
             _controls.Player.Enable();
             _controls.Player.Shoot.performed += contecxt => Fire();
-            //_controls.Player.WASD.performed += callbackContext => SetMotion(callbackContext.ReadValue<Vector2>());
+
+            _weapon = GetComponentInChildren<Weapon>();
         }
 
         private void Fire()
         {
             Debug.Log("Делаем выстрел");
+            _weapon.Shoot();
         }
-
-        /*private void SetMotion(Vector2 vector2)
-        {
-            _direction += vector2;
-        }*/
 
         private void Move()
         {
