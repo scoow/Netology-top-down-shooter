@@ -9,7 +9,7 @@ namespace TDShooter.Input
         private Controls _controls;
         [SerializeField]
         private float _speed;
-        private Vector2 _direction;
+        //private Vector2 _direction;
         private void Awake()
         {
             _controls = new Controls();
@@ -17,17 +17,24 @@ namespace TDShooter.Input
         private void OnEnable()
         {
             _controls.Player.Enable();
-            _controls.Player.WASD.performed += callbackContext => SetMotion(callbackContext.ReadValue<Vector2>());
+            _controls.Player.Shoot.performed += contecxt => Fire();
+            //_controls.Player.WASD.performed += callbackContext => SetMotion(callbackContext.ReadValue<Vector2>());
         }
 
-        private void SetMotion(Vector2 vector2)
+        private void Fire()
+        {
+            Debug.Log("Делаем выстрел");
+        }
+
+        /*private void SetMotion(Vector2 vector2)
         {
             _direction += vector2;
-        }
+        }*/
 
         private void Move()
         {
-            transform.Translate(Time.deltaTime * _speed * new Vector3(_direction.x, 0, _direction.y));
+            var inputValio = _controls.Player.WASD.ReadValue<Vector2>(); // записываем в локальную переменную значение Vector2 при вызове события WASD
+            transform.Translate(inputValio.x * Time.deltaTime * _speed, 0, inputValio.y * Time.deltaTime * _speed); //перемещаем объект в плоскости X0Z
         }
 
         private void Update()
@@ -37,7 +44,7 @@ namespace TDShooter.Input
 
         private void OnDisable()
         {
-            _controls.Player.WASD.Disable();
+            _controls.Player.Disable();
         }
     }
 }
