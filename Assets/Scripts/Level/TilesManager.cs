@@ -8,18 +8,21 @@ namespace TDShooter.Level
     public class TilesManager : MonoBehaviour
     {
         [SerializeField]
-        public Tile_Marker[,] tiles = new Tile_Marker[3, 3];
-        private Tile_Marker[] tempArray = new Tile_Marker[3];
+        private int _gridSize = 3;
+        public Tile_Marker[,] tiles;
+        private Tile_Marker[] tempArray;
         private void Start()
         {
+            tiles = new Tile_Marker[_gridSize, _gridSize];
+            tempArray = new Tile_Marker[_gridSize];
             List<Tile_Marker> list = new();
             list = FindObjectsOfType<Tile_Marker>().ToList();
             list.Sort((x, y) => x.number.CompareTo(y.number));
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < _gridSize; i++)
             {
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < _gridSize; j++)
                 {
-                    tiles[i, j] = list[i * 3 + j];
+                    tiles[i, j] = list[i * _gridSize + j];
                     tiles[i, j].Callback += MoveRow;
                 }
             }
@@ -53,19 +56,19 @@ namespace TDShooter.Level
             switch (direction)
             {
                 case Direction.Up:
-                    for (int i = 0; i < 3; i++)
+                    for (int i = 0; i < _gridSize; i++)
                     {
-                        Vector3 newPos = tiles[2, i].transform.position;
+                        Vector3 newPos = tiles[_gridSize-1, i].transform.position;
                         newPos.z += 30;
-                        tiles[2, i].transform.position = newPos;
+                        tiles[_gridSize-1, i].transform.position = newPos;
 
-                        tempArray[i] = tiles[2, i];
+                        tempArray[i] = tiles[_gridSize - 1, i];
 
                     }
                     RebindArray(Direction.Up);
                     break;
                 case Direction.Down:
-                    for (int i = 0; i < 3; i++)
+                    for (int i = 0; i < _gridSize; i++)
                     {
                         Vector3 newPos = tiles[0, i].transform.position;
                         newPos.z -= 30;
@@ -76,18 +79,18 @@ namespace TDShooter.Level
                     RebindArray(Direction.Down);
                     break;
                 case Direction.Left:
-                    for (int i = 0; i < 3; i++)
+                    for (int i = 0; i < _gridSize; i++)
                     {
-                        Vector3 newPos = tiles[i, 2].transform.position;
+                        Vector3 newPos = tiles[i, _gridSize - 1].transform.position;
                         newPos.x -= 30;
-                        tiles[i, 2].transform.position = newPos;
+                        tiles[i, _gridSize - 1].transform.position = newPos;
 
-                        tempArray[i] = tiles[i, 2];
+                        tempArray[i] = tiles[i, _gridSize - 1];
                     }
                     RebindArray(Direction.Left);
                     break;
                 case Direction.Right:
-                    for (int i = 0; i < 3; i++)
+                    for (int i = 0; i < _gridSize; i++)
                     {
                         Vector3 newPos = tiles[i, 0].transform.position;
                         newPos.x += 30;
@@ -107,56 +110,56 @@ namespace TDShooter.Level
             switch (direction)
             {
                 case Direction.Up:
-                    for (int i = 2; i > 0; i--)
+                    for (int i = _gridSize - 1; i > 0; i--)
                     {
-                        for (int j = 0; j < 3; j++)
+                        for (int j = 0; j < _gridSize; j++)
                         {
                             tiles[i, j] = tiles[i - 1, j];
                         }
                     }
-                    for (int j = 0; j < 3; j++)
+                    for (int j = 0; j < _gridSize; j++)
                     {
                         tiles[0, j] = tempArray[j];
                     }
                     break;
                 case Direction.Down:
-                    for (int i = 0; i < 2; i++)
+                    for (int i = 0; i < _gridSize - 1; i++)
                     {
-                        for (int j = 0; j < 3; j++)
+                        for (int j = 0; j < _gridSize; j++)
                         {
                             tiles[i, j] = tiles[i + 1, j];
                         }
                     }
-                    for (int j = 0; j < 3; j++)
+                    for (int j = 0; j < _gridSize; j++)
                     {
-                        tiles[2, j] = tempArray[j];
+                        tiles[_gridSize - 1, j] = tempArray[j];
                     }
                     break;
                 case Direction.Left:
-                    for (int i = 0; i < 3; i++)
+                    for (int i = 0; i < _gridSize; i++)
                     {
-                        for (int j = 2; j > 0; j--)
+                        for (int j = _gridSize-1; j > 0; j--)
                         {
                             tiles[i, j] = tiles[i, j - 1];
                         }
                     }
-                    for (int j = 0; j < 3; j++)
+                    for (int j = 0; j < _gridSize; j++)
                     {
                         tiles[j, 0] = tempArray[j];
                     }
                     break;
                 case Direction.Right:
-                    for (int i = 0; i < 3; i++)
+                    for (int i = 0; i < _gridSize; i++)
                     {
-                        for (int j = 0; j < 2; j++)
+                        for (int j = 0; j < _gridSize - 1; j++)
 
                         {
                             tiles[i, j] = tiles[i, j + 1];
                         }
                     }
-                    for (int j = 0; j < 3; j++)
+                    for (int j = 0; j < _gridSize; j++)
                     {
-                        tiles[j, 2] = tempArray[j];
+                        tiles[j, _gridSize - 1] = tempArray[j];
                     }
                     break;
                 default:
