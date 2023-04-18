@@ -9,7 +9,8 @@ namespace TDShooter.Level
     public class Tile_Marker : MonoBehaviour
     {
         [SerializeField]
-        public byte number;
+        private byte _number;
+        public byte Number => _number;
 
         public Action<Tile_Marker> Callback;
         /// <summary>

@@ -8,16 +8,19 @@ namespace TDShooter.Level
     public class TilesManager : MonoBehaviour
     {
         [SerializeField]
-        private int _gridSize = 3;
-        public Tile_Marker[,] tiles;
-        private Tile_Marker[] tempArray;
+        private int _gridSize = 3;//размер сетки
+        public Tile_Marker[,] tiles;//массив ссылок на тайлы
+        private Tile_Marker[] tempArray;//временный массив для 
         private void Start()
         {
+            ///инициализируем массивы
             tiles = new Tile_Marker[_gridSize, _gridSize];
             tempArray = new Tile_Marker[_gridSize];
+            //находим компоненты Tile_Marker на сцене и упорядочиваем их по номеру
             List<Tile_Marker> list = new();
             list = FindObjectsOfType<Tile_Marker>().ToList();
-            list.Sort((x, y) => x.number.CompareTo(y.number));
+            list.Sort((x, y) => x.Number.CompareTo(y.Number));
+            //затем добавляем их в массив
             for (int i = 0; i < _gridSize; i++)
             {
                 for (int j = 0; j < _gridSize; j++)
@@ -29,7 +32,7 @@ namespace TDShooter.Level
         }
         private void MoveRow(Tile_Marker number)
         {
-            if (number == tiles[0, 1])
+            if (number == tiles[0, 1])//добавить условие
             {
                 Debug.Log("up");
                 ReBuild(Direction.Up);
@@ -52,7 +55,6 @@ namespace TDShooter.Level
         }
         private void ReBuild(Direction direction)
         {
-
             switch (direction)
             {
                 case Direction.Up:
@@ -166,6 +168,19 @@ namespace TDShooter.Level
                     break;
             }
 
+        }
+        /// <summary>
+        /// отписываемся от реакции на движение
+        /// </summary>
+        private void OnDisable()
+        {
+            for (int i = 0; i < _gridSize; i++)
+            {
+                for (int j = 0; j < _gridSize; j++)
+                {
+                    tiles[i, j].Callback -= MoveRow;
+                }
+            }
         }
     }
 }
