@@ -13,9 +13,7 @@ namespace TDShooter.Weapons
         }
         public void Shoot()
         {
-            var projectile = Instantiate(_bullet, _shootingPoint.transform);
-            projectile.transform.SetPositionAndRotation(_shootingPoint.transform.position, _shootingPoint.transform.rotation);
-            //projectile.transform.localScale = Vector3.one;
+            var projectile = Instantiate(_bullet, _shootingPoint.transform.position, _shootingPoint.transform.rotation);
         }
     }
 }
