@@ -6,12 +6,17 @@ namespace TDShooter.Weapons//перенести в глобальный namespace, использовать повт
     {
         [SerializeField]
         private float _lifeTime;
+        private float _lifeTimeLeft;
 
+        private void OnEnable()
+        {
+            _lifeTimeLeft = _lifeTime;
+        }
         private void Update()
         {
-            _lifeTime -= Time.deltaTime;
-            if (_lifeTime < 0)
-                Destroy(gameObject);
+            _lifeTimeLeft -= Time.deltaTime;
+            if (_lifeTimeLeft < 0)
+                gameObject.SetActive(false);
         }
     }
 }

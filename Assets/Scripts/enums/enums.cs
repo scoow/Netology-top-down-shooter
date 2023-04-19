@@ -4,4 +4,8 @@ namespace TDShooter.enums
     {
         Up, Down, Left, Right
     }
+    public enum ProjectileType
+    {
+        Bullet
+    }
 }

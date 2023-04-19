@@ -12,7 +12,7 @@ namespace TDShooter.Weapons
             Debug.Log("Снаряд попал в цель");
             target.TakeDamage(1);
 
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
