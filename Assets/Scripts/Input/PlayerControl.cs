@@ -1,5 +1,6 @@
 using UnityEngine;
 using TDShooter.Weapons;
+using static UnityEngine.GraphicsBuffer;
 
 namespace TDShooter.Input
 {
@@ -43,21 +44,21 @@ namespace TDShooter.Input
             Ray ray = Camera.main.ScreenPointToRay(UnityEngine.Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit raycastHit))
             {
-                _aim.transform.position = raycastHit.point;                
-                _playerHead.transform.LookAt(raycastHit.point);                
+                _aim.transform.position = raycastHit.point;
+
+                /*_playerHead.transform.LookAt(raycastHit.point);
+                _playerHead.transform.Rotate(90, 0, 0);*/
+
+                var lookPos = raycastHit.point - _playerHead.transform.position;
+                lookPos.y = 0;
+                var rotation = Quaternion.LookRotation(lookPos);
+                _playerHead.transform.rotation = rotation;
             }
-        }
-        private void AttachHeadToBody()
-        {
-            Vector3 position = _playerBody.position;
-            position.y = 1.5f;
-            _playerHead.position = position;
         }
 
         private void Update()
         {
             Move();
-            //AttachHeadToBody();
             AimCursor();
         }
 
