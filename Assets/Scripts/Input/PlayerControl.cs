@@ -5,6 +5,7 @@ namespace TDShooter.Input
 {
     public class PlayerControl : MonoBehaviour
     {
+        [SerializeField] Transform _playerHead;
         [SerializeField] Transform _playerBody;
         private Controls _controls;
         [SerializeField]
@@ -43,13 +44,20 @@ namespace TDShooter.Input
             if (Physics.Raycast(ray, out RaycastHit raycastHit))
             {
                 _aim.transform.position = raycastHit.point;                
-                transform.LookAt(raycastHit.point);                
+                _playerHead.transform.LookAt(raycastHit.point);                
             }
+        }
+        private void AttachHeadToBody()
+        {
+            Vector3 position = _playerBody.position;
+            position.y = 1.5f;
+            _playerHead.position = position;
         }
 
         private void Update()
         {
             Move();
+            //AttachHeadToBody();
             AimCursor();
         }
 

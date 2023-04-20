@@ -1,4 +1,6 @@
 using System;
+using TDShooter.Characters;
+using TDShooter.Input;
 using UnityEngine;
 
 namespace TDShooter.Level
@@ -19,6 +21,8 @@ namespace TDShooter.Level
         /// <param name="collision"></param>
         private void OnCollisionEnter(Collision collision)
         {
+            if (!collision.gameObject.TryGetComponent<PlayerControl>(out var playerControl)) return;
+
             Callback.Invoke(this);
         }
     }
