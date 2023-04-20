@@ -13,7 +13,7 @@ namespace TDShooter.Input
         private float _speed;
         private Weapon _weapon;//ссылка на оружие игрока. В будующем убрать ссылку в отдельный класс Player
         [SerializeField]
-        private SpriteRenderer _aim;
+        private Aim_Marker _aim;
         
 
         private void Awake()
@@ -25,7 +25,7 @@ namespace TDShooter.Input
             _controls.Player.Enable();
             _controls.Player.Shoot.performed += contecxt => Fire();
 
-            _weapon = GetComponentInChildren<Weapon>();
+            _weapon = GetComponentInChildren<Weapon>();            
         }
 
         private void Fire()
@@ -44,15 +44,14 @@ namespace TDShooter.Input
             Ray ray = Camera.main.ScreenPointToRay(UnityEngine.Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit raycastHit))
             {
-                _aim.transform.position = raycastHit.point;
+                _aim.transform.position = raycastHit.point;                
+                _playerHead.transform.LookAt(/*new Vector3(raycastHit.point.x, _playerHead.transform.position.y,*/ raycastHit.point/*.z)*/);
+                //_playerHead.transform.Rotate(90, 0, 0);
 
-                /*_playerHead.transform.LookAt(raycastHit.point);
-                _playerHead.transform.Rotate(90, 0, 0);*/
-
-                var lookPos = raycastHit.point - _playerHead.transform.position;
-                lookPos.y = 0;
+               /* var lookPos = raycastHit.point - _playerHead.transform.position;
+                lookPos.y = 1;
                 var rotation = Quaternion.LookRotation(lookPos);
-                _playerHead.transform.rotation = rotation;
+                _playerHead.transform.rotation = rotation;*/
             }
         }
 
@@ -66,8 +65,6 @@ namespace TDShooter.Input
         {
             _controls.Player.Disable();
         }
-
-
 
     }
 }
