@@ -5,10 +5,14 @@ namespace TDShooter.Input
 {
     public class PlayerControl : MonoBehaviour
     {
+        [SerializeField] Transform _playerBody;
         private Controls _controls;
         [SerializeField]
         private float _speed;
         private Weapon _weapon;//ссылка на оружие игрока. В будующем убрать ссылку в отдельный класс Player
+        [SerializeField]
+        private SpriteRenderer _aim;
+        
 
         private void Awake()
         {
@@ -31,17 +35,30 @@ namespace TDShooter.Input
         private void Move()
         {
             var inputValio = _controls.Player.WASD.ReadValue<Vector2>(); // записываем в локальную переменную значение Vector2 при вызове события WASD
-            transform.Translate(inputValio.x * Time.deltaTime * _speed, 0, inputValio.y * Time.deltaTime * _speed); //перемещаем объект в плоскости X0Z
+            _playerBody.Translate(inputValio.x * Time.deltaTime * _speed, 0, inputValio.y * Time.deltaTime * _speed); //перемещаем объект в плоскости X0Z
+        }
+        public void AimCursor()
+        {
+            Ray ray = Camera.main.ScreenPointToRay(UnityEngine.Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit raycastHit))
+            {
+                _aim.transform.position = raycastHit.point;                
+                transform.LookAt(raycastHit.point);                
+            }
         }
 
         private void Update()
         {
             Move();
+            AimCursor();
         }
 
         private void OnDisable()
         {
             _controls.Player.Disable();
         }
+
+
+
     }
 }
