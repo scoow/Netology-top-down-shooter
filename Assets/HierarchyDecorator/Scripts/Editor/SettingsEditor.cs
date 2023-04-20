@@ -17,8 +17,8 @@ namespace HierarchyDecorator
         private bool hasInitialized = false;
         private SettingsTab selectedTab;
 
-        private List<SettingsTab> tabs = new List<SettingsTab> ();
-        private List<GUIContent> tabNames = new List<GUIContent> ();
+        private List<SettingsTab> tabs = new();
+        private List<GUIContent> tabNames = new();
 
         private int selectedTabIndex = 0;
 

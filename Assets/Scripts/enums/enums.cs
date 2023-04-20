@@ -8,4 +8,8 @@ namespace TDShooter.enums
     {
         Bullet
     }
+    public enum EnemyType
+    {
+        FastMelee
+    }
 }

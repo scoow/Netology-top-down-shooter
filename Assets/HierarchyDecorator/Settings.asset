@@ -285,7 +285,7 @@ MonoBehaviour:
     enableIcons: 1
     showMissingScriptWarning: 1
     showAll: 3
-    stackMonoBehaviours: 0
+    stackMonoBehaviours: 1
     unityGroups:
     - name: Animation
       components:
@@ -5971,7 +5971,7 @@ MonoBehaviour:
           m_Text: Transform
           m_Image: {fileID: 148978298399363526, guid: 0000000000000000d000000000000000, type: 0}
           m_Tooltip: Transform
-        shown: 0
+        shown: 1
         isBuiltIn: 1
         script: {fileID: 0}
       - name: Tree
