@@ -11,5 +11,5 @@ namespace TDShooter.enums
     public enum EnemyType
     {
         FastMelee
-    }
+    }    
 }
