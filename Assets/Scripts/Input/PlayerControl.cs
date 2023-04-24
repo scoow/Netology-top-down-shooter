@@ -4,7 +4,7 @@ using static UnityEngine.GraphicsBuffer;
 
 namespace TDShooter.Input
 {
-    public class PlayerControl : MonoBehaviour
+    public class PlayerControl : BaseUnit
     {
         [SerializeField] Transform _playerHead;
         [SerializeField] Transform _playerBody;
@@ -15,6 +15,7 @@ namespace TDShooter.Input
         [SerializeField]
         private Aim_Marker _aim;
         
+        public float Speed { get => _speed; private set => _speed = value; } 
 
         private void Awake()
         {
@@ -45,13 +46,7 @@ namespace TDShooter.Input
             if (Physics.Raycast(ray, out RaycastHit raycastHit))
             {
                 _aim.transform.position = raycastHit.point;                
-                _playerHead.transform.LookAt(/*new Vector3(raycastHit.point.x, _playerHead.transform.position.y,*/ raycastHit.point/*.z)*/);
-                //_playerHead.transform.Rotate(90, 0, 0);
-
-               /* var lookPos = raycastHit.point - _playerHead.transform.position;
-                lookPos.y = 1;
-                var rotation = Quaternion.LookRotation(lookPos);
-                _playerHead.transform.rotation = rotation;*/
+                _playerHead.transform.LookAt( raycastHit.point);               
             }
         }
 

@@ -8,6 +8,7 @@ namespace TDShooter
         private Rigidbody _rigidbody;
         public BaseUnit Target { get; set; }        
         public float Mass => _rigidbody.mass;
+        public float WanderAngle { get; set; }
 
         protected virtual void Start()
         {
