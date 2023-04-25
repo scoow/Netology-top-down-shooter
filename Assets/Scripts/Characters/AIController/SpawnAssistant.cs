@@ -33,7 +33,7 @@ namespace TDShooter.Characters
         /// </summary>
         private void InitUnitsPools()
         {
-            _enemiesPool.Add(EnemyType.FastMelee, new(Resources.Load<BaseEnemy>("Model/RPGHeroPolyart_nav_blue"), EnemyType.FastMelee, _enemiesContainer));
+            _enemiesPool.Add(EnemyType.FastMelee, new(Resources.Load<BaseEnemy>("Prefabs/Enemy"), EnemyType.FastMelee, _enemiesContainer));
         }
         /// <summary>
         /// Для теста - спавн на клавиши R G B

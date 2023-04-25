@@ -25,7 +25,8 @@ namespace TDShooter
 
         private void Awake()
         {
-            _playerControl = _target.GetComponent<PlayerControl>();
+            //_playerControl = _target.GetComponent<PlayerControl>();
+            _playerControl = FindObjectOfType<PlayerControl>();
         }
 
 
