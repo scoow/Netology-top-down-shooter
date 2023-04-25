@@ -27,6 +27,7 @@ namespace TDShooter
         {
             //_playerControl = _target.GetComponent<PlayerControl>();
             _playerControl = FindObjectOfType<PlayerControl>();
+            _target = _playerControl.transform;
         }
 
 
@@ -34,9 +35,9 @@ namespace TDShooter
         {
             //OnSeek();
             //OnArrival();
-            OnWander();
+            //OnWander();
             //OnFlee();
-            //OnPursuing();
+            OnPursuing();
             //OnEvading();
         }
 
