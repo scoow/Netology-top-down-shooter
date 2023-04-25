@@ -13,7 +13,7 @@ namespace TDShooter.Characters
 
         public void Die()
         {
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
 
         public void TakeDamage(int damage)

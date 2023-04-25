@@ -22,9 +22,6 @@ namespace TDShooter.Characters
             _enemiesContainer = FindObjectOfType<EnemiesContainer_Marker>().transform;
 
             _unitSpawners = FindObjectsOfType<EnemiesSpawner>().ToList();
-            /*            _blueUnitSpawner = _unitSpawners.First(x => x.UnitType == UnitType.Blue).transform;
-                        _greenUnitSpawner = _unitSpawners.First(x => x.UnitType == UnitType.Green).transform;
-                        _redUnitSpawner = _unitSpawners.First(x => x.UnitType == UnitType.Red).transform;*/
 
             InitUnitsPools();
         }
@@ -41,7 +38,12 @@ namespace TDShooter.Characters
         private void Update()
         {
             if (UnityEngine.Input.GetKeyDown(KeyCode.B))
-                _enemiesPool[EnemyType.FastMelee].GetAviableOrCreateNew();
+            {
+                var enemy = _enemiesPool[EnemyType.FastMelee].GetAviableOrCreateNew();
+                int randompoint = Random.Range(0, _unitSpawners.Count());
+                enemy.transform.position = _unitSpawners[randompoint].transform.position;
+            }    
+                
         }
     }
 }
