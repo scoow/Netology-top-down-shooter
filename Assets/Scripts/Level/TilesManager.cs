@@ -30,6 +30,11 @@ namespace TDShooter.Level
                 }
             }
         }
+        public bool IsInMiddle(Tile_Marker tile)
+        {
+            return (tile == tiles[1, 1]);
+        }
+
         private void MoveRow(Tile_Marker number)
         {
             if (number == tiles[0, 1])//добавить условие

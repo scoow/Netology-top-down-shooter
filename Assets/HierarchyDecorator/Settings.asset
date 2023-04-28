@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Settings
   m_EditorClassIdentifier: 
   globalData:
-    showActiveToggles: 1
+    showActiveToggles: 0
     activeSwiping: 1
     swipeSameState: 1
     swipeSelectionOnly: 1
@@ -2395,6 +2395,38 @@ MonoBehaviour:
         shown: 0
         isBuiltIn: 0
         script: {fileID: 11500000, guid: a0dcaea7b918b2b40876c3370fe87d1f, type: 3}
+      - name: EnemiesContainer_Marker
+        content:
+          m_Text: EnemiesContainer_Marker
+          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
+          m_Tooltip: EnemiesContainer_Marker
+        shown: 0
+        isBuiltIn: 0
+        script: {fileID: 11500000, guid: 7368809959aa5714faf85a421e731dec, type: 3}
+      - name: Aim_Marker
+        content:
+          m_Text: Aim_Marker
+          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
+          m_Tooltip: Aim_Marker
+        shown: 0
+        isBuiltIn: 0
+        script: {fileID: 11500000, guid: c50450f0123f7ad47a3f9655fffc9afc, type: 3}
+      - name: SpawnAssistant
+        content:
+          m_Text: SpawnAssistant
+          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
+          m_Tooltip: SpawnAssistant
+        shown: 0
+        isBuiltIn: 0
+        script: {fileID: 11500000, guid: 2b64be797709f7a439f6a6926cdc3b03, type: 3}
+      - name: Character
+        content:
+          m_Text: Character
+          m_Image: {fileID: -8204150473280056172, guid: 0000000000000000d000000000000000, type: 0}
+          m_Tooltip: Character
+        shown: 0
+        isBuiltIn: 0
+        script: {fileID: 11500000, guid: e624050f3cc2e144bab9c5962a9afe38, type: 3}
     excludedComponents:
       name: Excluded
       components:
@@ -5971,7 +6003,7 @@ MonoBehaviour:
           m_Text: Transform
           m_Image: {fileID: 148978298399363526, guid: 0000000000000000d000000000000000, type: 0}
           m_Tooltip: Transform
-        shown: 1
+        shown: 0
         isBuiltIn: 1
         script: {fileID: 0}
       - name: Tree
