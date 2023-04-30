@@ -11,8 +11,15 @@ namespace TDShooter.Level
         private int _gridSize = 3;//размер сетки
         public Tile_Marker[,] tiles;//массив ссылок на тайлы
         private Tile_Marker[] tempArray;//временный массив для 
+
+        private LeftBottomCorner_Marker _leftBottomCorner_Marker;
+
+        [SerializeField]
+        private int _offsetSize;
+        private int _cornerOffsetSize = 50;//сделать красиво
         private void Start()
         {
+            _leftBottomCorner_Marker= GetComponentInChildren<LeftBottomCorner_Marker>();
             ///инициализируем массивы
             tiles = new Tile_Marker[_gridSize, _gridSize];
             tempArray = new Tile_Marker[_gridSize];
@@ -29,6 +36,8 @@ namespace TDShooter.Level
                     tiles[i, j].Callback += MoveRow;
                 }
             }
+
+           // _cornerOffsetSize = (int)list[0].transform.sc;
         }
         public bool IsInMiddle(Tile_Marker tile)
         {
@@ -60,51 +69,64 @@ namespace TDShooter.Level
         }
         private void ReBuild(Direction direction)
         {
+            Vector3 newPos;
             switch (direction)
             {
                 case Direction.Up:
                     for (int i = 0; i < _gridSize; i++)
                     {
-                        Vector3 newPos = tiles[_gridSize-1, i].transform.position;
-                        newPos.z += 30;
+                        newPos = tiles[_gridSize-1, i].transform.position;
+                        newPos.z += _offsetSize;
+                        
                         tiles[_gridSize-1, i].transform.position = newPos;
 
                         tempArray[i] = tiles[_gridSize - 1, i];
-
                     }
+                    newPos = _leftBottomCorner_Marker.transform.position;//сделать короче
+                    newPos.z += _cornerOffsetSize;
+                    _leftBottomCorner_Marker.transform.position = newPos;
                     RebindArray(Direction.Up);
                     break;
                 case Direction.Down:
                     for (int i = 0; i < _gridSize; i++)
                     {
-                        Vector3 newPos = tiles[0, i].transform.position;
-                        newPos.z -= 30;
+                        newPos = tiles[0, i].transform.position;
+                        newPos.z -= _offsetSize;
                         tiles[0, i].transform.position = newPos;
 
                         tempArray[i] = tiles[0, i];
                     }
+                    newPos = _leftBottomCorner_Marker.transform.position;//сделать короче
+                    newPos.z -= _cornerOffsetSize;
+                    _leftBottomCorner_Marker.transform.position = newPos;
                     RebindArray(Direction.Down);
                     break;
                 case Direction.Left:
                     for (int i = 0; i < _gridSize; i++)
                     {
-                        Vector3 newPos = tiles[i, _gridSize - 1].transform.position;
-                        newPos.x -= 30;
+                        newPos = tiles[i, _gridSize - 1].transform.position;
+                        newPos.x -= _offsetSize;
                         tiles[i, _gridSize - 1].transform.position = newPos;
 
                         tempArray[i] = tiles[i, _gridSize - 1];
                     }
+                    newPos = _leftBottomCorner_Marker.transform.position;//сделать короче
+                    newPos.x -= _cornerOffsetSize;
+                    _leftBottomCorner_Marker.transform.position = newPos;
                     RebindArray(Direction.Left);
                     break;
                 case Direction.Right:
                     for (int i = 0; i < _gridSize; i++)
                     {
-                        Vector3 newPos = tiles[i, 0].transform.position;
-                        newPos.x += 30;
+                        newPos = tiles[i, 0].transform.position;
+                        newPos.x += _offsetSize;
                         tiles[i, 0].transform.position = newPos;
 
                         tempArray[i] = tiles[i, 0];
                     }
+                    newPos = _leftBottomCorner_Marker.transform.position;//сделать короче
+                    newPos.x += _cornerOffsetSize;
+                    _leftBottomCorner_Marker.transform.position = newPos;
                     RebindArray(Direction.Right);
                     break;
                 default:
