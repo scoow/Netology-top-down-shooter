@@ -20,6 +20,8 @@ namespace TDShooter.Characters
 
         private List<EnemiesSpawner> _unitSpawners = new();
 
+        //todo Добавить таймер спавна для каждого типа врагов
+
         private void Start()
         {
             _enemiesContainer = FindObjectOfType<EnemiesContainer_Marker>().transform;
