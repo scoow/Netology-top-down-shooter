@@ -1,16 +1,16 @@
 using TDShooter.Input;
 using UnityEngine;
 
-
-namespace TDShooter
+namespace TDShooter.Enemies
 {    
     public class EnemyMove : BaseUnit
     {
         [SerializeField] private Transform _target;
+        private Transform _currentTarget;
 
-        [Tooltip("¬еличина стремлени€ к цели"), SerializeField, Range(1f, 5f)]
+        [Tooltip("¬еличина стремлени€ к цели"), SerializeField, Range(0f, 5f)]
         public float MaxVelocity;
-        [Tooltip("ћаксимальна€ скорость перемещени€"), SerializeField, Range(1f, 5f)]
+        [Tooltip("ћаксимальна€ скорость перемещени€"), SerializeField, Range(0f, 5f)]
         public float MaxSpeed;
         [Tooltip("–асто€ние начала прибыти€"), SerializeField, Range(0.5f, 5f)]
         public float ArrivalDistance;
@@ -39,6 +39,11 @@ namespace TDShooter
             //OnFlee();
             OnPursuing();
             //OnEvading();
+        }
+
+        public void SetNewTarget(Transform target)
+        {
+            _currentTarget = target;
         }
 
         //движение в сторону цели вариант 1
@@ -108,7 +113,9 @@ namespace TDShooter
         //движение в сторону цели вариант 2
         public void OnPursuing()
         {
-            
+            if (_currentTarget != null)
+                _target = _currentTarget.transform;               
+
             if (_target == null) return;
 
             var propheticIndex = Vector3.Distance(transform.position, _target.transform.position)/* / _playerControl.Speed*/;

@@ -1,22 +1,25 @@
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+namespace TDShooter.AI.PathFinder
 {
-
-    private void OnTriggerEnter(Collider other)
+    public class Obstacle : MonoBehaviour
     {
-        if (other.gameObject.TryGetComponent(out Tile tile))
+
+        private void OnTriggerEnter(Collider other)
         {
-            tile.mesh.material.color = Color.red;                
+            if (other.gameObject.TryGetComponent(out Tile tile))
+            {
+                tile.mesh.material.color = Color.red;
+            }
         }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-
-        if (other.gameObject.TryGetComponent(out Tile tile))
+        private void OnTriggerExit(Collider other)
         {
-            tile.mesh.material.color = Color.white;                
+
+            if (other.gameObject.TryGetComponent(out Tile tile))
+            {
+                tile.mesh.material.color = Color.white;
+            }
         }
     }
 }

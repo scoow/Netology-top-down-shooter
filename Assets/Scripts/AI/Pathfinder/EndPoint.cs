@@ -3,29 +3,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EndPoint : MonoBehaviour
+namespace TDShooter.AI.PathFinder
 {
-    //[SerializeField] private APathFinding _aPathFinding;
-
-    public Action<Tile> OnEndPoint;
-    private void OnTriggerEnter(Collider other)
+    public class EndPoint : MonoBehaviour
     {
-        if (other.gameObject.TryGetComponent(out Tile tile))
+        //[SerializeField] private APathFinding _aPathFinding;
+
+        public Action<Tile> OnEndPoint;
+        private void OnTriggerEnter(Collider other)
         {
-            if (tile.mesh.material.color != Color.red)
-                tile.mesh.material.color = Color.green;
-            //_aPathFinding._endPointTile = tile; //передаём конечную клетку
-            OnEndPoint?.Invoke(tile);
+            if (other.gameObject.TryGetComponent(out Tile tile))
+            {
+                if (tile.mesh.material.color != Color.red)
+                    tile.mesh.material.color = Color.green;
+                //_aPathFinding._endPointTile = tile; //передаём конечную клетку
+                OnEndPoint?.Invoke(tile);
+            }
         }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-
-        if (other.gameObject.TryGetComponent(out Tile tile))
+        private void OnTriggerExit(Collider other)
         {
-            if (tile.mesh.material.color != Color.red)
-                tile.mesh.material.color = Color.white;
+
+            if (other.gameObject.TryGetComponent(out Tile tile))
+            {
+                if (tile.mesh.material.color != Color.red)
+                    tile.mesh.material.color = Color.white;
+            }
         }
     }
 }
