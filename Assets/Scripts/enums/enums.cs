@@ -11,5 +11,14 @@ namespace TDShooter.enums
     public enum EnemyType
     {
         FastMelee
-    }    
+    }
+    public enum TileState
+    {
+        None,//белый
+        Unit,//желтый
+        Obstacle,//красный
+        ClosedList,//серый
+        OpenedList,//фиолетовый
+        Way//зеленый
+    }
 }

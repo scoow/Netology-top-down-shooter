@@ -1,5 +1,6 @@
 using UnityEngine;
 using TDShooter.Enemies;
+using TDShooter.enums;
 
     namespace TDShooter.AI.PathFinder
 {
@@ -11,19 +12,28 @@ using TDShooter.Enemies;
 
         private void Start()
         {
-            _enemyMove = GetComponent<EnemyMove>();
+            _enemyMove = GetComponentInParent<EnemyMove>();
         }
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.TryGetComponent(out Tile tile))
             {
-                if (tile.mesh.material.color != Color.red)
+                if (tile.TileState != TileState.Obstacle)
+                {
+                    tile.SetTileState(TileState.Unit);
                     tile.mesh.material.color = Color.yellow;
+                }
+                    
                 _aPathFinding._startPointTile = tile; //передаём клетку на которой стоит юнит
                 _aPathFinding.PathFinding();
 
-                _enemyMove.SetNewTarget(_aPathFinding.ReturnNextPoint());//передаём промежуточную цель в класс движения врага
+                //_enemyMove.SetNewTarget(_aPathFinding.ReturnNextPoint());//передаём промежуточную цель в класс движения врага
             }
+        }
+
+        public void TakeNewTarget(Transform newTarget)
+        {
+            _enemyMove.SetNewTarget(newTarget);
         }
 
         private void OnTriggerExit(Collider other)

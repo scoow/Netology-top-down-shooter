@@ -43,7 +43,7 @@ namespace TDShooter.Enemies
 
         public void SetNewTarget(Transform target)
         {
-            _currentTarget = target;
+            _target = target;//переделать
         }
 
         //движение в сторону цели вариант 1
@@ -113,8 +113,16 @@ namespace TDShooter.Enemies
         //движение в сторону цели вариант 2
         public void OnPursuing()
         {
-            if (_currentTarget != null)
-                _target = _currentTarget.transform;               
+/*            if (_currentTarget != null)
+            {
+*//*                var newPos = _currentTarget.transform.position;
+                newPos.y += 1f;
+                _target.position = newPos;*//*
+
+
+                transform.position = new Vector3(_currentTarget.position.x, transform.position.y, _currentTarget.position.z);
+            }*/
+                            
 
             if (_target == null) return;
 

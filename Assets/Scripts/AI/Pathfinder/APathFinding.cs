@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System.Collections;
+using Cysharp.Threading.Tasks;
+using System;
 
 namespace TDShooter.AI.PathFinder
 {
@@ -16,6 +18,7 @@ namespace TDShooter.AI.PathFinder
         public Tile _endPointTile;
         public EndPoint _endPoint;
         public CreateTileField _createTileField;
+        private Position_Marker _marker;
 
         public Dictionary<Tile, float> _open_ListTile = new Dictionary<Tile, float>(); //открытый список клеток
         public List<Tile> _closed_ListTile = new List<Tile>(); //закрытый список клеток    
@@ -24,7 +27,7 @@ namespace TDShooter.AI.PathFinder
         /// Вернуть следующую точку пути из списка-маршрута
         /// </summary>
         /// <returns></returns>
-       public Transform ReturnNextPoint()
+        public Transform ReturnNextPoint()
         {
             //return _pathPoint[_pathPoint.Count - 1].transform;
             return _pathPoint[0].transform;
@@ -42,55 +45,70 @@ namespace TDShooter.AI.PathFinder
         {
             _endPointTile = tile;
         }
+        private void Start()
+        {
+            _marker = GetComponentInChildren<Position_Marker>();
+        }
 
         private void Update()
         {
-/*            if (Input.GetKeyDown(KeyCode.Space))
-                PathFinding();*/
+            /*            if (Input.GetKeyDown(KeyCode.Space))
+                            PathFinding();*/
         }
 
         public void PathFinding()
         {
+
+
+            //будем очищать состояние всех клеток
+            foreach (Tile tile in _createTileField._tileExamples)
+            {
+                if (tile.TileState != enums.TileState.Obstacle)// || tile.TileState != enums.TileState.Unit)
+                {
+                    tile.mesh.material.color = Color.white;
+                    tile.SetTileState(enums.TileState.None);
+                    tile._previosPoint = null;
+                }
+            }
+
             //очищаем оба списка
             _open_ListTile.Clear();
             _closed_ListTile.Clear();
+
             //назначаем текущую клетку стартовой
             _currentPointTile = _startPointTile;
             //добавляем в закрытый список все клетки помеченные препятствиями
             foreach (Tile tile in _createTileField._tileExamples)
             {
-                if (tile.mesh.material.color == Color.red)
+                if (tile.TileState == enums.TileState.Obstacle)
                 {
                     _closed_ListTile.Add(tile);
-                    tile.mesh.material.color = Color.grey;
                 }
             }
 
             foreach (Tile tile in _currentPointTile._tileNear)
             {
-                if (tile.mesh.material.color != Color.red)
+                if (tile.TileState != enums.TileState.ClosedList)
                 {
                     _open_ListTile.Add(tile, 0f);
+                    tile.SetTileState(enums.TileState.OpenedList);
                 }
             }
 
             //добавляем в закрытый список стартовую точку         
             _closed_ListTile.Add(_currentPointTile);
 
-            StartCoroutine(TestCoroutine());
-
-            //while (_currentPointTile != _endPointTile)
-            //{
-            //    FindPath();
-            //}
+            var result = StartFindPath();
         }
 
-        IEnumerator TestCoroutine()
+        public async UniTaskVoid StartFindPath()
         {
             while (_currentPointTile != _endPointTile)
             {
-                yield return new WaitForSeconds(0.5f);
+                await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
                 FindPath();
+                await UniTask.Yield();
+
             }
         }
 
@@ -108,10 +126,19 @@ namespace TDShooter.AI.PathFinder
             }
 
             var sortedList = _open_ListTile.OrderBy(p => p.Value); //сортуирую коллекцию соседних открытых плиток по возрастанию
-           // Debug.Log(sortedList.First().Key);
+                                                                   // Debug.Log(sortedList.First().Key);
             _open_ListTile.Remove(_currentPointTile);
+
+
+
             _closed_ListTile.Add(_currentPointTile); //добавляем пройденную(обработанную) плитку в закрытый список
-            _currentPointTile.mesh.material.color = Color.grey;
+
+            if (_currentPointTile.TileState != enums.TileState.Obstacle)
+                _currentPointTile.mesh.material.color = Color.gray;
+
+            _currentPointTile.SetTileState(enums.TileState.ClosedList);
+
+
             _currentPointTile = sortedList.First().Key; //выбираем новую плитку на которую встаем и повторяем предидущие шаги
             if (_currentPointTile == _endPointTile)
             {
@@ -122,11 +149,14 @@ namespace TDShooter.AI.PathFinder
                 while (MYPOINT._previosPoint != null)
                 {
                     _pathPoint.Add(MYPOINT);
-                    MYPOINT.mesh.material.color = Color.green;
+                    MYPOINT.mesh.material.color = Color.blue;
+                    MYPOINT.SetTileState(enums.TileState.Way);
                     MYPOINT = MYPOINT._previosPoint;
                 }
 
-                StopAllCoroutines();
+                _marker.TakeNewTarget(_pathPoint[_pathPoint.Count - 1].transform);
+
+                //StopAllCoroutines();
 
                 foreach (Tile tile in _pathPoint)
                 {

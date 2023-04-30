@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TDShooter.enums;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,8 +24,15 @@ namespace TDShooter.AI.PathFinder
         /// Tочка из которой пришли в текущую
         /// </summary>
         public Tile _previosPoint;
+        private TileState _tileState = TileState.None;
+        public TileState TileState => _tileState;
 
-        public void RestorePath(List<Tile> path)
+        public void SetTileState(TileState state)
+        {
+            _tileState = state;
+        }
+
+/*        public void RestorePath(List<Tile> path)
         {
             path.Add(this);
             Debug.Log("RestorePath запустился");
@@ -33,6 +41,6 @@ namespace TDShooter.AI.PathFinder
                 _previosPoint.RestorePath(path);
                 _previosPoint.mesh.material.color = Color.green;
             }
-        }
+        }*/
     }
 }

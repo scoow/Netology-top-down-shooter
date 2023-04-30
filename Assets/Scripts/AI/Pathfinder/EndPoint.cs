@@ -14,8 +14,12 @@ namespace TDShooter.AI.PathFinder
         {
             if (other.gameObject.TryGetComponent(out Tile tile))
             {
-                if (tile.mesh.material.color != Color.red)
+                if (tile.TileState != enums.TileState.Obstacle)
+                {
                     tile.mesh.material.color = Color.green;
+                    tile.SetTileState(enums.TileState.Unit);
+                }
+                    
                 //_aPathFinding._endPointTile = tile; //передаём конечную клетку
                 OnEndPoint?.Invoke(tile);
             }
@@ -26,8 +30,11 @@ namespace TDShooter.AI.PathFinder
 
             if (other.gameObject.TryGetComponent(out Tile tile))
             {
-                if (tile.mesh.material.color != Color.red)
+                if (tile.TileState != enums.TileState.Obstacle)
+                {
                     tile.mesh.material.color = Color.white;
+                    tile.SetTileState(enums.TileState.None);
+                }
             }
         }
     }

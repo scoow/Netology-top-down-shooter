@@ -2756,15 +2756,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7149194542829848613, guid: 72cb7e6b4a90a3349a8f1cd981f750c5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 73.29933
+      value: 61.8
       objectReference: {fileID: 0}
     - target: {fileID: 7149194542829848613, guid: 72cb7e6b4a90a3349a8f1cd981f750c5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7149194542829848613, guid: 72cb7e6b4a90a3349a8f1cd981f750c5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 74.12773
+      value: 70.8
       objectReference: {fileID: 0}
     - target: {fileID: 7149194542829848613, guid: 72cb7e6b4a90a3349a8f1cd981f750c5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2796,11 +2796,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7149194542829848614, guid: 72cb7e6b4a90a3349a8f1cd981f750c5, type: 3}
       propertyPath: MaxSpeed
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7149194542829848614, guid: 72cb7e6b4a90a3349a8f1cd981f750c5, type: 3}
       propertyPath: MaxVelocity
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7149194542829848615, guid: 72cb7e6b4a90a3349a8f1cd981f750c5, type: 3}
+      propertyPath: m_Constraints
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 7149194542829848623, guid: 72cb7e6b4a90a3349a8f1cd981f750c5, type: 3}
       propertyPath: m_Name

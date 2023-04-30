@@ -10,6 +10,7 @@ namespace TDShooter.AI.PathFinder
             if (other.gameObject.TryGetComponent(out Tile tile))
             {
                 tile.mesh.material.color = Color.red;
+                tile.SetTileState(enums.TileState.Obstacle);
             }
         }
 
@@ -19,6 +20,7 @@ namespace TDShooter.AI.PathFinder
             if (other.gameObject.TryGetComponent(out Tile tile))
             {
                 tile.mesh.material.color = Color.white;
+                tile.SetTileState(enums.TileState.None);
             }
         }
     }
