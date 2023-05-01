@@ -654,7 +654,7 @@ TerrainCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 375569351}
   m_Material: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_TerrainData: {fileID: 15600000, guid: 1fc3791ff5519de40bcae4090c3189dd, type: 2}
   m_EnableTreeColliders: 1
 --- !u!218 &375569354
@@ -732,7 +732,7 @@ TerrainCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 383418960}
   m_Material: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_TerrainData: {fileID: 15600000, guid: a05090f6c03d9474799ab5e0d73f5101, type: 2}
   m_EnableTreeColliders: 1
 --- !u!218 &383418963
@@ -810,7 +810,7 @@ TerrainCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416266721}
   m_Material: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_TerrainData: {fileID: 15600000, guid: 8daef934288186746bcee7143d4c135c, type: 2}
   m_EnableTreeColliders: 1
 --- !u!218 &416266724
@@ -888,7 +888,7 @@ TerrainCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437780768}
   m_Material: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_TerrainData: {fileID: 15600000, guid: 453af399d6720af4583f532ae266cb1c, type: 2}
   m_EnableTreeColliders: 1
 --- !u!218 &437780771
@@ -966,7 +966,7 @@ TerrainCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460363196}
   m_Material: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_TerrainData: {fileID: 15600000, guid: 16f6b2210fc986a43ac8edd4e0b3e689, type: 2}
   m_EnableTreeColliders: 1
 --- !u!218 &460363199
@@ -2921,7 +2921,7 @@ TerrainCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1304908165}
   m_Material: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_TerrainData: {fileID: 15600000, guid: e0e789bc3ec42634596e0372f5598278, type: 2}
   m_EnableTreeColliders: 1
 --- !u!218 &1304908168
@@ -3336,7 +3336,7 @@ TerrainCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1764739086}
   m_Material: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_TerrainData: {fileID: 15600000, guid: c65ee17187cfde540be45892c1e860ff, type: 2}
   m_EnableTreeColliders: 1
 --- !u!218 &1764739089
@@ -3414,7 +3414,7 @@ TerrainCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1839042204}
   m_Material: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_TerrainData: {fileID: 15600000, guid: b92b583257bb2ee42a0f3e4fa9e21aa4, type: 2}
   m_EnableTreeColliders: 1
 --- !u!218 &1839042207
@@ -3523,7 +3523,7 @@ TerrainCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1878234851}
   m_Material: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_TerrainData: {fileID: 15600000, guid: d9b4c89bd68472e4bad94a52570587f1, type: 2}
   m_EnableTreeColliders: 1
 --- !u!218 &1878234854
