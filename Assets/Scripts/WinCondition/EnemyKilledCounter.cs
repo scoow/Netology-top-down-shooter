@@ -5,6 +5,7 @@ namespace TDShooter.WinCondition
     /// <summary>
     /// Подсчёт убитых врагов
     /// </summary>
+
     public class EnemyKilledCounter
     {
         private int _count;
@@ -20,6 +21,7 @@ namespace TDShooter.WinCondition
         public void Increment()
         {
             _count++;
+            Debug.Log(_count);
         }
     }
 }

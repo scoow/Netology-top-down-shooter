@@ -1,22 +1,18 @@
 using TDShooter.WinCondition;
-using UnityEngine;
+using Zenject;
 
 namespace TDShooter.Managers
 {
     /// <summary>
     /// Отслеживание условий победы
     /// </summary>
-    public class WinConditionManager : MonoBehaviour
+    public class WinConditionManager : MonoInstaller
     {
-        private EnemyKilledCounter _enemyKilledCounter = new();
-        private Timer _timer;
-        private void Awake()
+        private EnemyKilledCounter _enemyKilledCounter;
+        public override void InstallBindings()
         {
-            _timer = GetComponent<Timer>();//поместить на один объект
-        }
-        private void Start()
-        {
-            _timer.ResetTimer();
+            _enemyKilledCounter = new EnemyKilledCounter();
+            Container.BindInstance(_enemyKilledCounter).AsSingle();
         }
     }
 }

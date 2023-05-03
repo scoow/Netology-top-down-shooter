@@ -2,13 +2,17 @@ using System.Collections.Generic;
 using System.Linq;
 using TDShooter.enums;
 using TDShooter.Pools;
+using TDShooter.WinCondition;
 using UnityEngine;
+using Zenject;
 
 namespace TDShooter.Characters
 {
     public class EnemiesPool : BasePool<BaseEnemy>
     {
         protected EnemyType _unitType;
+        [Inject]
+        private readonly EnemyKilledCounter _enemyKilledCounter;
 
         public EnemiesPool(BaseEnemy prefab, EnemyType unitType, Transform parent, int count = 1) : base(prefab, parent)
         {
@@ -17,8 +21,10 @@ namespace TDShooter.Characters
         }
         protected override BaseEnemy GetCreated()
         {
-            BaseEnemy newUnit = Object.Instantiate(_prefab);
-            //newUnit.UnitType = _unitType;
+            BaseEnemy newUnit = GameObject.Instantiate(_prefab);
+/*            var character = newUnit.GetComponent<Character>();
+            character.Inject(_enemyKilledCounter);*/
+
             return newUnit;
         }
         /// <summary>

@@ -1,4 +1,7 @@
+using System;
+using TDShooter.WinCondition;
 using UnityEngine;
+using Zenject;
 
 namespace TDShooter.Characters
 {
@@ -10,10 +13,25 @@ namespace TDShooter.Characters
         [SerializeField]
         private int _hp;
         public int HP => _hp;
+        //private EnemyKilledCounter _enemyKilledCounter;
 
+        //public Action OnUnitDied;
+
+/*        public void Inject(EnemyKilledCounter enemyKilledCounter)
+        {
+            _enemyKilledCounter = enemyKilledCounter;
+            OnUnitDied += _enemyKilledCounter.Increment;
+        }*/
+
+        public void Respawn(int maxHP)
+        {
+            _hp = maxHP;
+            gameObject.SetActive(true);
+        }
         public void Die()
         {
-            this.gameObject.SetActive(false);
+            gameObject.SetActive(false);
+            //OnUnitDied?.Invoke();
         }
 
         public void TakeDamage(int damage)
@@ -27,6 +45,11 @@ namespace TDShooter.Characters
         public void TakeHeal(int heal)
         {
             _hp += heal;
+        }
+
+        private void OnDisable()
+        {
+            
         }
     }
 }
