@@ -1,6 +1,4 @@
-﻿#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-
-using System;
+﻿using System;
 using System.Threading;
 
 namespace Cysharp.Threading.Tasks.Internal
@@ -12,7 +10,7 @@ namespace Cysharp.Threading.Tasks.Internal
 
         readonly PlayerLoopTiming timing;
 
-        SpinLock gate = new SpinLock(false);
+        SpinLock gate = new(false);
         bool dequing = false;
 
         int actionListCount = 0;

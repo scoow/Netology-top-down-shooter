@@ -4,7 +4,6 @@ using TDShooter.enums;
 using TDShooter.Pools;
 using TDShooter.WinCondition;
 using UnityEngine;
-using Zenject;
 
 namespace TDShooter.Characters
 {
@@ -23,7 +22,7 @@ namespace TDShooter.Characters
         {
             BaseEnemy newUnit = GameObject.Instantiate(_prefab);
             var character = newUnit.GetComponent<Character>();
-            character.Inject(_enemyKilledCounter);
+            character.Construct(_enemyKilledCounter);
 
             return newUnit;
         }

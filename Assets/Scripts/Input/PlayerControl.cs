@@ -2,6 +2,7 @@ using UnityEngine;
 using TDShooter.Weapons;
 using static UnityEngine.GraphicsBuffer;
 using TDShooter.UI;
+using Zenject;
 
 namespace TDShooter.Input
 {
@@ -13,7 +14,8 @@ namespace TDShooter.Input
         [SerializeField]
         private float _speed;
         private Weapon _weapon;//ссылка на оружие игрока. В будующем убрать ссылку в отдельный класс Player
-        [SerializeField]
+                               // [SerializeField]
+        [Inject]
         private Aim_Marker _aim;
         
         public float Speed { get => _speed; private set => _speed = value; } 

@@ -5,7 +5,6 @@ namespace TDShooter.WinCondition
     /// <summary>
     /// Подсчёт убитых врагов
     /// </summary>
-
     public class EnemyKilledCounter
     {
         private int _count;

@@ -13,7 +13,7 @@ namespace TDShooter.Level
         private byte _number;
         public byte Number => _number;
 
-        public Action<Tile_Marker> Callback;
+        public Action<Tile_Marker> Callback;//todo переименовать
         /// <summary>
         /// Если игрок наступает на тайл, оповещает об этом TilesManager
         /// </summary>

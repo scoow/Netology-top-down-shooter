@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using System.Collections;
 using Cysharp.Threading.Tasks;
 using System;
 
@@ -12,16 +11,16 @@ namespace TDShooter.AI.PathFinder
         /// <summary>
         /// путь от стартовой точки до конечной
         /// </summary>
-        public List<Tile> _pathPoint = new List<Tile>();
+        public List<Tile> _pathPoint = new();
         public Tile _startPointTile;
         public Tile _currentPointTile;
         public Tile _endPointTile;
         public EndPoint _endPoint;
-        public CreateTileField _createTileField;
+        public CreateTileField _createTileField;//zenject недоступен из за создания объекта в рантайме. сделать инъкцию через конструктор
         private Position_Marker _marker;
 
-        public Dictionary<Tile, float> _open_ListTile = new Dictionary<Tile, float>(); //открытый список клеток
-        public List<Tile> _closed_ListTile = new List<Tile>(); //закрытый список клеток    
+        public Dictionary<Tile, float> _open_ListTile = new(); //открытый список клеток
+        public List<Tile> _closed_ListTile = new(); //закрытый список клеток    
 
         /// <summary>
         /// Вернуть следующую точку пути из списка-маршрута
@@ -50,11 +49,11 @@ namespace TDShooter.AI.PathFinder
             _marker = GetComponentInChildren<Position_Marker>();
         }
 
-        private void Update()
+/*        private void Update()
         {
-            /*            if (Input.GetKeyDown(KeyCode.Space))
-                            PathFinding();*/
-        }
+                        if (Input.GetKeyDown(KeyCode.Space))
+                            PathFinding();
+        }*/
 
         public void PathFinding()
         {
@@ -154,7 +153,7 @@ namespace TDShooter.AI.PathFinder
                     MYPOINT = MYPOINT._previosPoint;
                 }
 
-                _marker.TakeNewTarget(_pathPoint[_pathPoint.Count - 1].transform);
+                _marker.TakeNewTarget(_pathPoint[^1].transform);
 
                 //StopAllCoroutines();
 

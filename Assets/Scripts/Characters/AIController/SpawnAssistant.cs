@@ -13,24 +13,22 @@ namespace TDShooter.Characters
         /// <summary>
         /// Пул юнитов
         /// </summary>
-        private Dictionary<EnemyType, EnemiesPool> _enemiesPool = new();
+        private readonly Dictionary<EnemyType, EnemiesPool> _enemiesPool = new();
         public Dictionary<EnemyType, EnemiesPool> EnemiesPool => _enemiesPool;
 
-        private TilesManager _tilesManager;
-
-        private Transform _enemiesContainer;
-
+        [Inject]
+        private readonly TilesManager _tilesManager;
+        [Inject]
+        private readonly Transform _enemiesContainer;
         private List<EnemiesSpawner> _unitSpawners = new();
 
         [Inject]
-        private EnemyKilledCounter _enemyKilledCounter;
+        private readonly EnemyKilledCounter _enemyKilledCounter;
 
         //todo Добавить таймер спавна для каждого типа врагов
 
         private void Start()
         {
-            _enemiesContainer = FindObjectOfType<EnemiesContainer_Marker>().transform;
-            _tilesManager = FindObjectOfType<TilesManager>();
             _unitSpawners = FindObjectsOfType<EnemiesSpawner>().ToList();
 
             InitEnemyPool();

@@ -9,7 +9,7 @@ namespace TDShooter.AI.PathFinder
         [SerializeField] private Tile _prefabTile;
         private int _currentId = 1;
         private int _resolutionField;
-        public List<Tile> _tileExamples = new List<Tile>();
+        public List<Tile> _tileExamples = new();
 
         private LeftBottomCorner_Marker _leftBottomCorner_Marker;
 
@@ -30,7 +30,7 @@ namespace TDShooter.AI.PathFinder
             //(int)gameObject.transform.localScale.x * 10;
             //MeshFilter meshFilter = gameObject.GetComponent<MeshFilter>();
             float directionGeneration = _prefabTile.transform.localScale.x;
-            float startPointScale = gameObject.transform.localScale.x;
+            //float startPointScale = gameObject.transform.localScale.x;
             //Vector3 startPoint = meshFilter.mesh.vertices[meshFilter.mesh.vertices.Length - 1] * startPointScale + new Vector3((directionGeneration / 2), 0, (directionGeneration / 2));
             Vector3 startPoint = _leftBottomCorner_Marker.transform.position + new Vector3((directionGeneration / 2), 0, (directionGeneration / 2));
             for (int i = 0; i < _resolutionField; i++)

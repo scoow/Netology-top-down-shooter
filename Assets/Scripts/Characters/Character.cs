@@ -18,7 +18,7 @@ namespace TDShooter.Characters
 
         public Action OnUnitDied;
 
-        public void Inject(EnemyKilledCounter enemyKilledCounter)
+        public void Construct(EnemyKilledCounter enemyKilledCounter)
         {
             _enemyKilledCounter = enemyKilledCounter;
             OnUnitDied += _enemyKilledCounter.Increment;
@@ -48,9 +48,9 @@ namespace TDShooter.Characters
             _hp += heal;
         }
 
-        private void OnDisable()
+       private void OnDisable()
         {
-            
+            OnUnitDied -= _enemyKilledCounter.Increment;
         }
     }
 }

@@ -6,20 +6,20 @@ namespace TDShooter.Enemies
     public class EnemyMove : BaseUnit
     {
         [SerializeField] private Transform _target;
-        private Transform _currentTarget;
+        //private Transform _currentTarget;
 
         [Tooltip("Величина стремления к цели"), SerializeField, Range(0f, 5f)]
-        public float MaxVelocity;
+        private float MaxVelocity;
         [Tooltip("Максимальная скорость перемещения"), SerializeField, Range(0f, 5f)]
-        public float MaxSpeed;
+        private float MaxSpeed;
         [Tooltip("Растояние начала прибытия"), SerializeField, Range(0.5f, 5f)]
-        public float ArrivalDistance;
+        private float ArrivalDistance;
         [Tooltip("Дистанция до центра окружности блуждания"), SerializeField, Range(0.1f, 5f)]
-        public float WanderCenterDistance;
+        private float WanderCenterDistance;
         [Tooltip("Радиус окружности блуждания"), SerializeField, Range(0.1f, 5f)]
-        public float WanderRadius;
+        private float WanderRadius;
         [Tooltip("Разброс угла блуждания"), SerializeField, Range(0f, 360f)]
-        public float WanderAngleRange;
+        private float WanderAngleRange;
 
         private PlayerControl _playerControl;
 
@@ -92,7 +92,7 @@ namespace TDShooter.Enemies
 
             if(sqrLength > ArrivalDistance * ArrivalDistance)
             {
-                desired_velocity = desired_velocity / ArrivalDistance;
+                desired_velocity /= ArrivalDistance;
                 if (desired_velocity.sqrMagnitude < 1f)
                 {
                     desired_velocity.z =0f; desired_velocity.x = 0f;
