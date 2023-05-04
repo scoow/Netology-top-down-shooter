@@ -13,15 +13,16 @@ namespace TDShooter.Characters
         [SerializeField]
         private int _hp;
         public int HP => _hp;
-        //private EnemyKilledCounter _enemyKilledCounter;
 
-        //public Action OnUnitDied;
+        private EnemyKilledCounter _enemyKilledCounter;
 
-/*        public void Inject(EnemyKilledCounter enemyKilledCounter)
+        public Action OnUnitDied;
+
+        public void Inject(EnemyKilledCounter enemyKilledCounter)
         {
             _enemyKilledCounter = enemyKilledCounter;
             OnUnitDied += _enemyKilledCounter.Increment;
-        }*/
+        }
 
         public void Respawn(int maxHP)
         {
@@ -31,7 +32,7 @@ namespace TDShooter.Characters
         public void Die()
         {
             gameObject.SetActive(false);
-            //OnUnitDied?.Invoke();
+            OnUnitDied?.Invoke();
         }
 
         public void TakeDamage(int damage)

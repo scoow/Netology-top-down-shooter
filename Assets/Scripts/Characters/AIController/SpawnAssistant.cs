@@ -2,7 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using TDShooter.enums;
 using TDShooter.Level;
+using TDShooter.WinCondition;
 using UnityEngine;
+using Zenject;
 
 namespace TDShooter.Characters
 {
@@ -20,6 +22,9 @@ namespace TDShooter.Characters
 
         private List<EnemiesSpawner> _unitSpawners = new();
 
+        [Inject]
+        private EnemyKilledCounter _enemyKilledCounter;
+
         //todo Добавить таймер спавна для каждого типа врагов
 
         private void Start()
@@ -35,7 +40,7 @@ namespace TDShooter.Characters
         /// </summary>
         private void InitEnemyPool()
         {
-            _enemiesPool.Add(EnemyType.FastMelee, new(Resources.Load<BaseEnemy>("Prefabs/Enemy"), EnemyType.FastMelee, _enemiesContainer));
+            _enemiesPool.Add(EnemyType.FastMelee, new(Resources.Load<BaseEnemy>("Prefabs/Enemy"), EnemyType.FastMelee, _enemiesContainer, _enemyKilledCounter));
         }
         /// <summary>
         /// Для теста - спавн на клавишу B
