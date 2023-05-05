@@ -6707,7 +6707,6 @@ MonoBehaviour:
   _playerHead: {fileID: 66729744}
   _playerBody: {fileID: 991209314}
   _speed: 5
-  _aim: {fileID: 1232234424}
 --- !u!54 &991209310
 Rigidbody:
   m_ObjectHideFlags: 0
