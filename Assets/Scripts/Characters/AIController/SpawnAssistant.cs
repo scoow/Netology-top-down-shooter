@@ -13,8 +13,8 @@ namespace TDShooter.Characters
         /// <summary>
         /// Ïóë şíèòîâ
         /// </summary>
-        private readonly Dictionary<EnemyType, EnemiesPool> _enemiesPool = new();
-        public Dictionary<EnemyType, EnemiesPool> EnemiesPool => _enemiesPool;
+        private readonly Dictionary<ÑharacterType, EnemiesPool> _enemiesPool = new();
+        public Dictionary<ÑharacterType, EnemiesPool> EnemiesPool => _enemiesPool;
 
         [Inject]
         private readonly TilesManager _tilesManager;
@@ -38,7 +38,7 @@ namespace TDShooter.Characters
         /// </summary>
         private void InitEnemyPool()
         {
-            _enemiesPool.Add(EnemyType.FastMelee, new(Resources.Load<BaseEnemy>("Prefabs/Enemy"), EnemyType.FastMelee, _enemiesContainer, _enemyKilledCounter));
+            _enemiesPool.Add(ÑharacterType.FastMeleeEnemy, new(Resources.Load<BaseEnemy>("Prefabs/Enemy"), ÑharacterType.FastMeleeEnemy, _enemiesContainer, _enemyKilledCounter));
         }
         /// <summary>
         /// Äëÿ òåñòà - ñïàâí íà êëàâèøó B
@@ -47,7 +47,7 @@ namespace TDShooter.Characters
         {
             if (UnityEngine.Input.GetKeyDown(KeyCode.B))
             {
-                BaseEnemy enemy = _enemiesPool[EnemyType.FastMelee].GetAviableOrCreateNew();
+                BaseEnemy enemy = _enemiesPool[ÑharacterType.FastMeleeEnemy].GetAviableOrCreateNew();
 
                 int randompoint = Random.Range(0, _unitSpawners.Count());
                 Tile_Marker parentTile = _unitSpawners[randompoint].GetComponentInParent<Tile_Marker>();

@@ -64,5 +64,10 @@ namespace TDShooter.Input
             _controls.Player.Disable();
         }
 
+        public void TakeLoot(string lootName)
+        {
+            Debug.Log($"Я подобрал {lootName}");
+        }
+
     }
 }

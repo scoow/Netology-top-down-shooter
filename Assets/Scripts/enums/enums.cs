@@ -8,9 +8,18 @@ namespace TDShooter.enums
     {
         Bullet
     }
-    public enum EnemyType
+    public enum ÑharacterType
     {
-        FastMelee
+        Player,
+        FastMeleeEnemy
+    }
+    public enum EffectType
+    {
+        Health,
+        Armor,
+        SpeedMove,
+        MissChance,
+        CriticalDamageChance
     }
     public enum TileState
     {

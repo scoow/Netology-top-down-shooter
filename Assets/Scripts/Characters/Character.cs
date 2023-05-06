@@ -12,6 +12,8 @@ namespace TDShooter.Characters
     {
         [SerializeField]
         private int _hp;
+        [SerializeField]
+        private LootExample _exampleLoot;
         public int HP => _hp;
 
         private EnemyKilledCounter _enemyKilledCounter;
@@ -31,7 +33,10 @@ namespace TDShooter.Characters
         }
         public void Die()
         {
-            gameObject.SetActive(false);
+            LootExample loot = Instantiate(_exampleLoot);
+            loot.transform.position = transform.position ;
+            
+            gameObject.SetActive(false);            
             OnUnitDied?.Invoke();
         }
 

@@ -9,10 +9,10 @@ namespace TDShooter.Characters
 {
     public class EnemiesPool : BasePool<BaseEnemy>
     {
-        protected EnemyType _unitType;
+        protected ÑharacterType _unitType;
         private readonly EnemyKilledCounter _enemyKilledCounter;
 
-        public EnemiesPool(BaseEnemy prefab, EnemyType unitType, Transform parent, EnemyKilledCounter enemyKilledCounter, int count = 1) : base(prefab, parent)
+        public EnemiesPool(BaseEnemy prefab, ÑharacterType unitType, Transform parent, EnemyKilledCounter enemyKilledCounter, int count = 1) : base(prefab, parent)
         {
             _unitType = unitType;
             _enemyKilledCounter = enemyKilledCounter;
