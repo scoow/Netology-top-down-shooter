@@ -49,8 +49,15 @@ namespace TDShooter.Input
             if (Physics.Raycast(ray, out RaycastHit raycastHit))
             {
                 _aim.transform.position = raycastHit.point;                
-                _playerHead.transform.LookAt( raycastHit.point);               
+                _playerHead.transform.LookAt(raycastHit.point);               
             }
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.yellow;
+            if ( _aim != null ) 
+                Gizmos.DrawLine(_playerHead.transform.position, _aim.transform.position);              
         }
 
         private void Update()
