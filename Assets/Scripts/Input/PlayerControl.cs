@@ -17,7 +17,12 @@ namespace TDShooter.Input
                                // [SerializeField]
         [Inject]
         private Aim_Marker _aim;
-        
+        [SerializeField]
+        private AudioSource _audioSourceSteps;
+        [SerializeField]
+        private AudioClip _oneShotSound;
+
+
         public float Speed { get => _speed; private set => _speed = value; } 
 
         private void Awake()
@@ -36,12 +41,16 @@ namespace TDShooter.Input
         {
             Debug.Log("Делаем выстрел");
             _weapon.Shoot();
+
+            _audioSourceSteps.PlayOneShot(_oneShotSound);
         }
 
         private void Move()
         {
             var inputValio = _controls.Player.WASD.ReadValue<Vector2>(); // записываем в локальную переменную значение Vector2 при вызове события WASD
             _playerBody.Translate(inputValio.x * Time.deltaTime * _speed, 0, inputValio.y * Time.deltaTime * _speed); //перемещаем объект в плоскости X0Z
+
+            
         }
         public void AimCursor()
         {
