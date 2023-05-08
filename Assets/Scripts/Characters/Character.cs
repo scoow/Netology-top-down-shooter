@@ -12,13 +12,19 @@ namespace TDShooter.Characters
     {
         [SerializeField]
         private int _hp;
-        [SerializeField]
-        private LootExample _exampleLoot;
+        [SerializeField] private LootExample _exampleLoot;
+        [SerializeField] private PlayerProgress _playerProgress;
         public int HP => _hp;
 
         private EnemyKilledCounter _enemyKilledCounter;
 
         public Action OnUnitDied;
+
+
+        public void OnEnable()
+        {
+            _playerProgress = FindAnyObjectByType<PlayerProgress>();
+        }
 
         public void Construct(EnemyKilledCounter enemyKilledCounter)
         {
@@ -32,10 +38,13 @@ namespace TDShooter.Characters
             gameObject.SetActive(true);
         }
         public void Die()
-        {
-            LootExample loot = Instantiate(_exampleLoot);
-            loot.transform.position = transform.position ;
-            
+        {            
+            if(_playerProgress.CheckChance() < _playerProgress.ChanceDroopLoot)
+            {
+                LootExample loot = Instantiate(_exampleLoot);
+                loot.transform.position = transform.position;
+            }
+            _playerProgress.CurrentKilledCount++;
             gameObject.SetActive(false);            
             OnUnitDied?.Invoke();
         }
