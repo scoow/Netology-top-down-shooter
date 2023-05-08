@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: -6197998996588060254}
   - component: {fileID: -4939167545854252516}
   - component: {fileID: 5579702745638625434}
+  - component: {fileID: 6220046986021956734}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -224,6 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 1
   _exampleLoot: {fileID: 7438257021208079569, guid: 24e1701ac52d833419bc752c1df158ed, type: 3}
+  _playerProgress: {fileID: 0}
 --- !u!114 &5579702745638625434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,3 +245,18 @@ MonoBehaviour:
   _endPoint: {fileID: 0}
   _createTileField: {fileID: 0}
   _closed_ListTile: []
+--- !u!114 &6220046986021956734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7149194542829848623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d67a0df0d979dc040aa264c3aa6f668a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 0}
+  _attackRange: 2
+  _attackCooldown: 4
