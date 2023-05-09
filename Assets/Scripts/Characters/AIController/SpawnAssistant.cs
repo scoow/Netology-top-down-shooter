@@ -26,11 +26,14 @@ namespace TDShooter.Characters
         private readonly EnemyKilledCounter _enemyKilledCounter;
 
         //todo Добавить таймер спавна для каждого типа врагов
+        [SerializeField]
+        private float _enemySpawnCooldown = 2;
+        private float _timer;
 
         private void Start()
         {
             _unitSpawners = FindObjectsOfType<EnemiesSpawner>().ToList();
-
+            _timer = _enemySpawnCooldown;
             InitEnemyPool();
         }
         /// <summary>
@@ -45,23 +48,33 @@ namespace TDShooter.Characters
         /// </summary>
         private void Update()
         {
-            if (UnityEngine.Input.GetKeyDown(KeyCode.B))
+            _timer -= Time.deltaTime;
+            if (_timer < 0)
             {
-                BaseEnemy enemy = _enemiesPool[СharacterType.FastMeleeEnemy].GetAviableOrCreateNew();
-
-                int randompoint = Random.Range(0, _unitSpawners.Count());
-                Tile_Marker parentTile = _unitSpawners[randompoint].GetComponentInParent<Tile_Marker>();
-                //проверка, не центральный ли это тайл. в нём не спавним
-
-                while (_tilesManager.IsInMiddle(parentTile))
-                {
-                    randompoint = Random.Range(0, _unitSpawners.Count());
-                    parentTile = _unitSpawners[randompoint].GetComponentInParent<Tile_Marker>();
-                }
-
-                enemy.transform.position = _unitSpawners[randompoint].transform.position;
-            }    
+                _timer = _enemySpawnCooldown;
+                SpawnEnemyAtRandomTile();
+            }
+/*            if (UnityEngine.Input.GetKeyDown(KeyCode.B))
+            {
                 
+            }*/
+        }
+
+        private void SpawnEnemyAtRandomTile()
+        {
+            BaseEnemy enemy = _enemiesPool[СharacterType.FastMeleeEnemy].GetAviableOrCreateNew();
+
+            int randompoint = Random.Range(0, _unitSpawners.Count());
+            Tile_Marker parentTile = _unitSpawners[randompoint].GetComponentInParent<Tile_Marker>();
+            //проверка, не центральный ли это тайл. в нём не спавним
+
+            while (_tilesManager.IsInMiddle(parentTile))
+            {
+                randompoint = Random.Range(0, _unitSpawners.Count());
+                parentTile = _unitSpawners[randompoint].GetComponentInParent<Tile_Marker>();
+            }
+
+            enemy.transform.position = _unitSpawners[randompoint].transform.position;
         }
     }
 }
