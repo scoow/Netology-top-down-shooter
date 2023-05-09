@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using TDShooter.enums;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace TDShooter
+namespace TDShooter.Configs
 {
     [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/NewLoot", order = 1)]
     public class LootData_SO : ScriptableObject
