@@ -3,6 +3,7 @@ using TDShooter.Weapons;
 using static UnityEngine.GraphicsBuffer;
 using TDShooter.UI;
 using Zenject;
+using Cysharp.Threading.Tasks.Triggers;
 
 namespace TDShooter.Input
 {
@@ -21,6 +22,8 @@ namespace TDShooter.Input
         private AudioSource _audioSourceSteps;
         [SerializeField]
         private AudioClip _oneShotSound;
+        [SerializeField]
+        private Animator_Controller _animControl;
 
 
         public float Speed { get => _speed; private set => _speed = value; } 
@@ -34,7 +37,8 @@ namespace TDShooter.Input
             _controls.Player.Enable();
             _controls.Player.Shoot.performed += contecxt => Fire();
 
-            _weapon = GetComponentInChildren<Weapon>();            
+            _weapon = GetComponentInChildren<Weapon>();
+            //_animControl = GetComponent<Animator_Controller>();
         }
 
         private void Fire()
@@ -49,16 +53,21 @@ namespace TDShooter.Input
         {
             var inputValio = _controls.Player.WASD.ReadValue<Vector2>(); // записываем в локальную переменную значение Vector2 при вызове события WASD
             _playerBody.Translate(inputValio.x * Time.deltaTime * _speed, 0, inputValio.y * Time.deltaTime * _speed); //перемещаем объект в плоскости X0Z
-
-            
+            _animControl.Move(inputValio);
         }
         public void AimCursor()
         {
             Ray ray = Camera.main.ScreenPointToRay(UnityEngine.Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit raycastHit))
             {
-                _aim.transform.position = raycastHit.point;                
-                _playerHead.transform.LookAt(raycastHit.point);               
+                _aim.transform.position = raycastHit.point;
+                //_playerHead.transform.LookAt(raycastHit.point);
+                Vector3 relativePos = raycastHit.point - transform.position;                
+                Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+                rotation.x = 0f;
+                rotation.z = 0f;
+                _playerHead.transform.rotation = rotation;
+
             }
         }
 
