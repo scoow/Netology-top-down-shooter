@@ -34,10 +34,10 @@ namespace TDShooter.Enemies
         private void Update()
         {
             //OnSeek();
-            //OnArrival();
+            OnArrival();
             //OnWander();
             //OnFlee();
-            OnPursuing();
+            //OnPursuing();
             //OnEvading();
         }
 
@@ -84,7 +84,7 @@ namespace TDShooter.Enemies
         public void OnArrival()
         {
             if (_target == null) return;
-            
+            transform.LookAt(_target.transform.position);
             //сила стремления к цели
             var desired_velocity = _target.transform.position - transform.position;
             //квадрат растояния до цели
@@ -93,8 +93,9 @@ namespace TDShooter.Enemies
             if(sqrLength > ArrivalDistance * ArrivalDistance)
             {
                 desired_velocity /= ArrivalDistance;
-                if (desired_velocity.sqrMagnitude < 1f)
+                if (desired_velocity.sqrMagnitude < 1.5f)
                 {
+
                     desired_velocity.z =0f; desired_velocity.x = 0f;
                 }
             }

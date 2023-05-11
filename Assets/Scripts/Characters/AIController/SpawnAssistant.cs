@@ -41,7 +41,7 @@ namespace TDShooter.Characters
         /// </summary>
         private void InitEnemyPool()
         {
-            _enemiesPool.Add(ÑharacterType.FastMeleeEnemy, new(Resources.Load<BaseEnemy>("Prefabs/Enemy"), ÑharacterType.FastMeleeEnemy, _enemiesContainer, _enemyKilledCounter));
+            _enemiesPool.Add(ÑharacterType.FastMeleeEnemy, new(Resources.Load<BaseEnemy>("Prefabs/Enemy/FirstEnemy/Enemy"), ÑharacterType.FastMeleeEnemy, _enemiesContainer, _enemyKilledCounter));
         }
         /// <summary>
         /// Äëÿ òåñòà - ñïàâí íà êëàâèøó B

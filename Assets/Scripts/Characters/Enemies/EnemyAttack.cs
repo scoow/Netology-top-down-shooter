@@ -9,6 +9,7 @@ namespace TDShooter.Enemies
         /// Цель атаки
         /// </summary>
         private Transform _target;
+        [SerializeField] Animator _animator;
 
         /// <summary>
         /// Дальность атаки
@@ -55,13 +56,22 @@ namespace TDShooter.Enemies
                 {
                     Attack();
                 }
+                else
+                {
+                    StopAtack();
+                }
             }
         }
 
         private void Attack()
         {
             Debug.Log("Атакую!");
+            _animator.SetBool("Atack", true);
+        }
 
+        private void StopAtack()
+        {
+            _animator.SetBool("Atack", false);
         }
     }
 }
