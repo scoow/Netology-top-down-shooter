@@ -1,15 +1,16 @@
 using TDShooter.Input;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 namespace TDShooter.Enemies
 {
     public class EnemyAttack : MonoBehaviour
     {
+        [SerializeField] Animation_Controller _animation_Controller;
         /// <summary>
         /// Цель атаки
         /// </summary>
-        private Transform _target;
-        [SerializeField] Animator _animator;
+        private Transform _target;         
 
         /// <summary>
         /// Дальность атаки
@@ -19,6 +20,10 @@ namespace TDShooter.Enemies
         [SerializeField]
         private float _attackCooldown = 4;//кд до атаки
         private float _timer;//время для отсчёта кд
+
+        public float AttackRange => _attackRange;
+
+
         private void Awake()
         {
             _target = FindObjectOfType<PlayerControl>().transform;
@@ -42,7 +47,8 @@ namespace TDShooter.Enemies
         }
         private void Update()
         {
-            CalculateAttackCoolDownTime();
+            _animation_Controller.ChangeAnimation(_target);
+            //CalculateAttackCoolDownTime();
         }
 
         private void CalculateAttackCoolDownTime()
@@ -54,16 +60,11 @@ namespace TDShooter.Enemies
 
                 if (TargetInAttackRange(_target))
                 {
-                    Attack();
-                }
-                else
-                {
-                    StopAtack();
-                }
+                    _animation_Controller.ChangeAnimation(_target);
+                }                
             }
         }
-
-        private void Attack()
+        /*private void Attack()
         {
             Debug.Log("Атакую!");
             _animator.SetBool("Atack", true);
@@ -72,6 +73,6 @@ namespace TDShooter.Enemies
         private void StopAtack()
         {
             _animator.SetBool("Atack", false);
-        }
+        }*/
     }
 }
