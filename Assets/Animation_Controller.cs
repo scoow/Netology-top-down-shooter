@@ -9,8 +9,6 @@ namespace TDShooter.Enemies
     {
         [SerializeField] Animator _animator;
         [SerializeField] EnemyAttack _enemyAttack;
-        //[SerializeField] float _atackDistance;
-        //[SerializeField] Transform _target;
         private EnemyAnimationState _enemyState = EnemyAnimationState.Move;
 
 
