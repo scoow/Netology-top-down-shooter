@@ -46,7 +46,7 @@ namespace TDShooter.Enemies
             return Vector3.Distance(transform.position, target.position);
         }
         private void Update()
-        {
+        {            
             _animation_Controller.ChangeAnimation(_target);
             //CalculateAttackCoolDownTime();
         }

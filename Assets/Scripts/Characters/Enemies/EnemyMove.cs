@@ -47,17 +47,18 @@ namespace TDShooter.Enemies
 
         private void Update()
         {
-
+           
             OnArrival();
             float distance = Vector3.Distance(transform.position, _target.transform.position);
-            if (distance > ArrivalDistance+5f && _animationController.EnemyState != EnemyAnimationState.Death)
+            if (distance > ArrivalDistance + 5f && _animationController.EnemyState != EnemyAnimationState.Death)
             {
                 MaxSpeed = 5f;
             }
-            if(distance < ArrivalDistance && _animationController.EnemyState != EnemyAnimationState.Death)
+            if (distance < ArrivalDistance && _animationController.EnemyState != EnemyAnimationState.Death)
             {
                 MaxSpeed = 0f;
             }
+                      
         }
 
 
@@ -70,7 +71,7 @@ namespace TDShooter.Enemies
         //движение в сторону цели вариант 1
         public void OnSeek()
         {
-            if (_target == null) return;
+            if (_target == null) return;            
             transform.LookAt(_target.transform.position);
 
             //сила стремления к цели
@@ -106,6 +107,7 @@ namespace TDShooter.Enemies
         public void OnArrival()
         {
             if (_target == null) return;
+            //if (_animationController.EnemyState == EnemyAnimationState.Death) return;
             transform.LookAt(_target.transform.position);
             //сила стремления к цели
             var desired_velocity = _target.transform.position - transform.position;

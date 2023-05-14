@@ -18,7 +18,8 @@ namespace TDShooter.Enemies
 
         public void DeathAnimation()
         {
-            _animator.SetTrigger("Death");
+            int indexAnimation = UnityEngine.Random.Range(1, 4);
+            _animator.SetInteger("IndexDeath", indexAnimation);
             _enemyState = EnemyAnimationState.Death;
             StartCoroutine(DeathCoroutine());
             //gameObject.SetActive(false);
