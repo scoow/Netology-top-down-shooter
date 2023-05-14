@@ -30,4 +30,11 @@ namespace TDShooter.enums
         OpenedList,//фиолетовый
         Way//зеленый
     }
+
+    public enum GameEventType
+    {
+        StartGame,
+        EndGame,
+        PlayerDied
+    }
 }

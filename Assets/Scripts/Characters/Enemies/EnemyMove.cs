@@ -108,7 +108,7 @@ namespace TDShooter.Enemies
         {
             if (_target == null) return;
             //if (_animationController.EnemyState == EnemyAnimationState.Death) return;
-            transform.LookAt(_target.transform.position);
+            //transform.LookAt(_target.transform.position);
             //сила стремления к цели
             var desired_velocity = _target.transform.position - transform.position;
             //квадрат растояния до цели
