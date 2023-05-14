@@ -18,23 +18,12 @@ namespace TDShooter.Characters
         [SerializeField] private Animation_Controller _animation_Controller;
         [SerializeField] private EnemyMove _enemyMove;
         public int HP => _hp;
-
-        private EnemyKilledCounter _enemyKilledCounter;
-
         public Action OnUnitDied;
-
 
         public void OnEnable()
         {
             _playerProgress = FindAnyObjectByType<PlayerProgress>();
         }
-
-        public void Construct(EnemyKilledCounter enemyKilledCounter)
-        {
-            _enemyKilledCounter = enemyKilledCounter;
-            OnUnitDied += _enemyKilledCounter.Increment;
-        }
-
         public void Respawn(int maxHP)
         {
             _hp = maxHP;
@@ -65,11 +54,6 @@ namespace TDShooter.Characters
         public void TakeHeal(int heal)
         {
             _hp += heal;
-        }
-
-       private void OnDisable()
-        {
-            OnUnitDied -= _enemyKilledCounter.Increment;
         }
     }
 }
