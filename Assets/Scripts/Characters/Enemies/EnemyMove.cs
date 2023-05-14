@@ -38,11 +38,11 @@ namespace TDShooter.Enemies
 
             OnArrival();
             float distance = Vector3.Distance(transform.position, _target.transform.position);
-            if (distance > ArrivalDistance)
+            if (distance > ArrivalDistance+5f)
             {
                 MaxSpeed = 5f;
             }
-            else
+            if(distance < ArrivalDistance)
             {
                 MaxSpeed = 0f;
             }

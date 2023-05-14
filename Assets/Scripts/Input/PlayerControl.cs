@@ -4,6 +4,7 @@ using static UnityEngine.GraphicsBuffer;
 using TDShooter.UI;
 using Zenject;
 using Cysharp.Threading.Tasks.Triggers;
+using TDShooter.enums;
 
 namespace TDShooter.Input
 {
@@ -24,6 +25,8 @@ namespace TDShooter.Input
         private AudioClip _oneShotSound;
         [SerializeField]
         private Animator_Controller _animControl;
+
+        private DirectionState directionMove = DirectionState.Idle;
 
 
         public float Speed { get => _speed; private set => _speed = value; } 
@@ -49,12 +52,23 @@ namespace TDShooter.Input
             _audioSourceSteps.PlayOneShot(_oneShotSound);
         }
 
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.yellow;
+            if (_aim != null)
+                Gizmos.DrawLine(_playerHead.transform.position, _aim.transform.position);
+        }
+
         private void Move()
         {
             var inputValio = _controls.Player.WASD.ReadValue<Vector2>(); // записываем в локальную переменную значение Vector2 при вызове события WASD
+            Vector3 previosPosition = _playerBody.transform.position;
             _playerBody.Translate(inputValio.x * Time.deltaTime * _speed, 0, inputValio.y * Time.deltaTime * _speed); //перемещаем объект в плоскости X0Z
-            _animControl.Move(inputValio);
-        }
+            Vector3 nextPosition = _playerBody.transform.position;
+            //CheckDirectionMove(previosPosition, nextPosition, _aim.transform.position);
+
+            _animControl.Move(inputValio/*, directionMove*/);
+        }        
         public void AimCursor()
         {
             Ray ray = Camera.main.ScreenPointToRay(UnityEngine.Input.mousePosition);
@@ -71,17 +85,31 @@ namespace TDShooter.Input
             }
         }
 
-        private void OnDrawGizmos()
+        /*private void CheckDirectionMove(Vector3 previosPos, Vector3 nextPos, Vector3 aimPos)
         {
-            Gizmos.color = Color.yellow;
-            if ( _aim != null ) 
-                Gizmos.DrawLine(_playerHead.transform.position, _aim.transform.position);              
-        }
+            if ((aimPos.z > nextPos.z && previosPos.z < nextPos.z) || (aimPos.z < nextPos.z && previosPos.z > nextPos.z))
+            {                
+                directionMove = DirectionState.Forward;
+                print("вперед");
+            }
+               
+            else if ((aimPos.z > nextPos.z && previosPos.z > nextPos.z) || (aimPos.z < nextPos.z && previosPos.z < nextPos.z))
+            {
+                directionMove = DirectionState.Back;                
+                print("назад");                
+            }
+            else
+            {
+                directionMove = DirectionState.Idle;
+            }
+        }*/
+
+       
 
         private void Update()
         {
-            Move();
             AimCursor();
+            Move();            
         }
 
         private void OnDisable()
@@ -94,5 +122,12 @@ namespace TDShooter.Input
             Debug.Log($"Я подобрал {lootName}");
         }
 
+    }
+
+    public enum DirectionState
+    {
+        Idle,
+        Forward,
+        Back
     }
 }

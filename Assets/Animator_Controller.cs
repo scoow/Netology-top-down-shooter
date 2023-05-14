@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
+using TDShooter.Input;
 using UnityEngine;
 
 public class Animator_Controller : MonoBehaviour
@@ -11,22 +13,40 @@ public class Animator_Controller : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    public void Move(Vector2 incomingValue)
+    public void Move(Vector2 incomingValue/*, DirectionState directionMove*/)
     {
-        _animator.SetBool("Run", incomingValue.x != 0 || incomingValue.y != 0);
-        /*if(incomingValue.y == 0 && incomingValue.x == 0)
+        /*if( nameAnimation == "Forward")
+        {
+            _animator.SetBool("Forward", true);
+            _animator.SetBool("Back", false);
+        }
+        if( nameAnimation == "Back")
+        {
+            _animator.SetBool("Forward", false);
+            _animator.SetBool("Back", true);
+        }*/
+        /*if(incomingValue.x != 0 || incomingValue.y != 0)
+        {
+            if(directionMove == DirectionState.Forward)
+            {
+                _animator.SetBool("Run", true);
+                _animator.SetBool("Back", false);               
+
+            }
+            if(directionMove == DirectionState.Back)
+            {
+                _animator.SetBool("Run", false);
+                _animator.SetBool("Back", true);
+            }
+            
+        }
+        else
         {
             _animator.SetBool("Run", false);
-            _animator.SetBool("Idle", true);
-            //Debug.Log("Я стою");
+            _animator.SetBool("Back", false);
         }
-            
-        if(incomingValue.y != 0 || incomingValue.x != 0)
-        {
-            //print("Я бегу");
-            _animator.SetBool("Run", true);
-            _animator.SetBool("Idle", false);
-        }*/
-            
+        */
+
+        _animator.SetBool("Run", incomingValue.x != 0 || incomingValue.y != 0);            
     }
 }

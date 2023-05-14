@@ -212,7 +212,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.31237888, y: 0.794}
   m_AnchorMax: {x: 0.6911057, y: 1}
-  m_AnchoredPosition: {x: -0.14459229, y: 8.241769}
+  m_AnchoredPosition: {x: -0.14459229, y: 8.241791}
   m_SizeDelta: {x: -0.048614502, y: 16.916464}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &221225828
@@ -580,7 +580,11 @@ PrefabInstance:
     - target: {fileID: 9500000, guid: fcb334eb247ae3e488abb081c847cf09, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 4a54b0c5a2729aa4e87c5963607a02ba, type: 2}
+      objectReference: {fileID: 9100000, guid: e6c79189e5d3d9d429ce0f9cdf5cf8e9, type: 2}
+    - target: {fileID: 9500000, guid: fcb334eb247ae3e488abb081c847cf09, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcb334eb247ae3e488abb081c847cf09, type: 3}
 --- !u!1 &362062460
@@ -6807,7 +6811,7 @@ BoxCollider:
   m_GameObject: {fileID: 708630119}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.005, y: 4, z: 0.005}
   m_Center: {x: 0, y: 0, z: 0}
