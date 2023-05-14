@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TDShooter.enums;
+using TDShooter.EventManager;
 using UnityEngine;
 
 
 namespace TDShooter
 {
-    public class PlayerProgress : MonoBehaviour
+    public class PlayerProgress : MonoBehaviour, IEventListener
     {
         [SerializeField] private int _levelCount; //счётчик уровней
         [SerializeField] private int _currentKillsCount; //текущие убийства 
@@ -28,6 +30,7 @@ namespace TDShooter
                     {
                         _levelCount++;
                         _controllerUI.UpdateView(_levelCount, UpdateViewType.LevelUp);
+                        _targetKillsCount *= 2;//увеличить необходимое уоличество убийств
                     }
                 }
 
@@ -57,6 +60,12 @@ namespace TDShooter
         public int CheckChance()
         {
             return Random.Range(0, 100);
+        }
+
+        public void OnEvent(GameEventType eventType, Component sender, Object param = null)
+        {
+            if (eventType != GameEventType.EnemyDied) return;
+            CurrentKilledCount++;
         }
     }
 }

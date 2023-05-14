@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f2e252edd1b704caa9f703c469a065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _aPathFinding: {fileID: 5579702745638625434}
+  _aPathFinding: {fileID: 0}
 --- !u!1 &7149194542829848623
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,7 +73,6 @@ GameObject:
   - component: {fileID: -6197998996588060254}
   - component: {fileID: 7149194542829848614}
   - component: {fileID: -4939167545854252516}
-  - component: {fileID: 5579702745638625434}
   - component: {fileID: 6220046986021956734}
   - component: {fileID: 1981214959228171089}
   m_Layer: 0
@@ -180,25 +179,7 @@ MonoBehaviour:
   _playerProgress: {fileID: 0}
   _animation_Controller: {fileID: 1981214959228171089}
   _enemyMove: {fileID: 7149194542829848614}
---- !u!114 &5579702745638625434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7149194542829848623}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 436caf6aedc78984e9c081cb927095f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pathPoint: []
-  _startPointTile: {fileID: 0}
-  _currentPointTile: {fileID: 0}
-  _endPointTile: {fileID: 0}
-  _endPoint: {fileID: 0}
-  _createTileField: {fileID: 0}
-  _closed_ListTile: []
+  _playerControl: {fileID: 0}
 --- !u!114 &6220046986021956734
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using TDShooter.enums;
 using TDShooter.Level;
-using TDShooter.WinCondition;
 using UnityEngine;
 using Zenject;
 
@@ -71,6 +70,7 @@ namespace TDShooter.Characters
             }
 
             enemy.transform.position = _unitSpawners[randompoint].transform.position;
+            enemy.GetComponent<Character>().Respawn(1);
         }
     }
 }

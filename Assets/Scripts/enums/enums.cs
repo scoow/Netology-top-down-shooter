@@ -35,6 +35,7 @@ namespace TDShooter.enums
     {
         StartGame,
         EndGame,
-        PlayerDied
+        PlayerDied,
+        EnemyDied
     }
 }

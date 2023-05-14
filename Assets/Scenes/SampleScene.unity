@@ -8593,6 +8593,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1137414713}
+  - component: {fileID: 1137414721}
   - component: {fileID: 1137414714}
   - component: {fileID: 1137414715}
   - component: {fileID: 1137414718}
@@ -8704,6 +8705,18 @@ MonoBehaviour:
   _targetKillsCount: 10
   _chanceDroopLoot: 25
   _controllerUI: {fileID: 652062586}
+--- !u!114 &1137414721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137414712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ac28c72db1fbf42907da90565c41e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1157290522
 GameObject:
   m_ObjectHideFlags: 0

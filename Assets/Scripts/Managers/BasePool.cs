@@ -28,7 +28,7 @@ namespace TDShooter.Pools
             }
         }
 
-        public T GetAviableOrCreateNew()
+        public virtual T GetAviableOrCreateNew()
         {
             T result = _elements.Find(element => element.gameObject.activeSelf == false);
             if (result == null)

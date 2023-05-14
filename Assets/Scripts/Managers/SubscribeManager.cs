@@ -15,13 +15,22 @@ namespace TDShooter.EventManager
         /// </summary>
         /// <param name="eventType">тип события</param>
         /// <param name="listener">подписчик</param>
-        public void AddListener(GameEventType eventType, IEventListener listener)
+        public void AddListener(GameEventType eventType, IEventListener listener, bool asSingle)
         {
             List<IEventListener> listenList = null;
             if (Listeners.TryGetValue(eventType, out listenList))
             {
                 //если список существует, добавить новый элемент
-                listenList.Add(listener);
+                if (!asSingle)
+                {
+                    listenList.Add(listener);
+                }
+                else
+                {
+                    if (!listenList.Contains(listener))
+                        listenList.Add(listener);
+                }
+                
                 return;
             }
 

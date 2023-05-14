@@ -21,6 +21,7 @@ namespace TDShooter.Characters
             BaseEnemy newUnit = GameObject.Instantiate(_prefab);
             return newUnit;
         }
+
         /// <summary>
         /// Конвертация словаря в список активных юнитов
         /// </summary>
