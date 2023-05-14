@@ -48,22 +48,22 @@ namespace TDShooter.Level
         {
             if (number == tiles[0, 1])//добавить условие
             {
-                Debug.Log("up");
+                //Debug.Log("up");
                 ReBuild(Direction.Up);
             }
             if (number == tiles[1, 0])
             {
-                Debug.Log("left");
+                //Debug.Log("left");
                 ReBuild(Direction.Left);
             }
             if (number == tiles[1, 2])
             {
-                Debug.Log("right");
+                //Debug.Log("right");
                 ReBuild(Direction.Right);
             }
             if (number == tiles[2, 1])
             {
-                Debug.Log("down");
+                //Debug.Log("down");
                 ReBuild(Direction.Down);
             }
         }

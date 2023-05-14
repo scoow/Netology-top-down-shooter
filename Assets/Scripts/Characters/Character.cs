@@ -2,6 +2,7 @@ using System;
 using TDShooter.WinCondition;
 using UnityEngine;
 using Zenject;
+using TDShooter.Enemies;
 
 namespace TDShooter.Characters
 {
@@ -14,6 +15,8 @@ namespace TDShooter.Characters
         private int _hp;
         [SerializeField] private LootExample _exampleLoot;
         [SerializeField] private PlayerProgress _playerProgress;
+        [SerializeField] private Animation_Controller _animation_Controller;
+        [SerializeField] private EnemyMove _enemyMove;
         public int HP => _hp;
 
         private EnemyKilledCounter _enemyKilledCounter;
@@ -44,15 +47,17 @@ namespace TDShooter.Characters
                 LootExample loot = Instantiate(_exampleLoot);
                 loot.transform.position = transform.position;
             }
-            _playerProgress.CurrentKilledCount++;
-            gameObject.SetActive(false);            
+            _playerProgress.CurrentKilledCount++;            
+            _animation_Controller.EnemyState = EnemyAnimationState.Death;
+            _enemyMove.MaxSpeed = 0f;
+            _animation_Controller.DeathAnimation();
             OnUnitDied?.Invoke();
         }
 
         public void TakeDamage(int damage)
         {
             _hp -= damage;
-            Debug.Log("HP осталось:" + _hp);
+            //Debug.Log("HP осталось:" + _hp);
             if (_hp <= 0)
                 Die();
         }

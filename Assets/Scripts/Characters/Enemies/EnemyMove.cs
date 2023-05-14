@@ -1,4 +1,5 @@
 using TDShooter.Input;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -9,11 +10,12 @@ namespace TDShooter.Enemies
         [SerializeField] private Transform _target;
         //private Transform _currentTarget;
         [SerializeField] EnemyAttack _enemyAttack;
+        [SerializeField] Animation_Controller _animationController;
 
         [Tooltip("Величина стремления к цели"), SerializeField, Range(0f, 5f)]
         private float MaxVelocity;
         [Tooltip("Максимальная скорость перемещения"), SerializeField, Range(0f, 5f)]
-        private float MaxSpeed;
+        private float _maxSpeed;
         [Tooltip("Растояние начала прибытия"), SerializeField, Range(0.5f, 5f)]
         private float ArrivalDistance;
         [Tooltip("Дистанция до центра окружности блуждания"), SerializeField, Range(0.1f, 5f)]
@@ -22,6 +24,16 @@ namespace TDShooter.Enemies
         private float WanderRadius;
         [Tooltip("Разброс угла блуждания"), SerializeField, Range(0f, 360f)]
         private float WanderAngleRange;
+
+
+        public float MaxSpeed 
+        { get => _maxSpeed;
+            set
+            {
+                if (value >= 0f)
+                _maxSpeed = value;
+            }
+        }
 
         private PlayerControl _playerControl;
 
@@ -38,11 +50,11 @@ namespace TDShooter.Enemies
 
             OnArrival();
             float distance = Vector3.Distance(transform.position, _target.transform.position);
-            if (distance > ArrivalDistance+5f)
+            if (distance > ArrivalDistance+5f && _animationController.EnemyState != EnemyAnimationState.Death)
             {
                 MaxSpeed = 5f;
             }
-            if(distance < ArrivalDistance)
+            if(distance < ArrivalDistance && _animationController.EnemyState != EnemyAnimationState.Death)
             {
                 MaxSpeed = 0f;
             }
@@ -68,7 +80,7 @@ namespace TDShooter.Enemies
             //учитываем ограничение по силе и массу
             steering = Vector3.ClampMagnitude(steering, MaxVelocity) / Mass;
 
-            var velocity = Vector3.ClampMagnitude(GetVelocity() + steering, MaxSpeed);
+            var velocity = Vector3.ClampMagnitude(GetVelocity() + steering, _maxSpeed);
 
             SetVelocity(velocity);
         }
@@ -85,7 +97,7 @@ namespace TDShooter.Enemies
             //учитываем ограничение по силе и массу
             steering = Vector3.ClampMagnitude(steering, MaxVelocity) / Mass;
 
-            var velocity = Vector3.ClampMagnitude(GetVelocity() + steering, MaxSpeed);
+            var velocity = Vector3.ClampMagnitude(GetVelocity() + steering, _maxSpeed);
 
             SetVelocity(velocity);
         }
@@ -115,7 +127,7 @@ namespace TDShooter.Enemies
             //учитываем ограничение по силе и массу
             steering = Vector3.ClampMagnitude(steering, MaxVelocity) / Mass;
 
-            var velocity = Vector3.ClampMagnitude(GetVelocity() + steering, MaxSpeed);
+            var velocity = Vector3.ClampMagnitude(GetVelocity() + steering, _maxSpeed);
 
             SetVelocity(velocity);         
 
@@ -147,7 +159,7 @@ namespace TDShooter.Enemies
             //учитываем ограничение по силе и массу
             steering = Vector3.ClampMagnitude(steering, MaxVelocity) / Mass;
 
-            var velocity = Vector3.ClampMagnitude(GetVelocity() + steering, MaxSpeed);
+            var velocity = Vector3.ClampMagnitude(GetVelocity() + steering, _maxSpeed);
 
             SetVelocity(velocity);
             
@@ -169,7 +181,7 @@ namespace TDShooter.Enemies
             //учитываем ограничение по силе и массу
             steering = Vector3.ClampMagnitude(steering, MaxVelocity) / Mass;
 
-            var velocity = Vector3.ClampMagnitude(GetVelocity() + steering, MaxSpeed);
+            var velocity = Vector3.ClampMagnitude(GetVelocity() + steering, _maxSpeed);
 
             SetVelocity(velocity);
 
@@ -194,7 +206,7 @@ namespace TDShooter.Enemies
             //учитываем ограничение по силе и массу
             steering = Vector3.ClampMagnitude(steering, MaxVelocity) / Mass;
 
-            var velocity = Vector3.ClampMagnitude(GetVelocity() + steering, MaxSpeed);
+            var velocity = Vector3.ClampMagnitude(GetVelocity() + steering, _maxSpeed);
 
             SetVelocity(velocity);
         }

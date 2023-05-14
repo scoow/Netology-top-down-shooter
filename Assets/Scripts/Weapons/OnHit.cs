@@ -9,7 +9,7 @@ namespace TDShooter.Weapons
         {
             if (!other.TryGetComponent<IHaveHP>(out var target)) return;
 
-            Debug.Log("Снаряд попал в цель");
+            //Debug.Log("Снаряд попал в цель");
             target.TakeDamage(1);
 
             gameObject.SetActive(false);

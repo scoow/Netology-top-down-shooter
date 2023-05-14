@@ -20,7 +20,7 @@ namespace TDShooter.WinCondition
         public void Increment()
         {
             _count++;
-            Debug.Log(_count);
+            //Debug.Log(_count);
         }
     }
 }

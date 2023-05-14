@@ -26,7 +26,7 @@ namespace TDShooter.Input
         [SerializeField]
         private Animator_Controller _animControl;
 
-        private DirectionState directionMove = DirectionState.Idle;
+        //private DirectionState directionMove = DirectionState.Idle;
 
 
         public float Speed { get => _speed; private set => _speed = value; } 
@@ -46,7 +46,7 @@ namespace TDShooter.Input
 
         private void Fire()
         {
-            Debug.Log("Делаем выстрел");
+            //Debug.Log("Делаем выстрел");
             _weapon.Shoot();
 
             _audioSourceSteps.PlayOneShot(_oneShotSound);
