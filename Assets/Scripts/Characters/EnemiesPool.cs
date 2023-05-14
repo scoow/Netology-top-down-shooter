@@ -10,22 +10,18 @@ namespace TDShooter.Characters
     public class EnemiesPool : BasePool<BaseEnemy>
     {
         protected ÑharacterType _unitType;
-        private readonly EnemyKilledCounter _enemyKilledCounter;
 
-        public EnemiesPool(BaseEnemy prefab, ÑharacterType unitType, Transform parent, EnemyKilledCounter enemyKilledCounter, int count = 1) : base(prefab, parent)
+        public EnemiesPool(BaseEnemy prefab, ÑharacterType unitType, Transform parent, int count = 1) : base(prefab, parent)
         {
             _unitType = unitType;
-            _enemyKilledCounter = enemyKilledCounter;
             Init(count);
         }
         protected override BaseEnemy GetCreated()
         {
             BaseEnemy newUnit = GameObject.Instantiate(_prefab);
-            var character = newUnit.GetComponent<Character>();
-            character.Construct(_enemyKilledCounter);
-
             return newUnit;
         }
+
         /// <summary>
         /// Êîíâåğòàöèÿ ñëîâàğÿ â ñïèñîê àêòèâíûõ şíèòîâ
         /// </summary>

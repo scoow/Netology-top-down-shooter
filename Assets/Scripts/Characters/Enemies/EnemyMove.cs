@@ -1,7 +1,7 @@
+using TDShooter.enums;
+using TDShooter.EventManager;
 using TDShooter.Input;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 namespace TDShooter.Enemies
 {    
@@ -25,6 +25,13 @@ namespace TDShooter.Enemies
         [Tooltip("Разброс угла блуждания"), SerializeField, Range(0f, 360f)]
         private float WanderAngleRange;
 
+        private PlayerControl _playerControl;
+
+        private void OnEnable()
+        {
+            _playerControl = FindObjectOfType<PlayerControl>();
+            SetNewTarget(_playerControl.transform);
+        }
 
         public float MaxSpeed 
         { get => _maxSpeed;
@@ -35,19 +42,21 @@ namespace TDShooter.Enemies
             }
         }
 
-        private PlayerControl _playerControl;
-
         private void Awake()
         {
             //_playerControl = _target.GetComponent<PlayerControl>();
-            _playerControl = FindObjectOfType<PlayerControl>();
-            _target = _playerControl.transform;           
+        
         }
 
-
+        protected override void Start()
+        {
+            base.Start();
+            _playerControl = FindObjectOfType<PlayerControl>();
+            SetNewTarget(_playerControl.transform);
+        }
         private void Update()
         {
-           
+            LookAtPlayer();
             OnArrival();
             float distance = Vector3.Distance(transform.position, _target.transform.position);
             if (distance > ArrivalDistance + 5f && _animationController.EnemyState != EnemyAnimationState.Death)
@@ -58,10 +67,16 @@ namespace TDShooter.Enemies
             {
                 MaxSpeed = 0f;
             }
-                      
+
         }
 
-
+        private void LookAtPlayer()
+        {
+            if (_target != null)
+            {
+                transform.LookAt(_target.transform.position);
+            }
+        }
 
         public void SetNewTarget(Transform target)
         {
@@ -108,7 +123,7 @@ namespace TDShooter.Enemies
         {
             if (_target == null) return;
             //if (_animationController.EnemyState == EnemyAnimationState.Death) return;
-            transform.LookAt(_target.transform.position);
+            
             //сила стремления к цели
             var desired_velocity = _target.transform.position - transform.position;
             //квадрат растояния до цели
@@ -212,6 +227,5 @@ namespace TDShooter.Enemies
 
             SetVelocity(velocity);
         }
-
     }
 }

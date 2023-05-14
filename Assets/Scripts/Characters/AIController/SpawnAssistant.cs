@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using TDShooter.enums;
 using TDShooter.Level;
-using TDShooter.WinCondition;
 using UnityEngine;
 using Zenject;
 
@@ -21,10 +20,6 @@ namespace TDShooter.Characters
         [Inject]
         private readonly Transform _enemiesContainer;
         private List<EnemiesSpawner> _unitSpawners = new();
-
-        [Inject]
-        private readonly EnemyKilledCounter _enemyKilledCounter;
-
         //todo Добавить таймер спавна для каждого типа врагов
         [SerializeField]
         private float _enemySpawnCooldown = 2;
@@ -41,7 +36,7 @@ namespace TDShooter.Characters
         /// </summary>
         private void InitEnemyPool()
         {
-            _enemiesPool.Add(СharacterType.FastMeleeEnemy, new(Resources.Load<BaseEnemy>("Prefabs/Enemy/FirstEnemy/Enemy"), СharacterType.FastMeleeEnemy, _enemiesContainer, _enemyKilledCounter));
+            _enemiesPool.Add(СharacterType.FastMeleeEnemy, new(Resources.Load<BaseEnemy>("Prefabs/Enemy/FirstEnemy/Enemy"), СharacterType.FastMeleeEnemy, _enemiesContainer));
         }
         /// <summary>
         /// Для теста - спавн на клавишу B
@@ -75,6 +70,7 @@ namespace TDShooter.Characters
             }
 
             enemy.transform.position = _unitSpawners[randompoint].transform.position;
+            enemy.GetComponent<Character>().Respawn(1);
         }
     }
 }
