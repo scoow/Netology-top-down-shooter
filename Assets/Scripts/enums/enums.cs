@@ -38,4 +38,9 @@ namespace TDShooter.enums
         PlayerDied,
         EnemyDied
     }
+    public enum WeaponType
+    {
+        Machinegun,
+        Plasmagun
+    }
 }

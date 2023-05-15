@@ -46,6 +46,15 @@ namespace TDShooter.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WeaponSwitch"",
+                    ""type"": ""Button"",
+                    ""id"": ""47e46983-ca08-4035-b9bf-b7d93354c5f6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -114,6 +123,28 @@ namespace TDShooter.Input
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e72d557f-0268-4ae4-a04b-62143a60e2dd"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponSwitch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ea12b7c1-0ca2-40bd-b993-86e347afe601"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponSwitch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -124,6 +155,7 @@ namespace TDShooter.Input
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_WASD = m_Player.FindAction("WASD", throwIfNotFound: true);
             m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
+            m_Player_WeaponSwitch = m_Player.FindAction("WeaponSwitch", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -187,12 +219,14 @@ namespace TDShooter.Input
         private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
         private readonly InputAction m_Player_WASD;
         private readonly InputAction m_Player_Shoot;
+        private readonly InputAction m_Player_WeaponSwitch;
         public struct PlayerActions
         {
             private @Controls m_Wrapper;
             public PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
             public InputAction @WASD => m_Wrapper.m_Player_WASD;
             public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
+            public InputAction @WeaponSwitch => m_Wrapper.m_Player_WeaponSwitch;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -208,6 +242,9 @@ namespace TDShooter.Input
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
+                @WeaponSwitch.started += instance.OnWeaponSwitch;
+                @WeaponSwitch.performed += instance.OnWeaponSwitch;
+                @WeaponSwitch.canceled += instance.OnWeaponSwitch;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -218,6 +255,9 @@ namespace TDShooter.Input
                 @Shoot.started -= instance.OnShoot;
                 @Shoot.performed -= instance.OnShoot;
                 @Shoot.canceled -= instance.OnShoot;
+                @WeaponSwitch.started -= instance.OnWeaponSwitch;
+                @WeaponSwitch.performed -= instance.OnWeaponSwitch;
+                @WeaponSwitch.canceled -= instance.OnWeaponSwitch;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -239,6 +279,7 @@ namespace TDShooter.Input
         {
             void OnWASD(InputAction.CallbackContext context);
             void OnShoot(InputAction.CallbackContext context);
+            void OnWeaponSwitch(InputAction.CallbackContext context);
         }
     }
 }

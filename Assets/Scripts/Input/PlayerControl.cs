@@ -25,6 +25,7 @@ namespace TDShooter.Input
         private AudioClip _oneShotSound;
         [SerializeField]
         private Animator_Controller _animControl;
+        private WeaponChanger _weaponChanger;
 
         //private DirectionState directionMove = DirectionState.Idle;
 
@@ -41,7 +42,9 @@ namespace TDShooter.Input
             _controls.Player.Shoot.performed += contecxt => Fire();
 
             _weapon = GetComponentInChildren<Weapon>();
+            _weaponChanger = FindObjectOfType<WeaponChanger>();
             //_animControl = GetComponent<Animator_Controller>();
+            //_controls.Player.WeaponSwitch.performed += context => _weaponChanger.ChangeWeapon(context.action);
         }
 
         private void Fire()
