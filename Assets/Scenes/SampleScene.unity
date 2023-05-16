@@ -8008,6 +8008,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 939133638}
   m_CullTransparentMesh: 1
+--- !u!1 &957474000 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e0f06b11615f77a4c853652d572bf28c, type: 3}
+  m_PrefabInstance: {fileID: 346097256}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -9391,6 +9396,8 @@ MonoBehaviour:
   _currentWeaponImage: {fileID: 1195201004}
   _machineGunSprite: {fileID: 21300000, guid: e3d2c4a37dd47fa4da0b79c507a71d3f, type: 3}
   _plasmaGunSprite: {fileID: 21300000, guid: 64b436209a84ce845ab1517d9280c81b, type: 3}
+  _machineGun: {fileID: 957474000}
+  _plasmaGun: {fileID: 1254977570}
 --- !u!114 &1195201004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9474,6 +9481,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c50450f0123f7ad47a3f9655fffc9afc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1254977570 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: daf2882afdfb7964caf6a6e1a866059d, type: 3}
+  m_PrefabInstance: {fileID: 1479297929}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1285481372
 GameObject:
   m_ObjectHideFlags: 0
