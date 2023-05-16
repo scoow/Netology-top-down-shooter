@@ -17,8 +17,7 @@ namespace TDShooter.EventManager
         /// <param name="listener">подписчик</param>
         public void AddListener(GameEventType eventType, IEventListener listener, bool asSingle)
         {
-            List<IEventListener> listenList = null;
-            if (Listeners.TryGetValue(eventType, out listenList))
+            if (Listeners.TryGetValue(eventType, out List<IEventListener> listenList))
             {
                 //если список существует, добавить новый элемент
                 if (!asSingle)
@@ -30,7 +29,7 @@ namespace TDShooter.EventManager
                     if (!listenList.Contains(listener))
                         listenList.Add(listener);
                 }
-                
+
                 return;
             }
 
@@ -55,8 +54,7 @@ namespace TDShooter.EventManager
         /// <param name="eventType">тип события</param>
         public void RemoveEvent(GameEventType eventType)
         {
-            List<IEventListener> listenList = null;
-            if (Listeners.TryGetValue(eventType, out listenList))
+            if (Listeners.TryGetValue(eventType, out List<IEventListener> listenList))
             {
                 foreach (IEventListener listener in listenList)
                 {
@@ -73,9 +71,8 @@ namespace TDShooter.EventManager
         /// <param name="param">дополнительный параметр</param>
         public void PostNotification(GameEventType eventType, Component sender, Object param = null)
         {
-            List<IEventListener> listenList = null;
             //если нет такого события в словаре
-            if (!Listeners.TryGetValue(eventType, out listenList))
+            if (!Listeners.TryGetValue(eventType, out List<IEventListener> listenList))
                 return;
             //событие есть
             foreach (IEventListener listener in listenList)

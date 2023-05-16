@@ -1,5 +1,3 @@
-using TDShooter.enums;
-using TDShooter.EventManager;
 using TDShooter.Input;
 using UnityEngine;
 
@@ -42,12 +40,6 @@ namespace TDShooter.Enemies
             }
         }
 
-        private void Awake()
-        {
-            //_playerControl = _target.GetComponent<PlayerControl>();
-        
-        }
-
         protected override void Start()
         {
             base.Start();
@@ -58,6 +50,11 @@ namespace TDShooter.Enemies
         {
             LookAtPlayer();
             OnArrival();
+            CheckDIstanceAndStopIfClose();
+        }
+
+        private void CheckDIstanceAndStopIfClose()
+        {
             float distance = Vector3.Distance(transform.position, _target.transform.position);
             if (distance > ArrivalDistance + 5f && _animationController.EnemyState != EnemyAnimationState.Death)
             {
@@ -67,7 +64,6 @@ namespace TDShooter.Enemies
             {
                 MaxSpeed = 0f;
             }
-
         }
 
         private void LookAtPlayer()

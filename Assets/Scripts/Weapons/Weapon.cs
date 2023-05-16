@@ -9,31 +9,28 @@ namespace TDShooter.Weapons
     {
         private ShootingPoint _shootingPoint;
         [Inject]
-        private ProjectilesManager _projectilesManager;
+        private readonly ProjectilesManager _projectilesManager;
         [Inject]
-        private WeaponChanger _weaponChanger;
+        private readonly WeaponChanger _weaponChanger;
         private void Start()
         {
             _shootingPoint = GetComponentInChildren<ShootingPoint>();
-            
         }
         public void Shoot()
         {
             Bullet projectile = null;
-            switch ((_weaponChanger.CurrentWeaponType))
+            switch ((_weaponChanger.CurrentWeaponType))//выбор типа снаряда
             {
                 case WeaponType.Machinegun:
-                    projectile = _projectilesManager._projectilePool[ProjectileType.Bullet].GetAviableOrCreateNew();
+                    projectile = _projectilesManager.ProjectilePool[ProjectileType.Bullet].GetAviableOrCreateNew();
                     break;
                 case WeaponType.Plasmagun:
-                    projectile = _projectilesManager._projectilePool[ProjectileType.Plasma].GetAviableOrCreateNew();
+                    projectile = _projectilesManager.ProjectilePool[ProjectileType.Plasma].GetAviableOrCreateNew();
                     break;
                 default:
                     break;
             }
 
-            //
-            
             projectile.transform.SetPositionAndRotation(_shootingPoint.transform.position, _shootingPoint.transform.rotation);
         }
     }

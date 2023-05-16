@@ -9,18 +9,23 @@ namespace TDShooter.Weapons
     public class ProjectilesManager : MonoBehaviour
     {
         [Inject]
-        private ProjectilesContainer_Marker _projectileContainer;
-        public Dictionary<ProjectileType, ProjectilesPool> _projectilePool = new();
+        private readonly ProjectilesContainer_Marker _projectileContainer;
+        private readonly Dictionary<ProjectileType, ProjectilesPool> _projectilePool = new();
 
-        private void Start()
+        public Dictionary<ProjectileType, ProjectilesPool> ProjectilePool => _projectilePool;
+
+        private void Awake()
         {
             InitProjectilesPools();
         }
 
+        /// <summary>
+        /// Заполнение пула снарядов
+        /// </summary>
         private void InitProjectilesPools()
         {
-            _projectilePool.Add(ProjectileType.Bullet, new(Resources.Load<Bullet>("Prefabs/Bullet"), _projectileContainer.transform, 20));
-            _projectilePool.Add(ProjectileType.Plasma, new(Resources.Load<Bullet>("Prefabs/Plasma"), _projectileContainer.transform, 20));
+            ProjectilePool.Add(ProjectileType.Bullet, new(Resources.Load<Bullet>("Prefabs/Bullet"), _projectileContainer.transform, 20));
+            ProjectilePool.Add(ProjectileType.Plasma, new(Resources.Load<Bullet>("Prefabs/Plasma"), _projectileContainer.transform, 20));
         }
     }
 }

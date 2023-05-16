@@ -12,17 +12,15 @@ namespace TDShooter.Managers.GameManager
     {
         public static GameManager Instance { get; private set; }
 
-        //private CreateTileField _createTileField;
         private TilesManager _tilesManager;
         private Transform _enemiesContainer;
-        //private PlayerControl _playerControl;
         private Aim_Marker _aim_Marker;
         private ProjectilesContainer_Marker _projectileContainer;
         private ProjectilesManager _projectilesManager;
         private SubscribeManager _subscribeManager;
         private WeaponChanger _weaponChanger;
 
-        private void Awake()
+        private void Awake()//убрать синглтон
         {
             if (Instance != null && Instance != this)
             {
@@ -31,9 +29,13 @@ namespace TDShooter.Managers.GameManager
             }
             Instance = this;
         }
-
+        /// <summary>
+        /// Внедрение зависимостей
+        /// </summary>
         public override void InstallBindings()
         {
+            #region Поиск ссылок на сцене
+
             _enemiesContainer = FindObjectOfType<EnemiesContainer_Marker>().transform;
             _tilesManager = FindObjectOfType<TilesManager>();
             _aim_Marker = FindObjectOfType<Aim_Marker>();
@@ -42,9 +44,9 @@ namespace TDShooter.Managers.GameManager
             _subscribeManager = FindObjectOfType<SubscribeManager>();
             _weaponChanger = FindObjectOfType<WeaponChanger>();
 
-            /*            _createTileField = FindObjectOfType<CreateTileField>();
+            #endregion
+            #region Добавление ссылок в DI контейнер
 
-                        Container.BindInstance(_createTileField).AsSingle();*/
             Container.BindInstance(_enemiesContainer).AsSingle();
             Container.BindInstance(_tilesManager).AsSingle();
             Container.BindInstance(_aim_Marker).AsSingle();
@@ -52,6 +54,8 @@ namespace TDShooter.Managers.GameManager
             Container.BindInstance(_projectilesManager).AsSingle();
             Container.BindInstance(_subscribeManager).AsSingle();
             Container.BindInstance(_weaponChanger).AsSingle();
+
+            #endregion
         }
     }
 }

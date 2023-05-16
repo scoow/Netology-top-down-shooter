@@ -32,15 +32,12 @@ namespace TDShooter.Characters
             _playerProgress = FindObjectOfType<PlayerProgress>();
             
             _subscribeManager.AddListener(enums.GameEventType.EnemyDied, _playerProgress, true);
-            //добавляем _playerProgress в слушатели события "смерть врага", параметр true означает что добавляем лишь один раз
-
-            
+            //добавляем _playerProgress в слушатели события "смерть врага", параметр true означает что добавляем лишь один раз  
         }
 
         public void Respawn(int maxHP)
         {
             _hp = maxHP;
-            //gameObject.SetActive(true);
             _enemyMove.SetNewTarget(_playerControl.transform);
         }
         public void Die()
@@ -50,10 +47,9 @@ namespace TDShooter.Characters
                 LootExample loot = Instantiate(_exampleLoot);
                 loot.transform.position = transform.position;
             }
-            // _playerProgress.CurrentKilledCount++;//увеличиваем счётчик убийств         
             _subscribeManager.PostNotification(enums.GameEventType.EnemyDied, this);
 
-            _enemyMove.SetNewTarget(transform);
+            _enemyMove.SetNewTarget(transform);//меняем цель на самого себя, чтобы модель не крутилась
 
             _animation_Controller.EnemyState = EnemyAnimationState.Death;
             _enemyMove.MaxSpeed = 0f;

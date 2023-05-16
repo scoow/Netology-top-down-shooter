@@ -50,7 +50,6 @@ namespace TDShooter.Input
 
         private void Fire()
         {
-            //Debug.Log("Делаем выстрел");
             _weapon.Shoot();
 
             _audioSourceSteps.PlayOneShot(_oneShotSound);
@@ -63,15 +62,15 @@ namespace TDShooter.Input
                 Gizmos.DrawLine(_playerHead.transform.position, _aim.transform.position);
         }
 
-        private void Move()
+        private void Move()//todo лишние переменные
         {
-            var inputValio = _controls.Player.WASD.ReadValue<Vector2>(); // записываем в локальную переменную значение Vector2 при вызове события WASD
+            var inputValue = _controls.Player.WASD.ReadValue<Vector2>(); // записываем в локальную переменную значение Vector2 при вызове события WASD
             Vector3 previosPosition = _playerBody.transform.position;
-            _playerBody.Translate(inputValio.x * Time.deltaTime * _speed, 0, inputValio.y * Time.deltaTime * _speed); //перемещаем объект в плоскости X0Z
+            _playerBody.Translate(inputValue.x * Time.deltaTime * _speed, 0, inputValue.y * Time.deltaTime * _speed); //перемещаем объект в плоскости X0Z
             Vector3 nextPosition = _playerBody.transform.position;
             //CheckDirectionMove(previosPosition, nextPosition, _aim.transform.position);
 
-            _animControl.Move(inputValio/*, directionMove*/);
+            _animControl.Move(inputValue/*, directionMove*/);
         }        
         public void AimCursor()
         {
@@ -85,7 +84,6 @@ namespace TDShooter.Input
                 rotation.x = 0f;
                 rotation.z = 0f;
                 _playerHead.transform.rotation = rotation;
-
             }
         }
 
@@ -107,8 +105,6 @@ namespace TDShooter.Input
                 directionMove = DirectionState.Idle;
             }
         }*/
-
-       
 
         private void Update()
         {

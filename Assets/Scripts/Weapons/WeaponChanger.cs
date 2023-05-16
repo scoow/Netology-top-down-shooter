@@ -11,9 +11,12 @@ namespace TDShooter.UI
         [SerializeField] private Sprite _machineGunSprite;
         [SerializeField] private Sprite _plasmaGunSprite;
 
-        //[SerializeField] GameObject _currentWeaponModel;
         [SerializeField] GameObject _machineGun;
         [SerializeField] GameObject _plasmaGun;
+        /// <summary>
+        /// Смена модельки и спрайта оружия
+        /// </summary>
+        /// <param name="type">новое оружие</param>
         public void ChangeWeapon(WeaponType type)
         {
             CurrentWeaponType = type;
@@ -21,7 +24,7 @@ namespace TDShooter.UI
             {
                 case WeaponType.Machinegun:
                     _currentWeaponImage.sprite = _machineGunSprite;
-                    _plasmaGun.SetActive(false);
+                    _plasmaGun.SetActive(false);//todo сделать массив оружия
                     _machineGun.SetActive(true);
                     break;
                 case WeaponType.Plasmagun:
