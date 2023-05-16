@@ -6,7 +6,8 @@ namespace TDShooter.enums
     }
     public enum ProjectileType
     {
-        Bullet
+        Bullet,
+        Plasma
     }
     public enum ÑharacterType
     {

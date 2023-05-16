@@ -6,15 +6,17 @@ namespace TDShooter.UI
 {
     public class WeaponChanger : MonoBehaviour
     {
-        [SerializeField] Image _currentWeaponImage;
-        [SerializeField] Sprite _machineGunSprite;
-        [SerializeField] Sprite _plasmaGunSprite;
+        public WeaponType CurrentWeaponType { get; private set; }
+        [SerializeField] private Image _currentWeaponImage;
+        [SerializeField] private Sprite _machineGunSprite;
+        [SerializeField] private Sprite _plasmaGunSprite;
 
         //[SerializeField] GameObject _currentWeaponModel;
         [SerializeField] GameObject _machineGun;
         [SerializeField] GameObject _plasmaGun;
         public void ChangeWeapon(WeaponType type)
         {
+            CurrentWeaponType = type;
             switch (type)
             {
                 case WeaponType.Machinegun:

@@ -20,6 +20,7 @@ namespace TDShooter.Managers.GameManager
         private ProjectilesContainer_Marker _projectileContainer;
         private ProjectilesManager _projectilesManager;
         private SubscribeManager _subscribeManager;
+        private WeaponChanger _weaponChanger;
 
         private void Awake()
         {
@@ -39,6 +40,7 @@ namespace TDShooter.Managers.GameManager
             _projectileContainer = FindObjectOfType<ProjectilesContainer_Marker>();
             _projectilesManager = FindObjectOfType<ProjectilesManager>();
             _subscribeManager = FindObjectOfType<SubscribeManager>();
+            _weaponChanger = FindObjectOfType<WeaponChanger>();
 
             /*            _createTileField = FindObjectOfType<CreateTileField>();
 
@@ -49,6 +51,7 @@ namespace TDShooter.Managers.GameManager
             Container.BindInstance(_projectileContainer).AsSingle();
             Container.BindInstance(_projectilesManager).AsSingle();
             Container.BindInstance(_subscribeManager).AsSingle();
+            Container.BindInstance(_weaponChanger).AsSingle();
         }
     }
 }

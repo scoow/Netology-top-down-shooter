@@ -20,6 +20,7 @@ namespace TDShooter.Weapons
         private void InitProjectilesPools()
         {
             _projectilePool.Add(ProjectileType.Bullet, new(Resources.Load<Bullet>("Prefabs/Bullet"), _projectileContainer.transform, 20));
+            _projectilePool.Add(ProjectileType.Plasma, new(Resources.Load<Bullet>("Prefabs/Plasma"), _projectileContainer.transform, 20));
         }
     }
 }
