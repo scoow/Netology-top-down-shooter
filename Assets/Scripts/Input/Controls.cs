@@ -48,9 +48,18 @@ namespace TDShooter.Input
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""WeaponSwitch"",
+                    ""name"": ""WeaponSwitchMachineGun"",
                     ""type"": ""Button"",
                     ""id"": ""47e46983-ca08-4035-b9bf-b7d93354c5f6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WeaponSwitchPlasmaGun"",
+                    ""type"": ""Button"",
+                    ""id"": ""0f90089b-f267-4e35-a8a2-aaa5b014cec5"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -131,18 +140,18 @@ namespace TDShooter.Input
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""WeaponSwitch"",
+                    ""action"": ""WeaponSwitchMachineGun"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ea12b7c1-0ca2-40bd-b993-86e347afe601"",
+                    ""id"": ""9e493a94-7aca-4ec4-8386-b4b8114c5851"",
                     ""path"": ""<Keyboard>/2"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""WeaponSwitch"",
+                    ""action"": ""WeaponSwitchPlasmaGun"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -155,7 +164,8 @@ namespace TDShooter.Input
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_WASD = m_Player.FindAction("WASD", throwIfNotFound: true);
             m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
-            m_Player_WeaponSwitch = m_Player.FindAction("WeaponSwitch", throwIfNotFound: true);
+            m_Player_WeaponSwitchMachineGun = m_Player.FindAction("WeaponSwitchMachineGun", throwIfNotFound: true);
+            m_Player_WeaponSwitchPlasmaGun = m_Player.FindAction("WeaponSwitchPlasmaGun", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -219,14 +229,16 @@ namespace TDShooter.Input
         private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
         private readonly InputAction m_Player_WASD;
         private readonly InputAction m_Player_Shoot;
-        private readonly InputAction m_Player_WeaponSwitch;
+        private readonly InputAction m_Player_WeaponSwitchMachineGun;
+        private readonly InputAction m_Player_WeaponSwitchPlasmaGun;
         public struct PlayerActions
         {
             private @Controls m_Wrapper;
             public PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
             public InputAction @WASD => m_Wrapper.m_Player_WASD;
             public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
-            public InputAction @WeaponSwitch => m_Wrapper.m_Player_WeaponSwitch;
+            public InputAction @WeaponSwitchMachineGun => m_Wrapper.m_Player_WeaponSwitchMachineGun;
+            public InputAction @WeaponSwitchPlasmaGun => m_Wrapper.m_Player_WeaponSwitchPlasmaGun;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -242,9 +254,12 @@ namespace TDShooter.Input
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
-                @WeaponSwitch.started += instance.OnWeaponSwitch;
-                @WeaponSwitch.performed += instance.OnWeaponSwitch;
-                @WeaponSwitch.canceled += instance.OnWeaponSwitch;
+                @WeaponSwitchMachineGun.started += instance.OnWeaponSwitchMachineGun;
+                @WeaponSwitchMachineGun.performed += instance.OnWeaponSwitchMachineGun;
+                @WeaponSwitchMachineGun.canceled += instance.OnWeaponSwitchMachineGun;
+                @WeaponSwitchPlasmaGun.started += instance.OnWeaponSwitchPlasmaGun;
+                @WeaponSwitchPlasmaGun.performed += instance.OnWeaponSwitchPlasmaGun;
+                @WeaponSwitchPlasmaGun.canceled += instance.OnWeaponSwitchPlasmaGun;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -255,9 +270,12 @@ namespace TDShooter.Input
                 @Shoot.started -= instance.OnShoot;
                 @Shoot.performed -= instance.OnShoot;
                 @Shoot.canceled -= instance.OnShoot;
-                @WeaponSwitch.started -= instance.OnWeaponSwitch;
-                @WeaponSwitch.performed -= instance.OnWeaponSwitch;
-                @WeaponSwitch.canceled -= instance.OnWeaponSwitch;
+                @WeaponSwitchMachineGun.started -= instance.OnWeaponSwitchMachineGun;
+                @WeaponSwitchMachineGun.performed -= instance.OnWeaponSwitchMachineGun;
+                @WeaponSwitchMachineGun.canceled -= instance.OnWeaponSwitchMachineGun;
+                @WeaponSwitchPlasmaGun.started -= instance.OnWeaponSwitchPlasmaGun;
+                @WeaponSwitchPlasmaGun.performed -= instance.OnWeaponSwitchPlasmaGun;
+                @WeaponSwitchPlasmaGun.canceled -= instance.OnWeaponSwitchPlasmaGun;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -279,7 +297,8 @@ namespace TDShooter.Input
         {
             void OnWASD(InputAction.CallbackContext context);
             void OnShoot(InputAction.CallbackContext context);
-            void OnWeaponSwitch(InputAction.CallbackContext context);
+            void OnWeaponSwitchMachineGun(InputAction.CallbackContext context);
+            void OnWeaponSwitchPlasmaGun(InputAction.CallbackContext context);
         }
     }
 }

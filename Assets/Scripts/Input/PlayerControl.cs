@@ -44,7 +44,8 @@ namespace TDShooter.Input
             _weapon = GetComponentInChildren<Weapon>();
             _weaponChanger = FindObjectOfType<WeaponChanger>();
             //_animControl = GetComponent<Animator_Controller>();
-            //_controls.Player.WeaponSwitch.performed += context => _weaponChanger.ChangeWeapon(context.action);
+            _controls.Player.WeaponSwitchMachineGun.performed += context => _weaponChanger.ChangeWeapon(WeaponType.Machinegun);
+            _controls.Player.WeaponSwitchPlasmaGun.performed += context => _weaponChanger.ChangeWeapon(WeaponType.Plasmagun);
         }
 
         private void Fire()
