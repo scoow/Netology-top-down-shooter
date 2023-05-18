@@ -1,9 +1,7 @@
 using UnityEngine;
 using TDShooter.Weapons;
-using static UnityEngine.GraphicsBuffer;
 using TDShooter.UI;
 using Zenject;
-using Cysharp.Threading.Tasks.Triggers;
 using TDShooter.enums;
 
 namespace TDShooter.Input
@@ -46,6 +44,7 @@ namespace TDShooter.Input
             //_animControl = GetComponent<Animator_Controller>();
             _controls.Player.WeaponSwitchMachineGun.performed += context => _weaponChanger.ChangeWeapon(WeaponType.Machinegun);
             _controls.Player.WeaponSwitchPlasmaGun.performed += context => _weaponChanger.ChangeWeapon(WeaponType.Plasmagun);
+            _controls.Player.ThrowGrenade.performed += context => ThrowGrenade();
         }
 
         private void Fire()
@@ -53,6 +52,12 @@ namespace TDShooter.Input
             _weapon.Shoot();
 
             _audioSourceSteps.PlayOneShot(_oneShotSound);
+        }
+
+        private void ThrowGrenade()
+        {
+            var grenade = GetComponentInChildren<Grenade>();
+            grenade.Throw(_aim.transform.position);
         }
 
         private void OnDrawGizmos()
