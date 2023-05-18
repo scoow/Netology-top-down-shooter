@@ -15,6 +15,7 @@ namespace TDShooter.Characters
         [SerializeField] private LootExample _exampleLoot;
         [SerializeField] private PlayerProgress _playerProgress;
         [SerializeField] private Animation_Controller _animation_Controller;
+        private CapsuleCollider _capsuleCollider;
         private EnemyMove _enemyMove;
         public int HP => _hp;
 
@@ -26,6 +27,7 @@ namespace TDShooter.Characters
             _playerControl = FindObjectOfType<PlayerControl>();
             _subscribeManager = FindObjectOfType<SubscribeManager>();//разобраться почему не находит ссылку
             _enemyMove = GetComponent<EnemyMove>();
+            _capsuleCollider = GetComponent<CapsuleCollider>();
         }
         private void Start()
         {
@@ -53,6 +55,7 @@ namespace TDShooter.Characters
 
             _animation_Controller.EnemyState = EnemyAnimationState.Death;
             _enemyMove.MaxSpeed = 0f;
+            _capsuleCollider.enabled = false;
             _animation_Controller.DeathAnimation();
         }
 

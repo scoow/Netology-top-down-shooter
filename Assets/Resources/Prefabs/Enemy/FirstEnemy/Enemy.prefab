@@ -157,9 +157,9 @@ MonoBehaviour:
   _enemyAttack: {fileID: 6220046986021956734}
   _animationController: {fileID: 1981214959228171089}
   MaxVelocity: 4.16
-  _maxSpeed: 0
+  _maxSpeed: 2.65
   ArrivalDistance: 1.9
-  WanderCenterDistance: 1
+  WanderCenterDistance: 2.48
   WanderRadius: 1
   WanderAngleRange: 0
 --- !u!114 &-4939167545854252516
@@ -178,8 +178,7 @@ MonoBehaviour:
   _exampleLoot: {fileID: 7438257021208079569, guid: 24e1701ac52d833419bc752c1df158ed, type: 3}
   _playerProgress: {fileID: 0}
   _animation_Controller: {fileID: 1981214959228171089}
-  _enemyMove: {fileID: 7149194542829848614}
-  _playerControl: {fileID: 0}
+  _subscribeManager: {fileID: 0}
 --- !u!114 &6220046986021956734
 MonoBehaviour:
   m_ObjectHideFlags: 0
