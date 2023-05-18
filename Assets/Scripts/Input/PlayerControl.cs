@@ -25,6 +25,7 @@ namespace TDShooter.Input
         private Animator_Controller _animControl;
         private WeaponChanger _weaponChanger;
 
+        [SerializeField] private GameObject _grenade;
         //private DirectionState directionMove = DirectionState.Idle;
 
 
@@ -56,7 +57,7 @@ namespace TDShooter.Input
 
         private void ThrowGrenade()
         {
-            var grenade = GetComponentInChildren<Grenade>();
+            var grenade = Instantiate(_grenade, _playerHead.transform.position + Vector3.up, Quaternion.identity).GetComponent<Grenade>();
             grenade.Throw(_aim.transform.position);
         }
 

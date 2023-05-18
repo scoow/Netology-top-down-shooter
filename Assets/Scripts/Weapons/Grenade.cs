@@ -1,3 +1,4 @@
+using TDShooter.Input;
 using UnityEngine;
 
 namespace TDShooter.Weapons
@@ -11,6 +12,7 @@ namespace TDShooter.Weapons
         [SerializeField] private float _damage;
         [SerializeField] private float _explosionRadius;
 
+        private bool _isExplosion = false;
         private float _timer;
         public void Throw(Vector3 target)
         {
@@ -27,9 +29,44 @@ namespace TDShooter.Weapons
             Vector3 angle = fromTo.normalized + Vector3.up;
             GetComponent<Rigidbody>().velocity = angle.normalized * v;
         }
+
+        private void Start()
+        {
+            _timer = _lifeTime;
+        }
+        private void Update()
+        {
+            _timer -= Time.deltaTime;
+            if (_timer < 0 )
+            {
+                _isExplosion = true;
+            }
+        }
         public void Explode()
         {
+            Destroy( this.gameObject );
+        }
 
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (_isExplosion)
+            {
+                if (collision.gameObject.GetComponentInParent<PlayerControl>() != null)
+                {
+                    return;
+                }
+                Explode();
+                Debug.Log("Boom!");
+            }
+            
+        }
+        private void OnTriggerEnter(Collider other)
+        {
+            if (_isExplosion)
+            {
+                Explode();
+                Debug.Log("Boom!");
+            }
         }
     }
 }
