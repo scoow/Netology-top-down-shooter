@@ -44,4 +44,8 @@ namespace TDShooter.enums
         Machinegun,
         Plasmagun
     }
+    public enum GrenadeType
+    {
+        Explosive
+    }
 }

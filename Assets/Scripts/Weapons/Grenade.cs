@@ -12,10 +12,22 @@ namespace TDShooter.Weapons
         [SerializeField] private float _damage;
         [SerializeField] private float _explosionRadius;
 
-        private bool _isExplosion = false;
+        private bool _isExplosion;
         private float _timer;
+        private void OnEnable()
+        {
+            ResetGrenadeTimer();
+        }
+
+        private void ResetGrenadeTimer()
+        {
+            _lifeTime = 0.5f;
+            _isExplosion = false;
+        }
+
         public void Throw(Vector3 target)
         {
+            _timer = _lifeTime;
             Vector3 fromTo = target - transform.position;
             Vector3 fromToXZ = new(fromTo.x, 0f, fromTo.z);
 
@@ -25,15 +37,11 @@ namespace TDShooter.Weapons
             float y = fromTo.y;
 
             float v = Mathf.Sqrt(Mathf.Abs((Physics.gravity.y * x * x) / (2 * (y - x) * Mathf.Pow(0.707f, 2))));
-            transform.parent = null;
+            //transform.parent = null;
             Vector3 angle = fromTo.normalized + Vector3.up;
             GetComponent<Rigidbody>().velocity = angle.normalized * v;
         }
 
-        private void Start()
-        {
-            _timer = _lifeTime;
-        }
         private void Update()
         {
             _timer -= Time.deltaTime;
@@ -44,7 +52,8 @@ namespace TDShooter.Weapons
         }
         public void Explode()
         {
-            Destroy( this.gameObject );
+            gameObject.SetActive(false);
+            //взрыв
         }
 
         private void OnCollisionEnter(Collision collision)

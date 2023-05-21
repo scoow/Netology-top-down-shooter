@@ -24,6 +24,8 @@ namespace TDShooter.Input
         [SerializeField]
         private Animator_Controller _animControl;
         private WeaponChanger _weaponChanger;
+        [Inject]
+        private ProjectilesManager _projectilesManager;
 
         [SerializeField] private GameObject _grenade;
         //private DirectionState directionMove = DirectionState.Idle;
@@ -57,7 +59,8 @@ namespace TDShooter.Input
 
         private void ThrowGrenade()
         {
-            var grenade = Instantiate(_grenade, _playerHead.transform.position + Vector3.up, Quaternion.identity).GetComponent<Grenade>();
+            var grenade = _projectilesManager.GrenadePool[GrenadeType.Explosive].GetAviableOrCreateNew();
+            grenade.transform.SetPositionAndRotation(transform.position, transform.rotation);
             grenade.Throw(_aim.transform.position);
         }
 
