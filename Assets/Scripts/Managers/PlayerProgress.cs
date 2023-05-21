@@ -28,6 +28,7 @@ namespace TDShooter
                     _controllerUI.UpdateView(_currentKillsCount, UpdateViewType.CurrentKills);
                     if (_currentKillsCount == _targetKillsCount)
                     {
+                        //добавить паузу и меню статистики
                         _levelCount++;
                         _controllerUI.UpdateView(_levelCount, UpdateViewType.LevelUp);
                         _targetKillsCount *= 2;//увеличить необходимое уоличество убийств
