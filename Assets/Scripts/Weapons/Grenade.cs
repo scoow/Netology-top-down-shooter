@@ -1,3 +1,6 @@
+using System.Linq;
+using TDShooter.Characters;
+using TDShooter.enums;
 using TDShooter.Input;
 using UnityEngine;
 
@@ -12,11 +15,18 @@ namespace TDShooter.Weapons
         [SerializeField] private float _damage;
         [SerializeField] private float _explosionRadius;
 
+        private SpawnAssistant _assistant;
+
         private bool _isExplosion;
         private float _timer;
         private void OnEnable()
         {
             ResetGrenadeTimer();
+        }
+
+        private void Start()
+        {
+            _assistant = FindObjectOfType<SpawnAssistant>();
         }
 
         private void ResetGrenadeTimer()
@@ -54,6 +64,14 @@ namespace TDShooter.Weapons
         {
             gameObject.SetActive(false);
             //взрыв
+            var enemies = _assistant.EnemiesPool[СharacterType.FastMeleeEnemy].GetActiveUnits();
+            //todo добавить общий список врагов
+            enemies = enemies.Where(x => Vector3.Distance(x.transform.position, this.transform.position) < _explosionRadius).ToList();
+            foreach (var enemy in enemies)
+            {
+                var character = enemy.GetComponent<Character>();
+                character.Die();
+            }
         }
 
         private void OnCollisionEnter(Collision collision)

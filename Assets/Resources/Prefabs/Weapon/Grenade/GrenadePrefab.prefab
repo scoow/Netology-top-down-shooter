@@ -130,4 +130,4 @@ MonoBehaviour:
   _lifeTime: 0.5
   _maxThrowDistance: 0
   _damage: 0
-  _explosionRadius: 0
+  _explosionRadius: 5
