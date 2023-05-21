@@ -72,7 +72,6 @@ GameObject:
   - component: {fileID: 7149194542829848615}
   - component: {fileID: -6197998996588060254}
   - component: {fileID: 7149194542829848614}
-  - component: {fileID: -4939167545854252516}
   - component: {fileID: 6220046986021956734}
   - component: {fileID: 1981214959228171089}
   m_Layer: 0
@@ -141,6 +140,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3a446a9cad02344ac42320bda5c50d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hp: 1
+  _exampleLoot: {fileID: 7438257021208079569, guid: 24e1701ac52d833419bc752c1df158ed, type: 3}
+  _playerProgress: {fileID: 0}
+  _animation_Controller: {fileID: 1981214959228171089}
+  _subscribeManager: {fileID: 0}
 --- !u!114 &7149194542829848614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,23 +166,6 @@ MonoBehaviour:
   WanderCenterDistance: 2.48
   WanderRadius: 1
   WanderAngleRange: 0
---- !u!114 &-4939167545854252516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7149194542829848623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e624050f3cc2e144bab9c5962a9afe38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hp: 1
-  _exampleLoot: {fileID: 7438257021208079569, guid: 24e1701ac52d833419bc752c1df158ed, type: 3}
-  _playerProgress: {fileID: 0}
-  _animation_Controller: {fileID: 1981214959228171089}
-  _subscribeManager: {fileID: 0}
 --- !u!114 &6220046986021956734
 MonoBehaviour:
   m_ObjectHideFlags: 0

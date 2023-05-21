@@ -3,7 +3,6 @@ using TDShooter.enums;
 using TDShooter.Input;
 using UnityEngine;
 using TDShooter.Configs;
-using Zenject;
 
 namespace TDShooter
 {

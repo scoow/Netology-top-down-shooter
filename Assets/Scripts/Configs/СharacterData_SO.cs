@@ -13,7 +13,7 @@ namespace TDShooter
         [SerializeField] private float _speedMove;
         [SerializeField] private float _missChance;
         [SerializeField] private float _criticalDamageChance;
-        [SerializeField] private СharacterType _haracterType;
+        [SerializeField] private СharacterType _сharacterType;
 
         /// <summary>
         /// префаб персонажа
@@ -42,6 +42,6 @@ namespace TDShooter
         /// <summary>
         /// тип персонажа
         /// </summary>
-        public СharacterType CharacterType => _haracterType;
+        public СharacterType CharacterType => _сharacterType;
     }
 }
