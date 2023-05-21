@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TDShooter.enums;
@@ -37,6 +38,8 @@ namespace TDShooter.Characters
         private void InitEnemyPool()
         {
             _enemiesPool.Add(ÑharacterType.FastMeleeEnemy, new(Resources.Load<BaseEnemy>("Prefabs/Enemy/FirstEnemy/Enemy"), ÑharacterType.FastMeleeEnemy, _enemiesContainer));
+            _enemiesPool.Add(ÑharacterType.Spider, new(Resources.Load<BaseEnemy>("Prefabs/Enemy/Spiders/Prefabs/Black Widow 1"), ÑharacterType.Spider, _enemiesContainer));
+
         }
         /// <summary>
         /// Äëÿ òåñòà - ñïàâí íà êëàâèøó B
@@ -57,15 +60,17 @@ namespace TDShooter.Characters
 
         private void SpawnEnemyAtRandomTile()
         {
-            BaseEnemy enemy = _enemiesPool[ÑharacterType.FastMeleeEnemy].GetAviableOrCreateNew();
 
-            int randompoint = Random.Range(0, _unitSpawners.Count());
+            BaseEnemy enemy = _enemiesPool[(ÑharacterType)UnityEngine.Random.Range(1,
+                                                                                         Enum.GetNames(typeof(ÑharacterType)).Length)].GetAviableOrCreateNew();
+
+            int randompoint = UnityEngine.Random.Range(0, _unitSpawners.Count());
             Tile_Marker parentTile = _unitSpawners[randompoint].GetComponentInParent<Tile_Marker>();
             //ïğîâåğêà, íå öåíòğàëüíûé ëè ıòî òàéë. â í¸ì íå ñïàâíèì
 
             while (_tilesManager.IsInMiddle(parentTile))
             {
-                randompoint = Random.Range(0, _unitSpawners.Count());
+                randompoint = UnityEngine.Random.Range(0, _unitSpawners.Count());
                 parentTile = _unitSpawners[randompoint].GetComponentInParent<Tile_Marker>();
             }
 

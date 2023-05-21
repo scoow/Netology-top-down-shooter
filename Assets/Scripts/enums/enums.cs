@@ -12,7 +12,8 @@ namespace TDShooter.enums
     public enum ÑharacterType
     {
         Player,
-        FastMeleeEnemy
+        FastMeleeEnemy,
+        Spider
     }
     public enum EffectType
     {
