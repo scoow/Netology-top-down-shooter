@@ -18,3 +18,4 @@ MonoBehaviour:
   _dropChance: 15
   _effectType: 3
   _effectValue: 45
+  _effectTime: 10

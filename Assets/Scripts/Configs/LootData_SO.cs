@@ -11,6 +11,7 @@ namespace TDShooter.Configs
         [SerializeField] private float _dropChance;        
         [SerializeField] private EffectType _effectType;
         [SerializeField] private float _effectValue;
+        [SerializeField] private float _effectTime;
 
         /// <summary>
         /// название добычи
@@ -32,5 +33,9 @@ namespace TDShooter.Configs
         /// числовое значение эффекта
         /// </summary>
         public float EffectValue => _effectValue;
+        /// <summary>
+        /// Время действия эффекта
+        /// </summary>
+        public float EffectTime => _effectTime;
     }   
 }

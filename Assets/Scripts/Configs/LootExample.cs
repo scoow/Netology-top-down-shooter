@@ -12,7 +12,8 @@ namespace TDShooter
         [SerializeField] private SpriteRenderer _spriteCurrentLoot;        
         private int _currentEffectIndex;
         private EffectType _currentEffectType;
-        private string _currentLootName;
+        //private string _currentLootName;
+        private float _currentEffectTime;        
         //private LootData 
 
 
@@ -22,7 +23,8 @@ namespace TDShooter
             _currentEffectIndex = Random.Range(0, _arrayLootData_SO.Capacity);            
             _spriteCurrentLoot.sprite = _arrayLootData_SO[_currentEffectIndex].SpriteLoot;
             _currentEffectType = _arrayLootData_SO[_currentEffectIndex].EffectType;
-            _currentLootName = _arrayLootData_SO[_currentEffectIndex].LootName;
+            //_currentLootName = _arrayLootData_SO[_currentEffectIndex].LootName;
+            _currentEffectTime = _arrayLootData_SO[_currentEffectIndex].EffectTime;
         }
 
 
@@ -30,7 +32,7 @@ namespace TDShooter
         {
             if (other.TryGetComponent(out PlayerControl playerControl))
             {
-                playerControl.TakeLoot(_currentLootName);
+                playerControl.TakeLoot(_currentEffectType, _currentEffectTime);
                 gameObject.SetActive(false);
             }            
         }

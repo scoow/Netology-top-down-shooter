@@ -3,6 +3,7 @@ using TDShooter.Weapons;
 using TDShooter.UI;
 using Zenject;
 using TDShooter.enums;
+using TDShooter.Configs;
 
 namespace TDShooter.Input
 {
@@ -28,6 +29,7 @@ namespace TDShooter.Input
         private ProjectilesManager _projectilesManager;
 
         [SerializeField] private GameObject _grenade;
+        [SerializeField] private Ability_Controller _ability_Controller;
         //private DirectionState directionMove = DirectionState.Idle;
 
 
@@ -126,9 +128,10 @@ namespace TDShooter.Input
             _controls.Player.Disable();
         }
 
-        public void TakeLoot(string lootName)
+        public void TakeLoot(EffectType effectType, float effectTime)
         {
-            Debug.Log($"Я подобрал {lootName}");
+            _ability_Controller.ResetAbylityTimeView(effectType, effectTime);
+            //Debug.Log($"Я подобрал {lootName}");
         }
 
     }
