@@ -32,7 +32,6 @@ namespace TDShooter.Input
         [SerializeField] private Ability_Controller _ability_Controller;
         //private DirectionState directionMove = DirectionState.Idle;
 
-
         public float Speed { get => _speed; private set => _speed = value; } 
 
         private void Awake()
