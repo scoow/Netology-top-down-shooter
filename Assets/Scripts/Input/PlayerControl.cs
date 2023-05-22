@@ -30,7 +30,6 @@ namespace TDShooter.Input
         [SerializeField] private GameObject _grenade;
         //private DirectionState directionMove = DirectionState.Idle;
 
-
         public float Speed { get => _speed; private set => _speed = value; } 
 
         private void Awake()
