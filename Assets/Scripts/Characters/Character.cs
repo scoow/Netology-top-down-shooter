@@ -2,6 +2,7 @@ using UnityEngine;
 using TDShooter.Enemies;
 using TDShooter.EventManager;
 using TDShooter.Input;
+using TDShooter.Managers;
 
 namespace TDShooter.Characters
 {

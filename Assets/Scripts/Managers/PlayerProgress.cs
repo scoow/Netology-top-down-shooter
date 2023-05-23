@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using TDShooter.enums;
 using TDShooter.EventManager;
 using UnityEngine;
 
 
-namespace TDShooter
+namespace TDShooter.Managers
 {
     public class PlayerProgress : MonoBehaviour, IEventListener
     {

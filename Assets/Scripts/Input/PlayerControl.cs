@@ -1,9 +1,9 @@
 using UnityEngine;
 using TDShooter.Weapons;
 using TDShooter.UI;
-using Zenject;
 using TDShooter.enums;
-using TDShooter.Configs;
+using TDShooter.Characters;
+using Zenject;
 
 namespace TDShooter.Input
 {
@@ -135,10 +135,10 @@ namespace TDShooter.Input
 
     }
 
-    public enum DirectionState
+/*    public enum DirectionState
     {
         Idle,
         Forward,
         Back
-    }
+    }*/
 }
