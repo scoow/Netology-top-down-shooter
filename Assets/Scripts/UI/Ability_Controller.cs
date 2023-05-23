@@ -1,7 +1,7 @@
 using TDShooter.enums;
 using UnityEngine;
 
-namespace TDShooter
+namespace TDShooter.UI
 {
     public class Ability_Controller : MonoBehaviour
     {

@@ -9,7 +9,7 @@ namespace TDShooter.Characters
 
         public void StepSound()
         {
-            Debug.Log("Step");
+            Debug.Log("Step");//todo заменить на звук
         }
 
         private void Start()
@@ -24,8 +24,6 @@ namespace TDShooter.Characters
             //Debug.Log("rotation" + rotation);
             Vector2 move;
             move = incomingValue * (0.5f - rotation.y);
-            /*move.x = incomingValue.x * (0.5f - rotation.y);
-            move.y = incomingValue.y * (0.5f - rotation.y);*/
 
             move.Normalize();
             //Debug.Log("result" + move);
