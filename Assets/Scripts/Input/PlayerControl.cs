@@ -80,7 +80,7 @@ namespace TDShooter.Input
             Vector3 nextPosition = _playerBody.transform.position;
             //CheckDirectionMove(previosPosition, nextPosition, _aim.transform.position);
 
-            _animControl.Move(inputValue/*, directionMove*/);
+            _animControl.Move(inputValue, _playerHead.transform.rotation);
         }        
         public void AimCursor()
         {
