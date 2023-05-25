@@ -4,8 +4,7 @@ using UnityEngine;
 
 namespace TDShooter
 {
-
-    public class LootController : MonoBehaviour
+    public class LootController : MonoBehaviour//todo добавить пул лута
     {
         [SerializeField] private List<LootData_SO> _arreyLootData_SO;
 

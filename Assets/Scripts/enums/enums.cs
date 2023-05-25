@@ -21,7 +21,8 @@ namespace TDShooter.enums
         Armor,
         SpeedMove,
         MissChance,
-        CriticalDamageChance
+        CriticalDamageChance,
+        Weapon
     }
     public enum TileState
     {
@@ -32,7 +33,6 @@ namespace TDShooter.enums
         OpenedList,//фиолетовый
         Way//зеленый
     }
-
     public enum GameEventType
     {
         StartGame,
@@ -47,6 +47,7 @@ namespace TDShooter.enums
     }
     public enum GrenadeType
     {
-        Explosive
+        Explosive,
+        MolotovСocktail
     }
 }

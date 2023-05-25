@@ -46,7 +46,7 @@ namespace TDShooter.Weapons
             float x = fromToXZ.magnitude;
             float y = fromTo.y;
 
-            float v = Mathf.Sqrt(Mathf.Abs((Physics.gravity.y * x * x) / (2 * (y - x) * Mathf.Pow(0.707f, 2))));
+            float v = Mathf.Sqrt(Mathf.Abs((Physics.gravity.y * x * x) / (y - x) ));
             //transform.parent = null;
             Vector3 angle = fromTo.normalized + Vector3.up;
             GetComponent<Rigidbody>().velocity = angle.normalized * v;
@@ -65,7 +65,8 @@ namespace TDShooter.Weapons
             gameObject.SetActive(false);
             //взрыв
             var enemies = _assistant.EnemiesPool[СharacterType.FastMeleeEnemy].GetActiveUnits();
-            //todo добавить общий список врагов
+            enemies.AddRange(_assistant.EnemiesPool[СharacterType.Spider].GetActiveUnits());
+            //todo добавить общий список врагов done
             enemies = enemies.Where(x => Vector3.Distance(x.transform.position, this.transform.position) < _explosionRadius).ToList();
             foreach (var enemy in enemies)
             {
@@ -83,7 +84,7 @@ namespace TDShooter.Weapons
                     return;
                 }
                 Explode();
-                Debug.Log("Boom!");
+               // Debug.Log("Boom!");
             }
             
         }
@@ -92,7 +93,7 @@ namespace TDShooter.Weapons
             if (_isExplosion)
             {
                 Explode();
-                Debug.Log("Boom!");
+                //Debug.Log("Boom!");
             }
         }
     }
