@@ -5,6 +5,7 @@ namespace TDShooter.Weapons
 {
     public class OnHit : MonoBehaviour
     {
+        [SerializeField] private Bullet bullet;
         /// <summary>
         /// Снаряд попал в цель
         /// </summary>
@@ -14,7 +15,7 @@ namespace TDShooter.Weapons
             if (!other.TryGetComponent<IHaveHP>(out var target)) return;
 
             //Debug.Log("Снаряд попал в цель");
-            target.TakeDamage(1);
+            target.TakeDamage(bullet.Damage);
 
             gameObject.SetActive(false);
         }

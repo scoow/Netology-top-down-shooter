@@ -10,15 +10,15 @@ namespace TDShooter.Characters
     /// Персонаж. По задумке - класс-родитель для игрока и врагов
     /// </summary>
     public class Character : MonoBehaviour, IHaveHP
-    {
-        [SerializeField]
-        private int _hp;
+    {        
         [SerializeField] private LootExample _exampleLoot;
         [SerializeField] private PlayerProgress _playerProgress;
         [SerializeField] private Animation_Controller _animation_Controller;
+        [SerializeField] private Character_Data _character_Data;
+        [SerializeField] private Character_UI _character_UI;
         private CapsuleCollider _capsuleCollider;
         private EnemyMove _enemyMove;
-        public int HP => _hp;
+        public int HP => _character_Data.Hp;
 
         [SerializeField] private SubscribeManager _subscribeManager;//менеджер событий
         private PlayerControl _playerControl;
@@ -28,7 +28,12 @@ namespace TDShooter.Characters
             _playerControl = FindObjectOfType<PlayerControl>();
             _subscribeManager = FindObjectOfType<SubscribeManager>();//разобраться почему не находит ссылку
             _enemyMove = GetComponent<EnemyMove>();
-            _capsuleCollider = GetComponent<CapsuleCollider>();
+            _capsuleCollider = GetComponent<CapsuleCollider>();            
+        }
+
+        private void OnEnable()
+        {
+            _capsuleCollider.enabled = true;
         }
         private void Start()
         {
@@ -38,9 +43,9 @@ namespace TDShooter.Characters
             //добавляем _playerProgress в слушатели события "смерть врага", параметр true означает что добавляем лишь один раз  
         }
 
-        public void Respawn(int maxHP)
+        public void Respawn(/*int maxHP*/)
         {
-            _hp = maxHP;
+            _character_Data.Hp = _character_Data.CharacterData_SO.Health;
             _enemyMove.SetNewTarget(_playerControl.transform);
         }
         public void Die()
@@ -62,15 +67,16 @@ namespace TDShooter.Characters
 
         public void TakeDamage(int damage)
         {
-            _hp -= damage;
+            _character_Data.Hp -= damage;
+            _character_UI.UpdateView(damage);
             //Debug.Log("HP осталось:" + _hp);
-            if (_hp <= 0)
+            if (_character_Data.Hp <= 0)
                 Die();
         }
 
         public void TakeHeal(int heal)
         {
-            _hp += heal;
+            _character_Data.Hp += heal;
         }
     }
 }

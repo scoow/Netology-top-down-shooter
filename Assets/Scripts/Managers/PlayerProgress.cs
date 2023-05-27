@@ -14,7 +14,7 @@ namespace TDShooter.Managers
         [SerializeField] private UI_Controller _controllerUI;
         public int ChanceDroopLoot => _chanceDroopLoot;
 
-        public int LevelCount { get; private set; }       
+        public int LevelCount { get; private set; }
         public int CurrentKilledCount
         {
             get => _currentKillsCount;
@@ -27,12 +27,15 @@ namespace TDShooter.Managers
                     if (_currentKillsCount == _targetKillsCount)
                     {
                         //добавить паузу и меню статистики
+                        _currentKillsCount = 0;
+                        _controllerUI.UpdateView(_currentKillsCount, UpdateViewType.TargetKills);
                         _levelCount++;
                         _controllerUI.UpdateView(_levelCount, UpdateViewType.LevelUp);
                         _targetKillsCount *= 2;//увеличить необходимое уоличество убийств
+                        _controllerUI.UpdateView(_targetKillsCount, UpdateViewType.TargetKills);
+
                     }
                 }
-
             }
         }
         public int TargetKilledCount
@@ -52,6 +55,7 @@ namespace TDShooter.Managers
 
         private void Start()
         {
+            _controllerUI.UpdateView(0, UpdateViewType.CurrentKills);
             _controllerUI.UpdateView(_targetKillsCount, UpdateViewType.TargetKills);
         }
 
