@@ -54,7 +54,7 @@ namespace TDShooter.Managers
 
 
         private void Start()
-        {
+        {            
             _controllerUI.UpdateView(0, UpdateViewType.CurrentKills);
             _controllerUI.UpdateView(_targetKillsCount, UpdateViewType.TargetKills);
         }

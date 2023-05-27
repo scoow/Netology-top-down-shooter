@@ -3788,7 +3788,7 @@ GameObject:
   - component: {fileID: 21093203822430030}
   - component: {fileID: 7566749754023443528}
   - component: {fileID: 1454408659}
-  - component: {fileID: 1454408658}
+  - component: {fileID: 7794883867464218174}
   m_Layer: 0
   m_Name: Black Widow 1
   m_TagString: Untagged
@@ -3933,12 +3933,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3a446a9cad02344ac42320bda5c50d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _exampleLoot: {fileID: 7438257021208079569, guid: 24e1701ac52d833419bc752c1df158ed, type: 3}
-  _playerProgress: {fileID: 0}
-  _animation_Controller: {fileID: 21093203822430128}
-  _character_Data: {fileID: 1454408658}
+  _character_Data: {fileID: 7794883867464218174}
   _character_UI: {fileID: 1454408659}
   _subscribeManager: {fileID: 0}
+  _playerProgress: {fileID: 0}
+  _exampleLoot: {fileID: 7438257021208079569, guid: 24e1701ac52d833419bc752c1df158ed, type: 3}
+  _animation_Controller: {fileID: 21093203822430128}
 --- !u!114 &1454408659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3952,8 +3952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sliderHP: {fileID: 449164886}
-  _hpBarTransform: {fileID: 449164885}
---- !u!114 &1454408658
+--- !u!114 &7794883867464218174
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3962,7 +3961,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8709438716985620259}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e209049061ff38344b03026f45c9bbf4, type: 3}
+  m_Script: {fileID: 11500000, guid: 7134f6549292e144bbcc3c8f5864f5e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _characterData_SO: {fileID: 11400000, guid: 92934578f0401fd4fab2a09eb2799020, type: 2}

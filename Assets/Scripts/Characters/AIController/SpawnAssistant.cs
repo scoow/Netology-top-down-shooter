@@ -75,7 +75,7 @@ namespace TDShooter.Characters
             }
 
             enemy.transform.position = _unitSpawners[randompoint].transform.position;
-            enemy.GetComponent<Character>().Respawn();
+            enemy.GetComponent<BaseEnemy>().Respawn();
         }
     }
 }

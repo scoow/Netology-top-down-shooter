@@ -5,11 +5,17 @@ namespace TDShooter
 {
     public class UI_Controller : MonoBehaviour
     {
-        [SerializeField] Text _currentKills;
-        [SerializeField] Text _targetKills;
-        [SerializeField] Text _levelValue; //доделать увеличение уровня при достижении цели
-        [SerializeField] Slider _progressBarValue;
+        [SerializeField] private Text _maxHP;
+        [SerializeField] private Text _currentHP;
+        [SerializeField] private Text _currentKills;
+        [SerializeField] private Text _targetKills;
+        [SerializeField] private Text _levelValue;
+        [SerializeField] private Slider _progressBarValue;
+        [SerializeField] private Slider _sliderHP;
 
+        public Slider SliderHP { get => _sliderHP; set => _sliderHP = value; }
+        public Text MaxHP { get => _maxHP; set => _maxHP = value; }
+        public Text CurrentHP { get => _currentHP; set => _currentHP = value; }
 
         internal void UpdateView(int incomingValue, UpdateViewType viewType )
         {
@@ -25,6 +31,12 @@ namespace TDShooter
                     break;
                 case UpdateViewType.LevelUp:
                     _levelValue.text = incomingValue.ToString();
+                    //_currentHP.text = incomingValue.ToString();
+                    //_maxHP.text = incomingValue.ToString();
+                    break;
+                case UpdateViewType.UpdateHP:
+                    CurrentHP.text = incomingValue.ToString();
+                    _sliderHP.value -= incomingValue;
                     break;
             }
         }
@@ -33,6 +45,7 @@ namespace TDShooter
     {
         CurrentKills,
         TargetKills,
-        LevelUp
+        LevelUp,
+        UpdateHP
     }
 }
