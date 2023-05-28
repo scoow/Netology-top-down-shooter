@@ -53,7 +53,7 @@ namespace TDShooter.Enemies
             CheckDIstanceAndStopIfClose();
         }
 
-        private void CheckDIstanceAndStopIfClose()
+        private void CheckDIstanceAndStopIfClose()//аюц рср
         {
             float distance = Vector3.Distance(transform.position, _target.transform.position);
             if (distance > ArrivalDistance + 5f && _animationController.EnemyState != EnemyAnimationState.Death)

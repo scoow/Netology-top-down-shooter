@@ -37,10 +37,8 @@ namespace TDShooter.Characters
         {
             _character_Data.Hp = _character_Data.CharacterData_SO.Health;
             _enemyMove.SetNewTarget(_playerControl.transform);
+            _enemyMove.MaxSpeed = 5f;//реяр
         }
-
-
-
 
         private void OnEnable()
         {
