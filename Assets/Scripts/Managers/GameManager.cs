@@ -1,5 +1,6 @@
 using TDShooter.Characters;
 using TDShooter.EventManager;
+using TDShooter.Input;
 using TDShooter.Level;
 using TDShooter.UI;
 using TDShooter.Weapons;
@@ -10,7 +11,7 @@ namespace TDShooter.Managers.GameManager
 {
     public class GameManager : MonoInstaller
     {
-        public static GameManager Instance { get; private set; }
+        /*public static GameManager Instance { get; private set; }*/
 
         private TilesManager _tilesManager;
         private Transform _enemiesContainer;
@@ -19,8 +20,9 @@ namespace TDShooter.Managers.GameManager
         private ProjectilesManager _projectilesManager;
         private SubscribeManager _subscribeManager;
         private WeaponChanger _weaponChanger;
+        private PlayerControl _playerControl;
 
-        private void Awake()//убрать синглтон
+/*        private void Awake()//убрать синглтон
         {
             if (Instance != null && Instance != this)
             {
@@ -28,7 +30,7 @@ namespace TDShooter.Managers.GameManager
                 return;
             }
             Instance = this;
-        }
+        }*/
         /// <summary>
         /// Внедрение зависимостей
         /// </summary>
@@ -43,6 +45,7 @@ namespace TDShooter.Managers.GameManager
             _projectilesManager = FindObjectOfType<ProjectilesManager>();
             _subscribeManager = FindObjectOfType<SubscribeManager>();
             _weaponChanger = FindObjectOfType<WeaponChanger>();
+            _playerControl = FindObjectOfType<PlayerControl>();
 
             #endregion
             #region Добавление ссылок в DI контейнер
@@ -54,6 +57,7 @@ namespace TDShooter.Managers.GameManager
             Container.BindInstance(_projectilesManager).AsSingle();
             Container.BindInstance(_subscribeManager).AsSingle();
             Container.BindInstance(_weaponChanger).AsSingle();
+            Container.BindInstance(_playerControl).AsSingle();
 
             #endregion
         }

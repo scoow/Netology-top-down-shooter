@@ -25,10 +25,9 @@ namespace TDShooter.Enemies
 
         private PlayerControl _playerControl;
 
-        private void OnEnable()
+        public void InjectPlayerControlReference(PlayerControl playerControl)
         {
-            _playerControl = FindObjectOfType<PlayerControl>();
-            SetNewTarget(_playerControl.transform);
+            _playerControl = playerControl;
         }
 
         public float MaxSpeed 
@@ -53,7 +52,7 @@ namespace TDShooter.Enemies
             CheckDIstanceAndStopIfClose();
         }
 
-        private void CheckDIstanceAndStopIfClose()//БАГ ТУТ
+        private void CheckDIstanceAndStopIfClose()//БАГ БЫЛ ТУТ
         {
             float distance = Vector3.Distance(transform.position, _target.transform.position);
             if (distance > ArrivalDistance + 5f && _animationController.EnemyState != EnemyAnimationState.Death)
@@ -201,7 +200,7 @@ namespace TDShooter.Enemies
         }
 
         //блуждание врага
-        private void OnWander()
+        /*private void OnWander()
         {
             var center = GetVelocity(IgnoreAxisType.Y).normalized * WanderCenterDistance;
 
@@ -222,6 +221,6 @@ namespace TDShooter.Enemies
             var velocity = Vector3.ClampMagnitude(GetVelocity() + steering, _maxSpeed);
 
             SetVelocity(velocity);
-        }
+        }*/
     }
 }

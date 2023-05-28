@@ -17,7 +17,7 @@ namespace TDShooter.Input
         private Weapon _weapon;//ссылка на оружие игрока. В будующем убрать ссылку в отдельный класс Player
                                // [SerializeField]
         [Inject]
-        private Aim_Marker _aim;
+        private readonly Aim_Marker _aim;
         [SerializeField]
         private AudioSource _audioSourceSteps;
         [SerializeField]
@@ -26,7 +26,7 @@ namespace TDShooter.Input
         private Animator_Controller _animControl;
         private WeaponChanger _weaponChanger;
         [Inject]
-        private ProjectilesManager _projectilesManager;
+        private readonly ProjectilesManager _projectilesManager;
 
         [SerializeField] private GameObject _grenade;
         [SerializeField] private Ability_Controller _ability_Controller;
@@ -75,9 +75,9 @@ namespace TDShooter.Input
         private void Move()//todo лишние переменные
         {
             var inputValue = _controls.Player.WASD.ReadValue<Vector2>(); // записываем в локальную переменную значение Vector2 при вызове события WASD
-            Vector3 previosPosition = _playerBody.transform.position;
+            //Vector3 previosPosition = _playerBody.transform.position;
             _playerBody.Translate(inputValue.x * Time.deltaTime * _speed, 0, inputValue.y * Time.deltaTime * _speed); //перемещаем объект в плоскости X0Z
-            Vector3 nextPosition = _playerBody.transform.position;
+            //Vector3 nextPosition = _playerBody.transform.position;
             //CheckDirectionMove(previosPosition, nextPosition, _aim.transform.position);
 
             _animControl.Move(inputValue, _playerHead.transform.rotation);

@@ -1,3 +1,4 @@
+using TDShooter.enums;
 using UnityEngine;
 
 namespace TDShooter.Characters
@@ -21,9 +22,52 @@ namespace TDShooter.Characters
         public void Move(Vector2 incomingValue, Quaternion rotation)
         {
             //Debug.Log("move" + move);
-            //Debug.Log("rotation" + rotation);
+            float eulerAnglesRotation = rotation.eulerAngles.y;
+            //Debug.Log("rotation" + eulerAnglesRotation);
+            Direction direction;
+
+            if (eulerAnglesRotation < 45 || eulerAnglesRotation > 315)
+            {
+                direction = Direction.Up;
+            }
+            else
+            if (eulerAnglesRotation < 135)
+            {
+                direction = Direction.Right;
+            }
+            else
+            if (eulerAnglesRotation < 225)
+            {
+                direction = Direction.Down;
+            }
+            else
+
+            {
+                direction = Direction.Left;
+            }
+
             Vector2 move;
-            move = incomingValue * (0.5f - rotation.y);
+
+            switch (direction)
+            {
+                case Direction.Up:
+                    move = incomingValue;
+                    break;
+                case Direction.Right:
+                    move.x = -incomingValue.y;
+                    move.y = incomingValue.x;
+                    break;
+                case Direction.Down:
+                    move = -incomingValue;
+                    break;
+                case Direction.Left:
+                    move.x = incomingValue.y;
+                    move.y = -incomingValue.x;
+                    break;
+                default:
+                    move = Vector2.zero;
+                    break;
+            }
 
             move.Normalize();
             //Debug.Log("result" + move);

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using TDShooter.enums;
+using TDShooter.Input;
 using TDShooter.Level;
 using UnityEngine;
 using Zenject;
@@ -15,6 +16,8 @@ namespace TDShooter.Characters
         /// </summary>
         private readonly Dictionary<ÑharacterType, EnemiesPool> _enemiesPool = new();
         public Dictionary<ÑharacterType, EnemiesPool> EnemiesPool => _enemiesPool;
+        [Inject]
+        private readonly PlayerControl _playerControl;
 
         [Inject]
         private readonly TilesManager _tilesManager;
@@ -37,8 +40,8 @@ namespace TDShooter.Characters
         /// </summary>
         private void InitEnemyPool()
         {
-            _enemiesPool.Add(ÑharacterType.FastMeleeEnemy, new(Resources.Load<BaseEnemy>("Prefabs/Enemy/FirstEnemy/Enemy"), ÑharacterType.FastMeleeEnemy, _enemiesContainer));
-            _enemiesPool.Add(ÑharacterType.Spider, new(Resources.Load<BaseEnemy>("Prefabs/Enemy/Spiders/Prefabs/Black Widow 1"), ÑharacterType.Spider, _enemiesContainer));
+            _enemiesPool.Add(ÑharacterType.FastMeleeEnemy, new(Resources.Load<BaseEnemy>("Prefabs/Enemy/FirstEnemy/Enemy"), ÑharacterType.FastMeleeEnemy, _enemiesContainer, _playerControl));
+            _enemiesPool.Add(ÑharacterType.Spider, new(Resources.Load<BaseEnemy>("Prefabs/Enemy/Spiders/Prefabs/Black Widow 1"), ÑharacterType.Spider, _enemiesContainer, _playerControl));
 
         }
         /// <summary>

@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
+using TDShooter.Enemies;
 using TDShooter.enums;
+using TDShooter.Input;
 using TDShooter.Pools;
 using UnityEngine;
 
@@ -9,15 +11,18 @@ namespace TDShooter.Characters
     public class EnemiesPool : BasePool<BaseEnemy>
     {
         protected ÑharacterType _unitType;
+        private readonly PlayerControl _playerControl;
 
-        public EnemiesPool(BaseEnemy prefab, ÑharacterType unitType, Transform parent, int count = 1) : base(prefab, parent)
+        public EnemiesPool(BaseEnemy prefab, ÑharacterType unitType, Transform parent, PlayerControl playerControl, int count = 1) : base(prefab, parent)
         {
             _unitType = unitType;
+            _playerControl = playerControl;
             Init(count);
         }
         protected override BaseEnemy GetCreated()
         {
             BaseEnemy newUnit = GameObject.Instantiate(_prefab);
+            newUnit.GetComponent<EnemyMove>().InjectPlayerControlReference(_playerControl);
             return newUnit;
         }
 
