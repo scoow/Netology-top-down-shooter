@@ -3885,6 +3885,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 21093204700908348}
   _enemyAttack: {fileID: 21093203822430031}
+  _parentGameObject: {fileID: 7566749754023443528}
 --- !u!114 &21093203822430031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3897,6 +3898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67a0df0d979dc040aa264c3aa6f668a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemy_Data: {fileID: 7794883867464218174}
   _animation_Controller: {fileID: 21093203822430128}
   _attackRange: 1
   _attackCooldown: 4

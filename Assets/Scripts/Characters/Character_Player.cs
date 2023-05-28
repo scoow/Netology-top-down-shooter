@@ -8,7 +8,7 @@ namespace TDShooter.Characters
     {
         public override void Die()
         {
-
+            print("Игра окончена , монстры вас съели");
         }
 
     }

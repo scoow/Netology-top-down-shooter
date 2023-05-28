@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 618796aa10d15a14fb3f9c3eb383cc39, type: 3}
   m_Name: Enemy_Fast
   m_EditorClassIdentifier: 
-  _prefabCharacter: {fileID: 0}
   _hp: 100
+  _damage: 35
   _armor: 0
   _speedMove: 20
   _missChance: 20

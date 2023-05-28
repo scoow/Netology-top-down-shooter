@@ -8,6 +8,7 @@ public class Character_Data : MonoBehaviour
 {
     [SerializeField] private ÑharacterData_SO _characterData_SO;
     private int _hp;
+    private int _damage;
     private float _armor;
     private float _speedMove;
     private float _missChance;
@@ -15,16 +16,18 @@ public class Character_Data : MonoBehaviour
     private ÑharacterType _ñharacterType;   
 
     public int Hp { get => _hp; set => _hp = value; }
-    public float Armor { get => _armor; set => _armor = value; }
-    public float SpeedMove { get => _speedMove; set => _speedMove = value; }
-    public float MissChance { get => _missChance; set => _missChance = value; }
-    public float CriticalDamageChance { get => _criticalDamageChance; set => _criticalDamageChance = value; }
-    public ÑharacterType ÑharacterType { get => _ñharacterType; set => _ñharacterType = value; }
+    public float Armor { get => _armor; private set => _armor = value; }
+    public float SpeedMove { get => _speedMove; private set => _speedMove = value; }
+    public float MissChance { get => _missChance; private set => _missChance = value; }
+    public float CriticalDamageChance { get => _criticalDamageChance; private set => _criticalDamageChance = value; }
+    public ÑharacterType ÑharacterType { get => _ñharacterType; private set => _ñharacterType = value; }
     public ÑharacterData_SO CharacterData_SO { get => _characterData_SO;}
+    public int Damage { get => _damage; private set => _damage = value; }
 
     protected virtual void Awake()
     {
         Hp = CharacterData_SO.Health;
+        Damage = CharacterData_SO.Damage;
         Armor = CharacterData_SO.Armor;
         SpeedMove = CharacterData_SO.SpeedMove;
         MissChance = CharacterData_SO.MissChance;

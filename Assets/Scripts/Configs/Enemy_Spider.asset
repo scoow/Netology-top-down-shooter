@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Enemy_Spider
   m_EditorClassIdentifier: 
   _hp: 50
+  _damage: 10
   _armor: 15
   _speedMove: 35
   _missChance: 40

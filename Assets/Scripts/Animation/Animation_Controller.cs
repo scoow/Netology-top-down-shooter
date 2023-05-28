@@ -1,4 +1,5 @@
 using System.Collections;
+using TDShooter.Characters;
 using UnityEngine;
 
 namespace TDShooter.Enemies
@@ -6,7 +7,8 @@ namespace TDShooter.Enemies
     public class Animation_Controller : MonoBehaviour
     {
         [SerializeField] Animator _animator;
-        [SerializeField] EnemyAttack _enemyAttack; 
+        [SerializeField] EnemyAttack _enemyAttack;
+        [SerializeField] BaseEnemy _parentGameObject;
         private EnemyAnimationState _enemyState = EnemyAnimationState.Move;
 
         private int _atackAnimation;
@@ -34,7 +36,7 @@ namespace TDShooter.Enemies
         private IEnumerator DeathCoroutine()
         {
             yield return new WaitForSeconds(2f);
-            gameObject.SetActive(false);
+            _parentGameObject.gameObject.SetActive(false);
         }
 
         public void ChangeAnimation(Transform target)

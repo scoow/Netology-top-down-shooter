@@ -9,10 +9,11 @@ namespace TDShooter
     {
         //[SerializeField] private GameObject _prefabCharacter;
         [SerializeField] private int _hp;
+        [SerializeField] private int _damage;
         [SerializeField] private float _armor;
         [SerializeField] private float _speedMove;
         [SerializeField] private float _missChance;
-        [SerializeField] private float _criticalDamageChance;
+        [SerializeField] private float _criticalDamageChance;        
         [SerializeField] private СharacterType _сharacterType;
 
         /// <summary>
@@ -45,5 +46,9 @@ namespace TDShooter
         /// тип персонажа
         /// </summary>
         public СharacterType CharacterType => _сharacterType;
+        /// <summary>
+        /// наносимый урон
+        /// </summary>
+        public int Damage { get => _damage; set => _damage = value; }
     }
 }

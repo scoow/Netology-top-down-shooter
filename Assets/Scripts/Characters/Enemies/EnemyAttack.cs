@@ -1,16 +1,19 @@
+using TDShooter.Characters;
 using TDShooter.Input;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 namespace TDShooter.Enemies
 {
     public class EnemyAttack : MonoBehaviour
     {
+        [SerializeField] Enemy_Data _enemy_Data;
+        
         [SerializeField] Animation_Controller _animation_Controller;
         /// <summary>
         /// Цель атаки
         /// </summary>
-        private Transform _target;         
+        private Transform _target;
+        private Character _player;
 
         /// <summary>
         /// Дальность атаки
@@ -27,6 +30,7 @@ namespace TDShooter.Enemies
         private void Awake()
         {
             _target = FindObjectOfType<PlayerControl>().transform;
+            _player = _target.GetComponent<Character>();            
         }
         private void OnEnable()
         {
@@ -64,13 +68,16 @@ namespace TDShooter.Enemies
                 }                
             }
         }
-        /*private void Attack()
+
+
+        public void Attack()
         {
+            _player.TakeDamage(_enemy_Data.Damage);
             Debug.Log("Атакую!");
-            _animator.SetBool("Atack", true);
+            //_animator.SetBool("Atack", true);
         }
 
-        private void StopAtack()
+        /*private void StopAtack()
         {
             _animator.SetBool("Atack", false);
         }*/

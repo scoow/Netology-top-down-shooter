@@ -8804,6 +8804,7 @@ GameObject:
   - component: {fileID: 991209309}
   - component: {fileID: 991209315}
   - component: {fileID: 991209316}
+  - component: {fileID: 991209317}
   m_Layer: 0
   m_Name: PlayerBody
   m_TagString: Untagged
@@ -8906,6 +8907,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sliderHP: {fileID: 1395056665}
+--- !u!114 &991209317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991209308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 428a7abef7b97c54c93367d5bbe84cd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _character_Data: {fileID: 991209315}
+  _character_UI: {fileID: 991209316}
 --- !u!1 &998827631
 GameObject:
   m_ObjectHideFlags: 0
