@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using TDShooter.enums;
 using TDShooter.Pools;
@@ -25,7 +24,9 @@ namespace TDShooter.Weapons
 
         private void InitGrenadesPools()
         {
-            GrenadePool.Add(GrenadeType.Explosive, new(Resources.Load<Grenade>("Prefabs/Weapon/Grenade/GrenadePrefab"), _projectileContainer.transform, 5));
+            //GrenadePool.Add(GrenadeType.Explosive, new(Resources.Load<Grenade>("Prefabs/Weapon/Grenade/GrenadePrefab"), _projectileContainer.transform, 5));
+            GrenadePool.Add(GrenadeType.Explosive, new(Resources.Load<Grenade>("Prefabs/Weapon/Grenade/Grenade Zaria/Prefabs/Zaria"), _projectileContainer.transform, 5));
+
         }
 
         /// <summary>

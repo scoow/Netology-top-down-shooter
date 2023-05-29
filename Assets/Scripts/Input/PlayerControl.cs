@@ -29,7 +29,7 @@ namespace TDShooter.Input
         [Inject]
         private readonly ProjectilesManager _projectilesManager;
 
-        [SerializeField] private GameObject _grenade;
+        //[SerializeField] private GameObject _grenade;
         [SerializeField] private Ability_Controller _ability_Controller;
         //private DirectionState directionMove = DirectionState.Idle;
 

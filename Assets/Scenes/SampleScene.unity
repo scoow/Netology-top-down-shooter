@@ -8942,7 +8942,7 @@ MonoBehaviour:
   _audioSourceSteps: {fileID: 460507300}
   _oneShotSound: {fileID: 8300000, guid: dd0d378cb00eaf94f986ba4c8a0872c3, type: 3}
   _animControl: {fileID: 575208319}
-  _grenade: {fileID: 6125627816079073628, guid: 88041a56b0d78284080961fe606c8581, type: 3}
+  _grenade: {fileID: 126980, guid: 83712cf2314fbc54e840a2ce09d08a0e, type: 3}
   _ability_Controller: {fileID: 865177870}
 --- !u!54 &991209310
 Rigidbody:
