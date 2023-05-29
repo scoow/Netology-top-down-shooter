@@ -1,4 +1,5 @@
 using TDShooter.Characters;
+using TDShooter.Configs;
 using TDShooter.Input;
 using UnityEngine;
 

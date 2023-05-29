@@ -1,16 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Data : Character_Data
+namespace TDShooter.Configs
 {
-    [SerializeField] private Character_UI _character_UI;
-
-    protected override void Awake()
+    public class Enemy_Data : Character_Data
     {
-        base.Awake();
-        _character_UI.SliderHP.maxValue = Hp;
-        _character_UI.SliderHP.value = Hp;
-    }
+        [SerializeField] private Character_UI _character_UI;
 
+        protected override void Awake()
+        {
+            base.Awake();
+            _character_UI.SliderHP.maxValue = Hp;
+            _character_UI.SliderHP.value = Hp;
+        }
+    }
 }

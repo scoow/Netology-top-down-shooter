@@ -1,19 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
-using TDShooter;
 using UnityEngine;
 
-public class Player_Data : Character_Data
+namespace TDShooter.Configs
 {
-    [SerializeField] private UI_Controller _uI_Controller;
-
-    protected override void Awake()
+    public class Player_Data : Character_Data
     {
-        base.Awake();
-        _uI_Controller.SliderHP.maxValue = Hp;
-        _uI_Controller.SliderHP.value = Hp;
-        _uI_Controller.MaxHP.text = Hp.ToString();
-        _uI_Controller.CurrentHP.text = Hp.ToString();
-    }
+        [SerializeField] private UI_Controller _uI_Controller;
 
+        protected override void Awake()
+        {
+            base.Awake();
+            _uI_Controller.SliderHP.maxValue = Hp;
+            _uI_Controller.SliderHP.value = Hp;
+            _uI_Controller.MaxHP.text = Hp.ToString();
+            _uI_Controller.CurrentHP.text = Hp.ToString();
+        }
+    }
 }
