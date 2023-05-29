@@ -1,3 +1,6 @@
+using Cysharp.Threading.Tasks;
+using System;
+using System.Threading.Tasks;
 using TDShooter.enums;
 using UnityEngine;
 
@@ -11,6 +14,13 @@ namespace TDShooter.Characters
         public void StepSound()
         {
             Debug.Log("Step");//todo заменить на звук
+        }
+
+        public async UniTask ThrowAnimationAsync()
+        {
+            _animator.SetBool("Throwing", true);
+            await UniTask.Delay(TimeSpan.FromSeconds(1f));
+            _animator.SetBool("Throwing", false);
         }
 
         private void Start()

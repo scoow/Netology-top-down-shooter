@@ -4,6 +4,7 @@ using TDShooter.UI;
 using TDShooter.enums;
 using TDShooter.Characters;
 using Zenject;
+using Cysharp.Threading.Tasks;
 
 namespace TDShooter.Input
 {
@@ -60,8 +61,11 @@ namespace TDShooter.Input
 
         private void ThrowGrenade()
         {
-            var grenade = _projectilesManager.GrenadePool[GrenadeType.Explosive].GetAviableOrCreateNew();
+            Grenade grenade = _projectilesManager.GrenadePool[GrenadeType.Explosive].GetAviableOrCreateNew();
             grenade.transform.SetPositionAndRotation(transform.position, transform.rotation);
+
+            Cysharp.Threading.Tasks.UniTask throwing = _animControl.ThrowAnimationAsync();
+
             grenade.Throw(_aim.transform.position);
         }
 
