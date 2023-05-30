@@ -1,7 +1,8 @@
 using TDShooter.enums;
 using TDShooter.EventManager;
+using TDShooter.UI;
 using UnityEngine;
-
+using Zenject;
 
 namespace TDShooter.Managers
 {
@@ -11,7 +12,8 @@ namespace TDShooter.Managers
         [SerializeField] private int _currentKillsCount; //текущие убийства 
         [SerializeField] private int _targetKillsCount; //колиичество убийств для повышения уровня
         [SerializeField] private int _chanceDroopLoot; //шанс выпадения лута
-        [SerializeField] private UI_Controller _controllerUI;
+        [Inject]
+        private UI_Controller _controllerUI;
         public int ChanceDroopLoot => _chanceDroopLoot;
 
         public int LevelCount { get; private set; }
@@ -52,13 +54,11 @@ namespace TDShooter.Managers
             }
         }
 
-
         private void Start()
         {            
             _controllerUI.UpdateView(0, UpdateViewType.CurrentKills);
             _controllerUI.UpdateView(_targetKillsCount, UpdateViewType.TargetKills);
         }
-
 
         public int CheckChance()
         {

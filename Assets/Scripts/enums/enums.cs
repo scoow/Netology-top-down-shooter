@@ -42,6 +42,8 @@ namespace TDShooter.enums
     }
     public enum WeaponType
     {
+        Sword,
+        Pistol,
         Machinegun,
         Plasmagun
     }
@@ -49,5 +51,13 @@ namespace TDShooter.enums
     {
         Explosive,
         Molotov—ocktail
+    }
+    public enum UpdateViewType
+    {
+        CurrentKills,
+        TargetKills,
+        LevelUp,
+        UpdateHP,
+        UpdateAmmo
     }
 }

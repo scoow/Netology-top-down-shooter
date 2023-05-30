@@ -12,6 +12,22 @@ namespace TDShooter.Weapons
         private readonly ProjectilesManager _projectilesManager;
         [Inject]
         private readonly WeaponChanger _weaponChanger;
+        [Inject]
+        private UI_Controller _controllerUI;
+        private int _ammo = 99;
+        private int Ammo
+        {
+            get => _ammo;
+            set
+            {
+
+                if (value < 0)
+                    _ammo = 0;
+                else
+                    _ammo = value;
+            }
+        }
+
         private void Start()
         {
             _shootingPoint = GetComponentInChildren<ShootingPoint>();
@@ -19,6 +35,8 @@ namespace TDShooter.Weapons
         public void Shoot()
         {
             Bullet projectile = null;
+            Ammo -= 1;
+            _controllerUI.UpdateView(Ammo, UpdateViewType.UpdateAmmo);
             switch ((_weaponChanger.CurrentWeaponType))//выбор типа снаряда
             {
                 case WeaponType.Machinegun:

@@ -1,7 +1,8 @@
+using TDShooter.enums;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace TDShooter
+namespace TDShooter.UI
 {
     public class UI_Controller : MonoBehaviour
     {
@@ -12,6 +13,7 @@ namespace TDShooter
         [SerializeField] private Text _levelValue;
         [SerializeField] private Slider _progressBarValue;
         [SerializeField] private Slider _sliderHP;
+        [SerializeField] private Text _currentAmmo;
 
         public Slider SliderHP { get => _sliderHP; set => _sliderHP = value; }
         public Text MaxHP { get => _maxHP; set => _maxHP = value; }
@@ -38,14 +40,10 @@ namespace TDShooter
                     CurrentHP.text = incomingValue.ToString();
                     _sliderHP.value -= incomingValue;
                     break;
+                case UpdateViewType.UpdateAmmo:
+                    _currentAmmo.text = incomingValue.ToString();
+                    break;
             }
         }
-    }
-    public enum UpdateViewType
-    {
-        CurrentKills,
-        TargetKills,
-        LevelUp,
-        UpdateHP
     }
 }

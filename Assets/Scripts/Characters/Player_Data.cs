@@ -1,3 +1,4 @@
+using TDShooter.UI;
 using UnityEngine;
 
 namespace TDShooter.Configs
