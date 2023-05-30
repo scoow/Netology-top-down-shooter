@@ -1,3 +1,4 @@
+using TDShooter.Configs;
 using TDShooter.enums;
 using UnityEngine;
 
@@ -9,18 +10,18 @@ namespace TDShooter.UI
         [SerializeField] private Ability _armor;
         [SerializeField] private Ability _gloves;
 
-        public void ResetAbylityTimeView(EffectType effectType, float effectTime)
+        public void ResetAbylityTimeView(LootData_SO currentLootData_SO)
         {
-            switch (effectType)
+            switch (currentLootData_SO.EffectType)
             {
                 case EffectType.SpeedMove:
-                    _speed.ScaleTime(effectTime);
+                    _speed.ScaleTime(currentLootData_SO.EffectTime);
                     break;               
                 case EffectType.Armor:
-                    _armor.ScaleTime(effectTime);
+                    _armor.ScaleTime(currentLootData_SO.EffectTime);
                     break;
                 case EffectType.MissChance:
-                    _gloves.ScaleTime(effectTime);
+                    _gloves.ScaleTime(currentLootData_SO.EffectTime);
                     break;                
             }
         }

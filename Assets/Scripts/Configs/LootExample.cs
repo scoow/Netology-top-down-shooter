@@ -10,29 +10,30 @@ namespace TDShooter
     {
         private List<LootData_SO> _arrayLootData_SO;
         [SerializeField] private SpriteRenderer _spriteCurrentLoot;        
-        private int _currentEffectIndex;
-        private EffectType _currentEffectType;
-        //private string _currentLootName;
-        private float _currentEffectTime;        
-        //private LootData 
+        //private EffectType _currentEffectType;        
+        //private float _currentEffectTime;
+        private LootData_SO _currentLoot;
 
 
-        private void OnEnable()
+        private void Awake()
         {
             _arrayLootData_SO = FindAnyObjectByType<LootController>().Loots;
-            _currentEffectIndex = Random.Range(0, _arrayLootData_SO.Capacity);            
-            _spriteCurrentLoot.sprite = _arrayLootData_SO[_currentEffectIndex].SpriteLoot;
-            _currentEffectType = _arrayLootData_SO[_currentEffectIndex].EffectType;
-            //_currentLootName = _arrayLootData_SO[_currentEffectIndex].LootName;
-            _currentEffectTime = _arrayLootData_SO[_currentEffectIndex].EffectTime;
         }
+
+        private void OnEnable()
+        {            
+            _currentLoot = _arrayLootData_SO[Random.Range(0, _arrayLootData_SO.Capacity)];
+            _spriteCurrentLoot.sprite = _currentLoot.SpriteLoot;
+            //_currentEffectType = currentLootData_SO.EffectType;            
+            //_currentEffectTime = currentLootData_SO.EffectTime;
+        }       
 
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out PlayerControl playerControl))
+            if (other.TryGetComponent(out Player_Modify _player_Modify))
             {
-                playerControl.TakeLoot(_currentEffectType, _currentEffectTime);
+                _player_Modify.TakeLoot(_currentLoot);
                 gameObject.SetActive(false);
             }            
         }

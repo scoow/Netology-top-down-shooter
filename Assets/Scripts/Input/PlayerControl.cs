@@ -5,6 +5,7 @@ using TDShooter.enums;
 using TDShooter.Characters;
 using Zenject;
 using Cysharp.Threading.Tasks;
+using TDShooter.Configs;
 
 namespace TDShooter.Input
 {
@@ -29,8 +30,7 @@ namespace TDShooter.Input
         [Inject]
         private readonly ProjectilesManager _projectilesManager;
 
-        //[SerializeField] private GameObject _grenade;
-        [SerializeField] private Ability_Controller _ability_Controller;
+        //[SerializeField] private GameObject _grenade;       
         //private DirectionState directionMove = DirectionState.Idle;
 
         public float Speed { get => _speed; private set => _speed = value; } 
@@ -130,13 +130,6 @@ namespace TDShooter.Input
         {
             _controls.Player.Disable();
         }
-
-        public void TakeLoot(EffectType effectType, float effectTime)
-        {
-            _ability_Controller.ResetAbylityTimeView(effectType, effectTime);
-            //Debug.Log($"Я подобрал {lootName}");
-        }
-
     }
 
 /*    public enum DirectionState
