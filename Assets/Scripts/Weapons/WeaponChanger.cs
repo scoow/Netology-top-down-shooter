@@ -13,6 +13,10 @@ namespace TDShooter.UI
 
         [SerializeField] GameObject _machineGun;
         [SerializeField] GameObject _plasmaGun;
+        private void Awake()
+        {
+            CurrentWeaponType = WeaponType.Machinegun;
+        }
         /// <summary>
         /// Смена модельки и спрайта оружия
         /// </summary>
