@@ -35,7 +35,8 @@ namespace TDShooter.Characters
 
         public void Respawn(/*int maxHP*/)
         {
-            _character_Data.Hp = _character_Data.CharacterData_SO.Health;
+            _character_Data.CurrentHP = _character_Data.CharacterData_SO.Health;
+            _character_UI.SliderHP.value = _character_Data.CurrentHP;
             _enemyMove.SetNewTarget(_playerControl.transform);
             _enemyMove.MaxSpeed = 5f;//реяр
         }
