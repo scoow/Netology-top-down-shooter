@@ -12,6 +12,7 @@ namespace TDShooter.Configs
         /* [SerializeField] private float _effectValue;*/
         [SerializeField] private float _baseDamage;
         [SerializeField] private float _rateOfFire;
+        [SerializeField] private float _maxAmmoCount;
         [SerializeField] private PojectileData_SO _projectileData;
 
         /// <summary>
@@ -28,6 +29,7 @@ namespace TDShooter.Configs
         public float DropChance => _dropChance;
         public float BaseDamage => _baseDamage;
         public float RateOfFire => _rateOfFire;
+        public float MaxAmmoCount => _maxAmmoCount;
         public PojectileData_SO ProjectileData => _projectileData;
     }
 }
