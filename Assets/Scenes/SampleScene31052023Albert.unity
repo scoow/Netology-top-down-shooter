@@ -7686,13 +7686,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db2d5881425d964fbe4398b0e709498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHP: {fileID: 410427765}
-  _currentHP: {fileID: 176407079}
   _currentKills: {fileID: 1442627425}
   _targetKills: {fileID: 2119403298}
   _levelValue: {fileID: 2068781998}
   _progressBarValue: {fileID: 2018877604}
-  _sliderHP: {fileID: 1395056665}
   _currentAmmo: {fileID: 107916527}
 --- !u!224 &652062587
 RectTransform:
@@ -9034,6 +9031,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterData_SO: {fileID: 11400000, guid: 4563f1986464f794e97063422a2230b1, type: 2}
   _uI_Controller: {fileID: 652062586}
+  _playerUI: {fileID: 991209316}
+  _playerCharacter: {fileID: 991209317}
 --- !u!114 &991209316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9047,6 +9046,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sliderHP: {fileID: 1395056665}
+  _maxHP: {fileID: 410427765}
+  _currentHP: {fileID: 176407079}
+  _playerData: {fileID: 991209315}
 --- !u!114 &991209317
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,9 +9,7 @@ namespace TDShooter
     public class LootExample : MonoBehaviour
     {
         private List<LootData_SO> _arrayLootData_SO;
-        [SerializeField] private SpriteRenderer _spriteCurrentLoot;        
-        //private EffectType _currentEffectType;        
-        //private float _currentEffectTime;
+        [SerializeField] private SpriteRenderer _spriteCurrentLoot;
         private LootData_SO _currentLoot;
 
 
@@ -23,9 +21,7 @@ namespace TDShooter
         private void OnEnable()
         {            
             _currentLoot = _arrayLootData_SO[Random.Range(0, _arrayLootData_SO.Capacity)];
-            _spriteCurrentLoot.sprite = _currentLoot.SpriteLoot;
-            //_currentEffectType = currentLootData_SO.EffectType;            
-            //_currentEffectTime = currentLootData_SO.EffectTime;
+            _spriteCurrentLoot.sprite = _currentLoot.SpriteLoot;            ;
         }       
 
 

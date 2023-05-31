@@ -59,5 +59,5 @@ namespace TDShooter.enums
         LevelUp,
         UpdateHP,
         UpdateAmmo
-    }
+    }    
 }

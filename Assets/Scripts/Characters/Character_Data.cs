@@ -14,6 +14,9 @@ namespace TDShooter.Configs
         private float _criticalDamageChance;
         private ÑharacterType _ñharacterType;
 
+        private int maxHP;
+        private int currentHP;
+
         public int Hp { get => _hp; set => _hp = value; }
         public float Armor { get => _armor; private set => _armor = value; }
         public float SpeedMove { get => _speedMove; private set => _speedMove = value; }
@@ -22,10 +25,14 @@ namespace TDShooter.Configs
         public ÑharacterType ÑharacterType { get => _ñharacterType; private set => _ñharacterType = value; }
         public ÑharacterData_SO CharacterData_SO { get => _characterData_SO; }
         public int Damage { get => _damage; private set => _damage = value; }
+        public int MaxHP { get => maxHP; set => maxHP = value; }
+        public int CurrentHP { get => currentHP; set => currentHP = value; }
 
         protected virtual void Awake()
         {
             Hp = CharacterData_SO.Health;
+            MaxHP = Hp;
+            CurrentHP = Hp;
             Damage = CharacterData_SO.Damage;
             Armor = CharacterData_SO.Armor;
             SpeedMove = CharacterData_SO.SpeedMove;

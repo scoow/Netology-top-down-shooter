@@ -46,8 +46,8 @@ public class Player_Modify : MonoBehaviour
         {
             timer -= 1;
 
-            _playerData.Hp += hpBonus;
-            _player_UI.UpdateView(-hpBonus); // TODO переделать метод для приёма урона и лечения 
+            _playerData.CurrentHP += hpBonus;
+            _player_UI.UpdateViewHealth(hpBonus, true);
             await Task.Delay(500);
         }
     }

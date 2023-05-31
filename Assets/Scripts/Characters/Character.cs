@@ -9,7 +9,7 @@ namespace TDShooter.Characters
     public class Character : MonoBehaviour, IHaveHP
     {    
         [SerializeField] protected Character_Data _character_Data;
-        [SerializeField] protected Character_UI _character_UI;       
+        [SerializeField] protected Character_UI _character_UI;        
         public int HP => _character_Data.Hp;        
        
         public virtual void Die()
@@ -18,15 +18,16 @@ namespace TDShooter.Characters
         }
         public void TakeDamage(int damage)
         {
-            _character_Data.Hp -= damage;
-            _character_UI.UpdateView(damage);
+            _character_Data.CurrentHP -= damage;
+            _character_UI.UpdateViewHealth(damage,false);
             //Debug.Log("HP осталось:" + _hp);
-            if (_character_Data.Hp <= 0)
+            if (_character_Data.CurrentHP <= 0)
                 Die();
         }
         public void TakeHeal(int heal)
         {
-            _character_Data.Hp += heal;
+            _character_Data.CurrentHP += heal;
+            _character_UI.UpdateViewHealth(heal,true);
         }
     }
 }

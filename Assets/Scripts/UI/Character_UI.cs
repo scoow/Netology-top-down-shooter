@@ -7,10 +7,11 @@ public class Character_UI : MonoBehaviour
 {
     [SerializeField] private Slider _sliderHP;    
 
-    public Slider SliderHP { get => _sliderHP; set => _sliderHP = value; }   
+    public Slider SliderHP { get => _sliderHP;}   
 
-    public void UpdateView(int damage)
+    public virtual void UpdateViewHealth(int addedValueHP, bool isPositive)
     {
-        _sliderHP.value -= damage;
+        if (isPositive) _sliderHP.value += addedValueHP;
+        else _sliderHP.value -= addedValueHP;
     }
 }
