@@ -1,6 +1,10 @@
+using System;
 using System.Collections;
+using System.Threading.Tasks;
+using TDShooter.Configs;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject.SpaceFighter;
 
 namespace TDShooter
 {
@@ -13,21 +17,15 @@ namespace TDShooter
             _effectMarker = GetComponentInChildren<Effect_Marker>().GetComponent<Image>();
         }
 
-        public void ScaleTime(float incomingValue)
-        {
-            StartCoroutine(TimeScale(incomingValue));
-        }
-
-
-
-        IEnumerator TimeScale(float timer)
+        public async Task ScaleTime(float incomingValue) //модифицируем здоровье
         {
             _effectMarker.fillAmount = 0f;
+            var timer = incomingValue;            
             while (timer > 0)
-            {
-                yield return new WaitForSeconds(0.5f);
-                _effectMarker.fillAmount += 0.1f;
-                timer -= 0.1f;
+            {                              
+                await Task.Delay(1000);
+                _effectMarker.fillAmount += 1/incomingValue;
+                timer -= 1;
             }
         }
     }

@@ -8417,9 +8417,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5368a440ac4e73e4d8e855371fb2c978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: {fileID: 933773782}
-  _armor: {fileID: 1339282884}
-  _gloves: {fileID: 1922946276}
+  _speedView: {fileID: 933773782}
+  _armorView: {fileID: 1339282884}
+  _glovesView: {fileID: 1922946276}
 --- !u!4 &922663187 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1758173498503484280, guid: 1146d3e8797ba0f459b3b1c529c18214, type: 3}
