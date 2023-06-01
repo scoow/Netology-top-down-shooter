@@ -47,6 +47,7 @@ public class Player_Modify : MonoBehaviour
             timer -= 1;
 
             _playerData.CurrentHP += hpBonus;
+            if(_playerData.CurrentHP > _playerData.MaxHP) _playerData.CurrentHP = _playerData.MaxHP;
             _player_UI.UpdateViewHealth(hpBonus, true);
             await Task.Delay(500);
         }
