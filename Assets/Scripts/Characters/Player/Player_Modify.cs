@@ -26,7 +26,7 @@ public class Player_Modify : MonoBehaviour
                 ModifyArmor(currentLootData_SO);
                 break;
             case TDShooter.enums.EffectType.SpeedMove:
-                ModifyMove(currentLootData_SO);
+                _ = ModifyMove(currentLootData_SO);
                 break;
             case TDShooter.enums.EffectType.MissChance:
                 break;
@@ -58,10 +58,10 @@ public class Player_Modify : MonoBehaviour
 
     }
 
-    private void ModifyMove(LootData_SO currentLootData)//модифицируем движение
+    private async Task ModifyMove(LootData_SO currentLootData)//модифицируем движение
     {
-
+        _playerData.SpeedMove = currentLootData.EffectValue;
+        await Task.Delay(Convert.ToInt32(currentLootData.EffectTime * 1000));
+        _playerData.SpeedMove = _playerData.CharacterData_SO.SpeedMove;
     }
-
-
 }

@@ -19,8 +19,8 @@ namespace TDShooter.Configs
 
         public int Hp { get => _hp; set => _hp = value; }
         public float Armor { get => _armor; private set => _armor = value; }
-        public float SpeedMove { get => _speedMove; private set => _speedMove = value; }
-        public float MissChance { get => _missChance; private set => _missChance = value; }
+        public float SpeedMove { get => _speedMove; set => _speedMove = value; }
+        public float MissChance { get => _missChance; set => _missChance = value; }
         public float CriticalDamageChance { get => _criticalDamageChance; private set => _criticalDamageChance = value; }
         public ÑharacterType ÑharacterType { get => _ñharacterType; private set => _ñharacterType = value; }
         public ÑharacterData_SO CharacterData_SO { get => _characterData_SO; }

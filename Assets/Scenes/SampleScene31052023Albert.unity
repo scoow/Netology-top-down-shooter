@@ -8963,6 +8963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bf60cecf4f44f74a8849d561229ba0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerData: {fileID: 991209315}
   _playerHead: {fileID: 575208318}
   _playerBody: {fileID: 991209314}
   _speed: 3

@@ -16,5 +16,5 @@ MonoBehaviour:
   _spriteLoot: {fileID: 21300000, guid: 60116fee6323ec54894f062e03d43add, type: 3}
   _dropChance: 30
   _effectType: 2
-  _effectValue: 20
+  _effectValue: 5
   _effectTime: 10
