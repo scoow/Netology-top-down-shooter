@@ -8,7 +8,7 @@ namespace TDShooter.Configs
         [SerializeField] private ÑharacterData_SO _characterData_SO;
         private int _hp;
         private int _damage;
-        private float _armor;
+        private int _armor;
         private float _speedMove;
         private float _missChance;
         private float _criticalDamageChance;
@@ -18,7 +18,7 @@ namespace TDShooter.Configs
         private int currentHP;
 
         public int Hp { get => _hp; set => _hp = value; }
-        public float Armor { get => _armor; private set => _armor = value; }
+        public int Armor { get => _armor; set => _armor = value; }
         public float SpeedMove { get => _speedMove; set => _speedMove = value; }
         public float MissChance { get => _missChance; set => _missChance = value; }
         public float CriticalDamageChance { get => _criticalDamageChance; private set => _criticalDamageChance = value; }

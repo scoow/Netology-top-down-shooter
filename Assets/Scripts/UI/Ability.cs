@@ -17,7 +17,7 @@ namespace TDShooter
             _effectMarker = GetComponentInChildren<Effect_Marker>().GetComponent<Image>();
         }
 
-        public async Task ScaleTime(float incomingValue) //модифицируем здоровье
+        public async void ScaleTime(float incomingValue) //модифицируем здоровье
         {
             _effectMarker.fillAmount = 0f;
             var timer = incomingValue;            

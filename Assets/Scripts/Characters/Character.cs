@@ -18,7 +18,9 @@ namespace TDShooter.Characters
         }
         public void TakeDamage(int damage)
         {
-            _character_Data.CurrentHP -= damage;
+            int incomingDamage = damage - _character_Data.Armor;
+            if (incomingDamage <= 0) return;
+            _character_Data.CurrentHP -= incomingDamage;
             _character_UI.UpdateViewHealth(damage,false);
             //Debug.Log("HP осталось:" + _hp);
             if (_character_Data.CurrentHP <= 0)

@@ -11,7 +11,8 @@ namespace TDShooter.Weapons//перенести в глобальный namespace, использовать повт
         private void OnEnable()
         {
             _lifeTimeLeft = _lifeTime;
-        }
+        }        
+
         private void Update()
         {
             _lifeTimeLeft -= Time.deltaTime;

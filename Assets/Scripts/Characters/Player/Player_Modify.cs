@@ -23,7 +23,7 @@ public class Player_Modify : MonoBehaviour
                 _ = ModifyHealt(currentLootData_SO);
                 break;
             case TDShooter.enums.EffectType.Armor:
-                ModifyArmor(currentLootData_SO);
+                _ = ModifyArmor(currentLootData_SO);
                 break;
             case TDShooter.enums.EffectType.SpeedMove:
                 _ = ModifyMove(currentLootData_SO);
@@ -49,14 +49,16 @@ public class Player_Modify : MonoBehaviour
             _playerData.CurrentHP += hpBonus;
             if(_playerData.CurrentHP > _playerData.MaxHP) _playerData.CurrentHP = _playerData.MaxHP;
             _player_UI.UpdateViewHealth(hpBonus, true);
-            await Task.Delay(500);
+            await Task.Delay(1000);
         }
     }
 
     
-    private void ModifyArmor(LootData_SO currentLootData)//модифицируем броню
-    {
-
+    private async Task ModifyArmor(LootData_SO currentLootData)//модифицируем броню
+    {        
+        _playerData.Armor += Convert.ToInt32(currentLootData.EffectValue);
+        await Task.Delay(Convert.ToInt32(currentLootData.EffectTime * 1000));
+        _playerData.Armor = _playerData.CharacterData_SO.Armor;       
     }
 
     private async Task ModifyMove(LootData_SO currentLootData)//модифицируем движение

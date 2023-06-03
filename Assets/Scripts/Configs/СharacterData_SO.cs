@@ -10,7 +10,7 @@ namespace TDShooter
         //[SerializeField] private GameObject _prefabCharacter;
         [SerializeField] private int _hp;
         [SerializeField] private int _damage;
-        [SerializeField] private float _armor;
+        [SerializeField] private int _armor;
         [SerializeField] private float _speedMove;
         [SerializeField] private float _missChance;
         [SerializeField] private float _criticalDamageChance;        
@@ -29,7 +29,7 @@ namespace TDShooter
         /// <summary>
         /// броня
         /// </summary>
-        public float Armor => _armor;
+        public int Armor => _armor;
         /// <summary>
         /// скорость передвижения
         /// </summary>

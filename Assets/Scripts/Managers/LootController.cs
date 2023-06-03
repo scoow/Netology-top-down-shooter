@@ -22,7 +22,7 @@ namespace TDShooter
         private void Start()
         {
             _lootContainer = FindObjectOfType<LootContainer>().transform;
-            InitLootPool();
+            //InitLootPool();
         }
 
         private void InitLootPool()
