@@ -1,10 +1,9 @@
 using System.Collections.Generic;
-using TDShooter.Characters;
 using TDShooter.Configs;
 using TDShooter.enums;
-using TDShooter.Input;
 using TDShooter.Pools;
 using UnityEngine;
+using Zenject;
 
 namespace TDShooter
 {
@@ -12,22 +11,25 @@ namespace TDShooter
     {
         [SerializeField] private List<LootData_SO> _arreyLootData_SO;        
 
-        public List<LootData_SO> Loots => _arreyLootData_SO;
+        public List<LootData_SO> Loots => _arreyLootData_SO;//Сделать readonlyList
         /// <summary>
         /// Пул
         /// </summary>
         private readonly Dictionary<EffectType, LootPool> _lootPool = new();
-        private Transform _lootContainer;
+
+        [Inject]
+        private LootContainer _lootContainer;
+        private Transform _lootContainerTransform;
 
         private void Start()
         {
-            _lootContainer = FindObjectOfType<LootContainer>().transform;
+            _lootContainerTransform = _lootContainer.transform;
             //InitLootPool();
         }
 
         private void InitLootPool()
         {
-            _lootPool.Add(EffectType.Health, new(Resources.Load<LootExample>("Prefabs/"), EffectType.Health, _lootContainer));
+            _lootPool.Add(EffectType.Health, new(Resources.Load<LootExample>("Prefabs/"), EffectType.Health, _lootContainerTransform));
         }
     }
 }

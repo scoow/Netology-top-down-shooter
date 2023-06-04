@@ -17,8 +17,6 @@ namespace TDShooter.Input
         private Controls _controls;
         [SerializeField]
         private float _speed;
-        private Weapon _weapon;//ссылка на оружие игрока. В будующем убрать ссылку в отдельный класс Player
-                               // [SerializeField]
         [Inject]
         private readonly Aim_Marker _aim;
         [SerializeField]
@@ -27,6 +25,7 @@ namespace TDShooter.Input
         private AudioClip _oneShotSound;
         [SerializeField]
         private Animator_Controller _animControl;
+        [Inject]
         private WeaponChanger _weaponChanger;
         [Inject]
         private readonly ProjectilesManager _projectilesManager;
@@ -45,9 +44,7 @@ namespace TDShooter.Input
             _controls.Player.Enable();
             _controls.Player.Shoot.performed += contecxt => Fire();
 
-            _weapon = GetComponentInChildren<Weapon>();
-            _weaponChanger = FindObjectOfType<WeaponChanger>();
-            //_animControl = GetComponent<Animator_Controller>();
+           //_animControl = GetComponent<Animator_Controller>();
             _controls.Player.WeaponSwitchMachineGun.performed += context => _weaponChanger.ChangeWeapon(WeaponType.Machinegun);
             _controls.Player.WeaponSwitchPlasmaGun.performed += context => _weaponChanger.ChangeWeapon(WeaponType.Plasmagun);
             _controls.Player.ThrowGrenade.performed += context => ThrowGrenade();

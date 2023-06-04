@@ -42,6 +42,7 @@ namespace TDShooter.Weapons
             get => _ammo;
             set
             {
+                _ammo--;
                 Mathf.Clamp(_ammo, 0, _maxAmmoCount);
             }
         }
@@ -58,9 +59,8 @@ namespace TDShooter.Weapons
         private void Update()
         {
             _shootTimer -= Time.deltaTime;
-            if (_isShooting)
+            if (_isShooting && _ammo > 0)
                 CreateProjectile();
-
         }
         public void Shoot()
         {

@@ -42,7 +42,7 @@ namespace TDShooter.Enemies
         protected override void Start()
         {
             base.Start();
-            _playerControl = FindObjectOfType<PlayerControl>();
+           // _playerControl = FindObjectOfType<PlayerControl>();
             SetNewTarget(_playerControl.transform);
         }
         private void Update()

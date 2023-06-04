@@ -1,5 +1,8 @@
 using UnityEngine;
 
-public class LootContainer : MonoBehaviour
+namespace TDShooter.Pools
 {
+    public class LootContainer : MonoBehaviour
+    {
+    }
 }

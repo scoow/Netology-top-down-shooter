@@ -1,21 +1,21 @@
 using System.Collections.Generic;
-using TDShooter.enums;
-using TDShooter.Input;
 using UnityEngine;
 using TDShooter.Configs;
+using Zenject;
 
 namespace TDShooter
 {
     public class LootExample : MonoBehaviour
     {
+        [Inject]
+        private readonly LootController _lootController;
         private List<LootData_SO> _arrayLootData_SO;
         [SerializeField] private SpriteRenderer _spriteCurrentLoot;
         private LootData_SO _currentLoot;
 
-
         private void Awake()
         {
-            _arrayLootData_SO = FindAnyObjectByType<LootController>().Loots;
+            _arrayLootData_SO = _lootController.Loots;
         }
 
         private void OnEnable()

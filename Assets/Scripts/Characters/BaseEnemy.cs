@@ -22,7 +22,7 @@ namespace TDShooter.Characters
             _enemyMove = GetComponent<EnemyMove>();
             _playerControl = FindObjectOfType<PlayerControl>();
             _capsuleCollider = GetComponent<CapsuleCollider>();
-            _subscribeManager = FindObjectOfType<SubscribeManager>();//разобраться почему не находит ссылку  
+            _subscribeManager = FindObjectOfType<SubscribeManager>();//добавить инъекцию от пула 
         }
 
         private void Start()

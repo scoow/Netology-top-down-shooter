@@ -25,7 +25,7 @@ namespace TDShooter.Level
             tempArray = new Tile_Marker[_gridSize];
             //находим компоненты Tile_Marker на сцене и упорядочиваем их по номеру
             List<Tile_Marker> list = new();
-            list = FindObjectsOfType<Tile_Marker>().ToList();
+            list = FindObjectsOfType<Tile_Marker>().ToList();//zenject
             list.Sort((x, y) => x.Number.CompareTo(y.Number));
             //затем добавляем их в массив
             for (int i = 0; i < _gridSize; i++)

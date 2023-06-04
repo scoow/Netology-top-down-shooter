@@ -31,7 +31,7 @@ namespace TDShooter.Characters
 
         private void Start()
         {
-            _unitSpawners = FindObjectsOfType<EnemiesSpawner>().ToList();
+            _unitSpawners = FindObjectsOfType<EnemiesSpawner>().ToList();//zenject
             _timer = _enemySpawnCooldown;
             InitEnemyPool();
         }

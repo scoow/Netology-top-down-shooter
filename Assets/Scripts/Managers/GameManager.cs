@@ -2,6 +2,7 @@ using TDShooter.Characters;
 using TDShooter.EventManager;
 using TDShooter.Input;
 using TDShooter.Level;
+using TDShooter.Pools;
 using TDShooter.UI;
 using TDShooter.Weapons;
 using UnityEngine;
@@ -22,16 +23,9 @@ namespace TDShooter.Managers.GameManager
         private WeaponChanger _weaponChanger;
         private PlayerControl _playerControl;
         private UI_Controller _controllerUI;
+        private LootController _lootController;
+        private LootContainer _lootContainer;
 
-        /*        private void Awake()//убрать синглтон
-                {
-                    if (Instance != null && Instance != this)
-                    {
-                        Destroy(this);
-                        return;
-                    }
-                    Instance = this;
-                }*/
         /// <summary>
         /// Внедрение зависимостей
         /// </summary>
@@ -48,6 +42,8 @@ namespace TDShooter.Managers.GameManager
             _weaponChanger = FindObjectOfType<WeaponChanger>();
             _playerControl = FindObjectOfType<PlayerControl>();
             _controllerUI = FindObjectOfType<UI_Controller>();
+            _lootController = FindObjectOfType<LootController>();
+            _lootContainer = FindObjectOfType<LootContainer>();
 
             #endregion
             #region Добавление ссылок в DI контейнер
@@ -61,6 +57,8 @@ namespace TDShooter.Managers.GameManager
             Container.BindInstance(_weaponChanger).AsSingle();
             Container.BindInstance(_playerControl).AsSingle();
             Container.BindInstance(_controllerUI).AsSingle();
+            Container.BindInstance(_lootController).AsSingle();
+            Container.BindInstance(_lootContainer).AsSingle();
 
             #endregion
         }
