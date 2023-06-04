@@ -9,9 +9,9 @@ namespace TDShooter
 {
     public class LootController : MonoBehaviour//todo добавить пул лута
     {
-        [SerializeField] private List<LootData_SO> _arreyLootData_SO;        
+        [SerializeField] private List<LootData_SO> _arrayLootData_SO;        
 
-        public List<LootData_SO> Loots => _arreyLootData_SO;//Сделать readonlyList
+        public List<LootData_SO> Loots => _arrayLootData_SO;//Сделать readonlyList
         /// <summary>
         /// Пул
         /// </summary>
@@ -24,12 +24,23 @@ namespace TDShooter
         private void Start()
         {
             _lootContainerTransform = _lootContainer.transform;
-            //InitLootPool();
+            InitLootPool();
+        }
+
+        public void SpawnRandomLoot(Vector3 position)
+        {
+            LootData_SO _currentLoot = _arrayLootData_SO[Random.Range(0, _arrayLootData_SO.Capacity)];
+            EffectType effectType = _currentLoot.EffectType;
+            LootExample newLoot = _lootPool[effectType].GetAviableOrCreateNew();
+            newLoot.transform.position = position;
         }
 
         private void InitLootPool()
         {
-            _lootPool.Add(EffectType.Health, new(Resources.Load<LootExample>("Prefabs/"), EffectType.Health, _lootContainerTransform));
+            _lootPool.Add(EffectType.Health, new(Resources.Load<LootExample>("Prefabs/LootExample"), EffectType.Health, _lootContainerTransform, this));
+            _lootPool.Add(EffectType.MoveSpeed, new(Resources.Load<LootExample>("Prefabs/LootExample"), EffectType.MoveSpeed, _lootContainerTransform, this));
+            _lootPool.Add(EffectType.Armor, new(Resources.Load<LootExample>("Prefabs/LootExample"), EffectType.Armor, _lootContainerTransform, this));
+            _lootPool.Add(EffectType.MissChance, new(Resources.Load<LootExample>("Prefabs/LootExample"), EffectType.MissChance, _lootContainerTransform, this));
         }
     }
 }

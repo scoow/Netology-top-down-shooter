@@ -15,7 +15,7 @@ namespace TDShooter.Characters
         private CapsuleCollider _capsuleCollider;
         private EnemyMove _enemyMove;
         private PlayerControl _playerControl;
-
+        private LootController _lootController;
 
         private void Awake()
         {
@@ -23,6 +23,8 @@ namespace TDShooter.Characters
             _playerControl = FindObjectOfType<PlayerControl>();
             _capsuleCollider = GetComponent<CapsuleCollider>();
             _subscribeManager = FindObjectOfType<SubscribeManager>();//добавить инъекцию от пула 
+
+            _lootController = FindObjectOfType<LootController>();
         }
 
         private void Start()
@@ -49,8 +51,9 @@ namespace TDShooter.Characters
         {
             if (_playerProgress.CheckChance() < _playerProgress.ChanceDroopLoot)
             {
-                LootExample loot = Instantiate(_exampleLoot);
-                loot.transform.position = transform.position;
+                _lootController.SpawnRandomLoot(transform.position);
+/*                LootExample loot = Instantiate(_exampleLoot);
+                loot.transform.position = transform.position;*/
             }
             _subscribeManager.PostNotification(enums.GameEventType.EnemyDied, this);
 

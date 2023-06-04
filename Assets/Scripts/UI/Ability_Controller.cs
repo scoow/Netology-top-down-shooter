@@ -14,7 +14,7 @@ namespace TDShooter.UI
         {
             switch (currentLootData_SO.EffectType)
             {
-                case EffectType.SpeedMove:
+                case EffectType.MoveSpeed:
                      _speedView.ScaleTime(currentLootData_SO.EffectTime);
                     break;               
                 case EffectType.Armor:                    

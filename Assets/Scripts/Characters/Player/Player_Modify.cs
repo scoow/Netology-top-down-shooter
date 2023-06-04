@@ -26,7 +26,7 @@ public class Player_Modify : MonoBehaviour
             case TDShooter.enums.EffectType.Armor:
                 _ = ModifyArmor(currentLootData_SO);
                 break;
-            case TDShooter.enums.EffectType.SpeedMove:
+            case TDShooter.enums.EffectType.MoveSpeed:
                 _ = ModifyMove(currentLootData_SO);
                 break;
             case TDShooter.enums.EffectType.MissChance:

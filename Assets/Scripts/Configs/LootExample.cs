@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using TDShooter.Configs;
 
@@ -6,30 +5,20 @@ namespace TDShooter
 {
     public class LootExample : MonoBehaviour
     {
-        private LootController _lootController;
-        private List<LootData_SO> _arrayLootData_SO;
+        private LootData_SO _LootData_SO;
         [SerializeField] private SpriteRenderer _spriteCurrentLoot;
-        private LootData_SO _currentLoot;
 
-        private void Awake()
+        public void LoadLootData(LootData_SO lootData_SO)
         {
-            _lootController = FindObjectOfType<LootController>();
-            _arrayLootData_SO = _lootController.Loots;
+            _LootData_SO = lootData_SO;
+            _spriteCurrentLoot.sprite = _LootData_SO.SpriteLoot;
         }
-
-        private void OnEnable()
-        {            
-            //_currentLoot = _arrayLootData_SO[Random.Range(0, _arrayLootData_SO.Capacity)];
-            _currentLoot = _arrayLootData_SO[0];
-            _spriteCurrentLoot.sprite = _currentLoot.SpriteLoot;            ;
-        }       
-
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out Player_Modify _player_Modify))
             {
-                _player_Modify.TakeLoot(_currentLoot);
+                _player_Modify.TakeLoot(_LootData_SO);
                 gameObject.SetActive(false);
             }            
         }

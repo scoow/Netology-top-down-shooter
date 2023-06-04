@@ -19,7 +19,7 @@ namespace TDShooter.enums
     {
         Health,
         Armor,
-        SpeedMove,
+        MoveSpeed,
         MissChance,
         CriticalDamageChance,
         Weapon
