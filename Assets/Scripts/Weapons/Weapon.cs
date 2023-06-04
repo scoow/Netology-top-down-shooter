@@ -18,7 +18,7 @@ namespace TDShooter.Weapons
         [Inject]
         private readonly UI_Controller _controllerUI;
 
-        private int _ammo = 99;
+        private int _ammo = 9999;
 
         private string _weaponName;
         private Sprite _spriteWeapon;

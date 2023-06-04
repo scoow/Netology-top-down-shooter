@@ -26,7 +26,7 @@ namespace TDShooter.Input
         [SerializeField]
         private Animator_Controller _animControl;
         [Inject]
-        private WeaponChanger _weaponChanger;
+        private readonly WeaponChanger _weaponChanger;
         [Inject]
         private readonly ProjectilesManager _projectilesManager;
 

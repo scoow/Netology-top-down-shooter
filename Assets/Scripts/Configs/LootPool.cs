@@ -9,7 +9,7 @@ namespace TDShooter.Pools
 
     public class LootPool : BasePool<LootExample>
     {
-        EffectType _lootType;
+        readonly EffectType _lootType;
         public LootPool(LootExample prefab, EffectType lootType, Transform parent, int count = 5) : base(prefab, parent)
         { 
             _lootType = lootType;

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Weapon_MachineGun
   m_EditorClassIdentifier: 
   _weaponName: "\u0410\u0432\u0442\u043E\u043C\u0430\u0442"
-  _spriteWeapon: {fileID: 0}
+  _spriteWeapon: {fileID: 21300000, guid: e3d2c4a37dd47fa4da0b79c507a71d3f, type: 3}
   _dropChance: 5
   _baseDamage: 30
   _rateOfFire: 30

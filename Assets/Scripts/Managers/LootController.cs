@@ -18,7 +18,7 @@ namespace TDShooter
         private readonly Dictionary<EffectType, LootPool> _lootPool = new();
 
         [Inject]
-        private LootContainer _lootContainer;
+        private readonly LootContainer _lootContainer;
         private Transform _lootContainerTransform;
 
         private void Start()
