@@ -30,7 +30,7 @@ namespace TDShooter.Configs
 
         protected virtual void Awake()
         {
-            SetDifficulty(1); // переделать на конфиг передаваемый в сцене 
+            //SetDifficulty(1); // переделать на конфиг передаваемый в сцене 
         }
 
 

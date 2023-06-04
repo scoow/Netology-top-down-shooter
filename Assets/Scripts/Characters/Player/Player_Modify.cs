@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -38,7 +39,7 @@ public class Player_Modify : MonoBehaviour
     }
 
 
-    private async Task ModifyHealt(LootData_SO currentLootData) //модифицируем здоровье
+    private async UniTask ModifyHealt(LootData_SO currentLootData) //модифицируем здоровье
     {
         var timer = currentLootData.EffectTime;
         var hpBonus = Convert.ToInt32(currentLootData.EffectValue / currentLootData.EffectTime);
@@ -49,22 +50,22 @@ public class Player_Modify : MonoBehaviour
             _playerData.CurrentHP += hpBonus;
             if(_playerData.CurrentHP > _playerData.MaxHP) _playerData.CurrentHP = _playerData.MaxHP;
             _player_UI.UpdateViewHealth(hpBonus, true);
-            await Task.Delay(1000);
+            await UniTask.Delay(1000);
         }
     }
 
     
-    private async Task ModifyArmor(LootData_SO currentLootData)//модифицируем броню
+    private async UniTask ModifyArmor(LootData_SO currentLootData)//модифицируем броню
     {        
         _playerData.Armor += Convert.ToInt32(currentLootData.EffectValue);
-        await Task.Delay(Convert.ToInt32(currentLootData.EffectTime * 1000));
+        await UniTask.Delay(Convert.ToInt32(currentLootData.EffectTime * 1000));
         _playerData.Armor = _playerData.CharacterData_SO.Armor;       
     }
 
-    private async Task ModifyMove(LootData_SO currentLootData)//модифицируем движение
+    private async UniTask ModifyMove(LootData_SO currentLootData)//модифицируем движение
     {
         _playerData.SpeedMove = currentLootData.EffectValue;
-        await Task.Delay(Convert.ToInt32(currentLootData.EffectTime * 1000));
+        await UniTask.Delay(Convert.ToInt32(currentLootData.EffectTime * 1000));
         _playerData.SpeedMove = _playerData.CharacterData_SO.SpeedMove;
     }
 }

@@ -19,7 +19,8 @@ namespace TDShooter
 
         private void OnEnable()
         {            
-            _currentLoot = _arrayLootData_SO[Random.Range(0, _arrayLootData_SO.Capacity)];
+            //_currentLoot = _arrayLootData_SO[Random.Range(0, _arrayLootData_SO.Capacity)];
+            _currentLoot = _arrayLootData_SO[0];
             _spriteCurrentLoot.sprite = _currentLoot.SpriteLoot;            ;
         }       
 

@@ -12,7 +12,8 @@ namespace TDShooter.Configs
 
         protected override void Awake()
         {
-            base.Awake();            
+            base.Awake();
+            SetDifficulty(1); 
             _playerUI.SliderHP.maxValue = Hp;
             _playerUI.SliderHP.value = Hp;
             _playerUI.MaxHP.text = Hp.ToString();
