@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TDShooter.enums;
+using TDShooter.Weapons;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -41,6 +42,10 @@ namespace TDShooter.UI
                     _weaponsDictionary[weapon].Item1.SetActive(false);
                 }    
             }
+        }
+        public Weapon CurrentWeapon()
+        {
+            return _weaponsDictionary[CurrentWeaponType].Item1.GetComponent<Weapon>();//переделать
         }
     }
 }

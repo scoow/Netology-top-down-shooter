@@ -30,44 +30,66 @@ namespace TDShooter.Weapons
         private float _maxAmmoCount;
         private PojectileData_SO _projectileData;
 
+        private float _shootsCoolDown;
+        private float _shootTimer;
+        private bool _isShooting;
+
+        /// <summary>
+        /// Количество патронов
+        /// </summary>
         private int Ammo
         {
             get => _ammo;
             set
             {
-
-                if (value < 0)
-                    _ammo = 0;
-                else
-                    _ammo = value;
+                Mathf.Clamp(_ammo, 0, _maxAmmoCount);
             }
         }
         private void Awake()
         {
             LoadData();
+            _shootsCoolDown = 10 / _rateOfFire;
+            _shootTimer = _shootsCoolDown;
         }
         private void Start()
         {
             _shootingPoint = GetComponentInChildren<ShootingPoint>();
         }
+        private void Update()
+        {
+            _shootTimer -= Time.deltaTime;
+            if (_isShooting)
+                CreateProjectile();
+
+        }
         public void Shoot()
         {
-            Bullet projectile = null;
-            Ammo -= 1;
-            _controllerUI.UpdateView(Ammo, UpdateViewType.UpdateAmmo);
-            switch ((_weaponChanger.CurrentWeaponType))//выбор типа снаряда
-            {
-                case WeaponType.Machinegun:
-                    projectile = _projectilesManager.ProjectilePool[ProjectileType.Bullet].GetAviableOrCreateNew();
-                    break;
-                case WeaponType.Plasmagun:
-                    projectile = _projectilesManager.ProjectilePool[ProjectileType.Plasma].GetAviableOrCreateNew();
-                    break;
-                default:
-                    break;
-            }
+            _isShooting = !_isShooting;
+        }
 
-            projectile.transform.SetPositionAndRotation(_shootingPoint.transform.position, _shootingPoint.transform.rotation);
+        private void CreateProjectile()
+        {
+            if (_shootTimer < 0)
+            {
+                _shootTimer = _shootsCoolDown;
+                Bullet projectile = null;
+                Ammo -= 1;
+                _controllerUI.UpdateView(Ammo, UpdateViewType.UpdateAmmo);
+                switch (_weaponChanger.CurrentWeaponType)//выбор типа снаряда
+                {
+                    case WeaponType.Machinegun:
+                        projectile = _projectilesManager.ProjectilePool[ProjectileType.Bullet].GetAviableOrCreateNew();
+                        break;
+                    case WeaponType.Plasmagun:
+                        projectile = _projectilesManager.ProjectilePool[ProjectileType.Plasma].GetAviableOrCreateNew();
+                        break;
+                    default:
+                        break;
+                }
+
+                projectile.transform.SetPositionAndRotation(_shootingPoint.transform.position, _shootingPoint.transform.rotation);
+                //_isShooting = false;
+            }
         }
 
         public void LoadData()
@@ -78,6 +100,7 @@ namespace TDShooter.Weapons
 
             _baseDamage = _weaponData_SO.BaseDamage;
             _rateOfFire = _weaponData_SO.RateOfFire;
+
             _maxAmmoCount = _weaponData_SO.MaxAmmoCount;
             _projectileData = _weaponData_SO.ProjectileData;
         }

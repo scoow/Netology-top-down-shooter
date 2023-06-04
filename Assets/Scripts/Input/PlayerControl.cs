@@ -55,7 +55,8 @@ namespace TDShooter.Input
 
         private void Fire()
         {
-            _weapon.Shoot();
+            //_weapon.Shoot();
+            _weaponChanger.CurrentWeapon().Shoot();
 
             _audioSourceSteps.PlayOneShot(_oneShotSound);
         }
