@@ -26,6 +26,7 @@ namespace TDShooter.Weapons
         /* [SerializeField] private EffectType _effectType;*/
         /* [SerializeField] private float _effectValue;*/
         private float _baseDamage;
+        private float _baseAccuracy;
         private float _rateOfFire;
         private float _maxAmmoCount;
         private PojectileData_SO _projectileData;
@@ -75,7 +76,7 @@ namespace TDShooter.Weapons
                 Bullet projectile = null;
                 Ammo -= 1;
                 _controllerUI.UpdateView(Ammo, UpdateViewType.UpdateAmmo);
-                switch (_weaponChanger.CurrentWeaponType)//выбор типа снаряда
+                switch (_weaponChanger.CurrentWeaponType)//выбор типа снаряда ПЕРЕНЕСТИ В Projectile manager
                 {
                     case WeaponType.Machinegun:
                         projectile = _projectilesManager.ProjectilePool[ProjectileType.Bullet].GetAviableOrCreateNew();
@@ -87,7 +88,10 @@ namespace TDShooter.Weapons
                         break;
                 }
 
-                projectile.transform.SetPositionAndRotation(_shootingPoint.transform.position, _shootingPoint.transform.rotation);
+                float shotSpread = 100 / _baseAccuracy;//коэффициент точности оружия
+                Quaternion innacuracyQuaternion = Quaternion.Euler(Random.Range(0f, shotSpread), Random.Range(0f, shotSpread), Random.Range(0f, shotSpread));//случайный кватернион для разброса
+
+                projectile.transform.SetPositionAndRotation(_shootingPoint.transform.position, _shootingPoint.transform.rotation * innacuracyQuaternion);
                 //_isShooting = false;
             }
         }
@@ -100,6 +104,7 @@ namespace TDShooter.Weapons
 
             _baseDamage = _weaponData_SO.BaseDamage;
             _rateOfFire = _weaponData_SO.RateOfFire;
+            _baseAccuracy = _weaponData_SO.BaseAccuracy;
 
             _maxAmmoCount = _weaponData_SO.MaxAmmoCount;
             _projectileData = _weaponData_SO.ProjectileData;
