@@ -10,5 +10,4 @@ public class Enemy_UI : Character_UI
     {
         _hpBarTransform.LookAt(Camera.main.transform.position);
     }
-
 }

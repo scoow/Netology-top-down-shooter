@@ -1,3 +1,4 @@
+using System;
 using TDShooter.enums;
 using UnityEngine;
 
@@ -34,13 +35,13 @@ namespace TDShooter.Configs
         }
 
 
-        protected void SetDifficulty(int ratio)
+        protected void SetDifficulty(float ratio)
         {
-            Hp = CharacterData_SO.Health * ratio;
+            Hp = Convert.ToInt32(CharacterData_SO.Health * ratio);
             MaxHP = Hp;
             CurrentHP = Hp;
-            Damage = CharacterData_SO.Damage * ratio;
-            Armor = CharacterData_SO.Armor*ratio;
+            Damage = Convert.ToInt32(CharacterData_SO.Damage * ratio);
+            Armor = Convert.ToInt32(CharacterData_SO.Armor*ratio);
             SpeedMove = CharacterData_SO.SpeedMove;
             MissChance = CharacterData_SO.MissChance;
             CriticalDamageChance = CharacterData_SO.CriticalDamageChance* ratio;
