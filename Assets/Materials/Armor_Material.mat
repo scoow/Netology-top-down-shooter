@@ -70,9 +70,15 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 10
     - _GlossMapScale: 0.252
+<<<<<<< Updated upstream
     - _Glossiness: 0.7500001
     - _GlossyReflections: 1
     - _Metallic: 0.7500001
+=======
+    - _Glossiness: 0.95000017
+    - _GlossyReflections: 1
+    - _Metallic: 0.95000017
+>>>>>>> Stashed changes
     - _Mode: 2
     - _OcclusionStrength: 1
     - _Parallax: 0.02

@@ -30,15 +30,21 @@ namespace TDShooter.Configs
 
         protected virtual void Awake()
         {
-            Hp = CharacterData_SO.Health;
+            SetDifficulty(1); // переделать на конфиг передаваемый в сцене 
+        }
+
+
+        protected void SetDifficulty(int ratio)
+        {
+            Hp = CharacterData_SO.Health * ratio;
             MaxHP = Hp;
             CurrentHP = Hp;
-            Damage = CharacterData_SO.Damage;
-            Armor = CharacterData_SO.Armor;
+            Damage = CharacterData_SO.Damage * ratio;
+            Armor = CharacterData_SO.Armor*ratio;
             SpeedMove = CharacterData_SO.SpeedMove;
             MissChance = CharacterData_SO.MissChance;
-            CriticalDamageChance = CharacterData_SO.CriticalDamageChance;
+            CriticalDamageChance = CharacterData_SO.CriticalDamageChance* ratio;
             СharacterType = CharacterData_SO.CharacterType;
-        }
+        }            
     }
 }
