@@ -21,10 +21,8 @@ namespace TDShooter.Weapons
         private int _ammo = 9999;
 
         private string _weaponName;
-        private Sprite _spriteWeapon;
+        private Sprite _spriteWeapon;//добавить ссылку на спрайт в WeaponChanger
         private float _dropChance;
-        /* [SerializeField] private EffectType _effectType;*/
-        /* [SerializeField] private float _effectValue;*/
         private float _baseDamage;
         private float _baseAccuracy;
         private float _rateOfFire;

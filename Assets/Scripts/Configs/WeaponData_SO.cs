@@ -8,9 +8,7 @@ namespace TDShooter.Configs
         [SerializeField] private string _weaponName;
         [SerializeField] private Sprite _spriteWeapon;
         [SerializeField] private float _dropChance;
-        /* [SerializeField] private EffectType _effectType;*/
-        /* [SerializeField] private float _effectValue;*/
-        [SerializeField] private float _baseDamage;
+        [SerializeField] private float _baseDamage;//мб убрать?
         [SerializeField] private float _baseAccuracy;
         [SerializeField] private float _rateOfFire;
         [SerializeField] private float _maxAmmoCount;

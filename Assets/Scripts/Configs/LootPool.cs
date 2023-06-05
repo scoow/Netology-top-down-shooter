@@ -10,7 +10,7 @@ namespace TDShooter.Pools
         private readonly LootController _lootController;
 
         readonly EffectType _lootType;
-        public LootPool(LootExample prefab, EffectType lootType, Transform parent, LootController lootController, int count = 5) : base(prefab, parent)
+        public LootPool(LootExample prefab, EffectType lootType, Transform parent, LootController lootController, int count = 2) : base(prefab, parent)
         { 
             _lootType = lootType;
             _lootController = lootController;
@@ -20,8 +20,6 @@ namespace TDShooter.Pools
         protected override LootExample GetCreated()
         {
             LootExample lootExample = GameObject.Instantiate(_prefab);
-
-            //lootExample.Inject(_lootController);//передаём ссылку на контроллер
             lootExample.LoadLootData(_lootController.Loots.FirstOrDefault(x => x.EffectType == _lootType));
 
             return lootExample;

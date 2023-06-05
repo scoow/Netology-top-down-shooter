@@ -7,7 +7,7 @@ using Zenject;
 
 namespace TDShooter
 {
-    public class LootController : MonoBehaviour//todo добавить пул лута
+    public class LootController : MonoBehaviour
     {
         [SerializeField] private List<LootData_SO> _arrayLootData_SO;        
 
@@ -37,10 +37,10 @@ namespace TDShooter
 
         private void InitLootPool()
         {
-            _lootPool.Add(EffectType.Health, new(Resources.Load<LootExample>("Prefabs/LootExample"), EffectType.Health, _lootContainerTransform, this));
-            _lootPool.Add(EffectType.MoveSpeed, new(Resources.Load<LootExample>("Prefabs/LootExample"), EffectType.MoveSpeed, _lootContainerTransform, this));
-            _lootPool.Add(EffectType.Armor, new(Resources.Load<LootExample>("Prefabs/LootExample"), EffectType.Armor, _lootContainerTransform, this));
-            _lootPool.Add(EffectType.MissChance, new(Resources.Load<LootExample>("Prefabs/LootExample"), EffectType.MissChance, _lootContainerTransform, this));
+            _lootPool.Add(EffectType.Health, new(Resources.Load<LootExample>("Prefabs/LootExample"), EffectType.Health, _lootContainerTransform, this));//автечки
+            _lootPool.Add(EffectType.MoveSpeed, new(Resources.Load<LootExample>("Prefabs/LootExample"), EffectType.MoveSpeed, _lootContainerTransform, this));//сапоги
+            _lootPool.Add(EffectType.Armor, new(Resources.Load<LootExample>("Prefabs/LootExample"), EffectType.Armor, _lootContainerTransform, this));//броня
+            _lootPool.Add(EffectType.MissChance, new(Resources.Load<LootExample>("Prefabs/LootExample"), EffectType.MissChance, _lootContainerTransform, this));//перчатки
         }
     }
 }

@@ -52,8 +52,6 @@ namespace TDShooter.Characters
             if (_playerProgress.CheckChance() < _playerProgress.ChanceDroopLoot)
             {
                 _lootController.SpawnRandomLoot(transform.position);
-/*                LootExample loot = Instantiate(_exampleLoot);
-                loot.transform.position = transform.position;*/
             }
             _subscribeManager.PostNotification(enums.GameEventType.EnemyDied, this);
 

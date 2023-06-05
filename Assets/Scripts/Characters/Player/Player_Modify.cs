@@ -1,13 +1,8 @@
 using Cysharp.Threading.Tasks;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 using TDShooter.Configs;
 using TDShooter.UI;
 using UnityEngine;
-using Zenject.SpaceFighter;
 
 public class Player_Modify : MonoBehaviour
 {
@@ -21,7 +16,7 @@ public class Player_Modify : MonoBehaviour
         switch (currentLootData_SO.EffectType)
         {
             case TDShooter.enums.EffectType.Health:
-                _ = ModifyHealt(currentLootData_SO);
+                _ = ModifyHealth(currentLootData_SO);
                 break;
             case TDShooter.enums.EffectType.Armor:
                 _ = ModifyArmor(currentLootData_SO);
@@ -30,6 +25,7 @@ public class Player_Modify : MonoBehaviour
                 _ = ModifyMove(currentLootData_SO);
                 break;
             case TDShooter.enums.EffectType.MissChance:
+                _ = ModifyMissChance(currentLootData_SO);
                 break;
             case TDShooter.enums.EffectType.CriticalDamageChance:
                 break;
@@ -38,8 +34,12 @@ public class Player_Modify : MonoBehaviour
         }        
     }
 
+    private async UniTask ModifyMissChance(LootData_SO currentLootData_SO)//модифицируем точность
+    {
+        //добавить временное отключение эффекта разброса
+    }
 
-    private async UniTask ModifyHealt(LootData_SO currentLootData) //модифицируем здоровье
+    private async UniTask ModifyHealth(LootData_SO currentLootData) //модифицируем здоровье
     {
         var timer = currentLootData.EffectTime;
         var hpBonus = Convert.ToInt32(currentLootData.EffectValue / currentLootData.EffectTime);
@@ -48,13 +48,13 @@ public class Player_Modify : MonoBehaviour
             timer -= 1;
 
             _playerData.CurrentHP += hpBonus;
-            if(_playerData.CurrentHP > _playerData.MaxHP) _playerData.CurrentHP = _playerData.MaxHP;
+            if(_playerData.CurrentHP > _playerData.MaxHP) _playerData.CurrentHP = _playerData.MaxHP;//заменить на Mathf.Clamp?
+
             _player_UI.UpdateViewHealth(hpBonus, true);
             await UniTask.Delay(1000);
         }
     }
-
-    
+        
     private async UniTask ModifyArmor(LootData_SO currentLootData)//модифицируем броню
     {        
         _playerData.Armor += Convert.ToInt32(currentLootData.EffectValue);

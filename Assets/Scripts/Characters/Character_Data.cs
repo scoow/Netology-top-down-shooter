@@ -34,7 +34,6 @@ namespace TDShooter.Configs
             //SetDifficulty(1); // переделать на конфиг передаваемый в сцене 
         }
 
-
         protected void SetDifficulty(float ratio)
         {
             Hp = Convert.ToInt32(CharacterData_SO.Health * ratio);

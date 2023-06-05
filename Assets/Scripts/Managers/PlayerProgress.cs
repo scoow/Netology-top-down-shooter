@@ -11,10 +11,10 @@ namespace TDShooter.Managers
         [SerializeField] private int _levelCount; //счётчик уровней
         [SerializeField] private int _currentKillsCount; //текущие убийства 
         [SerializeField] private int _targetKillsCount; //колиичество убийств для повышения уровня
-        [SerializeField] private int _chanceDroopLoot; //шанс выпадения лута
+        [SerializeField] private int _lootDropChance; //шанс выпадения лута
         [Inject]
         private UI_Controller _controllerUI;
-        public int ChanceDroopLoot => _chanceDroopLoot;
+        public int ChanceDroopLoot => _lootDropChance;
 
         public int LevelCount { get; private set; }
         public int CurrentKilledCount
@@ -50,7 +50,6 @@ namespace TDShooter.Managers
                     _targetKillsCount = value;
                     _controllerUI.UpdateView(_targetKillsCount,UpdateViewType.TargetKills);
                 }
-
             }
         }
 
