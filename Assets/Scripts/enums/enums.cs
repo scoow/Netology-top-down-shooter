@@ -59,5 +59,14 @@ namespace TDShooter.enums
         LevelUp,
         UpdateHP,
         UpdateAmmo
-    }    
+    }
+    public enum Talents
+    {
+        StoneSkin,//дополнительная броня
+        Radar,//миникарта, показывающая врагов
+        ExtraFireRate,//увеличенная скорострельность
+        ExtraWeaponDamage,//увеличенный урон
+        Drone,//дрон-помощник
+        NuclearCharge//бомба, убивающая всех врагов на экране
+    }
 }
