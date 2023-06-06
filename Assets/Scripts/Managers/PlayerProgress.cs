@@ -2,6 +2,7 @@ using TDShooter.enums;
 using TDShooter.EventManager;
 using TDShooter.UI;
 using UnityEngine;
+using UnityEngine.Events;
 using Zenject;
 
 namespace TDShooter.Managers
@@ -12,9 +13,13 @@ namespace TDShooter.Managers
         [SerializeField] private int _currentKillsCount; //текущие убийства 
         [SerializeField] private int _targetKillsCount; //колиичество убийств для повышения уровня
         [SerializeField] private int _lootDropChance; //шанс выпадения лута
+        [SerializeField] private int _targetKillsMultiplier = 2;//множитель увеличения количества необходимых убийств
+
         [Inject]
-        private UI_Controller _controllerUI;
+        private readonly UI_Controller _controllerUI;
         public int ChanceDroopLoot => _lootDropChance;
+
+        public event UnityAction OnNextLevel;
 
         public int LevelCount { get; private set; }
         public int CurrentKilledCount
@@ -29,17 +34,25 @@ namespace TDShooter.Managers
                     if (_currentKillsCount == _targetKillsCount)
                     {
                         //добавить паузу и меню статистики
-                        _currentKillsCount = 0;
-                        _controllerUI.UpdateView(_currentKillsCount, UpdateViewType.TargetKills);
-                        _levelCount++;
-                        _controllerUI.UpdateView(_levelCount, UpdateViewType.LevelUp);
-                        _targetKillsCount *= 2;//увеличить необходимое уоличество убийств
-                        _controllerUI.UpdateView(_targetKillsCount, UpdateViewType.TargetKills);
+                        GoToNextLevel();
 
                     }
                 }
             }
         }
+
+        private void GoToNextLevel()
+        {
+            _currentKillsCount = 0;
+            _controllerUI.UpdateView(_currentKillsCount, UpdateViewType.TargetKills);
+            _levelCount++;
+            _controllerUI.UpdateView(_levelCount, UpdateViewType.LevelUp);
+            _targetKillsCount *= _targetKillsMultiplier;//увеличить необходимое количество убийств
+            _controllerUI.UpdateView(_targetKillsCount, UpdateViewType.TargetKills);
+
+            OnNextLevel?.Invoke();
+        }
+
         public int TargetKilledCount
         {
             get => _targetKillsCount;
@@ -57,6 +70,7 @@ namespace TDShooter.Managers
         {            
             _controllerUI.UpdateView(0, UpdateViewType.CurrentKills);
             _controllerUI.UpdateView(_targetKillsCount, UpdateViewType.TargetKills);
+
         }
 
         public int CheckChance()

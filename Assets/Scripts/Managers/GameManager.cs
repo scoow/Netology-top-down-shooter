@@ -12,8 +12,6 @@ namespace TDShooter.Managers.GameManager
 {
     public class GameManager : MonoInstaller
     {
-        /*public static GameManager Instance { get; private set; }*/
-
         private TilesManager _tilesManager;
         private Transform _enemiesContainer;
         private Aim_Marker _aim_Marker;
@@ -25,6 +23,8 @@ namespace TDShooter.Managers.GameManager
         private UI_Controller _controllerUI;
         private LootController _lootController;
         private LootContainer _lootContainer;
+        private TalentsManager _talentsManager;
+        private PlayerProgress _playerProgress;
 
         /// <summary>
         /// Внедрение зависимостей
@@ -44,6 +44,8 @@ namespace TDShooter.Managers.GameManager
             _controllerUI = FindObjectOfType<UI_Controller>();
             _lootController = FindObjectOfType<LootController>();
             _lootContainer = FindObjectOfType<LootContainer>();
+            _talentsManager = FindObjectOfType<TalentsManager>();
+            _playerProgress = FindObjectOfType<PlayerProgress>();
 
             #endregion
             #region Добавление ссылок в DI контейнер
@@ -59,7 +61,9 @@ namespace TDShooter.Managers.GameManager
             Container.BindInstance(_controllerUI).AsSingle();
             Container.BindInstance(_lootController).AsSingle();
             Container.BindInstance(_lootContainer).AsSingle();
-
+            Container.BindInstance(_talentsManager).AsSingle();
+            Container.BindInstance(_playerProgress).AsSingle();
+            
             #endregion
         }
     }
