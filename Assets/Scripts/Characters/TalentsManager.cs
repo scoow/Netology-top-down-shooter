@@ -24,16 +24,37 @@ namespace TDShooter.Characters
         }
         private void OnEnable()
         {
-            _playerProgress.OnNextLevel += PickRandomTalent;
+            _playerProgress.OnNextLevel += PickTwoRandomTalents;
         }
 
-        private void PickRandomTalent()
+        private bool TryPickRandomTalent(out Talents? talent)
         {
-            Debug.Log("Talent +1");
+            if (_talents.Count == 0)
+            {
+                talent = null;
+                return false;
+            }
+
+            int randomTalentIndex = UnityEngine.Random.Range(0, _talents.Count - 1);
+            talent = _talents[randomTalentIndex];
+            _talents.RemoveAt(randomTalentIndex);
+
+            //Debug.Log("Вы получили " + talent);
+            return true;
         }
+        public void PickTwoRandomTalents()
+        {
+            Talents? talentOne;
+            Talents? talentTwo;
+            TryPickRandomTalent(out talentOne);
+            TryPickRandomTalent(out talentTwo);
+
+            //передать два таланта в UI. Могут быть null
+        }
+
         private void OnDisable()
         {
-            _playerProgress.OnNextLevel -= PickRandomTalent;
+            _playerProgress.OnNextLevel -= PickTwoRandomTalents;
         }
     }
 }
