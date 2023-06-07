@@ -25,6 +25,7 @@ namespace TDShooter.Managers.GameManager
         private LootContainer _lootContainer;
         private TalentsManager _talentsManager;
         private PlayerProgress _playerProgress;
+        private Talent_Controll _talentControll;
 
         /// <summary>
         /// Внедрение зависимостей
@@ -46,6 +47,7 @@ namespace TDShooter.Managers.GameManager
             _lootContainer = FindObjectOfType<LootContainer>();
             _talentsManager = FindObjectOfType<TalentsManager>();
             _playerProgress = FindObjectOfType<PlayerProgress>();
+            _talentControll = FindObjectOfType<Talent_Controll>();
 
             #endregion
             #region Добавление ссылок в DI контейнер
@@ -63,6 +65,7 @@ namespace TDShooter.Managers.GameManager
             Container.BindInstance(_lootContainer).AsSingle();
             Container.BindInstance(_talentsManager).AsSingle();
             Container.BindInstance(_playerProgress).AsSingle();
+            Container.BindInstance(_talentControll).AsSingle();
             
             #endregion
         }

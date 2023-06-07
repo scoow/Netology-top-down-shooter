@@ -11,6 +11,8 @@ namespace TDShooter.Characters
     {
         [Inject]
         private readonly PlayerProgress _playerProgress;
+        [Inject]
+        private readonly Talent_Controll _talentControll;
 
         private readonly List<Talents> _talents = new();
 
@@ -49,7 +51,7 @@ namespace TDShooter.Characters
             TryPickRandomTalent(out talentOne);
             TryPickRandomTalent(out talentTwo);
 
-            //передать два таланта в UI. Могут быть null
+            _talentControll.EnableTalent(talentOne, talentTwo); //передать два таланта в UI. Могут быть null
         }
 
         private void OnDisable()

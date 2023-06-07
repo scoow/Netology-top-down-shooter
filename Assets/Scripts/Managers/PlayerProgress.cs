@@ -47,7 +47,7 @@ namespace TDShooter.Managers
             _controllerUI.UpdateView(_currentKillsCount, UpdateViewType.TargetKills);
             _levelCount++;
             _controllerUI.UpdateView(_levelCount, UpdateViewType.LevelUp);
-            _targetKillsCount *= _targetKillsMultiplier;//увеличить необходимое количество убийств
+            //_targetKillsCount *= _targetKillsMultiplier;//увеличить необходимое количество убийств
             _controllerUI.UpdateView(_targetKillsCount, UpdateViewType.TargetKills);
 
             OnNextLevel?.Invoke();
