@@ -13,7 +13,7 @@ public class Talent_Controll : MonoBehaviour
 
 
 
-    public void EnableTalent(Talents? talentOne, Talents? talentTwo) //зачем в параметрах рядом с типом вопрос ???
+    public void EnableTalent(Talents? talentOne, Talents? talentTwo)
     {
         Talents_Base oneAccessibleTalant =  ChoiseTalant(talentOne);
         _talentOneView.EnableTalantView(oneAccessibleTalant);        

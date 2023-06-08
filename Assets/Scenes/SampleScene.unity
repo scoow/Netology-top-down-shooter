@@ -1003,8 +1003,8 @@ RectTransform:
   m_GameObject: {fileID: 251757265}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 624337216}
   - {fileID: 852835026}
@@ -1013,7 +1013,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 611, y: 138.78}
+  m_AnchoredPosition: {x: 0, y: 138.78}
   m_SizeDelta: {x: 230, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &251757267
@@ -1030,6 +1030,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _talentSprite: {fileID: 624337217}
   _talentDescription: {fileID: 852835027}
+  _otherTalent: {fileID: 1710517385}
 --- !u!1 &283255330
 GameObject:
   m_ObjectHideFlags: 0
@@ -7739,17 +7740,17 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1710517384}
   - {fileID: 251757266}
   m_Father: {fileID: 652062587}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0017089844, y: 0.0014648438}
-  m_SizeDelta: {x: -1.5, y: -0.48999023}
+  m_AnchoredPosition: {x: -261.4, y: 0.0014648438}
+  m_SizeDelta: {x: 503.89, y: -0.49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &602891622
 MonoBehaviour:
@@ -10818,7 +10819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelCount: 1
   _currentKillsCount: 0
-  _targetKillsCount: 10
+  _targetKillsCount: 2
   _lootDropChance: 0
   _targetKillsMultiplier: 2
 --- !u!114 &1137414721
@@ -12270,8 +12271,8 @@ RectTransform:
   m_GameObject: {fileID: 1710517383}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 681496370}
   - {fileID: 895827516}
@@ -12280,7 +12281,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 611, y: -169}
+  m_AnchoredPosition: {x: 0, y: -169}
   m_SizeDelta: {x: 230, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1710517385
@@ -12297,6 +12298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _talentSprite: {fileID: 681496371}
   _talentDescription: {fileID: 895827517}
+  _otherTalent: {fileID: 251757267}
 --- !u!1 &1715277894
 GameObject:
   m_ObjectHideFlags: 0
