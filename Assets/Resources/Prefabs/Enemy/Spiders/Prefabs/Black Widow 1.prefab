@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 303611195}
   - component: {fileID: 303611197}
   - component: {fileID: 303611196}
+  - component: {fileID: 6887567482574651857}
   m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
@@ -113,6 +114,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6887567482574651857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303611194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47524c038ce1eb44ebcce1528a1fea16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &449164884
 GameObject:
   m_ObjectHideFlags: 0
@@ -3787,8 +3800,8 @@ GameObject:
   - component: {fileID: 21093203822430031}
   - component: {fileID: 21093203822430030}
   - component: {fileID: 7566749754023443528}
-  - component: {fileID: 1454408659}
   - component: {fileID: 7794883867464218174}
+  - component: {fileID: 4296500925340822641}
   m_Layer: 0
   m_Name: Black Widow 1
   m_TagString: Untagged
@@ -3883,9 +3896,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d1fab11e89630348a880b2d2dfb8b05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 21093204700908348}
-  _enemyAttack: {fileID: 21093203822430031}
-  _parentGameObject: {fileID: 7566749754023443528}
 --- !u!114 &21093203822430031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3916,13 +3926,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   _enemyAttack: {fileID: 21093203822430031}
-  _animationController: {fileID: 21093203822430128}
   MaxVelocity: 4.16
   _maxSpeed: 2.65
   ArrivalDistance: 1.9
   WanderCenterDistance: 1
   WanderRadius: 1
   WanderAngleRange: 0
+  _playerControl: {fileID: 0}
 --- !u!114 &7566749754023443528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3936,24 +3946,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _character_Data: {fileID: 7794883867464218174}
-  _character_UI: {fileID: 1454408659}
+  _character_UI: {fileID: 0}
   _subscribeManager: {fileID: 0}
   _playerProgress: {fileID: 0}
   _exampleLoot: {fileID: 7438257021208079569, guid: 24e1701ac52d833419bc752c1df158ed, type: 3}
   _animation_Controller: {fileID: 21093203822430128}
---- !u!114 &1454408659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8709438716985620259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1632252c171793f47bec38047f860ea5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _sliderHP: {fileID: 449164886}
 --- !u!114 &7794883867464218174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3967,7 +3964,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterData_SO: {fileID: 11400000, guid: 92934578f0401fd4fab2a09eb2799020, type: 2}
-  _character_UI: {fileID: 1454408659}
+--- !u!114 &4296500925340822641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8709438716985620259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef74bee9b803a4b4792d96c2b40871aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8776485554510963309
 GameObject:
   m_ObjectHideFlags: 0

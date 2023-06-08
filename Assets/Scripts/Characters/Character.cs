@@ -6,12 +6,11 @@ namespace TDShooter.Characters
     /// <summary>
     /// Персонаж. По задумке - класс-родитель для игрока и врагов
     /// </summary>
-    public class Character : MonoBehaviour, IHaveHP
+    public abstract class Character : MonoBehaviour, IHaveHP
     {    
-        [SerializeField] protected Character_Data _character_Data;
-        [SerializeField] protected Character_UI _character_UI;        
-        public int HP => _character_Data.Hp;        
-       
+        /*[SerializeField] */protected Character_Data _character_Data;
+        /*[SerializeField] */protected Character_UI _character_UI;        
+        public int HP => _character_Data.Hp;
         public virtual void Die()
         {
             print("Я погиб");          

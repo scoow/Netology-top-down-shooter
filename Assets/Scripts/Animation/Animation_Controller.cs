@@ -6,9 +6,9 @@ namespace TDShooter.Enemies
 {
     public class Animation_Controller : MonoBehaviour
     {
-        [SerializeField] Animator _animator;
-        [SerializeField] EnemyAttack _enemyAttack;
-        [SerializeField] BaseEnemy _parentGameObject;
+        /*[SerializeField] */Animator _animator;
+        /*[SerializeField] */EnemyAttack _enemyAttack;
+        BaseEnemy _parentGameObject;
         private EnemyAnimationState _enemyState = EnemyAnimationState.Move;
 
         private int _atackAnimation;
@@ -16,14 +16,18 @@ namespace TDShooter.Enemies
         private int _indexDeathAnimation;
 
         public EnemyAnimationState EnemyState { get=> _enemyState; set=> _enemyState = value; }
-
+        private void Awake()
+        {
+            _animator = GetComponent<Animator>();
+            _enemyAttack = GetComponent<EnemyAttack>();
+            _parentGameObject = GetComponentInParent<BaseEnemy>();
+        }
         private void Start()
         {
             _atackAnimation = Animator.StringToHash("Atack");
             _runAnimation = Animator.StringToHash("Run");
             _indexDeathAnimation = Animator.StringToHash("IndexDeath");
         }
-
 
         public void DeathAnimation()
         {

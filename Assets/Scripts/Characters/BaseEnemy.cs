@@ -1,3 +1,4 @@
+using TDShooter.Configs;
 using TDShooter.Enemies;
 using TDShooter.EventManager;
 using TDShooter.Input;
@@ -6,16 +7,20 @@ using UnityEngine;
 
 namespace TDShooter.Characters
 {
+    [RequireComponent(typeof(CapsuleCollider))]
     public class BaseEnemy : Character
     {
         [SerializeField] private SubscribeManager _subscribeManager;//менеджер событий
         [SerializeField] private PlayerProgress _playerProgress;
         [SerializeField] private LootExample _exampleLoot;
-        [SerializeField] private Animation_Controller _animation_Controller;
+        /*[SerializeField] */private Animation_Controller _animation_Controller;
         private CapsuleCollider _capsuleCollider;
         private EnemyMove _enemyMove;
         private PlayerControl _playerControl;
         private LootController _lootController;
+
+        private Enemy_Data _enemy_Data;
+        private Enemy_UI _enemy_UI;
 
         private void Awake()
         {
@@ -25,6 +30,12 @@ namespace TDShooter.Characters
             _subscribeManager = FindObjectOfType<SubscribeManager>();//добавить инъекцию от пула 
 
             _lootController = FindObjectOfType<LootController>();
+            _animation_Controller = GetComponentInChildren<Animation_Controller>();
+
+            _enemy_Data = GetComponent<Enemy_Data>();
+            _character_Data = _enemy_Data as Character_Data;
+            _enemy_UI = GetComponent<Enemy_UI>();
+            _character_UI = _enemy_UI as Character_UI;
         }
 
         private void Start()
@@ -37,8 +48,8 @@ namespace TDShooter.Characters
 
         public void Respawn(/*int maxHP*/)
         {
-            _character_Data.CurrentHP = _character_Data.CharacterData_SO.Health;
-            _character_UI.SliderHP.value = _character_Data.CurrentHP;
+            _enemy_Data.CurrentHP = _enemy_Data.CharacterData_SO.Health;
+            _enemy_UI.SliderHP.value = _enemy_Data.CurrentHP;
             _enemyMove.SetNewTarget(_playerControl.transform);
             _enemyMove.MaxSpeed = 5f;//ТЕСТ
         }
