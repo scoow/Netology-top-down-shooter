@@ -1,10 +1,9 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TDShooter.Configs;
 
 
-namespace TDShooter
+namespace TDShooter.UI
 {
     public class StartMenu_Controller : BaseUI_Controller
     {

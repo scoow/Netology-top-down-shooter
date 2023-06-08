@@ -1,9 +1,12 @@
 using UnityEngine;
 
-public class FolowerUpdate : Follower
+namespace TDShooter.Weapons
 {
-    private void Update()
+    public class FolowerUpdate : Follower
     {
-        Move(Time.deltaTime);
+        private void Update()
+        {
+            Move(Time.deltaTime);
+        }
     }
 }

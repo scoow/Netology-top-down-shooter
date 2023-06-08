@@ -13,7 +13,8 @@ namespace TDShooter.enums
     {
         Player,
         FastMeleeEnemy,
-        Spider
+        Spider,
+        //Devil_Bulldog
     }
     public enum EffectType
     {

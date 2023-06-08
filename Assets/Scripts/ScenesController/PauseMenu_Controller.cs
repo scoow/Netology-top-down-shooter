@@ -1,48 +1,51 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PauseMenu_Controller : BaseUI_Controller
+namespace TDShooter.UI
 {
-    [SerializeField] private PauseMenu_Marker _pauseMenu;
-
-    [SerializeField] private Button _resume;
-    [SerializeField] private Button _saveGame;
-    [SerializeField] private Button _mainMenu;
-    [SerializeField] private Button _exit;
-
-    private void OnEnable()
+    public class PauseMenu_Controller : BaseUI_Controller
     {
-        _resume.onClick.AddListener(delegate { ResumeGame(); });
-        _saveGame.onClick.AddListener(delegate { SaveGame(); });
-        _mainMenu.onClick.AddListener(delegate { LoadScene(SceneExample.MainMenu); });
-        _exit.onClick.AddListener(delegate { LoadScene(SceneExample.Exit); });
-    }
+        [SerializeField] private PauseMenu_Marker _pauseMenu;
 
-    private void OnDisable()
-    {
-        _resume.onClick.RemoveListener(delegate { ResumeGame(); });
-        _saveGame.onClick.RemoveListener(delegate { SaveGame(); });
-        _mainMenu.onClick.RemoveListener(delegate { LoadScene(SceneExample.MainMenu); });
-        _exit.onClick.RemoveListener(delegate { LoadScene(SceneExample.Exit); });
-    }
+        [SerializeField] private Button _resume;
+        [SerializeField] private Button _saveGame;
+        [SerializeField] private Button _mainMenu;
+        [SerializeField] private Button _exit;
 
-    private void ResumeGame()
-    {
-        Time.timeScale = 1f;
-        _pauseMenu.gameObject.SetActive(false);
-    }
-
-    private void SaveGame()
-    {
-        print("Сохраняем игру");
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyUp(KeyCode.Escape))
+        private void OnEnable()
         {
-            Time.timeScale = 0f;
-            _pauseMenu.gameObject.SetActive(true);
+            _resume.onClick.AddListener(delegate { ResumeGame(); });
+            _saveGame.onClick.AddListener(delegate { SaveGame(); });
+            _mainMenu.onClick.AddListener(delegate { LoadScene(SceneExample.MainMenu); });
+            _exit.onClick.AddListener(delegate { LoadScene(SceneExample.Exit); });
+        }
+
+        private void OnDisable()
+        {
+            _resume.onClick.RemoveListener(delegate { ResumeGame(); });
+            _saveGame.onClick.RemoveListener(delegate { SaveGame(); });
+            _mainMenu.onClick.RemoveListener(delegate { LoadScene(SceneExample.MainMenu); });
+            _exit.onClick.RemoveListener(delegate { LoadScene(SceneExample.Exit); });
+        }
+
+        private void ResumeGame()
+        {
+            Time.timeScale = 1f;
+            _pauseMenu.gameObject.SetActive(false);
+        }
+
+        private void SaveGame()
+        {
+            print("Сохраняем игру");
+        }
+
+        private void Update()
+        {
+            if (UnityEngine.Input.GetKeyUp(KeyCode.Escape))//todo переделать на new input
+            {
+                Time.timeScale = 0f;
+                _pauseMenu.gameObject.SetActive(true);
+            }
         }
     }
 }

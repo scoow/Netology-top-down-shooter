@@ -1,5 +1,6 @@
 using TDShooter.Input;
 using UnityEngine;
+using TDShooter.Characters;
 
 namespace TDShooter.Enemies
 {    
@@ -22,8 +23,8 @@ namespace TDShooter.Enemies
         private float WanderRadius;
         [Tooltip("Разброс угла блуждания"), SerializeField, Range(0f, 360f)]
         private float WanderAngleRange;
-
-        private PlayerControl _playerControl;
+        [SerializeField]
+        private PlayerControl _playerControl;//временно через инспектор
 
         public void InjectPlayerControlReference(PlayerControl playerControl)
         {
@@ -42,7 +43,7 @@ namespace TDShooter.Enemies
         protected override void Start()
         {
             base.Start();
-           // _playerControl = FindObjectOfType<PlayerControl>();
+            _playerControl = FindObjectOfType<PlayerControl>();//временно через инспектор
             SetNewTarget(_playerControl.transform);
         }
         private void Update()

@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace TDShooter.Pools
 {
-
     public class LootPool : BasePool<LootExample>
     {
         private readonly LootController _lootController;
@@ -17,6 +16,7 @@ namespace TDShooter.Pools
             
             Init(count);
         }
+
         protected override LootExample GetCreated()
         {
             LootExample lootExample = GameObject.Instantiate(_prefab);
@@ -24,6 +24,5 @@ namespace TDShooter.Pools
 
             return lootExample;
         }
-
     }
 }

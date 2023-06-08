@@ -1,7 +1,6 @@
 using TDShooter.enums;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject.SpaceFighter;
 
 namespace TDShooter.UI
 {

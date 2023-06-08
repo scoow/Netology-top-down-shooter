@@ -1,6 +1,5 @@
 using Cysharp.Threading.Tasks;
 using System;
-using System.Threading.Tasks;
 using TDShooter.enums;
 using UnityEngine;
 
@@ -31,9 +30,7 @@ namespace TDShooter.Characters
 
         public void Move(Vector2 incomingValue, Quaternion rotation)
         {
-            //Debug.Log("move" + move);
             float eulerAnglesRotation = rotation.eulerAngles.y;
-            //Debug.Log("rotation" + eulerAnglesRotation);
             Direction direction;
 
             if (eulerAnglesRotation < 45 || eulerAnglesRotation > 315)
@@ -80,8 +77,6 @@ namespace TDShooter.Characters
             }
 
             move.Normalize();
-            //Debug.Log("result" + move);
-
             _animator.SetFloat("Forward", move.y);
             _animator.SetFloat("Turn", move.x);
         }

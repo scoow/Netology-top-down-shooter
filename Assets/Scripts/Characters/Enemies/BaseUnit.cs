@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TDShooter
+namespace TDShooter.Characters
 {
     [RequireComponent(typeof(Rigidbody))]
     public abstract class BaseUnit : MonoBehaviour
@@ -34,7 +34,6 @@ namespace TDShooter
 
             return velocity;
         }
-
     }
     public enum IgnoreAxisType : byte
     {

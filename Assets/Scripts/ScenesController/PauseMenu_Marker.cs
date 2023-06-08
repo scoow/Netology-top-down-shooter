@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public class PauseMenu_Marker : MonoBehaviour
+namespace TDShooter.UI
 {
+    public class PauseMenu_Marker : MonoBehaviour
+    {
 
+    }
 }

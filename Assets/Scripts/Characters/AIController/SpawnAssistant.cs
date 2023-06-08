@@ -6,6 +6,7 @@ using TDShooter.Input;
 using TDShooter.Level;
 using UnityEngine;
 using Zenject;
+using static UnityEngine.EventSystems.EventTrigger;
 
 namespace TDShooter.Characters
 {
@@ -42,7 +43,8 @@ namespace TDShooter.Characters
         {
             _enemiesPool.Add(ÑharacterType.FastMeleeEnemy, new(Resources.Load<BaseEnemy>("Prefabs/Enemy/FirstEnemy/Enemy"), ÑharacterType.FastMeleeEnemy, _enemiesContainer, _playerControl));
             _enemiesPool.Add(ÑharacterType.Spider, new(Resources.Load<BaseEnemy>("Prefabs/Enemy/Spiders/Prefabs/Black Widow 1"), ÑharacterType.Spider, _enemiesContainer, _playerControl));
-
+            //ïóë äëÿ áîññà
+            //_enemiesPool.Add(ÑharacterType.Devil_Bulldog, new(Resources.Load<BossEnemy>("Prefabs/Enemy/BigBoss/DeepNest/Devil_Bulldog_Lite/EnemyBoss"), ÑharacterType.Devil_Bulldog, _enemiesContainer, _playerControl, 1));
         }
         /// <summary>
         /// Äëÿ òåñòà - ñïàâí íà êëàâèøó B

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
-namespace TDShooter
+namespace TDShooter.Enemies
 {
     public class Animation_IK : MonoBehaviour
     {
@@ -11,6 +11,8 @@ namespace TDShooter
         [SerializeField] Rig _leftBack;
 
         [SerializeField] private float _speed;
+
+        private float _weightCoef = 0.1f;
         private bool _isMoveRightForward;
 
         private void Start()
@@ -28,22 +30,22 @@ namespace TDShooter
         {
             if (_isMoveRightForward)
             {
-                _rightForward.weight -= 0.1f * Time.deltaTime * _speed;
-                _leftBack.weight -= 0.1f * Time.deltaTime * _speed;
+                _rightForward.weight -= _weightCoef * Time.deltaTime * _speed;
+                _leftBack.weight -= _weightCoef * Time.deltaTime * _speed;
 
-                _leftForward.weight += 0.1f * Time.deltaTime * _speed;
-                _rightBack.weight += 0.1f * Time.deltaTime * _speed;
+                _leftForward.weight += _weightCoef * Time.deltaTime * _speed;
+                _rightBack.weight += _weightCoef * Time.deltaTime * _speed;
 
                 if (_rightForward.weight <= 0) _isMoveRightForward = false;
             }
 
             if (!_isMoveRightForward)
             {
-                _rightForward.weight += 0.1f * Time.deltaTime * _speed;
-                _leftBack.weight += 0.1f * Time.deltaTime * _speed;
+                _rightForward.weight += _weightCoef * Time.deltaTime * _speed;
+                _leftBack.weight += _weightCoef * Time.deltaTime * _speed;
 
-                _leftForward.weight -= 0.1f * Time.deltaTime * _speed;
-                _rightBack.weight -= 0.1f * Time.deltaTime * _speed;
+                _leftForward.weight -= _weightCoef * Time.deltaTime * _speed;
+                _rightBack.weight -= _weightCoef * Time.deltaTime * _speed;
 
                 if (_rightForward.weight >= 1) _isMoveRightForward = true;
             }

@@ -4,7 +4,6 @@ using TDShooter.UI;
 using TDShooter.enums;
 using TDShooter.Characters;
 using Zenject;
-using Cysharp.Threading.Tasks;
 using TDShooter.Configs;
 
 namespace TDShooter.Input

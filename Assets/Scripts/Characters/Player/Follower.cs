@@ -1,22 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Follower : MonoBehaviour
+namespace TDShooter.Weapons
 {
-    [SerializeField] private Transform _targetTransform;
-    [SerializeField] private float _smoothing;
-    private Vector3 _offset;
-     
-
-    void Start()
+    public abstract class Follower : MonoBehaviour
     {
-        _offset = transform.position - _targetTransform.position;
-    }
+        [SerializeField] private Transform _targetTransform;
+        [SerializeField] private float _smoothing;
+        private Vector3 _offset;
 
-    protected void Move(float deltaTime)
-    {
-        var nextPosition = Vector3.Lerp(transform.position, _targetTransform.position +_offset, deltaTime *_smoothing);
-        transform.position = nextPosition;
+        void Start()
+        {
+            _offset = transform.position - _targetTransform.position;
+        }
+
+        protected void Move(float deltaTime)
+        {
+            var nextPosition = Vector3.Lerp(transform.position, _targetTransform.position + _offset, deltaTime * _smoothing);
+            transform.position = nextPosition;
+        }
     }
 }
