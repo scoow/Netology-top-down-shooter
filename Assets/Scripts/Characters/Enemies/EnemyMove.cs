@@ -9,7 +9,7 @@ namespace TDShooter.Enemies
         [SerializeField] private Transform _target;
         //private Transform _currentTarget;
         [SerializeField] EnemyAttack _enemyAttack;
-        [SerializeField] Animation_Controller _animationController;
+       /* [SerializeField] */Animation_Controller _animationController;
 
         [Tooltip("Величина стремления к цели"), SerializeField, Range(0f, 5f)]
         private float MaxVelocity;
@@ -25,10 +25,14 @@ namespace TDShooter.Enemies
         private float WanderAngleRange;
         [SerializeField]
         private PlayerControl _playerControl;//временно через инспектор
-
+        private void Awake()
+        {
+            _animationController = GetComponentInChildren<Animation_Controller>();
+        }
         public void InjectPlayerControlReference(PlayerControl playerControl)
         {
             _playerControl = playerControl;
+
         }
 
         public float MaxSpeed 
@@ -55,6 +59,7 @@ namespace TDShooter.Enemies
 
         private void CheckDIstanceAndStopIfClose()//БАГ БЫЛ ТУТ
         {
+            if (_target == null) return;
             float distance = Vector3.Distance(transform.position, _target.transform.position);
             if (distance > ArrivalDistance + 5f && _animationController.EnemyState != EnemyAnimationState.Death)
             {

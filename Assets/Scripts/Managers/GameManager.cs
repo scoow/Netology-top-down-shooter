@@ -6,6 +6,7 @@ using TDShooter.Pools;
 using TDShooter.UI;
 using TDShooter.Weapons;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 namespace TDShooter.Managers.GameManager
@@ -26,6 +27,8 @@ namespace TDShooter.Managers.GameManager
         private TalentsManager _talentsManager;
         private PlayerProgress _playerProgress;
         private Talent_Controll _talentControll;
+
+        private Slider _sliderHP;
 
         /// <summary>
         /// Внедрение зависимостей
@@ -49,6 +52,7 @@ namespace TDShooter.Managers.GameManager
             _playerProgress = FindObjectOfType<PlayerProgress>();
             _talentControll = FindObjectOfType<Talent_Controll>();
 
+            _sliderHP = FindObjectOfType<Slider>();
             #endregion
             #region Добавление ссылок в DI контейнер
 
@@ -66,7 +70,9 @@ namespace TDShooter.Managers.GameManager
             Container.BindInstance(_talentsManager).AsSingle();
             Container.BindInstance(_playerProgress).AsSingle();
             Container.BindInstance(_talentControll).AsSingle();
-            
+
+            Container.BindInstance(_sliderHP).AsSingle();
+
             #endregion
         }
     }

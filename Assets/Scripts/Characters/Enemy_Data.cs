@@ -4,14 +4,19 @@ namespace TDShooter.Configs
 {
     public class Enemy_Data : Character_Data
     {
-        [SerializeField] private Character_UI _character_UI;        
+        private Enemy_UI _enemy_UI;        
 
         protected override void Awake()
         {
             base.Awake();
             SetDifficulty(HasKey(SettingsPanel_Marker._ratio_dificty));
-            _character_UI.SliderHP.maxValue = Hp;
-            _character_UI.SliderHP.value = Hp;
+            _enemy_UI = GetComponent<Enemy_UI>();
+
+            
+        }
+        private void Start()
+        {
+            _enemy_UI.SetHp(Hp);
         }
         public float HasKey(string KeyName)
         {
