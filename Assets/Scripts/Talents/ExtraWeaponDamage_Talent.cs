@@ -13,6 +13,9 @@ public class ExtraWeaponDamage_Talent : Talents_Base
     }
     public override void ActivateTalant()
     {
-
+       PojectileData_SO _projectileMashineGun_SO = Resources.Load<PojectileData_SO>("Projectile_MashineGun");
+       PojectileData_SO _projectilePlasma_SO = Resources.Load<PojectileData_SO>("Projectile_Plasma");
+        _projectileMashineGun_SO.Speed *= 2;
+        _projectilePlasma_SO.Speed *= 2;
     }
 }

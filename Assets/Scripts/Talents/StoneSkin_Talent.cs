@@ -13,6 +13,6 @@ public class StoneSkin_Talent : Talents_Base
     }
     public override void ActivateTalant()
     {
-
+        Player_Data.Armor *= 2;
     }
 }

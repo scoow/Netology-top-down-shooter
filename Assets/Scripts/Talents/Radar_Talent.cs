@@ -13,6 +13,6 @@ public class Radar_Talent : Talents_Base
     }
     public override void ActivateTalant()
     {
-
+        Player_Data.MiniMap.EnableMiniMap();
     }
 }

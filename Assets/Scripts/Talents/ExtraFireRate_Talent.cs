@@ -13,6 +13,6 @@ public class ExtraFireRate_Talent : Talents_Base
     }
     public override void ActivateTalant()
     {
-
+        Player_Data.Damage *= 2;
     }
 }

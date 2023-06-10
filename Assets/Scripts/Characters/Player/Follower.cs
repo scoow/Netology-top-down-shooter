@@ -9,8 +9,8 @@ namespace TDShooter.Weapons
         private Vector3 _offset;
 
         void Start()
-        {
-            _offset = transform.position - _targetTransform.position;
+        {           
+           _offset = transform.position - _targetTransform.position;
         }
 
         protected void Move(float deltaTime)

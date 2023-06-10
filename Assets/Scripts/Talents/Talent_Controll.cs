@@ -11,9 +11,7 @@ public class Talent_Controll : MonoBehaviour
     [SerializeField] Talent_Marker _talentTwoView;
     [SerializeField] Player_Data _playerData;
 
-
-
-    public void EnableTalent(Talents? talentOne, Talents? talentTwo)
+    public void EnableTalent(Talents? talentOne, Talents? talentTwo) //активируем панель талантов
     {
         Talents_Base oneAccessibleTalant =  ChoiseTalant(talentOne);
         _talentOneView.EnableTalantView(oneAccessibleTalant);        
@@ -21,7 +19,7 @@ public class Talent_Controll : MonoBehaviour
         _talentTwoView.EnableTalantView(twoAccessibleTalant);        
     }
 
-    private Talents_Base ChoiseTalant(Talents? talentExample)
+    private Talents_Base ChoiseTalant(Talents? talentExample) //выбор таланта
     {
         if      (talentExample == Talents.StoneSkin) return new StoneSkin_Talent(_playerData);
         else if (talentExample == Talents.Radar) return new Radar_Talent(_playerData);

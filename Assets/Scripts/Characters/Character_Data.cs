@@ -25,7 +25,7 @@ namespace TDShooter.Configs
         public float CriticalDamageChance { get => _criticalDamageChance; private set => _criticalDamageChance = value; }
         public ÑharacterType ÑharacterType { get => _ñharacterType; private set => _ñharacterType = value; }
         public ÑharacterData_SO CharacterData_SO { get => _characterData_SO; }
-        public int Damage { get => _damage; private set => _damage = value; }
+        public int Damage { get => _damage; set => _damage = value; }
         public int MaxHP { get => maxHP; set => maxHP = value; }
         public int CurrentHP { get => currentHP; set => currentHP = value; }
 

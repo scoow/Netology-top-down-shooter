@@ -8,7 +8,10 @@ namespace TDShooter.Configs
         [SerializeField] private float _speed;
         [SerializeField] private int _damage;
 
-        public float Speed  => _speed; 
+        //public float Speed  => _speed; 
+        public float Speed { get => _speed; set => _speed = value; }
         public int Damage => _damage;
+
+        
     }
 }
