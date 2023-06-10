@@ -1,5 +1,6 @@
 
 using TDShooter.Configs;
+using TDShooter.enums;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,8 +19,6 @@ public class Talents_Base
         Player_Data = player_Data;
     }
 
-    public virtual void ActivateTalant()
-    {
-
-    }    
+    public virtual void ActivateTalant(){}    
+    public virtual Talents GetTalantType(){ return Talents.Radar; }
 }

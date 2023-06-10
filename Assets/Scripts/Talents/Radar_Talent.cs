@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TDShooter.Configs;
+using TDShooter.enums;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -15,4 +16,5 @@ public class Radar_Talent : Talents_Base
     {
         Player_Data.MiniMap.EnableMiniMap();
     }
+    public override Talents GetTalantType() { return Talents.Radar; }
 }

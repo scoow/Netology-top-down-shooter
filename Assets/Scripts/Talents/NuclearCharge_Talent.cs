@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TDShooter.Configs;
+using TDShooter.enums;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -15,4 +16,5 @@ public class NuclearCharge_Talent : Talents_Base
     {
 
     }
+    public override Talents GetTalantType() { return Talents.NuclearCharge; }
 }

@@ -14,7 +14,7 @@ namespace TDShooter.Characters
         [Inject]
         private readonly Talent_Controll _talentControll;
 
-        private readonly List<Talents> _talents = new();
+        private /*readonly*/ List<Talents> _talents = new();
 
         private void Awake()
         {
@@ -39,10 +39,22 @@ namespace TDShooter.Characters
 
             int randomTalentIndex = UnityEngine.Random.Range(0, _talents.Count - 1);
             talent = _talents[randomTalentIndex];
-            _talents.RemoveAt(randomTalentIndex);
+            //_talents.RemoveAt(randomTalentIndex);
 
             //Debug.Log("Вы получили " + talent);
             return true;
+        }
+
+        public void RemoveTalant(Talents talent)
+        {
+            foreach(Talents _talent in _talents)
+            {
+                if(_talent == talent)
+                {
+                    _talents.Remove(_talent);
+                    break;
+                }                    
+            }            
         }
         public void PickTwoRandomTalents()
         {

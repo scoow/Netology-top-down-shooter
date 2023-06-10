@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TDShooter.Configs;
+using TDShooter.enums;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -18,4 +19,5 @@ public class ExtraWeaponDamage_Talent : Talents_Base
         _projectileMashineGun_SO.Speed *= 2;
         _projectilePlasma_SO.Speed *= 2;
     }
+    public override Talents GetTalantType() { return Talents.ExtraWeaponDamage; }
 }

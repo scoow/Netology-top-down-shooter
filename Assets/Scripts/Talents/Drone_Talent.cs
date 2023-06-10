@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TDShooter.Characters;
 using TDShooter.Configs;
+using TDShooter.enums;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -17,4 +18,5 @@ public class Drone_Talent : Talents_Base
     {
         Player_Data.DroneAssist.EnableDrone();
     }
+    public override Talents GetTalantType() { return Talents.Drone; }
 }

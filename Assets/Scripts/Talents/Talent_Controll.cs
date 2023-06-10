@@ -1,22 +1,29 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TDShooter.Characters;
 using TDShooter.Configs;
 using TDShooter.enums;
 using UnityEngine;
 
 public class Talent_Controll : MonoBehaviour
 {
-    [SerializeField] Talent_Marker _talentOneView;
-    [SerializeField] Talent_Marker _talentTwoView;
-    [SerializeField] Player_Data _playerData;
+    [SerializeField] private Talent_Marker _talentOneView;
+    [SerializeField] private Talent_Marker _talentTwoView;
+    [SerializeField] private Player_Data _playerData;    
 
     public void EnableTalent(Talents? talentOne, Talents? talentTwo) //активируем панель талантов
-    {
-        Talents_Base oneAccessibleTalant =  ChoiseTalant(talentOne);
-        _talentOneView.EnableTalantView(oneAccessibleTalant);        
-        Talents_Base twoAccessibleTalant = ChoiseTalant(talentTwo);
-        _talentTwoView.EnableTalantView(twoAccessibleTalant);        
+    {        
+        if (talentOne != null)
+        {
+            Talents_Base oneAccessibleTalant = ChoiseTalant(talentOne);
+            _talentOneView.EnableTalantView(oneAccessibleTalant);
+        }
+        if (talentTwo != null)
+        {
+            Talents_Base twoAccessibleTalant = ChoiseTalant(talentTwo);
+            _talentTwoView.EnableTalantView(twoAccessibleTalant);
+        }              
     }
 
     private Talents_Base ChoiseTalant(Talents? talentExample) //выбор таланта

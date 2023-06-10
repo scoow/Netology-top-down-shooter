@@ -1082,6 +1082,7 @@ MonoBehaviour:
   _talentSprite: {fileID: 624337217}
   _talentDescription: {fileID: 852835027}
   _otherTalent: {fileID: 1710517385}
+  _talentsManager: {fileID: 1137414723}
 --- !u!1 &293710134
 GameObject:
   m_ObjectHideFlags: 0
@@ -12450,6 +12451,7 @@ MonoBehaviour:
   _talentSprite: {fileID: 681496371}
   _talentDescription: {fileID: 895827517}
   _otherTalent: {fileID: 251757267}
+  _talentsManager: {fileID: 1137414723}
 --- !u!1 &1715277894
 GameObject:
   m_ObjectHideFlags: 0
