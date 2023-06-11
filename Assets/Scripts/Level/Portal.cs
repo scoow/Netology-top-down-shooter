@@ -10,6 +10,7 @@ namespace TDShooter.Level
     {
         [SerializeField] private Vector3 _destinationPoint;
         [SerializeField] private float _delayBeforeTeleportation;
+        public Action TeleportHero;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -22,6 +23,7 @@ namespace TDShooter.Level
         {
             await UniTask.Delay(TimeSpan.FromSeconds(_delayBeforeTeleportation));
             teleportTarget.transform.position = _destinationPoint;
+            TeleportHero?.Invoke();
         }
     }
 }

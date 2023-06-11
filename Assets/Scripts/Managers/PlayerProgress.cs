@@ -1,6 +1,10 @@
 using TDShooter.enums;
 using TDShooter.EventManager;
+<<<<<<< Updated upstream
 using TDShooter.SaveLoad;
+=======
+using TDShooter.Level;
+>>>>>>> Stashed changes
 using TDShooter.UI;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,7 +19,11 @@ namespace TDShooter.Managers
         [SerializeField] private int _targetKillsCount; //колиичество убийств для повышения уровня
         [SerializeField] private int _lootDropChance; //шанс выпадения лута
         [SerializeField] private int _targetKillsMultiplier = 2;//множитель увеличения количества необходимых убийств
+<<<<<<< Updated upstream
         [SerializeField] private Transform _teleport;
+=======
+        [SerializeField] private Portal _portal;
+>>>>>>> Stashed changes
 
         [Inject]
         private readonly UI_Controller _controllerUI;
@@ -48,7 +56,10 @@ namespace TDShooter.Managers
             _currentKillsCount = 0;
             _controllerUI.UpdateView(_currentKillsCount, UpdateViewType.TargetKills);
             _levelCount++;
-            //if (_levelCount == 5) _teleporFromBigBoss
+            if (_levelCount == 5)
+            {
+                _portal.gameObject.SetActive(true);
+            }
             _controllerUI.UpdateView(_levelCount, UpdateViewType.LevelUp);
             //_targetKillsCount *= _targetKillsMultiplier;//увеличить необходимое количество убийств
             _controllerUI.UpdateView(_targetKillsCount, UpdateViewType.TargetKills);
