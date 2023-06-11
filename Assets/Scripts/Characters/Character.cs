@@ -1,5 +1,6 @@
 using UnityEngine;
 using TDShooter.Configs;
+using System;
 
 namespace TDShooter.Characters
 {
@@ -11,6 +12,8 @@ namespace TDShooter.Characters
         /*[SerializeField] */protected Character_Data _character_Data;
         /*[SerializeField] */protected Character_UI _character_UI;        
         public int HP => _character_Data.Hp;
+
+        public Action OnHit;
         public virtual void Die()
         {
             print("Я погиб");          
@@ -18,6 +21,7 @@ namespace TDShooter.Characters
         public void TakeDamage(int damage)
         {
             int incomingDamage = damage - _character_Data.Armor;
+            OnHit?.Invoke();
             if (incomingDamage <= 0) return;
             _character_Data.CurrentHP -= incomingDamage;
             _character_UI.UpdateViewHealth(damage,false);
