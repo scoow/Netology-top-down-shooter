@@ -1,5 +1,6 @@
 using TDShooter.enums;
 using TDShooter.EventManager;
+using TDShooter.SaveLoad;
 using TDShooter.UI;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,14 +8,14 @@ using Zenject;
 
 namespace TDShooter.Managers
 {
-    public class PlayerProgress : MonoBehaviour, IEventListener
+    public class PlayerProgress : MonoBehaviour, IEventListener, ISavable
     {
         [SerializeField] private int _levelCount; //счётчик уровней
         [SerializeField] private int _currentKillsCount; //текущие убийства 
         [SerializeField] private int _targetKillsCount; //колиичество убийств для повышения уровня
         [SerializeField] private int _lootDropChance; //шанс выпадения лута
         [SerializeField] private int _targetKillsMultiplier = 2;//множитель увеличения количества необходимых убийств
-        [SerializeField] private Transform _telepor;
+        [SerializeField] private Transform _teleport;
 
         [Inject]
         private readonly UI_Controller _controllerUI;
@@ -84,6 +85,18 @@ namespace TDShooter.Managers
         {
             if (eventType != GameEventType.EnemyDied) return;
             CurrentKilledCount++;
+        }
+
+        public string SaveThis()
+        {
+            return _levelCount.ToString() + "," + _currentKillsCount.ToString();
+        }
+
+        public void LoadThis(string data)
+        {
+            string[] splittedData = data.Split(',');
+            _levelCount = int.Parse(splittedData[0]);
+            _currentKillsCount = int.Parse(splittedData[1]);
         }
     }
 }

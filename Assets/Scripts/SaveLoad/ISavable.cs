@@ -2,7 +2,7 @@ namespace TDShooter.SaveLoad
 {
     public interface ISavable
     {
-        public void Save();
-        public void Load();
+        public string SaveThis();
+        public void LoadThis(string data);
     }
 }
