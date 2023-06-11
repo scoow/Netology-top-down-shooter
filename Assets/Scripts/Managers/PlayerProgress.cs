@@ -14,6 +14,7 @@ namespace TDShooter.Managers
         [SerializeField] private int _targetKillsCount; //колиичество убийств для повышения уровня
         [SerializeField] private int _lootDropChance; //шанс выпадения лута
         [SerializeField] private int _targetKillsMultiplier = 2;//множитель увеличения количества необходимых убийств
+        [SerializeField] private Transform _telepor;
 
         [Inject]
         private readonly UI_Controller _controllerUI;
@@ -46,6 +47,7 @@ namespace TDShooter.Managers
             _currentKillsCount = 0;
             _controllerUI.UpdateView(_currentKillsCount, UpdateViewType.TargetKills);
             _levelCount++;
+            //if (_levelCount == 5) _teleporFromBigBoss
             _controllerUI.UpdateView(_levelCount, UpdateViewType.LevelUp);
             //_targetKillsCount *= _targetKillsMultiplier;//увеличить необходимое количество убийств
             _controllerUI.UpdateView(_targetKillsCount, UpdateViewType.TargetKills);
