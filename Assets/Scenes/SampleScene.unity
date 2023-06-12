@@ -10789,6 +10789,7 @@ GameObject:
   - component: {fileID: 1137414720}
   - component: {fileID: 1137414722}
   - component: {fileID: 1137414723}
+  - component: {fileID: 1137414724}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -10881,7 +10882,7 @@ MonoBehaviour:
   _currentKillsCount: 0
   _targetKillsCount: 3
   _lootDropChance: 15
-  _targetKillsMultiplier: 2
+  _targetKillsMultiplier: 1
   _teleport: {fileID: 0}
   _portal: {fileID: 191105719}
 --- !u!114 &1137414721
@@ -10923,6 +10924,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7138b93a04a1cad45a6d48f2b05c145d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1137414724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137414712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eedbbe63dfb51734f94f5caeb3e9ce2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1157290522

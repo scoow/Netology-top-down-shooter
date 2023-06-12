@@ -51,9 +51,13 @@ namespace TDShooter.Talents
             if (nearestEnemy != null)
             {
                 _target = nearestEnemy.transform.position;
-                transform.LookAt(_target, Vector3.up);
-/*                transform.rotation.x = 0f;
-                rotation.z = 0f;*/
+                
+                //transform.LookAt(_target, Vector3.up);
+                Quaternion sight = Quaternion.LookRotation(_target - transform.position, Vector3.up);
+                sight.x = 0;
+                sight.z = 0;
+                transform.rotation = sight;
+
                 _weapon.Shoot();
             }
             

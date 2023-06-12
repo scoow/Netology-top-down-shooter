@@ -31,10 +31,12 @@ namespace TDShooter.Managers.GameManager
         private Talent_Controller _talentControll;
         private Slider _sliderHP;
         private SpawnAssistant _spawnAssistant;
-/*        private void Awake()
-        {
-            DontDestroyOnLoad(this.gameObject);
-        }*/
+        private PauseMenu_Controller _pauseMenu_Controller;
+        private NuclearChargeEffect _nuclearChargeEffect;
+        /*        private void Awake()
+                {
+                    DontDestroyOnLoad(this.gameObject);
+                }*/
         /// <summary>
         /// Внедрение зависимостей
         /// </summary>
@@ -58,6 +60,8 @@ namespace TDShooter.Managers.GameManager
             _talentControll = FindObjectOfType<Talent_Controller>();
             _sliderHP = FindObjectOfType<Slider>();
             _spawnAssistant = FindObjectOfType<SpawnAssistant>();
+            _pauseMenu_Controller = FindObjectOfType<PauseMenu_Controller>();
+            _nuclearChargeEffect = FindObjectOfType<NuclearChargeEffect>();
 
             #endregion
             #region Добавление ссылок в DI контейнер
@@ -78,7 +82,9 @@ namespace TDShooter.Managers.GameManager
             Container.BindInstance(_talentControll).AsSingle();
             Container.BindInstance(_sliderHP).AsSingle();
             Container.BindInstance(_spawnAssistant).AsSingle();
-
+            Container.BindInstance(_pauseMenu_Controller).AsSingle();
+            Container.BindInstance(_nuclearChargeEffect).AsSingle();
+            
             #endregion
         }
     }

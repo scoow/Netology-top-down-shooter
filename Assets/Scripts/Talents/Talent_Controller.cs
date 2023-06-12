@@ -1,6 +1,8 @@
 using TDShooter.Configs;
 using TDShooter.enums;
+using TDShooter.Managers;
 using UnityEngine;
+using Zenject;
 
 namespace TDShooter.Talents
 {
@@ -9,6 +11,8 @@ namespace TDShooter.Talents
         [SerializeField] private Talent_Marker _talentOneView;
         [SerializeField] private Talent_Marker _talentTwoView;
         [SerializeField] private Player_Data _playerData;
+        [Inject]
+        private PlayerProgress _playerProgress;
 
         public void EnableTalent(TalentType? talentOne, TalentType? talentTwo) //активируем панель талантов
         {
@@ -31,7 +35,7 @@ namespace TDShooter.Talents
             else if (talentExample == TalentType.ExtraFireRate) return new ExtraFireRate_Talent(_playerData);
             else if (talentExample == TalentType.ExtraWeaponDamage) return new ExtraWeaponDamage_Talent(_playerData);
             else if (talentExample == TalentType.Drone) return new Drone_Talent(_playerData);
-            else if (talentExample == TalentType.NuclearCharge) return new NuclearCharge_Talent(_playerData);
+            else if (talentExample == TalentType.NuclearCharge) return new NuclearCharge_Talent(_playerData, _playerProgress);
             else return null;
         }
     }

@@ -15,7 +15,7 @@ namespace TDShooter.Talents
         {
             PojectileData_SO _projectileMashineGun_SO = Resources.Load<PojectileData_SO>("Projectile_MashineGun");
             PojectileData_SO _projectilePlasma_SO = Resources.Load<PojectileData_SO>("Projectile_Plasma");
-            _projectileMashineGun_SO.Speed *= 2;
+            _projectileMashineGun_SO.Speed *= 2;//todo баг. бесконечно увеличивает скорость пуль
             _projectilePlasma_SO.Speed *= 2;
         }
         public override TalentType GetTalantType() { return TalentType.ExtraWeaponDamage; }

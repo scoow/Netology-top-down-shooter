@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Zenject;
 using UnityEngine.SceneManagement;
+using TDShooter.Talents;
 
 namespace TDShooter.Managers
 {
@@ -16,12 +17,15 @@ namespace TDShooter.Managers
         [SerializeField] private int _currentKillsCount; //текущие убийства 
         [SerializeField] private int _targetKillsCount; //колиичество убийств для повышения уровня
         [SerializeField] private int _lootDropChance; //шанс выпадения лута
-        [SerializeField] private int _targetKillsMultiplier = 2;//множитель увеличения количества необходимых убийств
+        [SerializeField] private int _targetKillsMultiplier = 1;//множитель увеличения количества необходимых убийств
         [SerializeField] private Transform _teleport;
         [SerializeField] private Portal _portal;
-
+        private bool _nuclearChargeIsActive = false;
+        public bool NuclearChargeIsActive => _nuclearChargeIsActive;
         [Inject]
         private readonly UI_Controller _controllerUI;
+        [Inject]
+        private readonly NuclearChargeEffect _nuclearChargeEffect;
         public int ChanceDroopLoot => _lootDropChance;
 
         public event UnityAction OnNextLevel;
@@ -56,7 +60,7 @@ namespace TDShooter.Managers
                 _portal.gameObject.SetActive(true);
             }
             _controllerUI.UpdateView(_levelCount, UpdateViewType.LevelUp);
-            //_targetKillsCount *= _targetKillsMultiplier;//увеличить необходимое количество убийств
+            _targetKillsCount *= _targetKillsMultiplier;//увеличить необходимое количество убийств
             _controllerUI.UpdateView(_targetKillsCount, UpdateViewType.TargetKills);
 
             OnNextLevel?.Invoke();
@@ -108,6 +112,23 @@ namespace TDShooter.Managers
 
             _controllerUI.UpdateView(_levelCount, UpdateViewType.LevelUp);
             _controllerUI.UpdateView(_targetKillsCount, UpdateViewType.TargetKills);
+        }
+
+        public void ActivateNuclearCharge()
+        {
+            _nuclearChargeIsActive = true;
+        }
+        public void UseNuclearCharge()
+        {
+            if (_nuclearChargeIsActive)
+            {
+                print("Заряд активирован");
+                _nuclearChargeEffect.Activate();
+                _nuclearChargeIsActive = false;
+            }
+            else
+                print("Заряд не готов");
+            
         }
     }
 }

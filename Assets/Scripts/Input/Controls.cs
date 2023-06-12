@@ -73,6 +73,24 @@ namespace TDShooter.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NuclearBomb"",
+                    ""type"": ""Button"",
+                    ""id"": ""36664417-ab6e-425b-ae56-2c776b37f023"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PauseGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""b7ace0f4-4b7f-4a02-9410-2fa875ef247d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -174,6 +192,28 @@ namespace TDShooter.Input
                     ""action"": ""ThrowGrenade"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c62cd860-f946-454a-b0f1-f19d515a8cc5"",
+                    ""path"": ""<Keyboard>/n"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NuclearBomb"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""84f26ab6-351d-4530-a83d-5f50ecb8a0be"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -187,6 +227,8 @@ namespace TDShooter.Input
             m_Player_WeaponSwitchMachineGun = m_Player.FindAction("WeaponSwitchMachineGun", throwIfNotFound: true);
             m_Player_WeaponSwitchPlasmaGun = m_Player.FindAction("WeaponSwitchPlasmaGun", throwIfNotFound: true);
             m_Player_ThrowGrenade = m_Player.FindAction("ThrowGrenade", throwIfNotFound: true);
+            m_Player_NuclearBomb = m_Player.FindAction("NuclearBomb", throwIfNotFound: true);
+            m_Player_PauseGame = m_Player.FindAction("PauseGame", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -253,6 +295,8 @@ namespace TDShooter.Input
         private readonly InputAction m_Player_WeaponSwitchMachineGun;
         private readonly InputAction m_Player_WeaponSwitchPlasmaGun;
         private readonly InputAction m_Player_ThrowGrenade;
+        private readonly InputAction m_Player_NuclearBomb;
+        private readonly InputAction m_Player_PauseGame;
         public struct PlayerActions
         {
             private @Controls m_Wrapper;
@@ -262,6 +306,8 @@ namespace TDShooter.Input
             public InputAction @WeaponSwitchMachineGun => m_Wrapper.m_Player_WeaponSwitchMachineGun;
             public InputAction @WeaponSwitchPlasmaGun => m_Wrapper.m_Player_WeaponSwitchPlasmaGun;
             public InputAction @ThrowGrenade => m_Wrapper.m_Player_ThrowGrenade;
+            public InputAction @NuclearBomb => m_Wrapper.m_Player_NuclearBomb;
+            public InputAction @PauseGame => m_Wrapper.m_Player_PauseGame;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -286,6 +332,12 @@ namespace TDShooter.Input
                 @ThrowGrenade.started += instance.OnThrowGrenade;
                 @ThrowGrenade.performed += instance.OnThrowGrenade;
                 @ThrowGrenade.canceled += instance.OnThrowGrenade;
+                @NuclearBomb.started += instance.OnNuclearBomb;
+                @NuclearBomb.performed += instance.OnNuclearBomb;
+                @NuclearBomb.canceled += instance.OnNuclearBomb;
+                @PauseGame.started += instance.OnPauseGame;
+                @PauseGame.performed += instance.OnPauseGame;
+                @PauseGame.canceled += instance.OnPauseGame;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -305,6 +357,12 @@ namespace TDShooter.Input
                 @ThrowGrenade.started -= instance.OnThrowGrenade;
                 @ThrowGrenade.performed -= instance.OnThrowGrenade;
                 @ThrowGrenade.canceled -= instance.OnThrowGrenade;
+                @NuclearBomb.started -= instance.OnNuclearBomb;
+                @NuclearBomb.performed -= instance.OnNuclearBomb;
+                @NuclearBomb.canceled -= instance.OnNuclearBomb;
+                @PauseGame.started -= instance.OnPauseGame;
+                @PauseGame.performed -= instance.OnPauseGame;
+                @PauseGame.canceled -= instance.OnPauseGame;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -329,6 +387,8 @@ namespace TDShooter.Input
             void OnWeaponSwitchMachineGun(InputAction.CallbackContext context);
             void OnWeaponSwitchPlasmaGun(InputAction.CallbackContext context);
             void OnThrowGrenade(InputAction.CallbackContext context);
+            void OnNuclearBomb(InputAction.CallbackContext context);
+            void OnPauseGame(InputAction.CallbackContext context);
         }
     }
 }

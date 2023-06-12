@@ -5,6 +5,8 @@ using TDShooter.enums;
 using TDShooter.Characters;
 using Zenject;
 using TDShooter.Configs;
+using System;
+using TDShooter.Managers;
 
 namespace TDShooter.Input
 {
@@ -28,11 +30,15 @@ namespace TDShooter.Input
         private readonly WeaponChanger _weaponChanger;
         [Inject]
         private readonly ProjectilesManager _projectilesManager;
+        [Inject]
+        private PauseMenu_Controller _pauseMenu_Controller;
+        [Inject]
+        private PlayerProgress _playerProgress;
 
         //[SerializeField] private GameObject _grenade;       
         //private DirectionState directionMove = DirectionState.Idle;
 
-        public float Speed { get => _speed; private set => _speed = value; } 
+        public float Speed { get => _speed; private set => _speed = value; }
 
         private void Awake()
         {
@@ -41,12 +47,20 @@ namespace TDShooter.Input
         private void OnEnable()
         {
             _controls.Player.Enable();
-            _controls.Player.Shoot.performed += contecxt => Fire();
+            _controls.Player.Shoot.performed += contect => Fire();
 
-           //_animControl = GetComponent<Animator_Controller>();
+            //_animControl = GetComponent<Animator_Controller>();
             _controls.Player.WeaponSwitchMachineGun.performed += context => _weaponChanger.ChangeWeapon(WeaponType.Machinegun);
             _controls.Player.WeaponSwitchPlasmaGun.performed += context => _weaponChanger.ChangeWeapon(WeaponType.Plasmagun);
             _controls.Player.ThrowGrenade.performed += context => ThrowGrenade();
+
+            _controls.Player.PauseGame.performed += context => _pauseMenu_Controller.ActivatePauseMenu();
+            _controls.Player.NuclearBomb.performed += context => ActivateNuclearBomb();
+        }
+
+        private void ActivateNuclearBomb()
+        {
+            _playerProgress.UseNuclearCharge();
         }
 
         private void Fire()
@@ -61,8 +75,7 @@ namespace TDShooter.Input
         {
             Grenade grenade = _projectilesManager.GrenadePool[GrenadeType.Explosive].GetAviableOrCreateNew();
             grenade.transform.SetPositionAndRotation(transform.position, transform.rotation);
-
-            Cysharp.Threading.Tasks.UniTask throwing = _animControl.ThrowAnimationAsync();
+            _ = _animControl.ThrowAnimationAsync();
 
             grenade.Throw(_aim.transform.position);
         }
@@ -83,7 +96,7 @@ namespace TDShooter.Input
             //CheckDirectionMove(previosPosition, nextPosition, _aim.transform.position);
 
             _animControl.Move(inputValue, _playerHead.transform.rotation);
-        }        
+        }
         public void AimCursor()
         {
             Ray ray = Camera.main.ScreenPointToRay(UnityEngine.Input.mousePosition);
@@ -91,7 +104,7 @@ namespace TDShooter.Input
             {
                 _aim.transform.position = raycastHit.point;
                 //_playerHead.transform.LookAt(raycastHit.point);
-                Vector3 relativePos = raycastHit.point - transform.position;                
+                Vector3 relativePos = raycastHit.point - transform.position;
                 Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
                 rotation.x = 0f;
                 rotation.z = 0f;
@@ -121,7 +134,7 @@ namespace TDShooter.Input
         private void Update()
         {
             AimCursor();
-            Move();            
+            Move();
         }
 
         private void OnDisable()
