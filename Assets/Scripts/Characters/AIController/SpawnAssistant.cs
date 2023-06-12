@@ -57,10 +57,6 @@ namespace TDShooter.Characters
                 _timer = _enemySpawnCooldown;
                 SpawnEnemyAtRandomTile();
             }
-/*            if (UnityEngine.Input.GetKeyDown(KeyCode.B))
-            {
-                
-            }*/
         }
 
         private void SpawnEnemyAtRandomTile()
@@ -81,6 +77,13 @@ namespace TDShooter.Characters
 
             enemy.transform.position = _unitSpawners[randompoint].transform.position;
             enemy.GetComponent<BaseEnemy>().Respawn();
+        }
+
+        public List<BaseEnemy> FindAllEnemies()
+        {
+            List<BaseEnemy> enemies = EnemiesPool[ÑharacterType.FastMeleeEnemy].GetActiveUnits();
+            enemies.AddRange(EnemiesPool[ÑharacterType.Spider].GetActiveUnits());
+            return enemies;
         }
     }
 }

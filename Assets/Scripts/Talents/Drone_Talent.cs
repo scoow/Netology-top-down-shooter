@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using TDShooter.Configs;
 using TDShooter.enums;
 using UnityEngine;
@@ -11,6 +13,7 @@ namespace TDShooter.Talents
             Description = "Дрон-помощник";
             TalentSprite = Resources.Load<Sprite>("Sprites/UI/Talents/Абилка_3");
         }
+
         public override void ActivateTalant()
         {
             Player_Data.DroneAssist.EnableDrone();

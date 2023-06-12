@@ -29,8 +29,8 @@ namespace TDShooter.Managers.GameManager
         private TalentsManager _talentsManager;
         private PlayerProgress _playerProgress;
         private Talent_Controller _talentControll;
-
         private Slider _sliderHP;
+        private SpawnAssistant _spawnAssistant;
 /*        private void Awake()
         {
             DontDestroyOnLoad(this.gameObject);
@@ -56,8 +56,9 @@ namespace TDShooter.Managers.GameManager
             _talentsManager = FindObjectOfType<TalentsManager>();
             _playerProgress = FindObjectOfType<PlayerProgress>();
             _talentControll = FindObjectOfType<Talent_Controller>();
-
             _sliderHP = FindObjectOfType<Slider>();
+            _spawnAssistant = FindObjectOfType<SpawnAssistant>();
+
             #endregion
             #region Добавление ссылок в DI контейнер
 
@@ -76,6 +77,7 @@ namespace TDShooter.Managers.GameManager
             Container.BindInstance(_playerProgress).AsSingle();
             Container.BindInstance(_talentControll).AsSingle();
             Container.BindInstance(_sliderHP).AsSingle();
+            Container.BindInstance(_spawnAssistant).AsSingle();
 
             #endregion
         }

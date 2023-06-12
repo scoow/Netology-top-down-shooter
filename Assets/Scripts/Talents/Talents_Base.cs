@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TDShooter.Talents
 {
-    public class Talents_Base
+    public abstract class Talents_Base
     {
         private Player_Data player_Data;
         private Sprite _talentSprite;

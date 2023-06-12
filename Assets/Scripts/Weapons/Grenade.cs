@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using TDShooter.Characters;
 using TDShooter.enums;
@@ -16,7 +17,7 @@ namespace TDShooter.Weapons
         [SerializeField] private float _damage;
         [SerializeField] private float _explosionRadius;
 
-        private SpawnAssistant _assistant;
+        private SpawnAssistant _spawnAssistant;
 
         private bool _isExplosion;
         private float _timer;
@@ -27,7 +28,7 @@ namespace TDShooter.Weapons
 
         private void Start()
         {
-            _assistant = FindObjectOfType<SpawnAssistant>();
+            _spawnAssistant = FindObjectOfType<SpawnAssistant>();
         }
 
         private void ResetGrenadeTimer()
@@ -65,8 +66,7 @@ namespace TDShooter.Weapons
         {
             gameObject.SetActive(false);
             //âçðûâ
-            var enemies = _assistant.EnemiesPool[ÑharacterType.FastMeleeEnemy].GetActiveUnits();
-            enemies.AddRange(_assistant.EnemiesPool[ÑharacterType.Spider].GetActiveUnits());
+            List<BaseEnemy> enemies = _spawnAssistant.FindAllEnemies();
             //todo äîáàâèòü îáùèé ñïèñîê âðàãîâ done
             enemies = enemies.Where(x => Vector3.Distance(x.transform.position, this.transform.position) < _explosionRadius).ToList();
             foreach (var enemy in enemies)
