@@ -1,10 +1,7 @@
 using TDShooter.enums;
 using TDShooter.EventManager;
-<<<<<<< Updated upstream
 using TDShooter.SaveLoad;
-=======
 using TDShooter.Level;
->>>>>>> Stashed changes
 using TDShooter.UI;
 using UnityEngine;
 using UnityEngine.Events;
@@ -19,11 +16,8 @@ namespace TDShooter.Managers
         [SerializeField] private int _targetKillsCount; //колиичество убийств для повышения уровня
         [SerializeField] private int _lootDropChance; //шанс выпадения лута
         [SerializeField] private int _targetKillsMultiplier = 2;//множитель увеличения количества необходимых убийств
-<<<<<<< Updated upstream
         [SerializeField] private Transform _teleport;
-=======
         [SerializeField] private Portal _portal;
->>>>>>> Stashed changes
 
         [Inject]
         private readonly UI_Controller _controllerUI;

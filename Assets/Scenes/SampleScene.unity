@@ -10883,11 +10883,8 @@ MonoBehaviour:
   _targetKillsCount: 3
   _lootDropChance: 0
   _targetKillsMultiplier: 2
-<<<<<<< Updated upstream
   _teleport: {fileID: 0}
-=======
   _portal: {fileID: 191105719}
->>>>>>> Stashed changes
 --- !u!114 &1137414721
 MonoBehaviour:
   m_ObjectHideFlags: 0
