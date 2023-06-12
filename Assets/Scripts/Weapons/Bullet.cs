@@ -9,7 +9,6 @@ namespace TDShooter.Weapons
         private float _speed;
         private int _damage;
 
-        [SerializeField]
         private PojectileData_SO ProjectileData_SO  => _projectileData_SO;
         public float Speed => _speed;
         public int Damage => _damage;

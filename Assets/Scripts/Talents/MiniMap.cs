@@ -1,10 +1,12 @@
-using TDShooter.Configs;
 using UnityEngine;
 
-public class MiniMap : MonoBehaviour
-{   
-    public void EnableMiniMap()
+namespace TDShooter.Talents
+{
+    public class MiniMap : MonoBehaviour
     {
-        gameObject.SetActive(true);
-    }   
+        public void EnableMiniMap()
+        {
+            gameObject.SetActive(true);
+        }
+    }
 }

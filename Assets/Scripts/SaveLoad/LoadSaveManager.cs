@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 namespace TDShooter.SaveLoad
 {
+    /// <summary>
+    /// Менеджер загрузки и сохранения
+    /// </summary>
     public class LoadSaveManager : MonoBehaviour
     {
         private ISaver _fileSaver;
@@ -31,6 +34,7 @@ namespace TDShooter.SaveLoad
         {
             if (scene.name == "StartMenu") return;
 
+            _savables.Add(FindObjectOfType<PlayerProgress>());
             if (!_resetProgress)
             {
                 LoadGame();
@@ -40,14 +44,12 @@ namespace TDShooter.SaveLoad
 
         private void LoadGame()
         {
-            _savables.Add(FindObjectOfType<PlayerProgress>());
-            _fileSaver = new FileSaver(_savables);
+            _fileSaver = new FileSaver(_savables);//todo упростить
             _fileSaver.Load();
         }
 
         public void SaveGame()
         {
-            _savables.Add(FindObjectOfType<PlayerProgress>());
             _fileSaver = new FileSaver(_savables);
             _fileSaver.Save();
         }

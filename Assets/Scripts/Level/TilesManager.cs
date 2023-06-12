@@ -16,7 +16,7 @@ namespace TDShooter.Level
 
         [SerializeField]
         private int _offsetSize;
-        private int _cornerOffsetSize = 50;//сделать красиво
+        private readonly int _cornerOffsetSize = 50;//сделать красиво
         private void Start()
         {
             _leftBottomCorner_Marker= GetComponentInChildren<LeftBottomCorner_Marker>();

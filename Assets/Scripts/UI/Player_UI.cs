@@ -1,7 +1,6 @@
 using TDShooter.Configs;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 public class Player_UI : Character_UI
 {

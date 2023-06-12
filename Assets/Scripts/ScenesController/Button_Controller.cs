@@ -9,8 +9,6 @@ namespace TDShooter.UI
         [SerializeField] Sprite _active;
         [SerializeField] Sprite _noteActive;
 
-
-
         private void Start()
         {
             _default = GetComponent<Image>();

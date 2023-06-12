@@ -15,7 +15,7 @@ namespace TDShooter.Characters
         [Inject]
         private readonly Talent_Controller _talentControll;
 
-        private /*readonly*/ List<TalentType> _talents = new();
+        private /*readonly*/ readonly List<TalentType> _talents = new();
 
         private void Awake()
         {
@@ -59,10 +59,8 @@ namespace TDShooter.Characters
         }
         public void PickTwoRandomTalents()
         {
-            TalentType? talentOne;
-            TalentType? talentTwo;
-            TryPickRandomTalent(out talentOne);
-            TryPickRandomTalent(out talentTwo);
+            TryPickRandomTalent(out TalentType? talentOne);
+            TryPickRandomTalent(out TalentType? talentTwo);
 
             _talentControll.EnableTalent(talentOne, talentTwo); //передать два таланта в UI. Могут быть null
         }

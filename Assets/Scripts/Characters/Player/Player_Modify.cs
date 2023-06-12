@@ -13,7 +13,7 @@ namespace TDShooter.Configs
 
         public void TakeLoot(LootData_SO currentLootData_SO)
         {
-            _ability_Controller.ResetAbylityTimeView(currentLootData_SO);
+            _ability_Controller.ResetAbilityTimeView(currentLootData_SO);
             switch (currentLootData_SO.EffectType)
             {
                 case TDShooter.enums.EffectType.Health:

@@ -1,21 +1,19 @@
 using System.Collections.Generic;
 using System.IO;
-using TDShooter.Managers;
-using UnityEngine;
 
 namespace TDShooter.SaveLoad
 {
+    /// <summary>
+    /// Сохранение прогресса игры в файл
+    /// </summary>
     public class FileSaver : ISaver
     {
         private readonly string _path = "save.txt";
         private readonly List<ISavable>  _savables;
-        private PlayerProgress _progress;
 
         public FileSaver(List<ISavable> savables)
         {
             _savables = savables;
-/*            _progress = FindObjectOfType<PlayerProgress>();
-            _savables.Add(_progress);*/
         }
 
         public void Load()

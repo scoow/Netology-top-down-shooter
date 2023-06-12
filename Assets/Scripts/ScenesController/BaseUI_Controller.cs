@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 namespace TDShooter.UI
 {
-
     public abstract class BaseUI_Controller : MonoBehaviour
     {
         protected void LoadScene(SceneExample sceneExample)
@@ -20,5 +19,4 @@ namespace TDShooter.UI
             }
         }
     }
-
 }

@@ -43,8 +43,15 @@ namespace TDShooter.UI
 
         private void SaveGame()
         {
-            print("Сохраняем игру");
-            _loadSaveManager.SaveGame();
+            if (_loadSaveManager != null)
+            {
+                print("Сохраняем игру");
+                _loadSaveManager.SaveGame();
+            }
+            else
+            {
+                print("Нельзя сохранить игру, если начали без стартовой сцены");
+            }
         }
 
         private void Update()

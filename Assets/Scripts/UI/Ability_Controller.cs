@@ -10,7 +10,7 @@ namespace TDShooter.UI
         [SerializeField] private ArmorAbility _armorView;
         [SerializeField] private GlovesAbility _glovesView;
 
-        public void ResetAbylityTimeView(LootData_SO currentLootData_SO)
+        public void ResetAbilityTimeView(LootData_SO currentLootData_SO)
         {
             switch (currentLootData_SO.EffectType)
             {

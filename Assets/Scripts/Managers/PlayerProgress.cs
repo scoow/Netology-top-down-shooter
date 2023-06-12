@@ -49,7 +49,7 @@ namespace TDShooter.Managers
         private void GoToNextLevel()
         {
             _currentKillsCount = 0;
-            _controllerUI.UpdateView(_currentKillsCount, UpdateViewType.TargetKills);
+            //_controllerUI.UpdateView(_currentKillsCount, UpdateViewType.TargetKills);
             _levelCount++;
             if (_levelCount == 5)
             {
@@ -105,6 +105,9 @@ namespace TDShooter.Managers
             string[] splittedData = data.Split(',');
             _levelCount = int.Parse(splittedData[0]);
             _currentKillsCount = int.Parse(splittedData[1]);
+
+            _controllerUI.UpdateView(_levelCount, UpdateViewType.LevelUp);
+            _controllerUI.UpdateView(_targetKillsCount, UpdateViewType.TargetKills);
         }
     }
 }
