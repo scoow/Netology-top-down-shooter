@@ -49,7 +49,7 @@ namespace TDShooter.Managers
         private void GoToNextLevel()
         {
             _currentKillsCount = 0;
-            //_controllerUI.UpdateView(_currentKillsCount, UpdateViewType.TargetKills);
+            _controllerUI.UpdateView(_currentKillsCount, UpdateViewType.TargetKills);
             _levelCount++;
             if (_levelCount == 5)
             {

@@ -10880,7 +10880,7 @@ MonoBehaviour:
   _levelCount: 1
   _currentKillsCount: 0
   _targetKillsCount: 3
-  _lootDropChance: 0
+  _lootDropChance: 15
   _targetKillsMultiplier: 2
   _teleport: {fileID: 0}
   _portal: {fileID: 191105719}

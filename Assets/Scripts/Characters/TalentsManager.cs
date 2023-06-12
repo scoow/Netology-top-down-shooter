@@ -15,7 +15,7 @@ namespace TDShooter.Characters
         [Inject]
         private readonly Talent_Controller _talentControll;
 
-        private /*readonly*/ readonly List<TalentType> _talents = new();
+        private readonly List<TalentType> _talents = new();
 
         private void Awake()
         {
@@ -48,14 +48,15 @@ namespace TDShooter.Characters
 
         public void RemoveTalant(TalentType talent)
         {
-            foreach(TalentType _talent in _talents)
+            _talents.Remove(talent);
+/*            foreach (TalentType _talent in _talents)
             {
                 if(_talent == talent)
                 {
                     _talents.Remove(_talent);
                     break;
                 }                    
-            }            
+            }   */         
         }
         public void PickTwoRandomTalents()
         {
