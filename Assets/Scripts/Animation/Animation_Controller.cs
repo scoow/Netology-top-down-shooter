@@ -1,5 +1,6 @@
 using System.Collections;
 using TDShooter.Characters;
+using TDShooter.enums;
 using UnityEngine;
 
 namespace TDShooter.Enemies
@@ -57,12 +58,5 @@ namespace TDShooter.Enemies
                 _enemyState = EnemyAnimationState.Move;
             }            
         }
-    }
-
-    public enum EnemyAnimationState
-    {
-        Move,
-        Atack,
-        Death
     }
 }

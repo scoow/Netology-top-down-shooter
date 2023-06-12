@@ -18,5 +18,5 @@ public class Drone_Talent : Talents_Base
     {
         Player_Data.DroneAssist.EnableDrone();
     }
-    public override Talents GetTalantType() { return Talents.Drone; }
+    public override TalentType GetTalantType() { return TalentType.Drone; }
 }

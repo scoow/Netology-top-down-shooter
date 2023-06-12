@@ -1,18 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class StartPanel_Marker : MonoBehaviour
+namespace TDShooter.UI
 {
-    // Start is called before the first frame update
-    void Start()
+    public class StartPanel_Marker : MonoBehaviour
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

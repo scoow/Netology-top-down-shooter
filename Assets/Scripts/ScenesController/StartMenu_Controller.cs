@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TDShooter.Configs;
-
+using TDShooter.SaveLoad;
+using TDShooter.enums;
 
 namespace TDShooter.UI
 {
@@ -14,22 +15,24 @@ namespace TDShooter.UI
         [SerializeField] private Button _return;
         [SerializeField] private StartPanel_Marker _startPanel;
         [SerializeField] private SettingsPanel_Marker _settingsPanel;
-
-
+        private LoadSaveManager _loadSaveManager;
+        private void Start()
+        {
+            _loadSaveManager = FindObjectOfType<LoadSaveManager>();
+        }
         private void OnEnable()
         {
             _newGame.onClick.AddListener(delegate { LoadScene(SceneExample.NewGame); });
-            _loadGame.onClick.AddListener(delegate { LoadNewGame(); });
+            _loadGame.onClick.AddListener(delegate { LoadGame(); });
             _settings.onClick.AddListener(delegate { LoadSettings(); });
             _exit.onClick.AddListener(delegate { LoadScene(SceneExample.Exit); });
             _return.onClick.AddListener(delegate { LoadStartMenu(); });
         }
-       
 
         private void OnDisable()
         {
             _newGame.onClick.RemoveListener(delegate { LoadScene(SceneExample.NewGame); });
-            _loadGame.onClick.RemoveListener(delegate { LoadNewGame(); });
+            _loadGame.onClick.RemoveListener(delegate { LoadGame(); });
             _settings.onClick.RemoveListener(delegate { LoadSettings(); });
             _exit.onClick.RemoveListener(delegate { LoadScene(SceneExample.Exit); });
         }
@@ -39,16 +42,17 @@ namespace TDShooter.UI
             _settingsPanel.gameObject.SetActive(false);           
         }
 
+        private void LoadGame()
+        {
+            print("Загружаем игру");
+            _loadSaveManager.ResetProgress = false;
+            LoadScene(SceneExample.NewGame);
+        }
+
         private void LoadSettings() //заглушка
         {
             _startPanel.gameObject.SetActive(false);
             _settingsPanel.gameObject.SetActive(true);            
         }
-
-        private void LoadNewGame() //заглушка
-        {
-            print("Загружаем игру");
-        }
-
     }
 }

@@ -61,7 +61,7 @@ namespace TDShooter.enums
         UpdateHP,
         UpdateAmmo
     }
-    public enum Talents
+    public enum TalentType
     {
         StoneSkin,//дополнительная броня
         Radar,//миникарта, показывающая врагов
@@ -69,5 +69,26 @@ namespace TDShooter.enums
         ExtraWeaponDamage,//увеличенный урон
         Drone,//дрон-помощник
         NuclearCharge//бомба, убивающая всех врагов на экране
+    }
+
+    public enum SceneExample
+    {
+        NewGame,
+        MainMenu,
+        Exit,
+    }
+    public enum EnemyAnimationState
+    {
+        Move,
+        Atack,
+        Death
+    }
+
+    public enum IgnoreAxisType : byte
+    {
+        None = 0,
+        X = 1,
+        Y = 2,
+        Z = 4
     }
 }

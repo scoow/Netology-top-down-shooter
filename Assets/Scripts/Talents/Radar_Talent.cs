@@ -16,5 +16,5 @@ public class Radar_Talent : Talents_Base
     {
         Player_Data.MiniMap.EnableMiniMap();
     }
-    public override Talents GetTalantType() { return Talents.Radar; }
+    public override TalentType GetTalantType() { return TalentType.Radar; }
 }

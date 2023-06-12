@@ -16,5 +16,5 @@ public class ExtraFireRate_Talent : Talents_Base
     {
         Player_Data.Damage *= 2;
     }
-    public override Talents GetTalantType() { return Talents.ExtraFireRate; }
+    public override TalentType GetTalantType() { return TalentType.ExtraFireRate; }
 }

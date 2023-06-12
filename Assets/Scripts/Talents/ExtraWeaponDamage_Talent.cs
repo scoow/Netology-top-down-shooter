@@ -19,5 +19,5 @@ public class ExtraWeaponDamage_Talent : Talents_Base
         _projectileMashineGun_SO.Speed *= 2;
         _projectilePlasma_SO.Speed *= 2;
     }
-    public override Talents GetTalantType() { return Talents.ExtraWeaponDamage; }
+    public override TalentType GetTalantType() { return TalentType.ExtraWeaponDamage; }
 }

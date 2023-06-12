@@ -2,20 +2,20 @@ using System.Collections.Generic;
 using System.IO;
 using TDShooter.Managers;
 using UnityEngine;
-using Zenject;
 
 namespace TDShooter.SaveLoad
 {
-    public class FileSaver : MonoBehaviour, ISaver
+    public class FileSaver : ISaver
     {
         private readonly string _path = "save.txt";
-        private readonly List<ISavable>  _savables = new();
-        [Inject]
+        private readonly List<ISavable>  _savables;
         private PlayerProgress _progress;
 
-        private void Awake()
+        public FileSaver(List<ISavable> savables)
         {
-            _savables.Add(_progress);
+            _savables = savables;
+/*            _progress = FindObjectOfType<PlayerProgress>();
+            _savables.Add(_progress);*/
         }
 
         public void Load()
@@ -32,7 +32,7 @@ namespace TDShooter.SaveLoad
 
         public void Save()
         {
-            using StreamWriter sw = new(_path, true);
+            using StreamWriter sw = new(_path, false);
             foreach (var savable in _savables)
             {
                 sw.WriteLine(savable.SaveThis());

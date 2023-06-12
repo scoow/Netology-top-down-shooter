@@ -130,10 +130,4 @@ namespace TDShooter.Input
         }
     }
 
-/*    public enum DirectionState
-    {
-        Idle,
-        Forward,
-        Back
-    }*/
 }

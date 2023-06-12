@@ -20,5 +20,5 @@ public class Talents_Base
     }
 
     public virtual void ActivateTalant(){}    
-    public virtual Talents GetTalantType(){ return Talents.Radar; }
+    public virtual TalentType GetTalantType(){ return TalentType.Radar; }
 }

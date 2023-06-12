@@ -6,6 +6,7 @@ using TDShooter.UI;
 using UnityEngine;
 using UnityEngine.Events;
 using Zenject;
+using UnityEngine.SceneManagement;
 
 namespace TDShooter.Managers
 {
@@ -75,10 +76,12 @@ namespace TDShooter.Managers
         }
 
         private void Start()
-        {            
+        {
+            Scene scene = SceneManager.GetActiveScene();
+            if (scene.name == "StartMenu") return;
+
             _controllerUI.UpdateView(0, UpdateViewType.CurrentKills);
             _controllerUI.UpdateView(_targetKillsCount, UpdateViewType.TargetKills);
-
         }
 
         public int CheckChance()

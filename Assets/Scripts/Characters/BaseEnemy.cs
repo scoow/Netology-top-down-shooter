@@ -1,5 +1,6 @@
 using TDShooter.Configs;
 using TDShooter.Enemies;
+using TDShooter.enums;
 using TDShooter.EventManager;
 using TDShooter.Input;
 using TDShooter.Managers;

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TDShooter.enums;
 using TDShooter.Managers;
+using TDShooter.Talents;
 using UnityEngine;
 using Zenject;
 
@@ -12,13 +13,13 @@ namespace TDShooter.Characters
         [Inject]
         private readonly PlayerProgress _playerProgress;
         [Inject]
-        private readonly Talent_Controll _talentControll;
+        private readonly Talent_Controller _talentControll;
 
-        private /*readonly*/ List<Talents> _talents = new();
+        private /*readonly*/ List<TalentType> _talents = new();
 
         private void Awake()
         {
-            foreach (Talents talent in Enum.GetValues(typeof(Talents)))
+            foreach (TalentType talent in Enum.GetValues(typeof(TalentType)))
             {
                 _talents.Add(talent);
             }
@@ -29,7 +30,7 @@ namespace TDShooter.Characters
             _playerProgress.OnNextLevel += PickTwoRandomTalents;
         }
 
-        private bool TryPickRandomTalent(out Talents? talent)
+        private bool TryPickRandomTalent(out TalentType? talent)
         {
             if (_talents.Count == 0)
             {
@@ -45,9 +46,9 @@ namespace TDShooter.Characters
             return true;
         }
 
-        public void RemoveTalant(Talents talent)
+        public void RemoveTalant(TalentType talent)
         {
-            foreach(Talents _talent in _talents)
+            foreach(TalentType _talent in _talents)
             {
                 if(_talent == talent)
                 {
@@ -58,8 +59,8 @@ namespace TDShooter.Characters
         }
         public void PickTwoRandomTalents()
         {
-            Talents? talentOne;
-            Talents? talentTwo;
+            TalentType? talentOne;
+            TalentType? talentTwo;
             TryPickRandomTalent(out talentOne);
             TryPickRandomTalent(out talentTwo);
 

@@ -16,5 +16,5 @@ public class StoneSkin_Talent : Talents_Base
     {
         Player_Data.Armor *= 2;
     }
-    public override Talents GetTalantType() { return Talents.StoneSkin; }
+    public override TalentType GetTalantType() { return TalentType.StoneSkin; }
 }

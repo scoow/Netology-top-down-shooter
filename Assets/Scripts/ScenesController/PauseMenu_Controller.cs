@@ -1,3 +1,5 @@
+using TDShooter.enums;
+using TDShooter.SaveLoad;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +14,11 @@ namespace TDShooter.UI
         [SerializeField] private Button _mainMenu;
         [SerializeField] private Button _exit;
 
+        private LoadSaveManager _loadSaveManager;
+        private void Start()
+        {
+            _loadSaveManager = FindObjectOfType<LoadSaveManager>();
+        }
         private void OnEnable()
         {
             _resume.onClick.AddListener(delegate { ResumeGame(); });
@@ -37,6 +44,7 @@ namespace TDShooter.UI
         private void SaveGame()
         {
             print("Сохраняем игру");
+            _loadSaveManager.SaveGame();
         }
 
         private void Update()

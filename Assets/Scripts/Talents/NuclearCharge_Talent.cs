@@ -16,5 +16,5 @@ public class NuclearCharge_Talent : Talents_Base
     {
 
     }
-    public override Talents GetTalantType() { return Talents.NuclearCharge; }
+    public override TalentType GetTalantType() { return TalentType.NuclearCharge; }
 }

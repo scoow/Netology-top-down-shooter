@@ -1,6 +1,7 @@
 using TDShooter.Input;
 using UnityEngine;
 using TDShooter.Characters;
+using TDShooter.enums;
 
 namespace TDShooter.Enemies
 {    

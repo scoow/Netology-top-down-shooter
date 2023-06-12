@@ -3,6 +3,8 @@ using TDShooter.EventManager;
 using TDShooter.Input;
 using TDShooter.Level;
 using TDShooter.Pools;
+using TDShooter.SaveLoad;
+using TDShooter.Talents;
 using TDShooter.UI;
 using TDShooter.Weapons;
 using UnityEngine;
@@ -26,10 +28,13 @@ namespace TDShooter.Managers.GameManager
         private LootContainer _lootContainer;
         private TalentsManager _talentsManager;
         private PlayerProgress _playerProgress;
-        private Talent_Controll _talentControll;
+        private Talent_Controller _talentControll;
 
         private Slider _sliderHP;
-
+/*        private void Awake()
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }*/
         /// <summary>
         /// Внедрение зависимостей
         /// </summary>
@@ -50,7 +55,7 @@ namespace TDShooter.Managers.GameManager
             _lootContainer = FindObjectOfType<LootContainer>();
             _talentsManager = FindObjectOfType<TalentsManager>();
             _playerProgress = FindObjectOfType<PlayerProgress>();
-            _talentControll = FindObjectOfType<Talent_Controll>();
+            _talentControll = FindObjectOfType<Talent_Controller>();
 
             _sliderHP = FindObjectOfType<Slider>();
             #endregion
@@ -70,7 +75,6 @@ namespace TDShooter.Managers.GameManager
             Container.BindInstance(_talentsManager).AsSingle();
             Container.BindInstance(_playerProgress).AsSingle();
             Container.BindInstance(_talentControll).AsSingle();
-
             Container.BindInstance(_sliderHP).AsSingle();
 
             #endregion
