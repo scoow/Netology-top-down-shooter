@@ -9,8 +9,8 @@ namespace TDShooter.Characters
     /// </summary>
     public abstract class Character : MonoBehaviour, IHaveHP
     {    
-        /*[SerializeField] */protected Character_Data _character_Data;
-        /*[SerializeField] */protected Character_UI _character_UI;        
+        protected Character_Data _character_Data;
+        protected Character_UI _character_UI;        
         public int HP => _character_Data.Hp;
 
         public Action OnHit;

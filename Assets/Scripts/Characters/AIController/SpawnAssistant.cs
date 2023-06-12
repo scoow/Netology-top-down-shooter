@@ -25,6 +25,8 @@ namespace TDShooter.Characters
         [Inject]
         private readonly Transform _enemiesContainer;
         private List<EnemiesSpawner> _unitSpawners = new();
+        public List<EnemiesSpawner> UnitSpawners => _unitSpawners;//переделать на enumerable
+
         //todo Добавить таймер спавна для каждого типа врагов
         [SerializeField]
         private float _enemySpawnCooldown = 2;

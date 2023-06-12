@@ -7,7 +7,7 @@ namespace TDShooter.Enemies
 {    
     public class EnemyMove : BaseUnit
     {
-        [SerializeField] private Transform _target;
+        [SerializeField] private Vector3 _target;
         //private Transform _currentTarget;
         [SerializeField] EnemyAttack _enemyAttack;
        /* [SerializeField] */Animation_Controller _animationController;
@@ -49,7 +49,7 @@ namespace TDShooter.Enemies
         {
             base.Start();
             _playerControl = FindObjectOfType<PlayerControl>();//временно через инспектор
-            SetNewTarget(_playerControl.transform);
+            SetNewTarget(_playerControl.transform.position);
         }
         private void Update()
         {
@@ -61,7 +61,7 @@ namespace TDShooter.Enemies
         private void CheckDIstanceAndStopIfClose()//БАГ БЫЛ ТУТ
         {
             if (_target == null) return;
-            float distance = Vector3.Distance(transform.position, _target.transform.position);
+            float distance = Vector3.Distance(transform.position, _target);
             if (distance > ArrivalDistance + 5f && _animationController.EnemyState != EnemyAnimationState.Death)
             {
                 MaxSpeed = 5f;
@@ -76,23 +76,22 @@ namespace TDShooter.Enemies
         {
             if (_target != null)
             {
-                transform.LookAt(_target.transform.position);
+                transform.LookAt(_target);
             }
         }
-
-        public void SetNewTarget(Transform target)
+        public void SetNewTarget(Vector3 target)
         {
-            _target = target;//переделать
+            _target = target;
         }
 
         //движение в сторону цели вариант 1
         public void OnSeek()
         {
             if (_target == null) return;            
-            transform.LookAt(_target.transform.position);
+            transform.LookAt(_target);
 
             //сила стремления к цели
-            var desired_velocity = (_target.transform.position - transform.position).normalized * MaxVelocity;
+            var desired_velocity = (_target - transform.position).normalized * MaxVelocity;
             //коррекция движения от текущей цели к желаемой
             var steering = desired_velocity - GetVelocity(IgnoreAxisType.Y);
             //учитываем ограничение по силе и массу
@@ -109,7 +108,7 @@ namespace TDShooter.Enemies
             if (_target == null) return;
             
             //сила стремления к цели
-            var desired_velocity = (transform.position - _target.transform.position).normalized * MaxVelocity;
+            var desired_velocity = (transform.position - _target).normalized * MaxVelocity;
             //коррекция движения от текущей цели к желаемой
             var steering = desired_velocity - GetVelocity(IgnoreAxisType.Y);
             //учитываем ограничение по силе и массу
@@ -127,7 +126,7 @@ namespace TDShooter.Enemies
             //if (_animationController.EnemyState == EnemyAnimationState.Death) return;
             
             //сила стремления к цели
-            var desired_velocity = _target.transform.position - transform.position;
+            var desired_velocity = _target - transform.position;
             //квадрат растояния до цели
             var sqrLength = desired_velocity.sqrMagnitude;
 
@@ -167,9 +166,9 @@ namespace TDShooter.Enemies
                             
 
             if (_target == null) return;
-            transform.LookAt(_target.transform.position);
-            var propheticIndex = Vector3.Distance(transform.position, _target.transform.position)/* / _playerControl.Speed*/;
-            var targetPosition = _target.transform.position + _playerControl.GetVelocity(IgnoreAxisType.Y)*propheticIndex;
+            transform.LookAt(_target);
+            var propheticIndex = Vector3.Distance(transform.position, _target)/* / _playerControl.Speed*/;
+            var targetPosition = _target + _playerControl.GetVelocity(IgnoreAxisType.Y)*propheticIndex;
 
             //сила стремления к цели
             var desired_velocity = (targetPosition - transform.position).normalized * MaxVelocity;
@@ -190,8 +189,8 @@ namespace TDShooter.Enemies
 
             if (_target == null) return;
 
-            var propheticIndex = Vector3.Distance(transform.position, _target.transform.position)/* / _playerControl.Speed*/;
-            var targetPosition = _target.transform.position + _playerControl.GetVelocity(IgnoreAxisType.Y) * propheticIndex;
+            var propheticIndex = Vector3.Distance(transform.position, _target)/* / _playerControl.Speed*/;
+            var targetPosition = _target + _playerControl.GetVelocity(IgnoreAxisType.Y) * propheticIndex;
 
             //сила стремления к цели
             var desired_velocity = (transform.position - targetPosition).normalized * MaxVelocity;
