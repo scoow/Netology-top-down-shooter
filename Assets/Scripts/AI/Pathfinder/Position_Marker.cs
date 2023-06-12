@@ -33,7 +33,7 @@ using TDShooter.enums;
 
         public void TakeNewTarget(Transform newTarget)
         {
-            _enemyMove.SetNewTarget(newTarget.transform.position);
+            _enemyMove.SetNewTarget(newTarget.transform);
         }
 
         private void OnTriggerExit(Collider other)

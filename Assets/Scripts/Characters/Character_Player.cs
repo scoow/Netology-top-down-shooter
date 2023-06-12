@@ -24,7 +24,7 @@ namespace TDShooter.Characters
             int i = 0;
             foreach (BaseEnemy enemy in enemies)
             {
-                enemy.GetComponent<EnemyMove>().SetNewTarget(randomPositions[i]);
+                //enemy.GetComponent<EnemyMove>().SetNewTarget(randomPositions[i]);
                 i = i >= randomPositions.Count-1 ? 0 : ++i;
             }
         }

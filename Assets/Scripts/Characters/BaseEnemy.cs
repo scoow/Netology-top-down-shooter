@@ -51,7 +51,7 @@ namespace TDShooter.Characters
         {
             _enemy_Data.CurrentHP = _enemy_Data.CharacterData_SO.Health;
             _enemy_UI.SliderHP.value = _enemy_Data.CurrentHP;
-            _enemyMove.SetNewTarget(_playerControl.transform.position);
+            _enemyMove.SetNewTarget(_playerControl.transform);
             _enemyMove.MaxSpeed = 5f;//ТЕСТ
         }
 
@@ -67,7 +67,7 @@ namespace TDShooter.Characters
             }
             _subscribeManager.PostNotification(enums.GameEventType.EnemyDied, this);
 
-            _enemyMove.SetNewTarget(transform.transform.position);//меняем цель на самого себя, чтобы модель не крутилась
+            _enemyMove.SetNewTarget(transform.transform);//меняем цель на самого себя, чтобы модель не крутилась
 
             _animation_Controller.EnemyState = EnemyAnimationState.Death;
             _enemyMove.MaxSpeed = 0f;
