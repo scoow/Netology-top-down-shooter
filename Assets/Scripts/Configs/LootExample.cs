@@ -6,12 +6,13 @@ namespace TDShooter
     public class LootExample : MonoBehaviour
     {
         private LootData_SO _LootData_SO;
-        [SerializeField] private SpriteRenderer _spriteCurrentLoot;
+        [SerializeField] private SpriteRenderer _loot_MiniMap;
+        [SerializeField] private SpriteRenderer _loot_Ground;
 
         public void LoadLootData(LootData_SO lootData_SO)
         {
             _LootData_SO = lootData_SO;
-            _spriteCurrentLoot.sprite = _LootData_SO.SpriteLoot;
+            _loot_MiniMap.sprite = _loot_Ground.sprite = _LootData_SO.SpriteLoot;
         }
 
         private void OnTriggerEnter(Collider other)
