@@ -10,13 +10,13 @@ namespace TDShooter.Weapons
     {
         [SerializeField] private WeaponData_SO _weaponData_SO;
 
-        private ShootingPoint _shootingPoint;
+        protected ShootingPoint _shootingPoint;
         [Inject]
-        private readonly ProjectilesManager _projectilesManager;
+        protected readonly ProjectilesManager _projectilesManager;
         [Inject]
-        private readonly WeaponChanger _weaponChanger;
+        protected readonly WeaponChanger _weaponChanger;
         [Inject]
-        private readonly UI_Controller _controllerUI;
+        protected readonly UI_Controller _controllerUI;
 
         private int _ammo = 9999;
 
@@ -24,19 +24,19 @@ namespace TDShooter.Weapons
         private Sprite _spriteWeapon;//добавить ссылку на спрайт в WeaponChanger
         private float _dropChance;
         private float _baseDamage;
-        private float _baseAccuracy;
+        protected float _baseAccuracy;
         private float _rateOfFire;
         private float _maxAmmoCount;
         private PojectileData_SO _projectileData;
 
-        private float _shootsCoolDown;
-        private float _shootTimer;
+        protected float _shootsCoolDown;
+        protected float _shootTimer;
         private bool _isShooting;
 
         /// <summary>
         /// Количество патронов
         /// </summary>
-        private int Ammo
+        protected int Ammo
         {
             get => _ammo;
             set
@@ -66,7 +66,7 @@ namespace TDShooter.Weapons
             _isShooting = !_isShooting;
         }
 
-        private void CreateProjectile()
+        protected virtual void CreateProjectile()
         {
             if (_shootTimer < 0)
             {
@@ -81,6 +81,19 @@ namespace TDShooter.Weapons
                         break;
                     case WeaponType.Plasmagun:
                         projectile = _projectilesManager.ProjectilePool[ProjectileType.Plasma].GetAviableOrCreateNew();
+                        break;
+                    case WeaponType.Shothun:
+                        projectile = _projectilesManager.ProjectilePool[ProjectileType.Bullet].GetAviableOrCreateNew();
+                        Bullet[] projectiles = new Bullet[10];
+                        for (int i = 0; i < projectiles.Length; i++)
+                        {
+                            projectiles[i] = _projectilesManager.ProjectilePool[ProjectileType.Bullet].GetAviableOrCreateNew();
+                            float shothunSpread = 100 / _baseAccuracy;//коэффициент точности оружия
+                            Quaternion shutgunInnacuracyQuaternion = Quaternion.Euler(Random.Range(0f, shothunSpread), Random.Range(0f, shothunSpread), Random.Range(0f, shothunSpread));//случайный кватернион для разброса
+
+                            projectiles[i].transform.SetPositionAndRotation(_shootingPoint.transform.position, _shootingPoint.transform.rotation * shutgunInnacuracyQuaternion);
+                        }    
+                            
                         break;
                     default:
                         break;

@@ -46,7 +46,8 @@ namespace TDShooter.enums
         Sword,
         Pistol,
         Machinegun,
-        Plasmagun
+        Plasmagun,
+        Shothun
     }
     public enum GrenadeType
     {
