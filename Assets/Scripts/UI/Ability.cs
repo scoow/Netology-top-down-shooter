@@ -1,10 +1,6 @@
-using System;
-using System.Collections;
-using System.Threading.Tasks;
-using TDShooter.Configs;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject.SpaceFighter;
 
 namespace TDShooter
 {
@@ -23,7 +19,7 @@ namespace TDShooter
             var timer = incomingValue;            
             while (timer > 0)
             {                              
-                await Task.Delay(1000);
+                await UniTask.Delay(1000);
                 _effectMarker.fillAmount += 1/incomingValue;
                 timer -= 1;
             }
