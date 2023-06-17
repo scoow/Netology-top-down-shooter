@@ -235,6 +235,7 @@ MonoBehaviour:
   _maxThrowDistance: 0
   _damage: 0
   _explosionRadius: 5
+  _explosion: {fileID: 0}
 --- !u!135 &7914544946392532851
 SphereCollider:
   m_ObjectHideFlags: 0

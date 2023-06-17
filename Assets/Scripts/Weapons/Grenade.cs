@@ -5,6 +5,7 @@ using TDShooter.Characters;
 using TDShooter.enums;
 using TDShooter.Input;
 using UnityEngine;
+using Zenject.SpaceFighter;
 
 namespace TDShooter.Weapons
 {
@@ -16,6 +17,7 @@ namespace TDShooter.Weapons
 
         [SerializeField] private float _damage;
         [SerializeField] private float _explosionRadius;
+        [SerializeField] private ExplosionEffect _explosion;
 
         private SpawnAssistant _spawnAssistant;
 
@@ -28,6 +30,7 @@ namespace TDShooter.Weapons
 
         private void Start()
         {
+            _explosion = FindObjectOfType<ExplosionEffect>();
             _spawnAssistant = FindObjectOfType<SpawnAssistant>();
         }
 
@@ -64,7 +67,7 @@ namespace TDShooter.Weapons
         }
         public void Explode()
         {
-            gameObject.SetActive(false);
+            gameObject.SetActive(false);            
             //взрыв
             List<BaseEnemy> enemies = _spawnAssistant.FindAllEnemies();
             //todo добавить общий список врагов done
@@ -83,9 +86,9 @@ namespace TDShooter.Weapons
                 if (collision.gameObject.GetComponentInParent<PlayerControl>() != null)
                 {
                     return;
-                }
-                Explode();
-               // Debug.Log("Boom!");
+                }                
+                Explode();                
+                // Debug.Log("Boom!");
             }
             
         }
@@ -93,7 +96,9 @@ namespace TDShooter.Weapons
         {
             if (_isExplosion)
             {
-                Explode();
+                _explosion.gameObject.transform.position = gameObject.transform.position;
+                _explosion.GetComponent<ParticleSystem>().Play();
+                Explode();                
                 //Debug.Log("Boom!");
             }
         }
