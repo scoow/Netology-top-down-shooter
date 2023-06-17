@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using TDShooter.Configs;
 using TDShooter.Enemies;
 using TDShooter.enums;
@@ -14,6 +15,7 @@ namespace TDShooter.Characters
         [SerializeField] private SubscribeManager _subscribeManager;//менеджер событий
         [SerializeField] private PlayerProgress _playerProgress;
         [SerializeField] private LootExample _exampleLoot;
+        [SerializeField] private BloodStain _bloodStain;
         /*[SerializeField] */private Animation_Controller _animation_Controller;
         private CapsuleCollider _capsuleCollider;
         private EnemyMove _enemyMove;
@@ -21,7 +23,7 @@ namespace TDShooter.Characters
         private LootController _lootController;
 
         private Enemy_Data _enemy_Data;
-        private Enemy_UI _enemy_UI;
+        private Enemy_UI _enemy_UI;       
 
         private void Awake()
         {
@@ -73,7 +75,13 @@ namespace TDShooter.Characters
             _enemyMove.MaxSpeed = 0f;
             _capsuleCollider.enabled = false;
             _animation_Controller.DeathAnimation();
+            InstantiateBloodStain();
         }
 
+        private async void InstantiateBloodStain()
+        {
+            Instantiate(_bloodStain, new Vector3(transform.position.x, 0.05f, transform.position.z), Quaternion.AngleAxis(90, Vector3.right)); //заменить на пул объектов как вариант
+            await UniTask.Delay(100);
+        }
     }
 }
