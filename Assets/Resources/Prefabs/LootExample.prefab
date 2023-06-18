@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7708723038146325545}
   - component: {fileID: 2739815098578180655}
   - component: {fileID: 6363613483295719992}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ImageLoot_Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 7438257020151004073}
   - component: {fileID: 7438257020151004074}
   - component: {fileID: 7438257020151004075}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 7438257021208079570}
   - component: {fileID: 7438257021208079569}
   - component: {fileID: 918291499}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LootExample
   m_TagString: Untagged
   m_Icon: {fileID: 0}
