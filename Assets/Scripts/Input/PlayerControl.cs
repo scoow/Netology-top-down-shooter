@@ -7,6 +7,7 @@ using Zenject;
 using TDShooter.Configs;
 using System;
 using TDShooter.Managers;
+using Unity.VisualScripting;
 
 namespace TDShooter.Input
 {
@@ -34,6 +35,8 @@ namespace TDShooter.Input
         private PauseMenu_Controller _pauseMenu_Controller;
         [Inject]
         private PlayerProgress _playerProgress;
+
+        public Action<Vector2> OnMove;
 
         //[SerializeField] private GameObject _grenade;       
         //private DirectionState directionMove = DirectionState.Idle;
@@ -96,11 +99,11 @@ namespace TDShooter.Input
         private void Move()//todo лишние переменные
         {
             var inputValue = _controls.Player.WASD.ReadValue<Vector2>(); // записываем в локальную переменную значение Vector2 при вызове события WASD
+            OnMove.Invoke(inputValue);
             //Vector3 previosPosition = _playerBody.transform.position;
             _playerBody.Translate(inputValue.x * Time.deltaTime * _playerData.SpeedMove /*_speed*/, 0, inputValue.y * Time.deltaTime * _playerData.SpeedMove/*_speed*/); //перемещаем объект в плоскости X0Z            
             //Vector3 nextPosition = _playerBody.transform.position;
             //CheckDirectionMove(previosPosition, nextPosition, _aim.transform.position);
-
             _animControl.Move(inputValue, _playerHead.transform.rotation);
         }
         public void AimCursor()
