@@ -63,7 +63,11 @@ namespace TDShooter.Weapons
         }
         public void Shoot()
         {
-            _isShooting = !_isShooting;
+            _isShooting = true;
+        }
+        public void CancelShoot()
+        {
+            _isShooting = false;
         }
 
         protected virtual void CreateProjectile()

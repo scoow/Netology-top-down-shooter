@@ -47,7 +47,8 @@ namespace TDShooter.Input
         private void OnEnable()
         {
             _controls.Player.Enable();
-            _controls.Player.Shoot.performed += contect => Fire();
+            _controls.Player.Shoot.started += contect => Fire();
+            _controls.Player.Shoot.canceled += contect => StopFire();
 
             //_animControl = GetComponent<Animator_Controller>();
             _controls.Player.WeaponSwitchMachineGun.performed += context => _weaponChanger.ChangeWeapon(WeaponType.Machinegun);
@@ -56,6 +57,11 @@ namespace TDShooter.Input
 
             _controls.Player.PauseGame.performed += context => _pauseMenu_Controller.ActivatePauseMenu();
             _controls.Player.NuclearBomb.performed += context => ActivateNuclearBomb();
+        }
+
+        private void StopFire()
+        {
+            _weaponChanger.CurrentWeapon().CancelShoot();
         }
 
         private void ActivateNuclearBomb()
