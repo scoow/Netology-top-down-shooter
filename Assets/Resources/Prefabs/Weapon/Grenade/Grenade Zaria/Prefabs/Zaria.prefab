@@ -233,7 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lifeTime: 0.5
   _maxThrowDistance: 0
-  _damage: 0
+  _damage: 60
   _explosionRadius: 5
   _explosion: {fileID: 0}
 --- !u!135 &7914544946392532851

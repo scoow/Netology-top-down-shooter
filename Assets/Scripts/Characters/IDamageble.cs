@@ -1,6 +1,6 @@
 namespace TDShooter.Characters
 {
-    public interface IHaveHP
+    public interface IDamageble
     {
         public int HP { get; }
         public void TakeDamage(int damage);

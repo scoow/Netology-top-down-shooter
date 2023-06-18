@@ -7,7 +7,7 @@ namespace TDShooter.Characters
     /// <summary>
     /// Персонаж. По задумке - класс-родитель для игрока и врагов
     /// </summary>
-    public abstract class Character : MonoBehaviour, IHaveHP
+    public abstract class Character : MonoBehaviour, IDamageble
     {    
         protected Character_Data _character_Data;
         protected Character_UI _character_UI;        

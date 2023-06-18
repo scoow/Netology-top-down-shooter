@@ -13,7 +13,7 @@ namespace TDShooter.Weapons
         /// <param name="other"></param>
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.TryGetComponent<IHaveHP>(out var target)) return;
+            if (!other.TryGetComponent<IDamageble>(out var target)) return;
             if (other.TryGetComponent<PlayerControl>(out _)  == true) return;//если дрон попал в игрока
             //Debug.Log("Снаряд попал в цель");
             target.TakeDamage(bullet.Damage);

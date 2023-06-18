@@ -15,11 +15,9 @@ namespace TDShooter.Weapons
         [SerializeField] private float _lifeTime;
         [SerializeField] private float _maxThrowDistance;
 
-        [SerializeField] private float _damage;
+        [SerializeField] private int _damage;
         [SerializeField] private float _explosionRadius;
         [SerializeField] private ExplosionEffect _explosion;
-
-        private SpawnAssistant _spawnAssistant;
 
         private bool _isExplosion;
         private float _timer;
@@ -31,12 +29,11 @@ namespace TDShooter.Weapons
         private void Start()
         {
             _explosion = FindObjectOfType<ExplosionEffect>();
-            _spawnAssistant = FindObjectOfType<SpawnAssistant>();
         }
 
         private void ResetGrenadeTimer()
         {
-            _lifeTime = 0.5f;
+            _lifeTime = 0.2f;
             _isExplosion = false;
         }
 
@@ -51,7 +48,7 @@ namespace TDShooter.Weapons
             float x = fromToXZ.magnitude;
             float y = fromTo.y;
 
-            float v = Mathf.Sqrt(Mathf.Abs((Physics.gravity.y * x * x) / (y - x) ));
+            float v = Mathf.Sqrt(Mathf.Abs((Physics.gravity.y * x * x) / (y - x)));
             //transform.parent = null;
             Vector3 angle = fromTo.normalized + Vector3.up;
             GetComponent<Rigidbody>().velocity = angle.normalized * v;
@@ -60,22 +57,29 @@ namespace TDShooter.Weapons
         private void Update()
         {
             _timer -= Time.deltaTime;
-            if (_timer < 0 )
+            if (_timer < 0)
             {
                 _isExplosion = true;
             }
         }
         public void Explode()
         {
-            gameObject.SetActive(false);            
+            gameObject.SetActive(false);
             //взрыв
-            List<BaseEnemy> enemies = _spawnAssistant.FindAllEnemies();
-            //todo добавить общий список врагов done
-            enemies = enemies.Where(x => Vector3.Distance(x.transform.position, this.transform.position) < _explosionRadius).ToList();
-            foreach (var enemy in enemies)
+            /*            List<BaseEnemy> enemies = _spawnAssistant.FindAllEnemies();
+                        //todo добавить общий список врагов done
+                        enemies = enemies.Where(x => Vector3.Distance(x.transform.position, this.transform.position) < _explosionRadius).ToList();
+                        foreach (var enemy in enemies)
+                        {
+                            var character = enemy.GetComponent<Character>();
+                            character.Die();//заменить на урон
+                        }*/
+
+            Collider[] colliders = Physics.OverlapSphere(transform.position, _explosionRadius);
+            foreach (var collider in colliders)
             {
-                var character = enemy.GetComponent<Character>();
-                character.Die();
+                if (collider.TryGetComponent<BaseEnemy>(out BaseEnemy enemy))
+                    enemy.TakeDamage(_damage);
             }
         }
 
@@ -86,11 +90,11 @@ namespace TDShooter.Weapons
                 if (collision.gameObject.GetComponentInParent<PlayerControl>() != null)
                 {
                     return;
-                }                
-                Explode();                
+                }
+                Explode();
                 // Debug.Log("Boom!");
             }
-            
+
         }
         private void OnTriggerEnter(Collider other)
         {
@@ -98,7 +102,7 @@ namespace TDShooter.Weapons
             {
                 _explosion.gameObject.transform.position = gameObject.transform.position;
                 _explosion.GetComponent<ParticleSystem>().Play();
-                Explode();                
+                Explode();
                 //Debug.Log("Boom!");
             }
         }
