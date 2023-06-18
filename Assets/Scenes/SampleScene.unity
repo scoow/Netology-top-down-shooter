@@ -7555,7 +7555,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 783ca91d22271ea459f46e59e86db7ec, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 783ca91d22271ea459f46e59e86db7ec, type: 3}
       propertyPath: m_LocalScale.x
@@ -14905,7 +14905,6 @@ Transform:
   m_Children:
   - {fileID: 708630120}
   - {fileID: 460507299}
-  - {fileID: 1740531617}
   - {fileID: 2098779599}
   - {fileID: 575208318}
   - {fileID: 1338257586}
@@ -16655,6 +16654,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1195201001}
   m_CullTransparentMesh: 1
+--- !u!4 &1207501491 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7033752627689043239, guid: 783ca91d22271ea459f46e59e86db7ec, type: 3}
+  m_PrefabInstance: {fileID: 523540019}
+  m_PrefabAsset: {fileID: 0}
 --- !u!137 &1207501492 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 124902065087601079, guid: 783ca91d22271ea459f46e59e86db7ec, type: 3}
@@ -16940,7 +16944,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 991209314}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!20 &1338257588
 Camera:
@@ -28639,12 +28643,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1740531616}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.072, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalPosition: {x: 0, y: 0.048, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 991209314}
-  m_RootOrder: 2
+  m_Father: {fileID: 1207501491}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!199 &1740531618
 ParticleSystemRenderer:
@@ -34051,7 +34055,7 @@ RectTransform:
   m_Children:
   - {fileID: 1253460655}
   m_Father: {fileID: 991209314}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -35971,7 +35975,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 991209314}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 274.07, z: 0}
 --- !u!23 &2098779600
 MeshRenderer:
