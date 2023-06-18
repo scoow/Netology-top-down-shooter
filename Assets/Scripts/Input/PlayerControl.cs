@@ -97,7 +97,7 @@ namespace TDShooter.Input
         {
             var inputValue = _controls.Player.WASD.ReadValue<Vector2>(); // записываем в локальную переменную значение Vector2 при вызове события WASD
             //Vector3 previosPosition = _playerBody.transform.position;
-            _playerBody.Translate(inputValue.x * Time.deltaTime * _playerData.SpeedMove /*_speed*/, 0, inputValue.y * Time.deltaTime * _playerData.SpeedMove/*_speed*/); //перемещаем объект в плоскости X0Z
+            _playerBody.Translate(inputValue.x * Time.deltaTime * _playerData.SpeedMove /*_speed*/, 0, inputValue.y * Time.deltaTime * _playerData.SpeedMove/*_speed*/); //перемещаем объект в плоскости X0Z            
             //Vector3 nextPosition = _playerBody.transform.position;
             //CheckDirectionMove(previosPosition, nextPosition, _aim.transform.position);
 

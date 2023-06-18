@@ -21,34 +21,6 @@ namespace TDShooter
             ArmorRenderAsunc(currentLootData_SO);
             //_armor.SetActive(false);
         }
-
-        //IEnumerator ArmorRender(LootData_SO currentLootData_SO)
-        //{
-        //    var timer = currentLootData_SO.EffectTime;
-        //    for (float f = 1f; f >= 0; f -= 0.05f)
-        //    {
-        //        //_armorMeshRenderer.SetColor("_Color", new Color(255,255,255,255*f));
-        //        _armorMeshRenderer.SetFloat("_Metallic", f);
-        //        _armorMeshRenderer.SetFloat("_Glossiness", f);
-        //        yield return new WaitForSeconds(0.05f);
-        //    }
-        //    while (timer > 0)
-        //    {
-        //        yield return new WaitForSeconds(1f);
-        //        timer -= 1;
-        //        if (timer == 0)
-        //        {
-        //            for (float f = 0f; f <= 1; f += 0.05f)
-        //            {
-        //                //_armorMeshRenderer.SetColor("_Color", new Color(255,255,255,255*f));
-        //                _armorMeshRenderer.SetFloat("_Metallic", f);
-        //                _armorMeshRenderer.SetFloat("_Glossiness", f);
-        //                yield return new WaitForSeconds(0.05f);
-        //            }
-        //            _armor.SetActive(false); //_armorMeshRenderer.SetColor("_Color", new Color(255, 255, 255, 0f));
-        //        } 
-        //    }
-        //}
         private async void ArmorRenderAsunc(LootData_SO currentLootData_SO)
         {
             var timer = currentLootData_SO.EffectTime;
