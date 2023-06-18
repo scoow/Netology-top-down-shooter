@@ -12,7 +12,7 @@ namespace TDShooter.Talents
     {
         [SerializeField] Player_Data _playerData;
         [Inject]
-        private SpawnAssistant _spawnAssistant;
+        private readonly SpawnAssistant _spawnAssistant;
         private Vector3 _target;
         private Weapon _weapon;
         [SerializeField] private float _shootCoolDown;

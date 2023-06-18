@@ -36,14 +36,11 @@ namespace TDShooter.Enemies
 
         }
 
-        public float MaxSpeed 
-        { get => _maxSpeed;
-            set
-            {
-                if (value >= 0f)
-                _maxSpeed = value;
-            }
-        }
+        public float MaxSpeed => _maxSpeed;
+        public void SetMaxSpeed(float maxSpeed)
+        {
+            _maxSpeed = maxSpeed;
+        }    
 
         protected override void Start()
         {
@@ -64,11 +61,11 @@ namespace TDShooter.Enemies
             float distance = Vector3.Distance(transform.position, _target.position);
             if (distance > ArrivalDistance + 5f && _animationController.EnemyState != EnemyAnimationState.Death)
             {
-                MaxSpeed = 5f;
+                SetMaxSpeed(5f);//убрать магические числа
             }
             if (distance < ArrivalDistance && _animationController.EnemyState != EnemyAnimationState.Death)
             {
-                MaxSpeed = 0f;
+                SetMaxSpeed(0f);
             }
         }
 

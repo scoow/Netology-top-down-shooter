@@ -16,7 +16,7 @@ namespace TDShooter.Characters
         [SerializeField] private PlayerProgress _playerProgress;
         [SerializeField] private LootExample _exampleLoot;
         [SerializeField] private BloodStain _bloodStain;
-        /*[SerializeField] */private Animation_Controller _animation_Controller;
+        private Animation_Controller _animation_Controller;
         private CapsuleCollider _capsuleCollider;
         private EnemyMove _enemyMove;
         private PlayerControl _playerControl;
@@ -47,6 +47,7 @@ namespace TDShooter.Characters
 
             _subscribeManager.AddListener(enums.GameEventType.EnemyDied, _playerProgress, true);
             //добавляем _playerProgress в слушатели события "смерть врага", параметр true означает что добавляем лишь один раз  
+            _subscribeManager.AddListener(enums.GameEventType.EnemyDied, _lootController, true);
         }
 
         public void Respawn(/*int maxHP*/)
@@ -54,7 +55,7 @@ namespace TDShooter.Characters
             _enemy_Data.CurrentHP = _enemy_Data.CharacterData_SO.Health;
             _enemy_UI.SliderHP.value = _enemy_Data.CurrentHP;
             _enemyMove.SetNewTarget(_playerControl.transform);
-            _enemyMove.MaxSpeed = 5f;//ТЕСТ
+            _enemyMove.SetMaxSpeed(5f);//ТЕСТ
         }
 
         private void OnEnable()
@@ -63,18 +64,16 @@ namespace TDShooter.Characters
         }
         public override void Die()
         {
-            if (_playerProgress.CheckChance() < _playerProgress.ChanceDroopLoot)
-            {
-                _lootController.SpawnRandomLoot(transform.position);
-            }
             _subscribeManager.PostNotification(enums.GameEventType.EnemyDied, this);
 
-            _enemyMove.SetNewTarget(transform.transform);//меняем цель на самого себя, чтобы модель не крутилась
+            _enemyMove.SetNewTarget(transform);//меняем цель на самого себя, чтобы модель не крутилась
 
-            _animation_Controller.EnemyState = EnemyAnimationState.Death;
-            _enemyMove.MaxSpeed = 0f;
-            _capsuleCollider.enabled = false;
+            _animation_Controller.SetEnemyAnimationState(EnemyAnimationState.Death);
             _animation_Controller.DeathAnimation();
+
+            _enemyMove.SetMaxSpeed(0f);
+            _capsuleCollider.enabled = false;
+            
             InstantiateBloodStain();
         }
 
