@@ -12,4 +12,13 @@ public abstract class Character_UI : MonoBehaviour
         if (isPositive) _sliderHP.value += addedValueHP;
         else _sliderHP.value -= addedValueHP;
     }
+    public void HideSliderHP()
+    {
+        _sliderHP.gameObject.SetActive(false);
+    }
+    public void ShowSliderHP()
+    {
+        _sliderHP.gameObject.SetActive(true);
+    }
+
 }

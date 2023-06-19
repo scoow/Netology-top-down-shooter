@@ -13,6 +13,11 @@ namespace TDShooter.Characters
         protected Character_UI _character_UI;        
         public int HP => _character_Data.Hp;
 
+        private void Start()
+        {
+            _character_UI.HideSliderHP();
+        }
+
         public Action OnHit;
         public virtual void Die()
         {
@@ -23,8 +28,13 @@ namespace TDShooter.Characters
             int incomingDamage = damage - _character_Data.Armor;
             OnHit?.Invoke();
             if (incomingDamage <= 0) return;
+
             _character_Data.CurrentHP -= incomingDamage;
-            _character_UI.UpdateViewHealth(damage,false);
+            if (_character_Data.CurrentHP < _character_Data.MaxHP)
+            {
+                _character_UI.ShowSliderHP();
+            }
+            _character_UI.UpdateViewHealth(damage, false);
             //Debug.Log("HP осталось:" + _hp);
             if (_character_Data.CurrentHP <= 0)
                 Die();
@@ -32,7 +42,7 @@ namespace TDShooter.Characters
         public void TakeHeal(int heal)
         {
             _character_Data.CurrentHP += heal;
-            _character_UI.UpdateViewHealth(heal,true);
+            _character_UI.UpdateViewHealth(heal, true);
         }
     }
 }

@@ -10,6 +10,7 @@ namespace TDShooter.UI
     {
         public WeaponType CurrentWeaponType { get; private set; }
         [SerializeField] private Image _currentWeaponImage;
+        [SerializeField] private Image _lastWeaponImage;
         [SerializeField] private Sprite _machineGunSprite;
         [SerializeField] private Sprite _plasmaGunSprite;
 
@@ -29,12 +30,14 @@ namespace TDShooter.UI
         /// <param name="type">новое оружие</param>
         public void ChangeWeapon(WeaponType type)
         {
+            if (CurrentWeaponType == type) return;
             CurrentWeaponType = type;
             foreach (var weapon in _weaponsDictionary.Keys)
             {
                 if (weapon == type)
                 {
                     _weaponsDictionary[weapon].Item1.SetActive(true);
+                    _lastWeaponImage.sprite = _currentWeaponImage.sprite;
                     _currentWeaponImage.sprite = _weaponsDictionary[weapon].Item2;
                 }
                 else

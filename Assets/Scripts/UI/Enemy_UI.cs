@@ -18,6 +18,7 @@ public class Enemy_UI : Character_UI
     }
     public void SetHp(int hp)
     {
+        //_sliderHP.enabled = _sliderHP.maxValue > 0;
         _sliderHP.maxValue = hp;
         _sliderHP.value = hp;
     }
