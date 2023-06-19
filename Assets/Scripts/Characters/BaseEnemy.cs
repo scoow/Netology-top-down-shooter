@@ -12,8 +12,8 @@ namespace TDShooter.Characters
     [RequireComponent(typeof(CapsuleCollider))]
     public class BaseEnemy : Character
     {
-        [SerializeField] private SubscribeManager _subscribeManager;//менеджер событий
-        [SerializeField] private PlayerProgress _playerProgress;
+        private SubscribeManager _subscribeManager;//менеджер событий
+        private PlayerProgress _playerProgress;
         [SerializeField] private LootExample _exampleLoot;
         [SerializeField] private BloodStain _bloodStain;
         private Animation_Controller _animation_Controller;
@@ -48,14 +48,18 @@ namespace TDShooter.Characters
             _subscribeManager.AddListener(enums.GameEventType.EnemyDied, _playerProgress, true);
             //добавляем _playerProgress в слушатели события "смерть врага", параметр true означает что добавляем лишь один раз  
             _subscribeManager.AddListener(enums.GameEventType.EnemyDied, _lootController, true);
+
+            
         }
 
-        public void Respawn(/*int maxHP*/)
+        public void Respawn()
         {
             _enemy_Data.CurrentHP = _enemy_Data.CharacterData_SO.Health;
             _enemy_UI.SliderHP.value = _enemy_Data.CurrentHP;
             _enemyMove.SetNewTarget(_playerControl.transform);
-            _enemyMove.SetMaxSpeed(5f);//ТЕСТ
+            _enemyMove.SetMaxSpeed(_enemy_Data.SpeedMove);
+
+            _enemy_UI.HideSliderHP();
         }
 
         private void OnEnable()
@@ -67,6 +71,8 @@ namespace TDShooter.Characters
             _subscribeManager.PostNotification(enums.GameEventType.EnemyDied, this);
 
             _enemyMove.SetNewTarget(transform);//меняем цель на самого себя, чтобы модель не крутилась
+
+            _enemy_UI.HideSliderHP();
 
             _animation_Controller.SetEnemyAnimationState(EnemyAnimationState.Death);
             _animation_Controller.DeathAnimation();

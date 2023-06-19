@@ -13,11 +13,6 @@ namespace TDShooter.Characters
         protected Character_UI _character_UI;        
         public int HP => _character_Data.Hp;
 
-        private void Start()
-        {
-            _character_UI.HideSliderHP();
-        }
-
         public Action OnHit;
         public virtual void Die()
         {
