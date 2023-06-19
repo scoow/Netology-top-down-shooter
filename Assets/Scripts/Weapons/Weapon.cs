@@ -32,6 +32,8 @@ namespace TDShooter.Weapons
         protected float _shootsCoolDown;
         protected float _shootTimer;
         private bool _isShooting;
+        private float _shotSpread;
+        private bool _haveSpread;
 
         /// <summary>
         /// Количество патронов
@@ -50,6 +52,7 @@ namespace TDShooter.Weapons
             LoadData();
             _shootsCoolDown = 10 / _rateOfFire;
             _shootTimer = _shootsCoolDown;
+            _haveSpread = true;
         }
         private void Start()
         {
@@ -102,13 +105,16 @@ namespace TDShooter.Weapons
                     default:
                         break;
                 }
-
-                float shotSpread = 100 / _baseAccuracy;//коэффициент точности оружия
-                Quaternion innacuracyQuaternion = Quaternion.Euler(Random.Range(0f, shotSpread), Random.Range(0f, shotSpread), Random.Range(0f, shotSpread));//случайный кватернион для разброса
+                
+                _shotSpread = _haveSpread? 100 / _baseAccuracy : 1;//коэффициент точности оружия
+                Quaternion innacuracyQuaternion = Quaternion.Euler(Random.Range(0f, _shotSpread), Random.Range(0f, _shotSpread), Random.Range(0f, _shotSpread));//случайный кватернион для разброса
 
                 projectile.transform.SetPositionAndRotation(_shootingPoint.transform.position, _shootingPoint.transform.rotation * innacuracyQuaternion);
-                //_isShooting = false;
             }
+        }
+        public void SetSpread(bool active)
+        {
+            _haveSpread = active;
         }
 
         public void LoadData()

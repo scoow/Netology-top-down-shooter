@@ -16,7 +16,7 @@ MonoBehaviour:
   _spriteWeapon: {fileID: 21300000, guid: e3d2c4a37dd47fa4da0b79c507a71d3f, type: 3}
   _dropChance: 5
   _baseDamage: 30
-  _baseAccuracy: 95
+  _baseAccuracy: 90
   _rateOfFire: 30
   _maxAmmoCount: 0
   _projectileData: {fileID: 11400000, guid: c86498d1c9d022f43a17e3cb8155774e, type: 2}

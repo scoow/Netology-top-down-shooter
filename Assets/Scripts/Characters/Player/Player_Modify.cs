@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using System;
 using TDShooter.UI;
 using UnityEngine;
+using Zenject;
 
 namespace TDShooter.Configs
 {
@@ -10,6 +11,9 @@ namespace TDShooter.Configs
         [SerializeField] private Ability_Controller _ability_Controller;
         [SerializeField] private Player_Data _playerData;
         [SerializeField] private Player_UI _player_UI;
+
+        [Inject]
+        private WeaponChanger _weaponChanger;
 
         public void TakeLoot(LootData_SO currentLootData_SO)
         {
@@ -37,7 +41,9 @@ namespace TDShooter.Configs
 
         private async UniTask ModifyMissChance(LootData_SO currentLootData_SO)//модифицируем точность
         {
-            //добавить временное отключение эффекта разброса
+            _weaponChanger.CurrentWeapon().SetSpread(false);
+            await UniTask.Delay((int)currentLootData_SO.EffectTime * 1000);
+            _weaponChanger.CurrentWeapon().SetSpread(true);
         }
 
         private async UniTask ModifyHealth(LootData_SO currentLootData) //модифицируем здоровье
