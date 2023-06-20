@@ -17,8 +17,7 @@ namespace TDShooter.Managers
         [SerializeField] private int _currentKillsCount; //текущие убийства 
         [SerializeField] private int _targetKillsCount; //колиичество убийств для повышения уровня
         [SerializeField] private int _lootDropChance; //шанс выпадения лута
-        [SerializeField] private int _targetKillsMultiplier = 1;//множитель увеличения количества необходимых убийств
-        [SerializeField] private Transform _teleport;
+        [SerializeField] private int _targetKillsMultiplier = 1;//множитель увеличения количества необходимых убийств        
         [SerializeField] private Portal _portal;
         private bool _nuclearChargeIsActive = false;
         public bool NuclearChargeIsActive => _nuclearChargeIsActive;
@@ -29,6 +28,7 @@ namespace TDShooter.Managers
         public int ChanceDroopLoot => _lootDropChance;
 
         public event UnityAction OnNextLevel;
+        public event UnityAction OnPortal;
 
         public int LevelCount { get; private set; }
         public int CurrentKilledCount
@@ -44,7 +44,6 @@ namespace TDShooter.Managers
                     {
                         //добавить паузу и меню статистики
                         GoToNextLevel();
-
                     }
                 }
             }
@@ -58,6 +57,7 @@ namespace TDShooter.Managers
             if (_levelCount == 5)
             {
                 _portal.gameObject.SetActive(true);
+                OnPortal?.Invoke();
             }
             _controllerUI.UpdateView(_levelCount, UpdateViewType.LevelUp);
             _targetKillsCount *= _targetKillsMultiplier;//увеличить необходимое количество убийств
