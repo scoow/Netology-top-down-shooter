@@ -20,10 +20,7 @@ namespace TDShooter.Input
         private float _speed;
         [Inject]
         private readonly Aim_Marker _aim;
-        [SerializeField]
-        private AudioSource _audioSourceSteps;
-        [SerializeField]
-        private AudioClip _oneShotSound;
+
         [SerializeField]
         private Animator_Controller _animControl;
         [Inject]
@@ -70,10 +67,9 @@ namespace TDShooter.Input
 
         private void Fire()
         {
-            //_weapon.Shoot();
             _weaponChanger.CurrentWeapon().Shoot();
 
-            _audioSourceSteps.PlayOneShot(_oneShotSound);
+            //_audioSourceSteps.PlayOneShot(_oneShotSound);
         }
 
         private void ThrowGrenade()

@@ -39,7 +39,8 @@ namespace TDShooter.enums
         StartGame,
         EndGame,
         PlayerDied,
-        EnemyDied
+        EnemyDied,
+        Playsound
     }
     public enum WeaponType
     {
