@@ -1,5 +1,6 @@
 using TDShooter.Audio;
 using TDShooter.Characters;
+using TDShooter.enums;
 using TDShooter.EventManager;
 using TDShooter.Input;
 using TDShooter.Level;
@@ -89,9 +90,15 @@ namespace TDShooter.Managers.GameManager
             Container.BindInstance(_nuclearChargeEffect).AsSingle();
             Container.BindInstance(_audioController).AsSingle();
             //
-            _subscribeManager.AddListener(enums.GameEventType.Playsound, _audioController, true);
+            SubscribeToEvents();
 
             #endregion
+        }
+
+        private void SubscribeToEvents()
+        {
+            _subscribeManager.AddListener(GameEventType.PlayShootSound, _audioController, true);
+            _subscribeManager.AddListener(GameEventType.PlayStepSound, _audioController, true);
         }
     }
 }

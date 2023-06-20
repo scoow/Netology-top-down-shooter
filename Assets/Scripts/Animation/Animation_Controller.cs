@@ -7,12 +7,12 @@ namespace TDShooter.Enemies
 {
     public class Animation_Controller : MonoBehaviour
     {
-        Animator _animator;
-        EnemyAttack _enemyAttack;
-        BaseEnemy _parentGameObject;
+        private Animator _animator;
+        private EnemyAttack _enemyAttack;
+        private BaseEnemy _parentGameObject;
         private EnemyAnimationState _enemyState = EnemyAnimationState.Move;
 
-        private int _atackAnimation;
+        private int _attackAnimation;
         private int _runAnimation;
         private int _indexDeathAnimation;
 
@@ -29,7 +29,7 @@ namespace TDShooter.Enemies
         }
         private void Start()
         {
-            _atackAnimation = Animator.StringToHash("Atack");
+            _attackAnimation = Animator.StringToHash("Atack");
             _runAnimation = Animator.StringToHash("Run");
             _indexDeathAnimation = Animator.StringToHash("IndexDeath");
         }
@@ -53,10 +53,10 @@ namespace TDShooter.Enemies
             float distance = Vector3.Distance(target.position, transform.position);
             if (distance < _enemyAttack.AttackRange && _enemyState == EnemyAnimationState.Move)
             {
-                _animator.SetTrigger(_atackAnimation);
-                _enemyState = EnemyAnimationState.Atack;
+                _animator.SetTrigger(_attackAnimation);
+                _enemyState = EnemyAnimationState.Attack;
             }
-            if (distance > _enemyAttack.AttackRange && _enemyState == EnemyAnimationState.Atack)
+            if (distance > _enemyAttack.AttackRange && _enemyState == EnemyAnimationState.Attack)
             {
                 _animator.SetTrigger(_runAnimation);
                 _enemyState = EnemyAnimationState.Move;

@@ -114,7 +114,7 @@ namespace TDShooter.Weapons
 
                 projectile.transform.SetPositionAndRotation(_shootingPoint.transform.position, _shootingPoint.transform.rotation * innacuracyQuaternion);
 
-                _subscribeManager.PostNotification(enums.GameEventType.Playsound, this);
+                _subscribeManager.PostNotification(enums.GameEventType.PlayShootSound, this);
             }
         }
         public void SetSpread(bool active)

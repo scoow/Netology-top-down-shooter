@@ -16681,6 +16681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioSourceSteps: {fileID: 460507300}
   _oneShotSound: {fileID: 8300000, guid: dd0d378cb00eaf94f986ba4c8a0872c3, type: 3}
+  _oneStepSound: {fileID: 8300000, guid: d64aa272138cd4147b3e7130cfbafae9, type: 3}
 --- !u!1 &1157290522
 GameObject:
   m_ObjectHideFlags: 0

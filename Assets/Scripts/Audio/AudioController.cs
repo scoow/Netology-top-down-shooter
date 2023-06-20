@@ -1,6 +1,5 @@
 using TDShooter.enums;
 using TDShooter.EventManager;
-using TDShooter.Weapons;
 using UnityEngine;
 
 namespace TDShooter.Audio
@@ -11,16 +10,20 @@ namespace TDShooter.Audio
         private AudioSource _audioSourceSteps;
         [SerializeField]
         private AudioClip _oneShotSound;
+        [SerializeField]
+        private AudioClip _oneStepSound;
+
         public void OnEvent(GameEventType eventType, Component sender, Object param = null)
         {
-            if (eventType != GameEventType.Playsound) return;
-
-            _audioSourceSteps.PlayOneShot(_oneShotSound);
-            /*            switch (sender.GetType())
-                        {
-                            case Weapon:
-                                break;
-                        }*/
+            switch (eventType)
+            {
+                case GameEventType.PlayShootSound:
+                    _audioSourceSteps.PlayOneShot(_oneShotSound);
+                    break;
+                case GameEventType.PlayStepSound:
+                    _audioSourceSteps.PlayOneShot(_oneStepSound);
+                    break;
+            }
         }
     }
 }

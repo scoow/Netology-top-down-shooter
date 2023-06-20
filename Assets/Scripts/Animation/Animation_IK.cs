@@ -5,10 +5,10 @@ namespace TDShooter.Enemies
 {
     public class Animation_IK : MonoBehaviour
     {
-        [SerializeField] Rig _rightForward;
-        [SerializeField] Rig _leftForward;
-        [SerializeField] Rig _rightBack;
-        [SerializeField] Rig _leftBack;
+        [SerializeField] private Rig _rightForward;
+        [SerializeField] private Rig _leftForward;
+        [SerializeField] private Rig _rightBack;
+        [SerializeField] private Rig _leftBack;
 
         [SerializeField] private float _speed;
 
@@ -19,13 +19,10 @@ namespace TDShooter.Enemies
         {
             _isMoveRightForward = true;
         }
-
-
         private void Update()
         {
             Move();
         }
-
         private void Move()
         {
             if (_isMoveRightForward)

@@ -40,7 +40,8 @@ namespace TDShooter.enums
         EndGame,
         PlayerDied,
         EnemyDied,
-        Playsound
+        PlayShootSound,
+        PlayStepSound
     }
     public enum WeaponType
     {
@@ -82,7 +83,7 @@ namespace TDShooter.enums
     public enum EnemyAnimationState
     {
         Move,
-        Atack,
+        Attack,
         Death
     }
 

@@ -1,7 +1,9 @@
 using Cysharp.Threading.Tasks;
 using System;
 using TDShooter.enums;
+using TDShooter.EventManager;
 using UnityEngine;
+using Zenject;
 
 namespace TDShooter.Characters
 {
@@ -9,10 +11,12 @@ namespace TDShooter.Characters
     {
         private Animator _animator;
         private int _runAnimation;
+        [Inject]
+        private SubscribeManager _subscribeManager;
 
         public void StepSound()
         {
-            Debug.Log("Step");//todo заменить на звук
+            _subscribeManager.PostNotification(GameEventType.PlayStepSound, this);
         }
 
         public async UniTask ThrowAnimationAsync()
@@ -26,6 +30,7 @@ namespace TDShooter.Characters
         {
             _animator = GetComponent<Animator>();
             _runAnimation = Animator.StringToHash("Run");
+            
         }
 
         public void Move(Vector2 incomingValue, Quaternion rotation)
