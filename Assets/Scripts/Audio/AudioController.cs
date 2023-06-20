@@ -15,11 +15,12 @@ namespace TDShooter.Audio
         {
             if (eventType != GameEventType.Playsound) return;
 
-/*            switch (sender.GetType())
-            {
-                case Weapon:
-                    break;
-            }*/
+            _audioSourceSteps.PlayOneShot(_oneShotSound);
+            /*            switch (sender.GetType())
+                        {
+                            case Weapon:
+                                break;
+                        }*/
         }
     }
 }

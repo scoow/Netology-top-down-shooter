@@ -1,3 +1,4 @@
+using TDShooter.Audio;
 using TDShooter.Characters;
 using TDShooter.EventManager;
 using TDShooter.Input;
@@ -33,6 +34,7 @@ namespace TDShooter.Managers.GameManager
         private SpawnAssistant _spawnAssistant;
         private PauseMenu_Controller _pauseMenu_Controller;
         private NuclearChargeEffect _nuclearChargeEffect;
+        private AudioController _audioController;
         /*        private void Awake()
                 {
                     DontDestroyOnLoad(this.gameObject);
@@ -62,6 +64,7 @@ namespace TDShooter.Managers.GameManager
             _spawnAssistant = FindObjectOfType<SpawnAssistant>();
             _pauseMenu_Controller = FindObjectOfType<PauseMenu_Controller>();
             _nuclearChargeEffect = FindObjectOfType<NuclearChargeEffect>();
+            _audioController = FindObjectOfType<AudioController>();
 
             #endregion
             #region Добавление ссылок в DI контейнер
@@ -84,7 +87,10 @@ namespace TDShooter.Managers.GameManager
             Container.BindInstance(_spawnAssistant).AsSingle();
             Container.BindInstance(_pauseMenu_Controller).AsSingle();
             Container.BindInstance(_nuclearChargeEffect).AsSingle();
-            
+            Container.BindInstance(_audioController).AsSingle();
+            //
+            _subscribeManager.AddListener(enums.GameEventType.Playsound, _audioController, true);
+
             #endregion
         }
     }

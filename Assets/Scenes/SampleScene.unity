@@ -2571,7 +2571,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -15073,8 +15073,6 @@ MonoBehaviour:
   _playerHead: {fileID: 575208318}
   _playerBody: {fileID: 991209314}
   _speed: 3
-  _audioSourceSteps: {fileID: 460507300}
-  _oneShotSound: {fileID: 8300000, guid: dd0d378cb00eaf94f986ba4c8a0872c3, type: 3}
   _animControl: {fileID: 575208319}
 --- !u!54 &991209310
 Rigidbody:
@@ -16520,6 +16518,7 @@ GameObject:
   - component: {fileID: 1137414722}
   - component: {fileID: 1137414723}
   - component: {fileID: 1137414724}
+  - component: {fileID: 1137414725}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -16668,6 +16667,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eedbbe63dfb51734f94f5caeb3e9ce2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1137414725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137414712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 933cd7b982ef93f4d901fa26b108ec19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSourceSteps: {fileID: 460507300}
+  _oneShotSound: {fileID: 8300000, guid: dd0d378cb00eaf94f986ba4c8a0872c3, type: 3}
 --- !u!1 &1157290522
 GameObject:
   m_ObjectHideFlags: 0

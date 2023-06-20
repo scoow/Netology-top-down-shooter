@@ -20,7 +20,6 @@ namespace TDShooter.Input
         private float _speed;
         [Inject]
         private readonly Aim_Marker _aim;
-
         [SerializeField]
         private Animator_Controller _animControl;
         [Inject]
@@ -46,7 +45,6 @@ namespace TDShooter.Input
             _controls.Player.Shoot.started += contect => Fire();
             _controls.Player.Shoot.canceled += contect => StopFire();
 
-            //_animControl = GetComponent<Animator_Controller>();
             _controls.Player.WeaponSwitchMachineGun.performed += context => _weaponChanger.ChangeWeapon(WeaponType.Machinegun);
             _controls.Player.WeaponSwitchPlasmaGun.performed += context => _weaponChanger.ChangeWeapon(WeaponType.Plasmagun);
             _controls.Player.ThrowGrenade.performed += context => ThrowGrenade();
@@ -54,12 +52,16 @@ namespace TDShooter.Input
             _controls.Player.PauseGame.performed += context => _pauseMenu_Controller.ActivatePauseMenu();
             _controls.Player.NuclearBomb.performed += context => ActivateNuclearBomb();
         }
-
-        private void StopFire()
+        private void Update()
         {
-            _weaponChanger.CurrentWeapon().CancelShoot();
+            AimCursor();
+            Move();
         }
 
+        private void OnDisable()
+        {
+            _controls.Player.Disable();
+        }
         private void ActivateNuclearBomb()
         {
             _playerProgress.UseNuclearCharge();
@@ -70,6 +72,10 @@ namespace TDShooter.Input
             _weaponChanger.CurrentWeapon().Shoot();
 
             //_audioSourceSteps.PlayOneShot(_oneShotSound);
+        }
+        private void StopFire()
+        {
+            _weaponChanger.CurrentWeapon().CancelShoot();
         }
 
         private void ThrowGrenade()
@@ -88,7 +94,7 @@ namespace TDShooter.Input
                 Gizmos.DrawLine(_playerHead.transform.position, _aim.transform.position);
         }
 
-        private void Move()//todo лишние переменные
+        private void Move()
         {
             var inputValue = _controls.Player.WASD.ReadValue<Vector2>(); // записываем в локальную переменную значение Vector2 при вызове события WASD
             OnMove.Invoke(inputValue);
@@ -101,43 +107,12 @@ namespace TDShooter.Input
             if (Physics.Raycast(ray, out RaycastHit raycastHit))
             {
                 _aim.transform.position = raycastHit.point;
-                //_playerHead.transform.LookAt(raycastHit.point);
                 Vector3 relativePos = raycastHit.point - transform.position;
                 Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
                 rotation.x = 0f;
                 rotation.z = 0f;
                 _playerHead.transform.rotation = rotation;
             }
-        }
-
-        /*private void CheckDirectionMove(Vector3 previosPos, Vector3 nextPos, Vector3 aimPos)
-        {
-            if ((aimPos.z > nextPos.z && previosPos.z < nextPos.z) || (aimPos.z < nextPos.z && previosPos.z > nextPos.z))
-            {                
-                directionMove = DirectionState.Forward;
-                print("вперед");
-            }
-               
-            else if ((aimPos.z > nextPos.z && previosPos.z > nextPos.z) || (aimPos.z < nextPos.z && previosPos.z < nextPos.z))
-            {
-                directionMove = DirectionState.Back;                
-                print("назад");                
-            }
-            else
-            {
-                directionMove = DirectionState.Idle;
-            }
-        }*/
-
-        private void Update()
-        {
-            AimCursor();
-            Move();
-        }
-
-        private void OnDisable()
-        {
-            _controls.Player.Disable();
         }
     }
 }

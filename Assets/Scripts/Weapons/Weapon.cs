@@ -1,5 +1,6 @@
 using TDShooter.Configs;
 using TDShooter.enums;
+using TDShooter.EventManager;
 using TDShooter.UI;
 using UnityEngine;
 using Zenject;
@@ -34,6 +35,8 @@ namespace TDShooter.Weapons
         private bool _isShooting;
         private float _shotSpread;
         private bool _haveSpread;
+        [Inject]
+        private readonly SubscribeManager _subscribeManager;
 
         /// <summary>
         /// Количество патронов
@@ -110,6 +113,8 @@ namespace TDShooter.Weapons
                 Quaternion innacuracyQuaternion = Quaternion.Euler(Random.Range(0f, _shotSpread), Random.Range(0f, _shotSpread), Random.Range(0f, _shotSpread));//случайный кватернион для разброса
 
                 projectile.transform.SetPositionAndRotation(_shootingPoint.transform.position, _shootingPoint.transform.rotation * innacuracyQuaternion);
+
+                _subscribeManager.PostNotification(enums.GameEventType.Playsound, this);
             }
         }
         public void SetSpread(bool active)
