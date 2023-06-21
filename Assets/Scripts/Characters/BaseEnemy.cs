@@ -23,7 +23,9 @@ namespace TDShooter.Characters
         private LootController _lootController;
 
         private Enemy_Data _enemy_Data;
-        private Enemy_UI _enemy_UI;       
+        private Enemy_UI _enemy_UI;
+        private СharacterType _сharacterType;
+        public СharacterType CharacterType => _сharacterType;
 
         private void Awake()
         {
@@ -49,7 +51,7 @@ namespace TDShooter.Characters
             //добавляем _playerProgress в слушатели события "смерть врага", параметр true означает что добавляем лишь один раз  
             _subscribeManager.AddListener(enums.GameEventType.EnemyDied, _lootController, true);
 
-            
+            _сharacterType = _character_Data.СharacterType;
         }
 
         public void Respawn()
@@ -58,8 +60,8 @@ namespace TDShooter.Characters
             _enemy_UI.SliderHP.value = _enemy_Data.CurrentHP;
             _enemyMove.SetNewTarget(_playerControl.transform);
             _enemyMove.SetMaxSpeed(_enemy_Data.SpeedMove);
-
             _enemy_UI.HideSliderHP();
+            _subscribeManager.PostNotification(enums.GameEventType.EnemySpawned, this);
         }
 
         private void OnEnable()

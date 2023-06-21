@@ -41,7 +41,15 @@ namespace TDShooter.enums
         PlayerDied,
         EnemyDied,
         PlayShootSound,
-        PlayStepSound
+        PlayStepSound,
+        PlaySpiderSpawn,
+        PlaySpiderAttack,
+        PlaySpiderDeath,
+        PlayMonsterSpawn,
+        PlayMonsterAttack,
+        PlayMonsterDeath,
+        EnemySpawned,
+        EnemyAttacked
     }
     public enum WeaponType
     {

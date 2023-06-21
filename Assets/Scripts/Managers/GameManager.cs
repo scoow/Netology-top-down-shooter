@@ -99,6 +99,10 @@ namespace TDShooter.Managers.GameManager
         {
             _subscribeManager.AddListener(GameEventType.PlayShootSound, _audioController, true);
             _subscribeManager.AddListener(GameEventType.PlayStepSound, _audioController, true);
+
+            _subscribeManager.AddListener(GameEventType.EnemySpawned, _audioController, true);
+            _subscribeManager.AddListener(GameEventType.EnemyAttacked, _audioController, true);
+            _subscribeManager.AddListener(GameEventType.EnemyDied, _audioController, true);
         }
     }
 }

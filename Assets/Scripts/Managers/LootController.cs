@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TDShooter.Characters;
 using TDShooter.Configs;
 using TDShooter.enums;
 using TDShooter.EventManager;

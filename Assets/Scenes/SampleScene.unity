@@ -16612,7 +16612,6 @@ MonoBehaviour:
   _targetKillsCount: 3
   _lootDropChance: 15
   _targetKillsMultiplier: 1
-  _teleport: {fileID: 0}
   _portal: {fileID: 191105719}
 --- !u!114 &1137414721
 MonoBehaviour:
@@ -16682,6 +16681,12 @@ MonoBehaviour:
   _audioSourceSteps: {fileID: 460507300}
   _oneShotSound: {fileID: 8300000, guid: dd0d378cb00eaf94f986ba4c8a0872c3, type: 3}
   _oneStepSound: {fileID: 8300000, guid: d64aa272138cd4147b3e7130cfbafae9, type: 3}
+  _spiderSpawn: {fileID: 8300000, guid: 18f43dca41df53c48ba5e6c22482f3e9, type: 3}
+  _spiderAttack: {fileID: 8300000, guid: 6d0caad3321136641936d4bf2da935a4, type: 3}
+  _spiderDeath: {fileID: 8300000, guid: e6532e59f8c76f9499409e6307736b81, type: 3}
+  _monsterSpawn: {fileID: 8300000, guid: 15587d495cd2d2643a3e877b6315f850, type: 3}
+  _monsterAttack: {fileID: 8300000, guid: 0ba306cec23a5e14b888913648a530e5, type: 3}
+  _monsterDeath: {fileID: 8300000, guid: 8d1251f5bc0a464439b7e98c2f26cd3c, type: 3}
 --- !u!1 &1157290522
 GameObject:
   m_ObjectHideFlags: 0
