@@ -24,7 +24,6 @@ namespace TDShooter.Level
         }
 
 
-
         private void ShowInfo()
         {
             ActivateInfoPanel();            
