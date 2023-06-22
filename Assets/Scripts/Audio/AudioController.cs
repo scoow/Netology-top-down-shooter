@@ -67,7 +67,7 @@ namespace TDShooter.Audio
 
         private void PlayEnemyAttackedSound(Component sender)
         {
-            var enemy = (BaseEnemy)sender;
+            var enemy = sender.GetComponent<BaseEnemy>();
             var character = enemy.CharacterType;
             switch (character)
             {

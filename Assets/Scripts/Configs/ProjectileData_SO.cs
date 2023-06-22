@@ -3,7 +3,7 @@
 namespace TDShooter.Configs
 {
     [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/NewProjectile", order = 1)]
-    public class PojectileData_SO : ScriptableObject
+    public class ProjectileData_SO : ScriptableObject//опечатка
     {
         [SerializeField] private float _speed;
         [SerializeField] private int _damage;

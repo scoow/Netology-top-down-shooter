@@ -12,7 +12,7 @@ namespace TDShooter.Configs
         [SerializeField] private float _baseAccuracy;
         [SerializeField] private float _rateOfFire;
         [SerializeField] private float _maxAmmoCount;
-        [SerializeField] private PojectileData_SO _projectileData;
+        [SerializeField] private ProjectileData_SO _projectileData;
 
         /// <summary>
         /// название добычи
@@ -30,6 +30,6 @@ namespace TDShooter.Configs
         public float RateOfFire => _rateOfFire;
         public float BaseAccuracy => _baseAccuracy;
         public float MaxAmmoCount => _maxAmmoCount;
-        public PojectileData_SO ProjectileData => _projectileData;
+        public ProjectileData_SO ProjectileData => _projectileData;
     }
 }

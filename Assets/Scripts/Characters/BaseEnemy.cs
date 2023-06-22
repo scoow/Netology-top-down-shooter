@@ -51,7 +51,7 @@ namespace TDShooter.Characters
             //добавляем _playerProgress в слушатели события "смерть врага", параметр true означает что добавляем лишь один раз  
             _subscribeManager.AddListener(enums.GameEventType.EnemyDied, _lootController, true);
 
-            _сharacterType = _character_Data.СharacterType;
+            
         }
 
         public void Respawn()
@@ -61,6 +61,8 @@ namespace TDShooter.Characters
             _enemyMove.SetNewTarget(_playerControl.transform);
             _enemyMove.SetMaxSpeed(_enemy_Data.SpeedMove);
             _enemy_UI.HideSliderHP();
+
+            _сharacterType = _character_Data.СharacterType;
             _subscribeManager.PostNotification(enums.GameEventType.EnemySpawned, this);
         }
 

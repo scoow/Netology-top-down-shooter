@@ -5,11 +5,11 @@ namespace TDShooter.Weapons
 {
     public class Bullet : MonoBehaviour, IDataSOLoader
     {
-        [SerializeField] private PojectileData_SO _projectileData_SO;
+        [SerializeField] private ProjectileData_SO _projectileData_SO;
         private float _speed;
         private int _damage;
 
-        private PojectileData_SO ProjectileData_SO  => _projectileData_SO;
+        private ProjectileData_SO ProjectileData_SO  => _projectileData_SO;
         public float Speed => _speed;
         public int Damage => _damage;
         private void Awake()

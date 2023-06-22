@@ -1,5 +1,6 @@
 using TDShooter.Characters;
 using TDShooter.Configs;
+using TDShooter.EventManager;
 using TDShooter.Input;
 using UnityEngine;
 
@@ -9,12 +10,14 @@ namespace TDShooter.Enemies
     {
         [SerializeField] Enemy_Data _enemy_Data;
         
-        [SerializeField] Animation_Controller _animation_Controller;
+        Animation_Controller _animation_Controller;
         /// <summary>
         /// Цель атаки
         /// </summary>
         private Transform _target;
         private Character _player;
+
+        private SubscribeManager _subscribeManager;//менеджер событий
 
         /// <summary>
         /// Дальность атаки
@@ -30,8 +33,10 @@ namespace TDShooter.Enemies
 
         private void Awake()
         {
+            _animation_Controller = GetComponent<Animation_Controller>();
             _target = FindObjectOfType<PlayerControl>().transform;
-            _player = _target.GetComponent<Character>();            
+            _player = _target.GetComponent<Character>();
+            _subscribeManager = FindObjectOfType<SubscribeManager>();
         }
         private void OnEnable()
         {
@@ -75,6 +80,7 @@ namespace TDShooter.Enemies
         {
             _player.TakeDamage(_enemy_Data.Damage);
             Debug.Log("Атакую!");
+            _subscribeManager.PostNotification(enums.GameEventType.EnemyAttacked, this);
             //_animator.SetBool("Atack", true);
         }
 

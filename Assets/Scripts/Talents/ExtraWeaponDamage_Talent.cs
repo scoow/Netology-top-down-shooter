@@ -13,8 +13,8 @@ namespace TDShooter.Talents
         }
         public override void ActivateTalant()
         {
-            PojectileData_SO _projectileMashineGun_SO = Resources.Load<PojectileData_SO>("Projectile_MashineGun");
-            PojectileData_SO _projectilePlasma_SO = Resources.Load<PojectileData_SO>("Projectile_Plasma");
+            ProjectileData_SO _projectileMashineGun_SO = Resources.Load<ProjectileData_SO>("Projectile_MashineGun");
+            ProjectileData_SO _projectilePlasma_SO = Resources.Load<ProjectileData_SO>("Projectile_Plasma");
             _projectileMashineGun_SO.Speed *= 2;//todo баг. бесконечно увеличивает скорость пуль
             _projectilePlasma_SO.Speed *= 2;
         }

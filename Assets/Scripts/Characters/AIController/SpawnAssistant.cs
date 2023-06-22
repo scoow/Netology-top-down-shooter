@@ -6,7 +6,6 @@ using TDShooter.Input;
 using TDShooter.Level;
 using UnityEngine;
 using Zenject;
-using static UnityEngine.EventSystems.EventTrigger;
 
 namespace TDShooter.Characters
 {

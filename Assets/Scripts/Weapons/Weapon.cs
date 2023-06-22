@@ -28,7 +28,7 @@ namespace TDShooter.Weapons
         protected float _baseAccuracy;
         private float _rateOfFire;
         private float _maxAmmoCount;
-        private PojectileData_SO _projectileData;
+        private ProjectileData_SO _projectileData;
 
         protected float _shootsCoolDown;
         protected float _shootTimer;
