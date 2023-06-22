@@ -1,10 +1,11 @@
-using System;
 using TDShooter.Characters;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TDShooter.enums;
+using TDShooter.UI;
 
-public class DeathPanel : MonoBehaviour
+public class DeathPanel : BaseUI_Controller
 {
     [SerializeField] private Character_Player _character_Player;
     [SerializeField] private Image _backGround;
@@ -15,10 +16,15 @@ public class DeathPanel : MonoBehaviour
     private void OnEnable()
     {
         _character_Player.OnDie += DeathPanelActive;
+        _yesButton.onClick.AddListener(delegate { LoadScene(SceneExample.NewGame); });
+        _noButton.onClick.AddListener(delegate { LoadScene(SceneExample.MainMenu); });
     }
+
     private void OnDisable()
     {
         _character_Player.OnDie -= DeathPanelActive;
+        _yesButton.onClick.RemoveAllListeners();
+        _noButton.onClick.RemoveAllListeners();
     }
     private void DeathPanelActive()
     {
