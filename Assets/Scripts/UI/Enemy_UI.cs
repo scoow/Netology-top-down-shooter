@@ -3,8 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Enemy_UI : Character_UI
-{
-    //protected new Slider _sliderHP;
+{    
     private RectTransform _hpBarTransform;
     public Slider SliderHP => _sliderHP; 
     protected void Awake()
@@ -17,8 +16,7 @@ public class Enemy_UI : Character_UI
         _hpBarTransform.LookAt(Camera.main.transform.position);        
     }
     public void SetHp(int hp)
-    {
-        //_sliderHP.enabled = _sliderHP.maxValue > 0;
+    {        
         _sliderHP.maxValue = hp;
         _sliderHP.value = hp;
     }

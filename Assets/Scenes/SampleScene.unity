@@ -1204,6 +1204,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 5866666021291994722, guid: 356939b82d5fe4c4a9d3f738c8c5f703, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: db82641e75961204fb8dbe58cf984be5, type: 2}
     - target: {fileID: 6397550053857225548, guid: 356939b82d5fe4c4a9d3f738c8c5f703, type: 3}
       propertyPath: m_Name
       value: EnemyBoss
