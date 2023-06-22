@@ -86,6 +86,8 @@ namespace TDShooter.enums
     {
         Move,
         Attack,
+        Health,
+        SpecialAtack,
         Death
     }
 
