@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3e6bc7cc7af39e4ebb980b1ddfb36aa, type: 3}
   m_Name: Projectile_Plasma
   m_EditorClassIdentifier: Assembly-CSharp:TDShooter.Configs:ProjectileData_SO
-  _speed: 16
+  _speed: 15
   _damage: 30

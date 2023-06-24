@@ -14,10 +14,14 @@ namespace TDShooter.Talents
         public override void ActivateTalant()
         {
             Player_Data.Damage *= 2;
+            _activated = true;
         }
         ~ExtraFireRate_Talent()
         {
-            Player_Data.Damage /= 2;
+            if ( _activated )
+            {
+                Player_Data.Damage /= 2;
+            }
         }
 
         public override TalentType GetTalantType() { return TalentType.ExtraFireRate; }

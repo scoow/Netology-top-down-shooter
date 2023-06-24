@@ -9,6 +9,7 @@ namespace TDShooter.Talents
         private Player_Data player_Data;
         private Sprite _talentSprite;
         private string _description;
+        protected bool _activated = false;
 
         public Sprite TalentSprite { get => _talentSprite; protected set => _talentSprite = value; }
         public string Description { get => _description; protected set => _description = value; }

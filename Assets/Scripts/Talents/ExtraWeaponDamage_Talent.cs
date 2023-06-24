@@ -20,13 +20,17 @@ namespace TDShooter.Talents
         {
             _projectileMashineGun_SO.Speed *= 2;
             _projectilePlasma_SO.Speed *= 2;
+            _activated = true;
         }
 
         //в случае использования таланта, после конца игры сборщик мусора вызывает деструктор класса, которые возвращает значения на место
         ~ExtraWeaponDamage_Talent()
         {
-            _projectileMashineGun_SO.Speed /= 2;
-            _projectilePlasma_SO.Speed /= 2;
+            if (_activated) 
+            {
+                _projectileMashineGun_SO.Speed /= 2;
+                _projectilePlasma_SO.Speed /= 2;
+            }
         }
 
         public override TalentType GetTalantType() { return TalentType.ExtraWeaponDamage; }

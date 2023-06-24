@@ -24,8 +24,7 @@ namespace TDShooter.Enemies
         private float WanderRadius;
         [Tooltip("–азброс угла блуждани€"), SerializeField, Range(0f, 360f)]
         private float WanderAngleRange;
-        [SerializeField]
-        private PlayerControl _playerControl;//временно через инспектор
+        private PlayerControl _playerControl;
         private void Awake()
         {
             _animationController = GetComponentInChildren<Animation_Controller>();
@@ -33,7 +32,6 @@ namespace TDShooter.Enemies
         public void InjectPlayerControlReference(PlayerControl playerControl)
         {
             _playerControl = playerControl;
-
         }
 
         public float MaxSpeed => _maxSpeed;

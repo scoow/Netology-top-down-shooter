@@ -19,9 +19,9 @@ TagManager:
   - Label_UI
   - Player
   - 
-  - Bloods
-  - Enemy
-  - 
+  - Blood
+  - Enemy_hit
+  - Enemy_move
   - BigBoss
   - 
   - 
