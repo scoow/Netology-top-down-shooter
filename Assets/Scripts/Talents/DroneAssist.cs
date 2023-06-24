@@ -1,5 +1,7 @@
+using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using TDShooter.Characters;
 using TDShooter.Configs;
 using TDShooter.enums;
@@ -20,12 +22,17 @@ namespace TDShooter.Talents
         [SerializeField] private float _shootCoolDown;
         [SerializeField] private float _maxAttackDistance;
         private float _timer;
-        private bool _targetFound = false;
+        public bool _targetFound = false;
+
+        //private Transform parent;
         private void OnEnable()
         {
-            transform.position = _playerData.transform.position - new Vector3(2, -1.424f, 0);
+            //transform.position = _playerData.transform.position - new Vector3(2, -1.424f, 0);
+            transform.position = _playerData.transform.position - new Vector3(0, -4f, 0);
             _weapon = GetComponentInChildren<Weapon>();
             _timer = _shootCoolDown;
+
+
         }
         public void EnableDrone()
         {
@@ -42,51 +49,78 @@ namespace TDShooter.Talents
         private void Update()
         {
             _timer -= Time.deltaTime;
-            
-            if (_targetFound)
+
+            if (_timer < 0)
             {
-                RotateAndShoot();
-            }
-            else
-            {
-                if (_timer < 0)
+                if (_targetFound)
+                {
+                    RotateAndShoot();
+                }
+                else
                 {
                     _timer = _shootCoolDown;
                     SetNewTarget();
                 }
             }
-            
+
         }
         private void SetNewTarget()
         {
             List<BaseEnemy> enemies = _spawnAssistant.FindAllEnemies();
-            BaseEnemy nearestEnemy = enemies.OrderBy(x => Distance(x.transform)).FirstOrDefault();
-            if (nearestEnemy != null && Distance(nearestEnemy.transform) < _maxAttackDistance)
+            //BaseEnemy nearestEnemy = enemies.OrderBy(x => Distance(x.transform)).FirstOrDefault(x => Distance(x.transform) < _maxAttackDistance);
+            if (enemies.Count > 0)
             {
-                _target = nearestEnemy.transform;
-                _targetFound = true;
+                float minDistance = Distance(enemies[0].transform);
+                BaseEnemy nearestEnemy = null;
+                foreach (BaseEnemy enemy in enemies)
+                {
+                    if (Distance(enemy.transform) < minDistance)
+                    {
+                        minDistance = Distance(enemy.transform);
+                        nearestEnemy = enemy;
+                    }
 
-                /**/
-               
+                }
+
+                if (nearestEnemy != null && Distance(nearestEnemy.transform) < _maxAttackDistance)
+                {
+                    _target = nearestEnemy.transform;
+                    _targetFound = true;
+                }
             }
+
+            /*            else
+                            _targetFound = false;*/
 
         }
 
         private void RotateAndShoot()
         {
             //Quaternion sight = Quaternion.LookRotation(_target.position - transform.position, Vector3.up);
-            transform.LookAt(_target);
-/*            sight.x = 0;
-            sight.z = 0;
-            transform.rotation = sight;*/
+            //parent.transform.LookAt(_target);
+            
+            /*            sight.x = 0;
+                        sight.z = 0;
+                        transform.rotation = sight;*/
+            if (_targetFound)
+            {
+                transform.LookAt(_target);
+                _weapon.Shoot();
+            }
 
-            _weapon.Shoot();
         }
 
         public void OnEvent(GameEventType eventType, Component sender, Object param = null)
         {
+            ResetTargetAsync();
+        }
+
+        private void ResetTargetAsync()
+        {
             _targetFound = false;
-            SetNewTarget();
+            _target = null;
+            _weapon.CancelShoot();
+            //await UniTask.Delay(2000);
         }
     }
 }

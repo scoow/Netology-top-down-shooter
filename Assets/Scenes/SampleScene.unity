@@ -35641,7 +35641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 2e9c70f1d4d952d468f485be07800f25, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 2e9c70f1d4d952d468f485be07800f25, type: 3}
       propertyPath: m_RootOrder
@@ -35661,15 +35661,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 2e9c70f1d4d952d468f485be07800f25, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 70.59
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 2e9c70f1d4d952d468f485be07800f25, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.21
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 2e9c70f1d4d952d468f485be07800f25, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 48
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 2e9c70f1d4d952d468f485be07800f25, type: 3}
       propertyPath: m_LocalRotation.w
@@ -35717,20 +35717,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e9c70f1d4d952d468f485be07800f25, type: 3}
---- !u!114 &2019554491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2016211733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d390759743b50a84386ad0d2a57e1edb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _targetTransform: {fileID: 991209314}
-  _smoothing: 10
 --- !u!114 &2019554494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35744,13 +35730,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerData: {fileID: 991209315}
-  _shootCoolDown: 2
-  _maxAttackDistance: 6
+  _target: {fileID: 0}
+  _shootCoolDown: 1
+  _maxAttackDistance: 10
+  _targetFound: 0
 --- !u!4 &2019554496 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400004, guid: 2e9c70f1d4d952d468f485be07800f25, type: 3}
   m_PrefabInstance: {fileID: 2019554488}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2019554498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016211733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d390759743b50a84386ad0d2a57e1edb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetTransform: {fileID: 991209314}
+  _smoothing: 50
 --- !u!1 &2024000724
 GameObject:
   m_ObjectHideFlags: 0

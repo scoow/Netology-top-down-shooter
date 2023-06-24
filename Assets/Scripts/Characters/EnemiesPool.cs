@@ -38,7 +38,7 @@ namespace TDShooter.Characters
         /// <returns>список активных юнитов</returns>
         public List<BaseEnemy> GetActiveUnits()
         {
-            return _elements.Where(x => x.isActiveAndEnabled).ToList();
+            return _elements.Where(x => x.isActiveAndEnabled && x.EnemyAnimationState == EnemyAnimationState.Move).ToList();
         }
     }
 }

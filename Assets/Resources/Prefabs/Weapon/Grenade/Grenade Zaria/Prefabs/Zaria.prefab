@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 459924}
   - component: {fileID: 3348038}
   - component: {fileID: 2329402}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grenade_Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 443652}
   - component: {fileID: 9586122}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grenade_Zaria(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 5187595188835157228}
   - component: {fileID: -8187296641547373899}
   - component: {fileID: 7914544946392532851}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Zaria
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 451912}
   - component: {fileID: 3334312}
   - component: {fileID: 2397866}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grenade_Body_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 491048}
   - component: {fileID: 3393650}
   - component: {fileID: 2343966}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grenade_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,7 +426,7 @@ GameObject:
   - component: {fileID: 496232}
   - component: {fileID: 3351914}
   - component: {fileID: 2359214}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grenade_Ring_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -508,7 +508,7 @@ GameObject:
   m_Component:
   - component: {fileID: 443322}
   - component: {fileID: 9552222}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grenade_ZariaLOD0(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

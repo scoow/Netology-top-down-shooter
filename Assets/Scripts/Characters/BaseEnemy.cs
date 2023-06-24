@@ -20,6 +20,7 @@ namespace TDShooter.Characters
         private Enemy_UI _enemy_UI;
         private ÑharacterType _ñharacterType;
         public ÑharacterType CharacterType => _ñharacterType;
+        public EnemyAnimationState EnemyAnimationState => _animation_Controller.EnemyState;
 
         private void Awake()
         {
@@ -51,6 +52,7 @@ namespace TDShooter.Characters
             _enemy_UI.HideSliderHP();
 
             _ñharacterType = _character_Data.ÑharacterType;
+            _animation_Controller.SetEnemyAnimationState(EnemyAnimationState.Move);
             _subscribeManager.PostNotification(enums.GameEventType.EnemySpawned, this);
         }
 
