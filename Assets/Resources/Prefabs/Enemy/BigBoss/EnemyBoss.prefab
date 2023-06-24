@@ -518,11 +518,11 @@ GameObject:
   - component: {fileID: 6397550053857225558}
   - component: {fileID: 3387479552335967593}
   - component: {fileID: 6397550053857225553}
+  - component: {fileID: 2231708628291926201}
   - component: {fileID: 1398236617}
   - component: {fileID: -9080147744615825305}
   - component: {fileID: 502166052633414969}
   - component: {fileID: 5882279739919712308}
-  - component: {fileID: 1398236627}
   m_Layer: 17
   m_Name: EnemyBoss
   m_TagString: Untagged
@@ -577,6 +577,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2231708628291926201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6397550053857225548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05700ae9ee8172c4eb3ce85a9e15e2c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
+  _agent: {fileID: 0}
+  _playerControl: {fileID: 0}
+  _checkDistanceTimer: 0
+  _attackTimer: 0
 --- !u!195 &1398236617
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -636,25 +653,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3a446a9cad02344ac42320bda5c50d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _exampleLoot: {fileID: 0}
-  _bloodStain: {fileID: 0}
---- !u!114 &1398236627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6397550053857225548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2da4fdc3a92748439332e0b03edc0ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 5866666021291994722}
-  _portal: {fileID: 0}
-  _agent: {fileID: 1398236617}
-  _playerControl: {fileID: 0}
-  finishAtack: 1
 --- !u!1001 &758518771
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1026,9 +1024,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d9e3cea772912b4da64fff41d6ff3ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boss_Controller: {fileID: 1398236627}
---- !u!95 &5866666021291994722 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 9bf3168150fbca942a82fe9244c030c2, type: 3}
-  m_PrefabInstance: {fileID: 758518771}
-  m_PrefabAsset: {fileID: 0}
+  _boss_Move: {fileID: 0}

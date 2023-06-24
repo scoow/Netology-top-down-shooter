@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class AnimationEvent : MonoBehaviour
 {
-    [SerializeField] Boss_Controller _boss_Controller;
+    [SerializeField] Boss_Move _boss_Move;
 
-
-
-    public void FinishAtack() /// сделанно криво , событие анимации может вызвать определенный метод на том же игровом объекте
+/*    public void FinishAtack() /// сделанно криво , событие анимации может вызвать определенный метод на том же игровом объекте
     {
-        _boss_Controller.finishAtack = true;
+        _boss_Move.finishAtack = true;
     }
 
     public void Atack()
     {
-        _boss_Controller.finishAtack = false;
-    }
+        _boss_Move.finishAtack = false;
+    }*/
 }

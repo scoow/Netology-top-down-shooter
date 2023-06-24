@@ -39,6 +39,8 @@ namespace TDShooter.Managers.GameManager
         private NuclearChargeEffect _nuclearChargeEffect;
         private AudioController _audioController;
         private EffectController _effectController;
+        private Boss_Controller _bossController;
+        private DroneAssist _droneAssist;
 
         /// <summary>
         /// Внедрение зависимостей
@@ -68,6 +70,8 @@ namespace TDShooter.Managers.GameManager
             _nuclearChargeEffect = FindObjectOfType<NuclearChargeEffect>();
             _audioController = FindObjectOfType<AudioController>();
             _effectController = FindObjectOfType<EffectController>();
+            _bossController = FindObjectOfType<Boss_Controller>();
+            _droneAssist = FindObjectOfType<DroneAssist>();
 
             #endregion
             #region Добавление ссылок в DI контейнер
@@ -93,7 +97,9 @@ namespace TDShooter.Managers.GameManager
             Container.BindInstance(_nuclearChargeEffect).AsSingle();
             Container.BindInstance(_audioController).AsSingle();
             Container.BindInstance(_effectController).AsSingle();
+            Container.BindInstance(_bossController).AsSingle();
             
+
             //
             SubscribeToEvents();
 
@@ -117,6 +123,11 @@ namespace TDShooter.Managers.GameManager
             //добавляем _playerProgress в слушатели события "смерть врага", параметр true означает что добавляем лишь один раз  
             _subscribeManager.AddListener(enums.GameEventType.EnemyDied, _lootController, true);
             _subscribeManager.AddListener(enums.GameEventType.EnemyDied, _effectController, true);
+
+            _subscribeManager.AddListener(enums.GameEventType.PortalActivated, _bossController, true);
+            _subscribeManager.AddListener(enums.GameEventType.PortalActivated, _spawnAssistant, true);
+            _subscribeManager.AddListener(enums.GameEventType.EnemyDied, _droneAssist, true);
+            
         }
     }
 }

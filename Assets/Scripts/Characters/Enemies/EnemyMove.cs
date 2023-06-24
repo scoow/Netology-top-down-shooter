@@ -46,7 +46,7 @@ namespace TDShooter.Enemies
             _playerControl = FindObjectOfType<PlayerControl>();//временно через инспектор
             SetNewTarget(_playerControl.transform);
         }
-        private void Update()
+        private void Update()//сделать виртуальным и унаследовать босса отсюда
         {
             LookAtPlayer();
             OnArrival();

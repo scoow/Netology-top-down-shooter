@@ -2,21 +2,25 @@ using System.Collections.Generic;
 using System.Linq;
 using TDShooter.Characters;
 using TDShooter.Configs;
+using TDShooter.enums;
+using TDShooter.EventManager;
 using TDShooter.Weapons;
 using UnityEngine;
 using Zenject;
 
 namespace TDShooter.Talents
 {
-    public class DroneAssist : MonoBehaviour
+    public class DroneAssist : MonoBehaviour, IEventListener
     {
         [SerializeField] Player_Data _playerData;
         [Inject]
         private readonly SpawnAssistant _spawnAssistant;
-        private Vector3 _target;
+        public Transform _target;
         private Weapon _weapon;
         [SerializeField] private float _shootCoolDown;
+        [SerializeField] private float _maxAttackDistance;
         private float _timer;
+        private bool _targetFound = false;
         private void OnEnable()
         {
             transform.position = _playerData.transform.position - new Vector3(2, -1.424f, 0);
@@ -38,29 +42,51 @@ namespace TDShooter.Talents
         private void Update()
         {
             _timer -= Time.deltaTime;
-            if (_timer < 0)
+            
+            if (_targetFound)
             {
-                _timer = _shootCoolDown;
-                SetNewTarget();
+                RotateAndShoot();
             }
+            else
+            {
+                if (_timer < 0)
+                {
+                    _timer = _shootCoolDown;
+                    SetNewTarget();
+                }
+            }
+            
         }
         private void SetNewTarget()
         {
             List<BaseEnemy> enemies = _spawnAssistant.FindAllEnemies();
             BaseEnemy nearestEnemy = enemies.OrderBy(x => Distance(x.transform)).FirstOrDefault();
-            if (nearestEnemy != null)
+            if (nearestEnemy != null && Distance(nearestEnemy.transform) < _maxAttackDistance)
             {
-                _target = nearestEnemy.transform.position;
-                
-                //transform.LookAt(_target, Vector3.up);
-                Quaternion sight = Quaternion.LookRotation(_target - transform.position, Vector3.up);
-                sight.x = 0;
-                sight.z = 0;
-                transform.rotation = sight;
+                _target = nearestEnemy.transform;
+                _targetFound = true;
 
-                _weapon.Shoot();
+                /**/
+               
             }
-            
+
+        }
+
+        private void RotateAndShoot()
+        {
+            //Quaternion sight = Quaternion.LookRotation(_target.position - transform.position, Vector3.up);
+            transform.LookAt(_target);
+/*            sight.x = 0;
+            sight.z = 0;
+            transform.rotation = sight;*/
+
+            _weapon.Shoot();
+        }
+
+        public void OnEvent(GameEventType eventType, Component sender, Object param = null)
+        {
+            _targetFound = false;
+            SetNewTarget();
         }
     }
 }

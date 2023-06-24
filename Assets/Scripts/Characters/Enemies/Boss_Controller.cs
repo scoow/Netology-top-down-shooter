@@ -1,66 +1,37 @@
-using TDShooter.Input;
-using TDShooter.Level;
+using TDShooter.enums;
+using TDShooter.EventManager;
 using UnityEngine;
-using UnityEngine.AI;
 
 
-public class Boss_Controller : MonoBehaviour
+public class Boss_Controller : MonoBehaviour, IEventListener
 {
-    [SerializeField] private Animator _animator;
-    [SerializeField] private Portal _portal;
-    [SerializeField] private NavMeshAgent _agent;
-    [SerializeField] private PlayerControl _playerControl;
-
-    //private float timeOut = 1f;
-    private int _attackAnimation;
-    private int _moveAnimation;
-    private int _deathAnimation;
-
-    private bool isMoving;
-    public bool finishAtack = true;
-    public bool atack = false;
+    /*[SerializeField] */private Boss_Move _bossMove;
+   // [SerializeField] private Portal _portal;
 
 
+    private void Awake()
+    {
+        //_portal.TeleportHero += Moving;
+    }
     private void OnEnable()
     {
-        _portal.TeleportHero += Moving;
+       _bossMove = FindObjectOfType<Boss_Move>();//переделать
+        _bossMove.gameObject.SetActive(false);
     }
 
     private void OnDisable()
     {
-        _portal.TeleportHero -= Moving;
+        //_portal.TeleportHero -= Moving;
     }
 
-    private void Start()
+    
+    private void ActivateBoss()
     {
-        _attackAnimation = Animator.StringToHash("Atack");
-        _moveAnimation = Animator.StringToHash("Move");
-        _deathAnimation = Animator.StringToHash("Death");
+        _bossMove.gameObject.SetActive(true);
     }
 
-    public void Update()
+    public void OnEvent(GameEventType eventType, Component sender, Object param = null)
     {
-        if (!isMoving) return;
-        //timeOut -= Time.deltaTime;
-        //if (timeOut >= 0f) return;        
-        float distance = Vector3.Distance(transform.position, _playerControl.transform.position);
-        if (distance <= _agent.stoppingDistance )
-        {            //finishAtack = false;
-            _animator.SetTrigger(_attackAnimation);
-        }
-        if (distance > _agent.stoppingDistance && finishAtack)
-        {
-            _agent.SetDestination(_playerControl.transform.position);
-            _animator.SetTrigger(_moveAnimation);
-        }               
-    }   
-    private void Moving()
-    {        
-        isMoving = true;
+        ActivateBoss();
     }
-
-    //public void FinishAtack()
-    //{
-    //    finishAtack = true;
-    //}
 }

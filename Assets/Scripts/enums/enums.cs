@@ -48,7 +48,8 @@ namespace TDShooter.enums
         EnemyAttacked,
         PlayShootSound,
         PlayStepSound,
-        PlayerLevelUp
+        PlayerLevelUp,
+        PortalActivated
     }
     public enum WeaponType : byte
     {

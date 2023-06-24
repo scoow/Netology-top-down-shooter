@@ -5,6 +5,7 @@ using TDShooter.enums;
 using TDShooter.EventManager;
 using TDShooter.Input;
 using TDShooter.Level;
+using TDShooter.Talents;
 using UnityEngine;
 using Zenject;
 
@@ -25,6 +26,8 @@ namespace TDShooter.Characters
         private readonly TilesManager _tilesManager;
         [Inject]
         private readonly Transform _enemiesContainer;
+        [Inject]
+        private readonly NuclearChargeEffect _nuclearChargeEffect;
         private List<EnemiesSpawner> _unitSpawners = new();
         public List<EnemiesSpawner> UnitSpawners => _unitSpawners;//переделать на enumerable
 
@@ -97,7 +100,7 @@ namespace TDShooter.Characters
             enemies.AddRange(EnemiesPool[СharacterType.Spider].GetActiveUnits());
             return enemies;
         }
-        public void TurningSpawnOnOrOff(bool toggle)
+        private void TurningSpawnOnOrOff(bool toggle)
         {
             _spanwEnabled = toggle;
         }
@@ -105,7 +108,22 @@ namespace TDShooter.Characters
         public void OnEvent(GameEventType eventType, Component sender, UnityEngine.Object param = null)
         {
             //if (eventType != GameEventType.PlayerLevelUp) return;
-            _enemySpawnCooldown /= _SpawnLoodownReductionCoefficient;
+            switch (eventType)
+            {
+                case GameEventType.PlayerLevelUp:
+                    _enemySpawnCooldown /= _SpawnLoodownReductionCoefficient;
+                    if (_enemySpawnCooldown < 0.5f)
+                        _enemySpawnCooldown = 0.5f;
+                    //ограничить время спавна
+                    break;
+                case GameEventType.PortalActivated:
+                    TurningSpawnOnOrOff(false);
+                    _nuclearChargeEffect.Activate();
+                    break;
+                default:
+                    break;
+            }
+            
         }
     }
 }

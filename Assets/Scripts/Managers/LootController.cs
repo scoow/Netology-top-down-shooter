@@ -47,8 +47,6 @@ namespace TDShooter.Pools
 
         public void OnEvent(GameEventType eventType, Component sender, Object param = null)
         {
-            if (eventType != GameEventType.EnemyDied) return;//убрать условие
-            //
             if (_playerProgress.CheckChance() < _playerProgress.ChanceDroopLoot)
             {
                 SpawnRandomLoot(sender.transform.position);

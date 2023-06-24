@@ -1,8 +1,10 @@
 using Cysharp.Threading.Tasks;
 using System;
 using System.Threading.Tasks;
+using TDShooter.EventManager;
 using TDShooter.Input;
 using UnityEngine;
+using Zenject;
 
 namespace TDShooter.Level
 {
@@ -10,7 +12,9 @@ namespace TDShooter.Level
     {
         [SerializeField] private Vector3 _destinationPoint;
         [SerializeField] private float _delayBeforeTeleportation;
-        public Action TeleportHero;
+        // public Action TeleportHero;
+        [Inject] 
+        private SubscribeManager _subscribeManager;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -23,7 +27,9 @@ namespace TDShooter.Level
         {
             await UniTask.Delay(TimeSpan.FromSeconds(_delayBeforeTeleportation));
             teleportTarget.transform.position = _destinationPoint;
-            TeleportHero?.Invoke();
+            // TeleportHero?.Invoke();
+            _subscribeManager.PostNotification(enums.GameEventType.PortalActivated, null);
+
         }
     }
 }
