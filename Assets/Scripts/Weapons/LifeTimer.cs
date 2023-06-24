@@ -5,19 +5,28 @@ namespace TDShooter.Weapons//перенести в глобальный namespace, использовать повт
     public class LifeTimer : MonoBehaviour
     {
         [SerializeField]
-        private float _lifeTime;
-        private float _lifeTimeLeft;
+        protected float _lifeTime;
+        protected float _lifeTimeLeft;
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             _lifeTimeLeft = _lifeTime;
-        }        
+        }
 
-        private void Update()
+        protected virtual void Update()
         {
             _lifeTimeLeft -= Time.deltaTime;
             if (_lifeTimeLeft < 0)
-                gameObject.SetActive(false);
+                Deactivate();
         }
+
+        protected virtual void Deactivate()
+        {
+            gameObject.SetActive(false);
+        }
+/*        protected virtual void DeactivateAsync(float time)
+        {
+            gameObject.SetActive(false);
+        }*/
     }
 }

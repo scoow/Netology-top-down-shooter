@@ -24,6 +24,7 @@ namespace TDShooter.Effects
         public void Spawn(Vector3 position)
         {
             BloodStain newBloodStain = _effectsPool[VisualEffectType.BloodStain].GetAviableOrCreateNew();
+            position.y += 0.1f;
             newBloodStain.transform.position = position;
         }
 
