@@ -1,6 +1,4 @@
-using Cysharp.Threading.Tasks;
 using TDShooter.Configs;
-using TDShooter.Effects;
 using TDShooter.Enemies;
 using TDShooter.enums;
 using TDShooter.EventManager;
@@ -12,11 +10,11 @@ namespace TDShooter.Characters
     [RequireComponent(typeof(CapsuleCollider))]
     public class BaseEnemy : Character
     {
-        private SubscribeManager _subscribeManager;//менеджер событий
+        private SubscribeManager _subscribeManager;//менеджер событий zen 2
         private Animation_Controller _animation_Controller;
         private CapsuleCollider _capsuleCollider;
         private EnemyMove _enemyMove;
-        private PlayerControl _playerControl;
+        private PlayerControl _playerControl;//zen 1
 
         private Enemy_Data _enemy_Data;
         private Enemy_UI _enemy_UI;
@@ -26,9 +24,9 @@ namespace TDShooter.Characters
         private void Awake()
         {
             _enemyMove = GetComponent<EnemyMove>();
-            _playerControl = FindObjectOfType<PlayerControl>();
+            //_playerControl = FindObjectOfType<PlayerControl>();
             _capsuleCollider = GetComponent<CapsuleCollider>();
-            _subscribeManager = FindObjectOfType<SubscribeManager>();//добавить инъекцию от пула 
+            //_subscribeManager = FindObjectOfType<SubscribeManager>();//добавить инъекцию от пула 
 
             _animation_Controller = GetComponentInChildren<Animation_Controller>();
 
@@ -36,6 +34,12 @@ namespace TDShooter.Characters
             _character_Data = _enemy_Data as Character_Data;//убрать?
             _enemy_UI = GetComponent<Enemy_UI>();
             _character_UI = _enemy_UI as Character_UI;
+        }
+
+        public void InjectReferences(PlayerControl playerControl, SubscribeManager subscribeManager)
+        {
+            _playerControl = playerControl;
+            _subscribeManager = subscribeManager;
         }
 
         public void Respawn()

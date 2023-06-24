@@ -19,7 +19,8 @@ namespace TDShooter.Characters
         public Dictionary<ÑharacterType, EnemiesPool> EnemiesPool => _enemiesPool;
         [Inject]
         private readonly PlayerControl _playerControl;
-
+        [Inject]
+        private readonly SubscribeManager _subscribeManager;
         [Inject]
         private readonly TilesManager _tilesManager;
         [Inject]
@@ -49,8 +50,8 @@ namespace TDShooter.Characters
         /// </summary>
         private void InitEnemyPool()
         {
-            _enemiesPool.Add(ÑharacterType.FastMeleeEnemy, new(Resources.Load<BaseEnemy>("Prefabs/Enemy/FirstEnemy/Enemy"), ÑharacterType.FastMeleeEnemy, _enemiesContainer, _playerControl, 2));
-            _enemiesPool.Add(ÑharacterType.Spider, new(Resources.Load<BaseEnemy>("Prefabs/Enemy/Spiders/Prefabs/Black Widow 1"), ÑharacterType.Spider, _enemiesContainer, _playerControl, 2));
+            _enemiesPool.Add(ÑharacterType.FastMeleeEnemy, new(Resources.Load<BaseEnemy>("Prefabs/Enemy/FirstEnemy/Enemy"), ÑharacterType.FastMeleeEnemy, _enemiesContainer, _playerControl, _subscribeManager, 2));
+            _enemiesPool.Add(ÑharacterType.Spider, new(Resources.Load<BaseEnemy>("Prefabs/Enemy/Spiders/Prefabs/Black Widow 1"), ÑharacterType.Spider, _enemiesContainer, _playerControl, _subscribeManager, 2));
             //ïóë äëÿ áîññà
             //_enemiesPool.Add(ÑharacterType.Devil_Bulldog, new(Resources.Load<BossEnemy>("Prefabs/Enemy/BigBoss/DeepNest/Devil_Bulldog_Lite/EnemyBoss"), ÑharacterType.Devil_Bulldog, _enemiesContainer, _playerControl, 1));
         }
