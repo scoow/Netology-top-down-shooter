@@ -18,25 +18,41 @@ namespace TDShooter.Talents
         {
             if (talentOne != null)
             {
-                Talents_Base oneAccessibleTalant = ChoiseTalant(talentOne);
+                Talents_Base oneAccessibleTalant = ChoiseTalent(talentOne);
                 _talentOneView.EnableTalantView(oneAccessibleTalant);
             }
             if (talentTwo != null)
             {
-                Talents_Base twoAccessibleTalant = ChoiseTalant(talentTwo);
+                Talents_Base twoAccessibleTalant = ChoiseTalent(talentTwo);
                 _talentTwoView.EnableTalantView(twoAccessibleTalant);
             }
         }
 
-        private Talents_Base ChoiseTalant(TalentType? talentExample) //выбор таланта
+        private Talents_Base ChoiseTalent(TalentType? talentExample) //выбор таланта
         {
-            if (talentExample == TalentType.StoneSkin) return new StoneSkin_Talent(_playerData);
+            Talents_Base result = talentExample switch
+            {
+                TalentType.StoneSkin => new StoneSkin_Talent(_playerData),
+                TalentType.Radar => new Radar_Talent(_playerData),
+                TalentType.ExtraFireRate => new ExtraFireRate_Talent(_playerData),
+                TalentType.ExtraWeaponDamage => new ExtraWeaponDamage_Talent(_playerData),
+                TalentType.Drone => new Drone_Talent(_playerData),
+                TalentType.NuclearCharge => new NuclearCharge_Talent(_playerData, _playerProgress),
+                _ => null,
+            };
+            return result;
+
+/*            if (talentExample == TalentType.StoneSkin) return new StoneSkin_Talent(_playerData);
             else if (talentExample == TalentType.Radar) return new Radar_Talent(_playerData);
             else if (talentExample == TalentType.ExtraFireRate) return new ExtraFireRate_Talent(_playerData);
             else if (talentExample == TalentType.ExtraWeaponDamage) return new ExtraWeaponDamage_Talent(_playerData);
             else if (talentExample == TalentType.Drone) return new Drone_Talent(_playerData);
             else if (talentExample == TalentType.NuclearCharge) return new NuclearCharge_Talent(_playerData, _playerProgress);
-            else return null;
+            else return null;*/
+        }
+        private void OnDestroy()
+        {
+            
         }
     }
 }

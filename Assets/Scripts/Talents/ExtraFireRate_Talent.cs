@@ -1,6 +1,5 @@
 using TDShooter.Configs;
 using TDShooter.enums;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace TDShooter.Talents
@@ -16,6 +15,11 @@ namespace TDShooter.Talents
         {
             Player_Data.Damage *= 2;
         }
+        ~ExtraFireRate_Talent()
+        {
+            Player_Data.Damage /= 2;
+        }
+
         public override TalentType GetTalantType() { return TalentType.ExtraFireRate; }
     }
 }
