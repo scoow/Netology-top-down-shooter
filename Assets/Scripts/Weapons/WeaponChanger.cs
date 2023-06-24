@@ -20,7 +20,9 @@ namespace TDShooter.UI
         private readonly Dictionary<WeaponType, (GameObject, Sprite)> _weaponsDictionary = new();
         private void Awake()
         {
-            CurrentWeaponType = WeaponType.Machinegun;
+            //CurrentWeaponType = WeaponType.Machinegun;
+            CurrentWeaponType = WeaponType.Shothun;
+            _weaponsDictionary.Add(WeaponType.Shothun, (_machineGun, _machineGunSprite));
             _weaponsDictionary.Add(WeaponType.Machinegun, (_machineGun, _machineGunSprite));
             _weaponsDictionary.Add(WeaponType.Plasmagun, (_plasmaGun, _plasmaGunSprite));
         }

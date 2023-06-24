@@ -32,7 +32,7 @@ namespace TDShooter.Talents
             _weapon = GetComponentInChildren<Weapon>();
             _timer = _shootCoolDown;
 
-
+            DisableDrone();
         }
         public void EnableDrone()
         {
@@ -88,10 +88,6 @@ namespace TDShooter.Talents
                     _targetFound = true;
                 }
             }
-
-            /*            else
-                            _targetFound = false;*/
-
         }
 
         private void RotateAndShoot()

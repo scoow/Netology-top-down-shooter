@@ -62,6 +62,7 @@ namespace TDShooter.Characters
         }
         public override void Die()
         {
+            _capsuleCollider.enabled = false;
             _subscribeManager.PostNotification(enums.GameEventType.EnemyDied, this);
 
             _enemyMove.SetNewTarget(transform);//меняем цель на самого себя, чтобы модель не крутилась
@@ -72,7 +73,7 @@ namespace TDShooter.Characters
             _animation_Controller.DeathAnimation();
 
             _enemyMove.SetMaxSpeed(0f);
-            _capsuleCollider.enabled = false;
+            
         }
     }
 }
