@@ -16647,6 +16647,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemySpawnCooldown: 3
+  _SpawnLoodownReductionCoefficient: 1.1
+  _spanwEnabled: 1
 --- !u!114 &1137414718
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using TDShooter.enums;
+using TDShooter.EventManager;
 using TDShooter.Input;
 using TDShooter.Level;
 using UnityEngine;
@@ -9,7 +10,7 @@ using Zenject;
 
 namespace TDShooter.Characters
 {
-    public class SpawnAssistant : MonoBehaviour
+    public class SpawnAssistant : MonoBehaviour, IEventListener
     {
         /// <summary>
         /// Пул юнитов
@@ -29,12 +30,18 @@ namespace TDShooter.Characters
         //todo Добавить таймер спавна для каждого типа врагов
         [SerializeField]
         private float _enemySpawnCooldown = 2;
+        [SerializeField, Range(1, 2)]
+        private float _SpawnLoodownReductionCoefficient;//каждый уровень уменьшает время между появлением врагов
+        [SerializeField]
+        private bool _spanwEnabled;
+
         private float _timer;
 
         private void Start()
         {
             _unitSpawners = FindObjectsOfType<EnemiesSpawner>().ToList();//zenject
             _timer = _enemySpawnCooldown;
+            _spanwEnabled = true;
             InitEnemyPool();
         }
         /// <summary>
@@ -48,7 +55,7 @@ namespace TDShooter.Characters
             //_enemiesPool.Add(СharacterType.Devil_Bulldog, new(Resources.Load<BossEnemy>("Prefabs/Enemy/BigBoss/DeepNest/Devil_Bulldog_Lite/EnemyBoss"), СharacterType.Devil_Bulldog, _enemiesContainer, _playerControl, 1));
         }
         /// <summary>
-        /// Для теста - спавн на клавишу B
+        /// Спавн по таймеру
         /// </summary>
         private void Update()
         {
@@ -56,7 +63,10 @@ namespace TDShooter.Characters
             if (_timer < 0)
             {
                 _timer = _enemySpawnCooldown;
-                SpawnEnemyAtRandomTile();
+                if (_spanwEnabled)
+                {
+                    SpawnEnemyAtRandomTile();
+                }
             }
         }
 
@@ -85,6 +95,16 @@ namespace TDShooter.Characters
             List<BaseEnemy> enemies = EnemiesPool[СharacterType.FastMeleeEnemy].GetActiveUnits();
             enemies.AddRange(EnemiesPool[СharacterType.Spider].GetActiveUnits());
             return enemies;
+        }
+        public void TurningSpawnOnOrOff(bool toggle)
+        {
+            _spanwEnabled = toggle;
+        }
+
+        public void OnEvent(GameEventType eventType, Component sender, UnityEngine.Object param = null)
+        {
+            //if (eventType != GameEventType.PlayerLevelUp) return;
+            _enemySpawnCooldown /= _SpawnLoodownReductionCoefficient;
         }
     }
 }

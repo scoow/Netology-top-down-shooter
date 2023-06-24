@@ -103,6 +103,8 @@ namespace TDShooter.Managers.GameManager
             _subscribeManager.AddListener(GameEventType.EnemySpawned, _audioController, true);
             _subscribeManager.AddListener(GameEventType.EnemyAttacked, _audioController, true);
             _subscribeManager.AddListener(GameEventType.EnemyDied, _audioController, true);
+
+            _subscribeManager.AddListener(GameEventType.PlayerLevelUp, _spawnAssistant, true);
         }
     }
 }

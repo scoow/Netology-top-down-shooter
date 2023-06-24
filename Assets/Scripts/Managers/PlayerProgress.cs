@@ -25,6 +25,8 @@ namespace TDShooter.Managers
         private readonly UI_Controller _controllerUI;
         [Inject]
         private readonly NuclearChargeEffect _nuclearChargeEffect;
+        [Inject]
+        private readonly SubscribeManager _subscribeManager;
         public int ChanceDroopLoot => _lootDropChance;
 
         public event UnityAction OnNextLevel;
@@ -63,7 +65,8 @@ namespace TDShooter.Managers
             _targetKillsCount *= _targetKillsMultiplier;//увеличить необходимое количество убийств
             _controllerUI.UpdateView(_targetKillsCount, UpdateViewType.TargetKills);
 
-            OnNextLevel?.Invoke();
+            OnNextLevel?.Invoke();//todo заменить на _subscribeManager
+            _subscribeManager.PostNotification(GameEventType.PlayerLevelUp, null);
         }
 
         public int TargetKilledCount

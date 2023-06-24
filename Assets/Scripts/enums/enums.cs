@@ -1,22 +1,22 @@
 namespace TDShooter.enums
 {
-    public enum Direction
+    public enum Direction : byte
     {
         Up, Down, Left, Right
     }
-    public enum ProjectileType
+    public enum ProjectileType : byte
     {
         Bullet,
         Plasma
     }
-    public enum СharacterType
+    public enum СharacterType : byte
     {
         Player,
         FastMeleeEnemy,
         Spider,
         //Devil_Bulldog
     }
-    public enum EffectType
+    public enum EffectType : byte
     {
         Health,
         Armor,
@@ -25,7 +25,7 @@ namespace TDShooter.enums
         CriticalDamageChance,
         Weapon
     }
-    public enum TileState
+    public enum TileState : byte
     {
         None,//белый
         Unit,//желтый
@@ -34,7 +34,7 @@ namespace TDShooter.enums
         OpenedList,//фиолетовый
         Way//зеленый
     }
-    public enum GameEventType
+    public enum GameEventType : byte
     {
         StartGame,
         EndGame,
@@ -44,8 +44,9 @@ namespace TDShooter.enums
         EnemyAttacked,
         PlayShootSound,
         PlayStepSound,
+        PlayerLevelUp
     }
-    public enum WeaponType
+    public enum WeaponType : byte
     {
         Sword,
         Pistol,
@@ -53,12 +54,12 @@ namespace TDShooter.enums
         Plasmagun,
         Shothun
     }
-    public enum GrenadeType
+    public enum GrenadeType : byte
     {
         Explosive,
         MolotovСocktail
     }
-    public enum UpdateViewType
+    public enum UpdateViewType : byte
     {
         CurrentKills,
         TargetKills,
@@ -66,7 +67,7 @@ namespace TDShooter.enums
         UpdateHP,
         UpdateAmmo
     }
-    public enum TalentType
+    public enum TalentType : byte
     {
         StoneSkin,//дополнительная броня
         Radar,//миникарта, показывающая врагов
@@ -76,13 +77,13 @@ namespace TDShooter.enums
         NuclearCharge//бомба, убивающая всех врагов на экране
     }
 
-    public enum SceneExample
+    public enum SceneExample : byte
     {
         NewGame,
         MainMenu,
         Exit,
     }
-    public enum EnemyAnimationState
+    public enum EnemyAnimationState : byte
     {
         Move,
         Attack,
