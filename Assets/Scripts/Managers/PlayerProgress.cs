@@ -13,8 +13,8 @@ namespace TDShooter.Managers
 {
     public class PlayerProgress : MonoBehaviour, IEventListener, ISavable
     {
-        [SerializeField] private int _levelCount; //счётчик уровней
-        [SerializeField] private int _currentKillsCount; //текущие убийства 
+        private int _levelCount = 1; //счётчик уровней
+        private int _currentKillsCount = 0; //текущие убийства 
         [SerializeField] private int _targetKillsCount; //колиичество убийств для повышения уровня
         [SerializeField] private int _lootDropChance; //шанс выпадения лута
         [SerializeField] private int _targetKillsMultiplier = 1;//множитель увеличения количества необходимых убийств        

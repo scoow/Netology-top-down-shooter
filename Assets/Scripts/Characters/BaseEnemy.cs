@@ -1,10 +1,10 @@
 using Cysharp.Threading.Tasks;
 using TDShooter.Configs;
+using TDShooter.Effects;
 using TDShooter.Enemies;
 using TDShooter.enums;
 using TDShooter.EventManager;
 using TDShooter.Input;
-using TDShooter.Managers;
 using UnityEngine;
 
 namespace TDShooter.Characters
@@ -13,14 +13,10 @@ namespace TDShooter.Characters
     public class BaseEnemy : Character
     {
         private SubscribeManager _subscribeManager;//менеджер событий
-        private PlayerProgress _playerProgress;
-        [SerializeField] private LootExample _exampleLoot;
-        [SerializeField] private BloodStain _bloodStain;
         private Animation_Controller _animation_Controller;
         private CapsuleCollider _capsuleCollider;
         private EnemyMove _enemyMove;
         private PlayerControl _playerControl;
-        private LootController _lootController;
 
         private Enemy_Data _enemy_Data;
         private Enemy_UI _enemy_UI;
@@ -34,24 +30,12 @@ namespace TDShooter.Characters
             _capsuleCollider = GetComponent<CapsuleCollider>();
             _subscribeManager = FindObjectOfType<SubscribeManager>();//добавить инъекцию от пула 
 
-            _lootController = FindObjectOfType<LootController>();
             _animation_Controller = GetComponentInChildren<Animation_Controller>();
 
             _enemy_Data = GetComponent<Enemy_Data>();
-            _character_Data = _enemy_Data as Character_Data;
+            _character_Data = _enemy_Data as Character_Data;//убрать?
             _enemy_UI = GetComponent<Enemy_UI>();
             _character_UI = _enemy_UI as Character_UI;
-        }
-
-        private void Start()
-        {
-            _playerProgress = FindObjectOfType<PlayerProgress>();
-
-            _subscribeManager.AddListener(enums.GameEventType.EnemyDied, _playerProgress, true);
-            //добавляем _playerProgress в слушатели события "смерть врага", параметр true означает что добавляем лишь один раз  
-            _subscribeManager.AddListener(enums.GameEventType.EnemyDied, _lootController, true);
-
-            
         }
 
         public void Respawn()
@@ -83,14 +67,6 @@ namespace TDShooter.Characters
 
             _enemyMove.SetMaxSpeed(0f);
             _capsuleCollider.enabled = false;
-            
-            InstantiateBloodStain();
-        }
-
-        private async void InstantiateBloodStain()
-        {
-            Instantiate(_bloodStain, new Vector3(transform.position.x, 0.05f, transform.position.z), Quaternion.AngleAxis(90, Vector3.right)); //заменить на пул объектов как вариант
-            await UniTask.Delay(100);
         }
     }
 }

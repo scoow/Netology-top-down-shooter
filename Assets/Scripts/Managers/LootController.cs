@@ -1,14 +1,12 @@
 using System.Collections.Generic;
-using TDShooter.Characters;
 using TDShooter.Configs;
 using TDShooter.enums;
 using TDShooter.EventManager;
 using TDShooter.Managers;
-using TDShooter.Pools;
 using UnityEngine;
 using Zenject;
 
-namespace TDShooter
+namespace TDShooter.Pools
 {
     public class LootController : MonoBehaviour, IEventListener
     {
@@ -49,7 +47,7 @@ namespace TDShooter
 
         public void OnEvent(GameEventType eventType, Component sender, Object param = null)
         {
-            if (eventType != GameEventType.EnemyDied) return;
+            if (eventType != GameEventType.EnemyDied) return;//убрать условие
             //
             if (_playerProgress.CheckChance() < _playerProgress.ChanceDroopLoot)
             {

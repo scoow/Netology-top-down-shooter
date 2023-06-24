@@ -28,7 +28,7 @@ namespace HierarchyDecorator
     {
         // --- Editor Settings
 
-        private readonly static CategoryFilter DefaultFilter = new CategoryFilter("General", string.Empty, FilterType.NONE);
+        private readonly static CategoryFilter DefaultFilter = new("General", string.Empty, FilterType.NONE);
 
         public readonly static CategoryFilter[] ComponentFilters =
         {
@@ -68,9 +68,9 @@ namespace HierarchyDecorator
 
         [SerializeField] private ComponentGroup[] unityGroups = new ComponentGroup[0];
 
-        [SerializeField] private List<ComponentGroup> customGroups = new List<ComponentGroup>();
-        [SerializeField] private ComponentGroup allCustomComponents = new ComponentGroup("All");
-        [SerializeField] private ComponentGroup excludedComponents = new ComponentGroup("Excluded");
+        [SerializeField] private List<ComponentGroup> customGroups = new();
+        [SerializeField] private ComponentGroup allCustomComponents = new("All");
+        [SerializeField] private ComponentGroup excludedComponents = new("Excluded");
 
         // --- Validation
 
@@ -200,7 +200,7 @@ namespace HierarchyDecorator
                 // Get the count of unity types 
 
                 UnityCount = allTypes.Length;
-                Dictionary<string, ComponentGroup> cachedGroups = new Dictionary<string, ComponentGroup>();
+                Dictionary<string, ComponentGroup> cachedGroups = new();
 
                 for (int i = 0; i < UnityCount; i++)
                 {
@@ -311,7 +311,7 @@ namespace HierarchyDecorator
                 Type type = allTypes[i];
                 if (!excludedComponents.TryGetComponent(type, out _))
                 {
-                    ComponentType component = new ComponentType(type, true);
+                    ComponentType component = new(type, true);
                     excludedComponents.Add(component);
                     component.UpdateContent();
 
@@ -320,7 +320,7 @@ namespace HierarchyDecorator
 
             void UpdateGroup(ComponentGroup group)
             {
-                List<Type> types = new List<Type>();
+                List<Type> types = new();
                 for (int i = 0; i < group.Count; i++)
                 {
                     ComponentType component = group.Get(i);
@@ -416,7 +416,7 @@ namespace HierarchyDecorator
             }
 
             MonoScript script = MonoScript.FromMonoBehaviour(component as MonoBehaviour);
-            ComponentType type = new ComponentType(component.GetType(), false);
+            ComponentType type = new(component.GetType(), false);
             type.UpdateType(script);
             
             RegisterCustomComponent(type);

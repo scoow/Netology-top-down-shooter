@@ -8464,7 +8464,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 628640876}
-  - component: {fileID: 628640875}
+  - component: {fileID: 628640877}
   m_Layer: 0
   m_Name: BloodstainContainer
   m_TagString: Untagged
@@ -8472,18 +8472,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &628640875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 628640874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa7aea3c742cf974bb7524bba83c1d24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &628640876
 Transform:
   m_ObjectHideFlags: 0
@@ -8499,6 +8487,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &628640877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628640874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b17922f45540c3240822a15f4fd27283, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &652062585
 GameObject:
   m_ObjectHideFlags: 0
@@ -16600,6 +16600,7 @@ GameObject:
   - component: {fileID: 1137414723}
   - component: {fileID: 1137414724}
   - component: {fileID: 1137414725}
+  - component: {fileID: 1137414726}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -16690,8 +16691,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bf656b7c0279034d9c8343b78d7b248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelCount: 1
-  _currentKillsCount: 0
   _targetKillsCount: 3
   _lootDropChance: 15
   _targetKillsMultiplier: 1
@@ -16770,6 +16769,18 @@ MonoBehaviour:
   _monsterSpawn: {fileID: 8300000, guid: 15587d495cd2d2643a3e877b6315f850, type: 3}
   _monsterAttack: {fileID: 8300000, guid: 0ba306cec23a5e14b888913648a530e5, type: 3}
   _monsterDeath: {fileID: 8300000, guid: 8d1251f5bc0a464439b7e98c2f26cd3c, type: 3}
+--- !u!114 &1137414726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137414712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a08b2d911c1764590ea1961e07284e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1157290522
 GameObject:
   m_ObjectHideFlags: 0

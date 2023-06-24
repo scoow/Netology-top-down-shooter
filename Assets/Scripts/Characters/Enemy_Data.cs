@@ -11,8 +11,6 @@ namespace TDShooter.Configs
             base.Awake();
             SetDifficulty(HasKey(SettingsPanel_Marker._ratio_dificty));
             _enemy_UI = GetComponent<Enemy_UI>();
-
-            
         }
         private void Start()
         {

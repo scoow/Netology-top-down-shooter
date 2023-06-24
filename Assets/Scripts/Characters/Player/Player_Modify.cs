@@ -13,7 +13,7 @@ namespace TDShooter.Configs
         [SerializeField] private Player_UI _player_UI;
 
         [Inject]
-        private WeaponChanger _weaponChanger;
+        private readonly WeaponChanger _weaponChanger;
 
         public void TakeLoot(LootData_SO currentLootData_SO)
         {
@@ -42,7 +42,7 @@ namespace TDShooter.Configs
         private async UniTask ModifyMissChance(LootData_SO currentLootData_SO)//модифицируем точность
         {
             _weaponChanger.CurrentWeapon().SetSpread(false);
-            await UniTask.Delay((int)currentLootData_SO.EffectTime * 1000);
+            await UniTask.Delay(Convert.ToInt32(currentLootData_SO.EffectTime * 1000));
             _weaponChanger.CurrentWeapon().SetSpread(true);
         }
 
@@ -55,7 +55,8 @@ namespace TDShooter.Configs
                 timer -= 1;
 
                 _playerData.CurrentHP += hpBonus;
-                if (_playerData.CurrentHP > _playerData.MaxHP) _playerData.CurrentHP = _playerData.MaxHP;//заменить на Mathf.Clamp?
+                Mathf.Clamp(_playerData.CurrentHP, 0, _playerData.MaxHP);
+                //if (_playerData.CurrentHP > _playerData.MaxHP) _playerData.CurrentHP = _playerData.MaxHP;//заменить на Mathf.Clamp?
 
                 _player_UI.UpdateViewHealth(hpBonus, true);
                 await UniTask.Delay(1000);

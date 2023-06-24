@@ -25,6 +25,10 @@ namespace TDShooter.enums
         CriticalDamageChance,
         Weapon
     }
+    public enum VisualEffectType : byte
+    {
+        BloodStain
+    }
     public enum TileState : byte
     {
         None,//белый

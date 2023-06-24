@@ -159,7 +159,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &2979403104290111706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,7 +186,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1685431825951779597}
-  - component: {fileID: 1551059010481712993}
+  - component: {fileID: 3034840380529050539}
+  - component: {fileID: 5359396280631064278}
   m_Layer: 14
   m_Name: BloodStain
   m_TagString: Untagged
@@ -210,7 +211,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &1551059010481712993
+--- !u!114 &3034840380529050539
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -219,6 +220,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 8033967450261400792}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e26e795d6028121469c7c1fdc07402cc, type: 3}
+  m_Script: {fileID: 11500000, guid: 986b423c02e2c824c9f621bc40197182, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lifeTime: 5
+--- !u!114 &5359396280631064278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8033967450261400792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3125f97a725183a4f8080dec5826be8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

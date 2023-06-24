@@ -1,5 +1,6 @@
 using TDShooter.Audio;
 using TDShooter.Characters;
+using TDShooter.Effects;
 using TDShooter.enums;
 using TDShooter.EventManager;
 using TDShooter.Input;
@@ -21,6 +22,7 @@ namespace TDShooter.Managers.GameManager
         private Transform _enemiesContainer;
         private Aim_Marker _aim_Marker;
         private ProjectilesContainer_Marker _projectileContainer;
+        private BloodstainContainer _bloodstainContainer;
         private ProjectilesManager _projectilesManager;
         private SubscribeManager _subscribeManager;
         private WeaponChanger _weaponChanger;
@@ -36,10 +38,8 @@ namespace TDShooter.Managers.GameManager
         private PauseMenu_Controller _pauseMenu_Controller;
         private NuclearChargeEffect _nuclearChargeEffect;
         private AudioController _audioController;
-        /*        private void Awake()
-                {
-                    DontDestroyOnLoad(this.gameObject);
-                }*/
+        private EffectController _effectController;
+
         /// <summary>
         /// ¬недрение зависимостей
         /// </summary>
@@ -51,6 +51,7 @@ namespace TDShooter.Managers.GameManager
             _tilesManager = FindObjectOfType<TilesManager>();
             _aim_Marker = FindObjectOfType<Aim_Marker>();
             _projectileContainer = FindObjectOfType<ProjectilesContainer_Marker>();
+            _bloodstainContainer = FindObjectOfType<BloodstainContainer>();
             _projectilesManager = FindObjectOfType<ProjectilesManager>();
             _subscribeManager = FindObjectOfType<SubscribeManager>();
             _weaponChanger = FindObjectOfType<WeaponChanger>();
@@ -66,6 +67,7 @@ namespace TDShooter.Managers.GameManager
             _pauseMenu_Controller = FindObjectOfType<PauseMenu_Controller>();
             _nuclearChargeEffect = FindObjectOfType<NuclearChargeEffect>();
             _audioController = FindObjectOfType<AudioController>();
+            _effectController = FindObjectOfType<EffectController>();
 
             #endregion
             #region ƒобавление ссылок в DI контейнер
@@ -74,6 +76,7 @@ namespace TDShooter.Managers.GameManager
             Container.BindInstance(_tilesManager).AsSingle();
             Container.BindInstance(_aim_Marker).AsSingle();
             Container.BindInstance(_projectileContainer).AsSingle();
+            Container.BindInstance(_bloodstainContainer).AsSingle();
             Container.BindInstance(_projectilesManager).AsSingle();
             Container.BindInstance(_subscribeManager).AsSingle();
             Container.BindInstance(_weaponChanger).AsSingle();
@@ -89,12 +92,16 @@ namespace TDShooter.Managers.GameManager
             Container.BindInstance(_pauseMenu_Controller).AsSingle();
             Container.BindInstance(_nuclearChargeEffect).AsSingle();
             Container.BindInstance(_audioController).AsSingle();
+            Container.BindInstance(_effectController).AsSingle();
+            
             //
             SubscribeToEvents();
 
             #endregion
         }
-
+        /// <summary>
+        /// ѕодписки в SubscribeManager
+        /// </summary>
         private void SubscribeToEvents()
         {
             _subscribeManager.AddListener(GameEventType.PlayShootSound, _audioController, true);
@@ -105,6 +112,11 @@ namespace TDShooter.Managers.GameManager
             _subscribeManager.AddListener(GameEventType.EnemyDied, _audioController, true);
 
             _subscribeManager.AddListener(GameEventType.PlayerLevelUp, _spawnAssistant, true);
+
+            _subscribeManager.AddListener(enums.GameEventType.EnemyDied, _playerProgress, true);
+            //добавл€ем _playerProgress в слушатели событи€ "смерть врага", параметр true означает что добавл€ем лишь один раз  
+            _subscribeManager.AddListener(enums.GameEventType.EnemyDied, _lootController, true);
+            _subscribeManager.AddListener(enums.GameEventType.EnemyDied, _effectController, true);
         }
     }
 }
