@@ -14,7 +14,7 @@ namespace TDShooter.Level
         [SerializeField] private float _delayBeforeTeleportation;
         // public Action TeleportHero;
         [Inject] 
-        private SubscribeManager _subscribeManager;
+        private readonly SubscribeManager _subscribeManager;
 
         private void OnTriggerEnter(Collider other)
         {

@@ -12,19 +12,23 @@ namespace TDShooter.UI
         [SerializeField] private Image _currentWeaponImage;
         [SerializeField] private Image _lastWeaponImage;
         [SerializeField] private Sprite _machineGunSprite;
+        [SerializeField] private Sprite _shotgunSprite;
         [SerializeField] private Sprite _plasmaGunSprite;
+        [SerializeField] private Sprite _BFGSprite;
 
         [SerializeField] GameObject _machineGun;
+        [SerializeField] GameObject _shotgun;
         [SerializeField] GameObject _plasmaGun;
+        [SerializeField] GameObject _BFGun;
 
         private readonly Dictionary<WeaponType, (GameObject, Sprite)> _weaponsDictionary = new();
         private void Awake()
         {
-            //CurrentWeaponType = WeaponType.Machinegun;
-            CurrentWeaponType = WeaponType.Shothun;
-            _weaponsDictionary.Add(WeaponType.Shothun, (_machineGun, _machineGunSprite));
+            CurrentWeaponType = WeaponType.Machinegun;
             _weaponsDictionary.Add(WeaponType.Machinegun, (_machineGun, _machineGunSprite));
+            _weaponsDictionary.Add(WeaponType.Shothun, (_machineGun, _machineGunSprite));
             _weaponsDictionary.Add(WeaponType.Plasmagun, (_plasmaGun, _plasmaGunSprite));
+            _weaponsDictionary.Add(WeaponType.BFG, (_plasmaGun, _plasmaGunSprite));
         }
         /// <summary>
         /// Смена модельки и спрайта оружия

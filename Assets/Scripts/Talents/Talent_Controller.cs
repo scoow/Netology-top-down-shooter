@@ -12,7 +12,7 @@ namespace TDShooter.Talents
         [SerializeField] private Talent_Marker _talentTwoView;
         [SerializeField] private Player_Data _playerData;
         [Inject]
-        private PlayerProgress _playerProgress;
+        private readonly PlayerProgress _playerProgress;
 
         public void EnableTalent(TalentType? talentOne, TalentType? talentTwo) //активируем панель талантов
         {

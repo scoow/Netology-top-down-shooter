@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TDShooter.Audio;
 using TDShooter.Characters;
 using TDShooter.Effects;
@@ -98,11 +99,11 @@ namespace TDShooter.Managers.GameManager
             Container.BindInstance(_audioController).AsSingle();
             Container.BindInstance(_effectController).AsSingle();
             Container.BindInstance(_bossController).AsSingle();
-            
 
+            
             //
             SubscribeToEvents();
-
+            DOTween.SetTweensCapacity(4000, 50);
             #endregion
         }
         /// <summary>
@@ -128,6 +129,7 @@ namespace TDShooter.Managers.GameManager
             _subscribeManager.AddListener(enums.GameEventType.PortalActivated, _spawnAssistant, true);
             _subscribeManager.AddListener(enums.GameEventType.EnemyDied, _droneAssist, true);
             
+
         }
     }
 }
