@@ -75,8 +75,7 @@ namespace TDShooter.Characters
         private void SpawnEnemyAtRandomTile()
         {
 
-            BaseEnemy enemy = _enemiesPool[(ÑharacterType)UnityEngine.Random.Range(1,
-                                                                                         Enum.GetNames(typeof(ÑharacterType)).Length)].GetAviableOrCreateNew();
+            BaseEnemy enemy = _enemiesPool[(ÑharacterType)UnityEngine.Random.Range(1,Enum.GetNames(typeof(ÑharacterType)).Length)].GetAviableOrCreateNew();
 
             int randompoint = UnityEngine.Random.Range(0, _unitSpawners.Count());
             Tile_Marker parentTile = _unitSpawners[randompoint].GetComponentInParent<Tile_Marker>();

@@ -408,7 +408,6 @@ GameObject:
   - component: {fileID: 7149194542829848614}
   - component: {fileID: -3064711020792739133}
   - component: {fileID: -5996422631816777966}
-  - component: {fileID: 4286606227212214025}
   - component: {fileID: 6656776833984424566}
   - component: {fileID: 6918166398981628005}
   - component: {fileID: 1401826981753717969}
@@ -525,20 +524,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef74bee9b803a4b4792d96c2b40871aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4286606227212214025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7149194542829848623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 125186771dca6734191f0e4ba4793bb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  character: {fileID: -6197998996588060254}
-  _bloodParticle: {fileID: 8234536414797812335}
 --- !u!114 &6656776833984424566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -697,11 +682,6 @@ PrefabInstance:
 --- !u!4 &1468375778459645798 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4547960968810180811, guid: f94c689166903b24f8bedf0ab49fee01, type: 3}
-  m_PrefabInstance: {fileID: 3133711056000141229}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &8234536414797812335 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6429977704385254850, guid: f94c689166903b24f8bedf0ab49fee01, type: 3}
   m_PrefabInstance: {fileID: 3133711056000141229}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7264800182776880805

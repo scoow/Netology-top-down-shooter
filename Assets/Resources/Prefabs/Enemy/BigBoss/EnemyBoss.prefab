@@ -595,6 +595,8 @@ MonoBehaviour:
   distance: 0
   _checkDistanceTimer: 0
   _attackTimer: 0
+  _spawnAssistTimer: 0
+  _spawnDurationTimer: 0
 --- !u!195 &1398236617
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1008,3 +1010,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9bf3168150fbca942a82fe9244c030c2, type: 3}
   m_PrefabInstance: {fileID: 758518771}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &919132148705472162 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9bf3168150fbca942a82fe9244c030c2, type: 3}
+  m_PrefabInstance: {fileID: 758518771}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3924036908285591403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148705472162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1666d95453c181469bb63705fca4f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnPoint1: {fileID: 0}
+  _spawnPoint2: {fileID: 0}
+  _enemyAssist: {fileID: 0}

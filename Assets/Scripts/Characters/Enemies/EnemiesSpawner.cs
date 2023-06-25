@@ -4,7 +4,7 @@ namespace TDShooter.Characters
 {
     public class EnemiesSpawner : MonoBehaviour
     {
-        public bool Enabled {  get; set; }
+        public bool Enabled { get; set; }
 
         private void Awake()
         {

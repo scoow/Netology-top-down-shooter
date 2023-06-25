@@ -6,29 +6,9 @@ using UnityEngine.AI;
 
 namespace TDShooter.Enemies
 {
-    public class Boss_Move : MonoBehaviour
-    {
-        [SerializeField] private Animator _animator;
-        [SerializeField] private NavMeshAgent _agent;
-        [SerializeField] private PlayerControl _playerControl;
-        
-
-        //private float timeOut = 1f;
-        private int _attackAnimation;
-        private int _moveAnimation;
-        private int _spawnAssistAnimation;
-        private int _deathAnimation;
-
-        public float distance;
-        //private bool isMoving;
-        /*    public bool finishAtack = true;
-            public bool atack = false;*/
-
-        private float _checkDistanceCoolDown = 0.5f;        
-        public float _checkDistanceTimer;
-
-        private float _attackCoolDown = 3.2f;
-        public float _attackTimer;
+    public class Boss_Move : Enemy_NavMeshMove
+    {          
+        private int _spawnAssistAnimation;       
 
         private float _spawnAssistCoolDown = 30f;
         public float _spawnAssistTimer;
@@ -37,23 +17,19 @@ namespace TDShooter.Enemies
         private bool _isSpawn = false;
 
 
-        private void Start()
-        {
-            _attackAnimation = Animator.StringToHash("Atack");
-            _moveAnimation = Animator.StringToHash("Move");
-            _spawnAssistAnimation = Animator.StringToHash("Spawn");
-            _deathAnimation = Animator.StringToHash("Death");
-            _checkDistanceTimer = _checkDistanceCoolDown;
+        protected override void Start()
+        {     
+            base.Start();
+            _spawnAssistAnimation = Animator.StringToHash("Spawn");                      
             _spawnAssistTimer = _spawnAssistCoolDown;
             _spawnDurationTimer = _spawnAssistDuration;
         }
 
-        public void Update()
+        protected override void Update()
         {
-            _checkDistanceTimer -= Time.deltaTime;
-            _attackTimer -= Time.deltaTime;
-            _spawnAssistTimer -= Time.deltaTime;
-            
+            base.Update(); 
+
+            _spawnAssistTimer -= Time.deltaTime;            
 
             if(_spawnAssistTimer <0)
             {                
@@ -68,35 +44,27 @@ namespace TDShooter.Enemies
                     _spawnAssistTimer = _spawnAssistCoolDown;
                     _spawnDurationTimer = _spawnAssistDuration;                    
                 }
-            }            
-
-            if (_checkDistanceTimer < 0 && !_isSpawn)
-            {
-                _checkDistanceTimer = _checkDistanceCoolDown;
-                if (_attackTimer < 0)
-                    CheckDistance();
-            }
+            }          
         }
 
-        private void CheckDistance()
+        protected override void TryCheckDistance()
+        {           
+            if (!_isSpawn)
+            {
+                base.TryCheckDistance();
+            }            
+        }
+
+        protected override void AnimationMove()
         {
-            distance = Vector3.Distance(transform.position, _playerControl.transform.position);
-            if (distance <= _agent.stoppingDistance)
-            {
-                _agent.speed = 0f;               
-                _attackTimer = _attackCoolDown;
-                _animator.SetBool(_attackAnimation, true);
-                _animator.SetBool(_moveAnimation, false);
-                _animator.SetBool(_spawnAssistAnimation, false);
-            }
-            else
-            {
-                _agent.speed = 2.5f;                
-                _agent.SetDestination(_playerControl.transform.position);
-                _animator.SetBool(_attackAnimation, false);
-                _animator.SetBool(_moveAnimation, true);
-                _animator.SetBool(_spawnAssistAnimation, false);
-            }
+            base.AnimationMove();
+            _animator.SetBool(_spawnAssistAnimation, false);
+        }
+
+        protected override void AnimationAtack()
+        {
+            base.AnimationAtack();
+            _animator.SetBool(_spawnAssistAnimation, false);
         }
     }
 }
