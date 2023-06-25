@@ -15,6 +15,7 @@ namespace TDShooter.enums
         Player,
         FastMeleeEnemy,
         Spider,
+        BossAssistant
         //Devil_Bulldog
     }
     public enum EffectType : byte

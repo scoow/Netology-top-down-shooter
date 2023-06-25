@@ -53,6 +53,8 @@ namespace TDShooter.Characters
         {
             _enemiesPool.Add(ÑharacterType.FastMeleeEnemy, new(Resources.Load<BaseEnemy>("Prefabs/Enemy/FirstEnemy/Enemy"), ÑharacterType.FastMeleeEnemy, _enemiesContainer, _playerControl, _subscribeManager, 2));
             _enemiesPool.Add(ÑharacterType.Spider, new(Resources.Load<BaseEnemy>("Prefabs/Enemy/Spiders/Prefabs/Black Widow 1"), ÑharacterType.Spider, _enemiesContainer, _playerControl, _subscribeManager, 2));
+            _enemiesPool.Add(ÑharacterType.BossAssistant, new(Resources.Load<BaseEnemy>("Prefabs/Enemy/FirstEnemy/Enemy_Assist"), ÑharacterType.BossAssistant, _enemiesContainer, _playerControl, _subscribeManager, 2));
+            
             //ïóë äëÿ áîññà
             //_enemiesPool.Add(ÑharacterType.Devil_Bulldog, new(Resources.Load<BossEnemy>("Prefabs/Enemy/BigBoss/DeepNest/Devil_Bulldog_Lite/EnemyBoss"), ÑharacterType.Devil_Bulldog, _enemiesContainer, _playerControl, 1));
         }
@@ -75,7 +77,7 @@ namespace TDShooter.Characters
         private void SpawnEnemyAtRandomTile()
         {
 
-            BaseEnemy enemy = _enemiesPool[(ÑharacterType)UnityEngine.Random.Range(1,Enum.GetNames(typeof(ÑharacterType)).Length)].GetAviableOrCreateNew();
+            BaseEnemy enemy = _enemiesPool[(ÑharacterType)UnityEngine.Random.Range(1,Enum.GetNames(typeof(ÑharacterType)).Length-1)].GetAviableOrCreateNew();
 
             int randompoint = UnityEngine.Random.Range(0, _unitSpawners.Count());
             Tile_Marker parentTile = _unitSpawners[randompoint].GetComponentInParent<Tile_Marker>();
@@ -90,7 +92,11 @@ namespace TDShooter.Characters
             enemy.transform.position = _unitSpawners[randompoint].transform.position;
             enemy.GetComponent<BaseEnemy>().Respawn();
         }
-
+        public void SpawnEnemy(Vector3 position, ÑharacterType ñharacterType)
+        {
+            BaseEnemy enemy = _enemiesPool[ñharacterType].GetAviableOrCreateNew();
+            enemy.transform.position = position;
+        }
         public List<BaseEnemy> FindAllEnemies()
         {
             List<BaseEnemy> enemies = _enemiesPool[ÑharacterType.FastMeleeEnemy].GetActiveUnits();

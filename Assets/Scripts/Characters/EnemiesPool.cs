@@ -28,7 +28,7 @@ namespace TDShooter.Characters
 
             newUnit.InjectReferences(_playerControl, _subscribeManager);
 
-            newUnit.GetComponent<EnemyMove>().InjectPlayerControlReference(_playerControl);
+            newUnit.GetComponent<EnemyMove>()?.InjectPlayerControlReference(_playerControl);
             return newUnit;
         }
 

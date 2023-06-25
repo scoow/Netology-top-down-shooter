@@ -109,6 +109,7 @@ namespace TDShooter.Input
             if (Physics.Raycast(ray, out RaycastHit raycastHit))
             {
                 _aim.transform.position = raycastHit.point;
+
                 Vector3 relativePos = raycastHit.point - transform.position;
                 Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
                 rotation.x = 0f;

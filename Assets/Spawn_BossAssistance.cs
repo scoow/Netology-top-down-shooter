@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TDShooter.Characters;
+using TDShooter.enums;
 using UnityEngine;
 using Zenject.SpaceFighter;
 
@@ -10,9 +11,10 @@ public class Spawn_BossAssistance : MonoBehaviour
 
     [SerializeField] private Enemy_NavMeshMove _enemyAssist;
 
-
+    [SerializeField] private SpawnAssistant _spawnAssistant;
     private void SpawnAssist() //вызывается через событие в анимации
     {
-        Instantiate(_enemyAssist, _spawnPoint1.transform,true);        
+        _spawnAssistant.SpawnEnemy(transform.position, СharacterType.BossAssistant);
+        //Instantiate(_enemyAssist, _spawnPoint1.transform,true);        
     }  
 }

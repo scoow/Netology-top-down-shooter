@@ -64,14 +64,14 @@ namespace TDShooter.Characters
             _capsuleCollider.enabled = false;
             _subscribeManager.PostNotification(enums.GameEventType.EnemyDied, this);
 
-            _enemyMove.SetNewTarget(transform);//меняем цель на самого себя, чтобы модель не крутилась
+            _enemyMove?.SetNewTarget(transform);//меняем цель на самого себя, чтобы модель не крутилась
 
             _enemy_UI.HideSliderHP();
 
-            _animation_Controller.SetEnemyAnimationState(EnemyAnimationState.Death);
-            _animation_Controller.DeathAnimation();
+            _animation_Controller?.SetEnemyAnimationState(EnemyAnimationState.Death);
+            _animation_Controller?.DeathAnimation();
 
-            _enemyMove.SetMaxSpeed(0f);
+            _enemyMove?.SetMaxSpeed(0f);
         }
     }
 }
