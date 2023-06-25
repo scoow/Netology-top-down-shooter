@@ -1228,6 +1228,10 @@ PrefabInstance:
       propertyPath: _spawnPoint2
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3924036908285591403, guid: 356939b82d5fe4c4a9d3f738c8c5f703, type: 3}
+      propertyPath: _spawnAssistant
+      value: 
+      objectReference: {fileID: 1137414715}
     - target: {fileID: 5866666021291994722, guid: 356939b82d5fe4c4a9d3f738c8c5f703, type: 3}
       propertyPath: m_Controller
       value: 
