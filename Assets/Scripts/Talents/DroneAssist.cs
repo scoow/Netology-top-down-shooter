@@ -28,7 +28,9 @@ namespace TDShooter.Talents
             transform.position = _playerData.transform.position - new Vector3(0, -4f, 0);
             _weapon = GetComponentInChildren<Weapon>();
             _timer = _shootCoolDown;
-
+        }
+        private void Start()
+        {
             DisableDrone();
         }
         public void EnableDrone()

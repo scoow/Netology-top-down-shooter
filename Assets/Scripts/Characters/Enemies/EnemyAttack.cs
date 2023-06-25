@@ -8,39 +8,31 @@ namespace TDShooter.Enemies
 {
     public class EnemyAttack : MonoBehaviour
     {
-        [SerializeField] Enemy_Data _enemy_Data;
+        [SerializeField] protected Enemy_Data _enemy_Data;
         
-        Animation_Controller _animation_Controller;
+        protected Animation_Controller _animation_Controller;
         /// <summary>
         /// Цель атаки
         /// </summary>
-        private Transform _target;
-        private Character _player;
+        protected Transform _target;
+        protected Character _player;
 
-        private SubscribeManager _subscribeManager;
+        protected SubscribeManager _subscribeManager;
 
         /// <summary>
         /// Дальность атаки
         /// </summary>
         [SerializeField]
         private float _attackRange = 2;
-        [SerializeField]
-        private float _attackCooldown = 4;//кд до атаки
-        private float _timer;//время для отсчёта кд
 
         public float AttackRange => _attackRange;
 
-
-        private void Awake()
+        protected virtual void Awake()
         {
             _animation_Controller = GetComponent<Animation_Controller>();
             _target = FindObjectOfType<PlayerControl>().transform;
             _player = _target.GetComponent<Character>();
             _subscribeManager = FindObjectOfType<SubscribeManager>();
-        }
-        private void OnEnable()
-        {
-            _timer = _attackCooldown;
         }
         /// <summary>
         /// Проверка, достаём ли до цели
@@ -55,30 +47,19 @@ namespace TDShooter.Enemies
         {
             return Vector3.Distance(transform.position, target.position);
         }
-        private void Update()
+        protected virtual void Update()
         {            
-            _animation_Controller.ChangeAnimation(_target);
-        }
-
-        private void CalculateAttackCoolDownTime()
-        {
-            _timer -= Time.deltaTime;
-            if (_timer <= 0)
-            {
-                _timer = _attackCooldown;
-
-                if (TargetInAttackRange(_target))
-                {
-                    _animation_Controller.ChangeAnimation(_target);
-                }                
-            }
+            _animation_Controller?.ChangeAnimation(_target);
         }
 
         public void Attack()
         {
-            _player.TakeDamage(_enemy_Data.Damage);
-            Debug.Log("Атакую!");
-            _subscribeManager.PostNotification(enums.GameEventType.EnemyAttacked, this);            
+            if (Distance(_target) < _attackRange)
+            {
+                _player.TakeDamage(_enemy_Data.Damage);
+                Debug.Log("Атакую!");
+                _subscribeManager.PostNotification(enums.GameEventType.EnemyAttacked, this);
+            }
         }
     }
 }

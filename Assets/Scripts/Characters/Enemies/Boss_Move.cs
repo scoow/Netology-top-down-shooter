@@ -10,7 +10,7 @@ namespace TDShooter.Enemies
     {          
         private int _spawnAssistAnimation;       
 
-        private float _spawnAssistCoolDown = 30f;
+        private float _spawnAssistCoolDown = 10f;
         public float _spawnAssistTimer;
         private float _spawnAssistDuration = 10f;
         public float _spawnDurationTimer;

@@ -354,6 +354,7 @@ GameObject:
   - component: {fileID: 527274382765555316}
   - component: {fileID: -6884010889013513203}
   - component: {fileID: 2623423618240059127}
+  - component: {fileID: 892787591665966911}
   m_Layer: 15
   m_Name: Enemy_Assist
   m_TagString: Untagged
@@ -457,11 +458,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2.5
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 3
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -520,6 +521,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &892787591665966911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786950320785453700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d67a0df0d979dc040aa264c3aa6f668a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemy_Data: {fileID: 4371640892712267880}
+  _attackRange: 3
 --- !u!1 &949575612685691639
 GameObject:
   m_ObjectHideFlags: 0

@@ -37,8 +37,8 @@ public class Enemy_NavMeshMove : MonoBehaviour
     protected virtual void Start()
     {
         _attackAnimation = Animator.StringToHash("Atack");
-        _moveAnimation = Animator.StringToHash("Move");
-        _deathAnimation = Animator.StringToHash("Death");
+        _moveAnimation = Animator.StringToHash("Run");
+        _deathAnimation = Animator.StringToHash("IndexDeath");
         _checkDistanceTimer = _checkDistanceCoolDown;
     }
     protected virtual void Update()

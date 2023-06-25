@@ -537,8 +537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemy_Data: {fileID: -3064711020792739133}
-  _attackRange: 2
-  _attackCooldown: 4
+  _attackRange: 3
 --- !u!114 &6918166398981628005
 MonoBehaviour:
   m_ObjectHideFlags: 0

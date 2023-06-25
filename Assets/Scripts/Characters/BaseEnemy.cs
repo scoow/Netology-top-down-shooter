@@ -5,6 +5,7 @@ using TDShooter.EventManager;
 using TDShooter.Input;
 using TDShooter.UI;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace TDShooter.Characters
 {
@@ -22,6 +23,7 @@ namespace TDShooter.Characters
         private ÑharacterType _ñharacterType;
         public ÑharacterType CharacterType => _ñharacterType;
         public EnemyAnimationState EnemyAnimationState => _animation_Controller.EnemyState;
+        private bool _isBoss = false;
 
         private void Awake()
         {
@@ -29,6 +31,10 @@ namespace TDShooter.Characters
             _capsuleCollider = GetComponent<CapsuleCollider>();
 
             _animation_Controller = GetComponentInChildren<Animation_Controller>();
+            if (_animation_Controller == null )
+            {
+                _isBoss = true;
+            }
 
             _enemy_Data = GetComponent<Enemy_Data>();
             _character_Data = _enemy_Data as Character_Data;
@@ -46,8 +52,8 @@ namespace TDShooter.Characters
         {
             _enemy_Data.CurrentHP = _enemy_Data.CharacterData_SO.Health;
             _enemy_UI.SliderHP.value = _enemy_Data.CurrentHP;
-            _enemyMove.SetNewTarget(_playerControl.transform);
-            _enemyMove.SetMaxSpeed(_enemy_Data.SpeedMove);
+            _enemyMove?.SetNewTarget(_playerControl.transform);
+            _enemyMove?.SetMaxSpeed(_enemy_Data.SpeedMove);
             _enemy_UI.HideSliderHP();
 
             _ñharacterType = _character_Data.ÑharacterType;
@@ -62,14 +68,41 @@ namespace TDShooter.Characters
         public override void Die()
         {
             _capsuleCollider.enabled = false;
-            _subscribeManager.PostNotification(enums.GameEventType.EnemyDied, this);
+            _subscribeManager?.PostNotification(enums.GameEventType.EnemyDied, this);
 
             _enemyMove?.SetNewTarget(transform);//ìåíÿåì öåëü íà ñàìîãî ñåáÿ, ÷òîáû ìîäåëü íå êðóòèëàñü
 
             _enemy_UI.HideSliderHP();
 
-            _animation_Controller?.SetEnemyAnimationState(EnemyAnimationState.Death);
-            _animation_Controller?.DeathAnimation();
+
+            NavMeshAgent navMeshAgent;
+            if (_isBoss)
+            {
+                var animator = GetComponent<Animator>();
+                animator.SetInteger("IndexDeath", 1);
+                /*                animator.SetBool("Atack", false);
+                                animator.SetBool("Run", false);
+                                animator.SetBool("Spawn", false);*/
+/*                navMeshAgent = GetComponent<NavMeshAgent>();
+                navMeshAgent.speed = 0;*/
+
+                var navMeshMove = GetComponent<Enemy_NavMeshMove>();
+                navMeshMove.enabled = false;
+            }
+            else
+            {
+                _animation_Controller.SetEnemyAnimationState(EnemyAnimationState.Death);
+                _animation_Controller.DeathAnimation();
+
+                bool assist = TryGetComponent<NavMeshAgent>(out navMeshAgent);
+                if (assist)
+                {
+                    var navMeshMove = GetComponent<Enemy_NavMeshMove>();
+                    navMeshMove.enabled = false;
+                }
+                
+
+            }
 
             _enemyMove?.SetMaxSpeed(0f);
         }

@@ -64,7 +64,7 @@ namespace TDShooter.Managers.GameManager
             _talentsManager = FindObjectOfType<TalentsManager>();
             _playerProgress = FindObjectOfType<PlayerProgress>();
             _talentControll = FindObjectOfType<Talent_Controller>();
-            _sliderHP = FindObjectOfType<Slider>();
+            _sliderHP = FindObjectOfType<HPSlider_Marker>().GetComponent<Slider>();
             _spawnAssistant = FindObjectOfType<SpawnAssistant>();
             _pauseMenu_Controller = FindObjectOfType<PauseMenu_Controller>();
             _nuclearChargeEffect = FindObjectOfType<NuclearChargeEffect>();

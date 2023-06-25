@@ -90,11 +90,16 @@ namespace TDShooter.Characters
             }
 
             enemy.transform.position = _unitSpawners[randompoint].transform.position;
-            enemy.GetComponent<BaseEnemy>().Respawn();
+            enemy./*GetComponent<BaseEnemy>().*/Respawn();
         }
         public void SpawnEnemy(Vector3 position, ÑharacterType ñharacterType)
         {
             BaseEnemy enemy = _enemiesPool[ñharacterType].GetAviableOrCreateNew();
+            enemy.Respawn();
+
+            var navMeshMove = enemy.GetComponent<Enemy_NavMeshMove>();
+            navMeshMove.enabled = true;
+
             enemy.transform.position = position;
         }
         public List<BaseEnemy> FindAllEnemies()

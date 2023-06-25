@@ -15,7 +15,7 @@ MonoBehaviour:
   _hp: 100
   _damage: 35
   _armor: 0
-  _speedMove: 5
+  _speedMove: 4
   _missChance: 20
   _criticalDamageChance: 20
   "_\u0441haracterType": 1
