@@ -49,6 +49,8 @@ namespace TDShooter.Input
             _controls.Player.WeaponSwitchShotgun.performed += context => _weaponChanger.ChangeWeapon(WeaponType.Shothun);
             _controls.Player.WeaponSwitchPlasmaGun.performed += context => _weaponChanger.ChangeWeapon(WeaponType.Plasmagun);
             _controls.Player.WeaponSwitchBFG.performed += context => _weaponChanger.ChangeWeapon(WeaponType.BFG);
+            _controls.Player.NextWeapon.performed += context => _weaponChanger.NextWeapon(context.ReadValue<Vector2>().y);
+
             _controls.Player.ThrowGrenade.performed += context => ThrowGrenade();
 
             _controls.Player.PauseGame.performed += context => _pauseMenu_Controller.ActivatePauseMenu();

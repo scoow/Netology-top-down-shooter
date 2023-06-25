@@ -109,6 +109,24 @@ namespace TDShooter.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NextWeapon"",
+                    ""type"": ""Value"",
+                    ""id"": ""1b7f84b2-57e2-425e-896a-310d6ac5db44"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""PrevWeapon"",
+                    ""type"": ""Value"",
+                    ""id"": ""ce060dcc-74f3-4f05-b0f9-2a3d2376fc58"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -254,6 +272,28 @@ namespace TDShooter.Input
                     ""action"": ""WeaponSwitchBFG"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5491e3f4-8ba4-440a-8fd6-df27b1092b71"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7f2f27bc-32ad-4a5b-bdd9-19c0d15775fa"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PrevWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -271,6 +311,8 @@ namespace TDShooter.Input
             m_Player_ThrowGrenade = m_Player.FindAction("ThrowGrenade", throwIfNotFound: true);
             m_Player_NuclearBomb = m_Player.FindAction("NuclearBomb", throwIfNotFound: true);
             m_Player_PauseGame = m_Player.FindAction("PauseGame", throwIfNotFound: true);
+            m_Player_NextWeapon = m_Player.FindAction("NextWeapon", throwIfNotFound: true);
+            m_Player_PrevWeapon = m_Player.FindAction("PrevWeapon", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -341,6 +383,8 @@ namespace TDShooter.Input
         private readonly InputAction m_Player_ThrowGrenade;
         private readonly InputAction m_Player_NuclearBomb;
         private readonly InputAction m_Player_PauseGame;
+        private readonly InputAction m_Player_NextWeapon;
+        private readonly InputAction m_Player_PrevWeapon;
         public struct PlayerActions
         {
             private @Controls m_Wrapper;
@@ -354,6 +398,8 @@ namespace TDShooter.Input
             public InputAction @ThrowGrenade => m_Wrapper.m_Player_ThrowGrenade;
             public InputAction @NuclearBomb => m_Wrapper.m_Player_NuclearBomb;
             public InputAction @PauseGame => m_Wrapper.m_Player_PauseGame;
+            public InputAction @NextWeapon => m_Wrapper.m_Player_NextWeapon;
+            public InputAction @PrevWeapon => m_Wrapper.m_Player_PrevWeapon;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -390,6 +436,12 @@ namespace TDShooter.Input
                 @PauseGame.started += instance.OnPauseGame;
                 @PauseGame.performed += instance.OnPauseGame;
                 @PauseGame.canceled += instance.OnPauseGame;
+                @NextWeapon.started += instance.OnNextWeapon;
+                @NextWeapon.performed += instance.OnNextWeapon;
+                @NextWeapon.canceled += instance.OnNextWeapon;
+                @PrevWeapon.started += instance.OnPrevWeapon;
+                @PrevWeapon.performed += instance.OnPrevWeapon;
+                @PrevWeapon.canceled += instance.OnPrevWeapon;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -421,6 +473,12 @@ namespace TDShooter.Input
                 @PauseGame.started -= instance.OnPauseGame;
                 @PauseGame.performed -= instance.OnPauseGame;
                 @PauseGame.canceled -= instance.OnPauseGame;
+                @NextWeapon.started -= instance.OnNextWeapon;
+                @NextWeapon.performed -= instance.OnNextWeapon;
+                @NextWeapon.canceled -= instance.OnNextWeapon;
+                @PrevWeapon.started -= instance.OnPrevWeapon;
+                @PrevWeapon.performed -= instance.OnPrevWeapon;
+                @PrevWeapon.canceled -= instance.OnPrevWeapon;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -449,6 +507,8 @@ namespace TDShooter.Input
             void OnThrowGrenade(InputAction.CallbackContext context);
             void OnNuclearBomb(InputAction.CallbackContext context);
             void OnPauseGame(InputAction.CallbackContext context);
+            void OnNextWeapon(InputAction.CallbackContext context);
+            void OnPrevWeapon(InputAction.CallbackContext context);
         }
     }
 }

@@ -8771,14 +8771,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentWeaponImage: {fileID: 1195201004}
   _lastWeaponImage: {fileID: 1705993999}
+  _nextWeaponImage: {fileID: 662049203}
   _machineGunSprite: {fileID: 21300000, guid: e3d2c4a37dd47fa4da0b79c507a71d3f, type: 3}
   _shotgunSprite: {fileID: 21300000, guid: 9aa60e747b732714ebc3658de36eb037, type: 3}
   _plasmaGunSprite: {fileID: 21300000, guid: 64b436209a84ce845ab1517d9280c81b, type: 3}
   _BFGSprite: {fileID: 21300000, guid: fa6fe64dc1f4f794a92dea49ae86ff57, type: 3}
+  _emptySprite: {fileID: 21300000, guid: 99133bf5070666d41b8cddb1d8c77a64, type: 3}
   _machineGun: {fileID: 957474000}
   _shotgun: {fileID: 2142953553}
   _plasmaGun: {fileID: 1254977570}
   _BFGun: {fileID: 981531460}
+  _UIShowTimer: 0.5
 --- !u!1 &653527214
 GameObject:
   m_ObjectHideFlags: 0
@@ -8902,7 +8905,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 90, y: 50}
+  m_AnchoredPosition: {x: 90, y: 0}
   m_SizeDelta: {x: 108, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &662049203
