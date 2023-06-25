@@ -41,18 +41,6 @@ namespace TDShooter.Talents
                 _ => null,
             };
             return result;
-
-/*            if (talentExample == TalentType.StoneSkin) return new StoneSkin_Talent(_playerData);
-            else if (talentExample == TalentType.Radar) return new Radar_Talent(_playerData);
-            else if (talentExample == TalentType.ExtraFireRate) return new ExtraFireRate_Talent(_playerData);
-            else if (talentExample == TalentType.ExtraWeaponDamage) return new ExtraWeaponDamage_Talent(_playerData);
-            else if (talentExample == TalentType.Drone) return new Drone_Talent(_playerData);
-            else if (talentExample == TalentType.NuclearCharge) return new NuclearCharge_Talent(_playerData, _playerProgress);
-            else return null;*/
-        }
-        private void OnDestroy()
-        {
-            
         }
     }
 }

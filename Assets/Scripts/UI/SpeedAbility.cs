@@ -1,14 +1,10 @@
 using Cysharp.Threading.Tasks;
-using DG.Tweening;
 using System;
 using TDShooter.Configs;
 using TDShooter.Input;
-using TDShooter.UI;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using Zenject;
 
-namespace TDShooter
+namespace TDShooter.UI
 {
     public class SpeedAbility : Ability
     {

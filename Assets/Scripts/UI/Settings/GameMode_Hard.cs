@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class GameMode_Hard : GameMode
+namespace TDShooter.UI
 {
-    public override void SetParams()
-    {        
-        RatioGameMode = 1.5f;
-        base.SetParams();
+    public class GameMode_Hard : GameMode
+    {
+        public override void SetParams()
+        {
+            RatioGameMode = 1.5f;
+            base.SetParams();
+        }
     }
 }

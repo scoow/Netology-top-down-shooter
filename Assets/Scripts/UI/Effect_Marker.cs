@@ -1,6 +1,8 @@
 using UnityEngine;
-
-public class Effect_Marker : MonoBehaviour
+namespace TDShooter.UI
 {
+    public class Effect_Marker : MonoBehaviour
+    {
 
+    }
 }

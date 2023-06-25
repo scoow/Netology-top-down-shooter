@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using TDShooter.Configs;
 using TDShooter.enums;
 using UnityEngine;

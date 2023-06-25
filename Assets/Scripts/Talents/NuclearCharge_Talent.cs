@@ -2,7 +2,6 @@ using TDShooter.Configs;
 using TDShooter.enums;
 using TDShooter.Managers;
 using UnityEngine;
-using Zenject;
 
 namespace TDShooter.Talents
 {

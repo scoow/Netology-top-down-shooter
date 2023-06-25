@@ -54,14 +54,6 @@ namespace TDShooter.UI
             }
         }
 
-/*        private void Update()
-        {
-            if (UnityEngine.Input.GetKeyUp(KeyCode.Escape))//todo переделать на new input
-            {
-                ActivatePauseMenu();
-            }
-        }*/
-
         public void ActivatePauseMenu()
         {
             Time.timeScale = 0f;

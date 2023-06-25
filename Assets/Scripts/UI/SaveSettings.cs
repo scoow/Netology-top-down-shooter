@@ -1,6 +1,8 @@
 using UnityEngine;
 
-public class SaveSettings : MonoBehaviour
+namespace TDShooter.UI
 {
- 
+    public class SaveSettings : MonoBehaviour
+    {
+    }
 }

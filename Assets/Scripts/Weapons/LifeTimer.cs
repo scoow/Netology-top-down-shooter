@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TDShooter.Weapons//перенести в глобальный namespace, использовать повторно для аптечек
+namespace TDShooter.Weapons
 {
     public class LifeTimer : MonoBehaviour
     {
@@ -24,9 +24,5 @@ namespace TDShooter.Weapons//перенести в глобальный namespace, использовать повт
         {
             gameObject.SetActive(false);
         }
-/*        protected virtual void DeactivateAsync(float time)
-        {
-            gameObject.SetActive(false);
-        }*/
     }
 }

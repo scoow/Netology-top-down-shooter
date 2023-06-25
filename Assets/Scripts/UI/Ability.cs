@@ -2,7 +2,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace TDShooter
+namespace TDShooter.UI
 {
     public class Ability : MonoBehaviour
     {

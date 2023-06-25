@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using TDShooter.UI;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace TDShooter.Configs
 {

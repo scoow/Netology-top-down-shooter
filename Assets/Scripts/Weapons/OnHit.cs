@@ -1,5 +1,4 @@
 using TDShooter.Characters;
-using TDShooter.Input;
 using UnityEngine;
 
 namespace TDShooter.Weapons
@@ -14,8 +13,7 @@ namespace TDShooter.Weapons
         private void OnTriggerEnter(Collider other)
         {
             if (!other.TryGetComponent<IDamageble>(out var target)) return;
-            if (other.TryGetComponent<PlayerControl>(out _)  == true) return;//если дрон попал в игрока
-            //Debug.Log("Снаряд попал в цель");
+            //if (other.TryGetComponent<PlayerControl>(out _)  == true) return;//если дрон попал в игрока
             target.TakeDamage(bullet.Damage);
 
             gameObject.SetActive(false);

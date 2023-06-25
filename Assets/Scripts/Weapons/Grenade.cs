@@ -45,7 +45,7 @@ namespace TDShooter.Weapons
             float y = fromTo.y;
 
             float v = Mathf.Sqrt(Mathf.Abs((Physics.gravity.y * x * x) / (y - x)));
-            //transform.parent = null;
+
             Vector3 angle = fromTo.normalized + Vector3.up;
             GetComponent<Rigidbody>().velocity = angle.normalized * v;
         }
@@ -61,15 +61,6 @@ namespace TDShooter.Weapons
         public void Explode()
         {
             gameObject.SetActive(false);
-            //взрыв
-            /*            List<BaseEnemy> enemies = _spawnAssistant.FindAllEnemies();
-                        //todo добавить общий список врагов done
-                        enemies = enemies.Where(x => Vector3.Distance(x.transform.position, this.transform.position) < _explosionRadius).ToList();
-                        foreach (var enemy in enemies)
-                        {
-                            var character = enemy.GetComponent<Character>();
-                            character.Die();//заменить на урон
-                        }*/
 
             Collider[] colliders = Physics.OverlapSphere(transform.position, _explosionRadius);
             foreach (var collider in colliders)
@@ -79,19 +70,6 @@ namespace TDShooter.Weapons
             }
         }
 
-        private void OnCollisionEnter(Collision collision)
-        {
-            if (_isExplosion)
-            {
-                if (collision.gameObject.GetComponentInParent<PlayerControl>() != null)
-                {
-                    return;
-                }
-                Explode();
-                // Debug.Log("Boom!");
-            }
-
-        }
         private void OnTriggerEnter(Collider other)
         {
             if (_isExplosion)
@@ -99,7 +77,6 @@ namespace TDShooter.Weapons
                 _explosion.gameObject.transform.position = gameObject.transform.position;
                 _explosion.GetComponent<ParticleSystem>().Play();
                 Explode();
-                //Debug.Log("Boom!");
             }
         }
     }

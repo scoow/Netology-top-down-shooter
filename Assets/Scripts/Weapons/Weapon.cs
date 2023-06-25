@@ -84,7 +84,7 @@ namespace TDShooter.Weapons
                 Bullet projectile = null;
                 Ammo -= 1;
                 _controllerUI.UpdateView(Ammo, UpdateViewType.UpdateAmmo);
-                switch (_weaponChanger.CurrentWeaponType)//выбор типа снаряда ПЕРЕНЕСТИ В Projectile manager
+                switch (_weaponChanger.CurrentWeaponType)//выбор типа снаряда
                 {
                     case WeaponType.Machinegun:
                         projectile = _projectilesManager.ProjectilePool[ProjectileType.Bullet].GetAviableOrCreateNew();

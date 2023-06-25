@@ -1,12 +1,9 @@
 using Cysharp.Threading.Tasks;
 using System;
-using System.Collections;
-using System.Threading;
-using System.Threading.Tasks;
 using TDShooter.Configs;
 using UnityEngine;
 
-namespace TDShooter
+namespace TDShooter.UI
 {
     public class ArmorAbility : Ability
     {
