@@ -78,13 +78,7 @@ namespace TDShooter.Enemies
         {
             _player.TakeDamage(_enemy_Data.Damage);
             Debug.Log("Атакую!");
-            _subscribeManager.PostNotification(enums.GameEventType.EnemyAttacked, this);
-            //_animator.SetBool("Atack", true);
+            _subscribeManager.PostNotification(enums.GameEventType.EnemyAttacked, this);            
         }
-
-        /*private void StopAtack()
-        {
-            _animator.SetBool("Atack", false);
-        }*/
     }
 }

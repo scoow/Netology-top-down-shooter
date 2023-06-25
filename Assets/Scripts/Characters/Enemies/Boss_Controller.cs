@@ -6,25 +6,13 @@ using UnityEngine;
 
 public class Boss_Controller : MonoBehaviour, IEventListener
 {
-    /*[SerializeField] */private Boss_Move _bossMove;
-   // [SerializeField] private Portal _portal;
+    private Boss_Move _bossMove;   
 
-
-    private void Awake()
-    {
-        //_portal.TeleportHero += Moving;
-    }
     private void OnEnable()
     {
        _bossMove = FindObjectOfType<Boss_Move>();//переделать
         _bossMove.gameObject.SetActive(false);
     }
-
-    private void OnDisable()
-    {
-        //_portal.TeleportHero -= Moving;
-    }
-
     
     private void ActivateBoss()
     {

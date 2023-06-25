@@ -1228,6 +1228,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6397550053857225553, guid: 356939b82d5fe4c4a9d3f738c8c5f703, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6397550053857225553, guid: 356939b82d5fe4c4a9d3f738c8c5f703, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6397550053857225558, guid: 356939b82d5fe4c4a9d3f738c8c5f703, type: 3}
       propertyPath: m_RootOrder
       value: 11
