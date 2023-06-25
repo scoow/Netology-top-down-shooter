@@ -4,6 +4,5 @@ namespace TDShooter.Pools
 {
     public class BloodstainContainer : MonoBehaviour
     {
-
     }
 }

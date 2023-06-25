@@ -3,6 +3,7 @@ using TDShooter.Enemies;
 using TDShooter.enums;
 using TDShooter.EventManager;
 using TDShooter.Input;
+using TDShooter.UI;
 using UnityEngine;
 
 namespace TDShooter.Characters
@@ -10,11 +11,11 @@ namespace TDShooter.Characters
     [RequireComponent(typeof(CapsuleCollider))]
     public class BaseEnemy : Character
     {
-        private SubscribeManager _subscribeManager;//менеджер событий zen 2
+        private SubscribeManager _subscribeManager;
         private Animation_Controller _animation_Controller;
         private CapsuleCollider _capsuleCollider;
         private EnemyMove _enemyMove;
-        private PlayerControl _playerControl;//zen 1
+        private PlayerControl _playerControl;
 
         private Enemy_Data _enemy_Data;
         private Enemy_UI _enemy_UI;
@@ -25,14 +26,12 @@ namespace TDShooter.Characters
         private void Awake()
         {
             _enemyMove = GetComponent<EnemyMove>();
-            //_playerControl = FindObjectOfType<PlayerControl>();
             _capsuleCollider = GetComponent<CapsuleCollider>();
-            //_subscribeManager = FindObjectOfType<SubscribeManager>();//добавить инъекцию от пула 
 
             _animation_Controller = GetComponentInChildren<Animation_Controller>();
 
             _enemy_Data = GetComponent<Enemy_Data>();
-            _character_Data = _enemy_Data as Character_Data;//убрать?
+            _character_Data = _enemy_Data as Character_Data;
             _enemy_UI = GetComponent<Enemy_UI>();
             _character_UI = _enemy_UI as Character_UI;
         }
@@ -73,7 +72,6 @@ namespace TDShooter.Characters
             _animation_Controller.DeathAnimation();
 
             _enemyMove.SetMaxSpeed(0f);
-            
         }
     }
 }

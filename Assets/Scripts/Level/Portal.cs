@@ -12,7 +12,6 @@ namespace TDShooter.Level
     {
         [SerializeField] private Vector3 _destinationPoint;
         [SerializeField] private float _delayBeforeTeleportation;
-        // public Action TeleportHero;
         [Inject] 
         private readonly SubscribeManager _subscribeManager;
 
@@ -27,9 +26,7 @@ namespace TDShooter.Level
         {
             await UniTask.Delay(TimeSpan.FromSeconds(_delayBeforeTeleportation));
             teleportTarget.transform.position = _destinationPoint;
-            // TeleportHero?.Invoke();
             _subscribeManager.PostNotification(enums.GameEventType.PortalActivated, null);
-
         }
     }
 }

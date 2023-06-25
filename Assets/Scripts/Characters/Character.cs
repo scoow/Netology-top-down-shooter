@@ -1,6 +1,7 @@
 using UnityEngine;
 using TDShooter.Configs;
 using System;
+using TDShooter.UI;
 
 namespace TDShooter.Characters
 {
@@ -30,7 +31,6 @@ namespace TDShooter.Characters
                 _character_UI.ShowSliderHP();
             }
             _character_UI.UpdateViewHealth(damage, false);
-            //Debug.Log("HP осталось:" + _hp);
             if (_character_Data.CurrentHP <= 0)
                 Die();
         }

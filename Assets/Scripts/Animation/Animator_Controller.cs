@@ -12,7 +12,7 @@ namespace TDShooter.Characters
         private Animator _animator;
         private int _runAnimation;
         [Inject]
-        private SubscribeManager _subscribeManager;
+        private readonly SubscribeManager _subscribeManager;
 
         public void StepSound()
         {

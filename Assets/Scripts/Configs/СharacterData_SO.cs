@@ -7,7 +7,6 @@ namespace TDShooter
     [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/NewCharacter", order = 1)]
     public class СharacterData_SO : ScriptableObject
     {
-        //[SerializeField] private GameObject _prefabCharacter;
         [SerializeField] private int _hp;
         [SerializeField] private int _damage;
         [SerializeField] private int _armor;
@@ -15,12 +14,6 @@ namespace TDShooter
         [SerializeField] private float _missChance;
         [SerializeField] private float _criticalDamageChance;        
         [SerializeField] private СharacterType _сharacterType;
-
-        /// <summary>
-        /// префаб персонажа
-        /// </summary>
-        //public GameObject PrefabCharacter => _prefabCharacter;
-
 
         /// <summary>
         /// здоровье

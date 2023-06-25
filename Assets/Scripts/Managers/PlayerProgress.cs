@@ -29,8 +29,8 @@ namespace TDShooter.Managers
         private readonly SubscribeManager _subscribeManager;
         public int ChanceDroopLoot => _lootDropChance;
 
-        public event UnityAction OnNextLevel;
-        public event UnityAction OnPortal;
+       public event UnityAction OnNextLevel;
+       public event UnityAction OnPortal;
 
         public int LevelCount { get; private set; }
         public int CurrentKilledCount
@@ -131,7 +131,6 @@ namespace TDShooter.Managers
             }
             else
                 print("Заряд не готов");
-            
         }
     }
 }

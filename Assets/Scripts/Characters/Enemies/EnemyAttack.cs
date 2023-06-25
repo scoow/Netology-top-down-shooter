@@ -17,7 +17,7 @@ namespace TDShooter.Enemies
         private Transform _target;
         private Character _player;
 
-        private SubscribeManager _subscribeManager;//менеджер событий
+        private SubscribeManager _subscribeManager;
 
         /// <summary>
         /// Дальность атаки
@@ -58,7 +58,6 @@ namespace TDShooter.Enemies
         private void Update()
         {            
             _animation_Controller.ChangeAnimation(_target);
-            //CalculateAttackCoolDownTime();
         }
 
         private void CalculateAttackCoolDownTime()
@@ -74,7 +73,6 @@ namespace TDShooter.Enemies
                 }                
             }
         }
-
 
         public void Attack()
         {

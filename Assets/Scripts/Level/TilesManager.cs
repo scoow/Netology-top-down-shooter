@@ -16,7 +16,7 @@ namespace TDShooter.Level
 
         [SerializeField]
         private int _offsetSize;
-        private readonly int _cornerOffsetSize = 50;//сделать красиво
+        private readonly int _cornerOffsetSize = 50;
         private void Start()
         {
             _leftBottomCorner_Marker= GetComponentInChildren<LeftBottomCorner_Marker>();
@@ -25,7 +25,7 @@ namespace TDShooter.Level
             tempArray = new Tile_Marker[_gridSize];
             //находим компоненты Tile_Marker на сцене и упорядочиваем их по номеру
             List<Tile_Marker> list = new();
-            list = FindObjectsOfType<Tile_Marker>().ToList();//zenject
+            list = FindObjectsOfType<Tile_Marker>().ToList();
             list.Sort((x, y) => x.Number.CompareTo(y.Number));
             //затем добавляем их в массив
             for (int i = 0; i < _gridSize; i++)
@@ -36,34 +36,31 @@ namespace TDShooter.Level
                     tiles[i, j].Callback += MoveRow;
                 }
             }
-
-           // _cornerOffsetSize = (int)list[0].transform.sc;
         }
         public bool IsInMiddle(Tile_Marker tile)
         {
             return (tile == tiles[1, 1]);
         }
-
+        /// <summary>
+        /// Двигаем ряд тайлов
+        /// </summary>
+        /// <param name="number"></param>
         private void MoveRow(Tile_Marker number)
         {
-            if (number == tiles[0, 1])//добавить условие
+            if (number == tiles[0, 1])
             {
-                //Debug.Log("up");
                 ReBuild(Direction.Up);
             }
             if (number == tiles[1, 0])
             {
-                //Debug.Log("left");
                 ReBuild(Direction.Left);
             }
             if (number == tiles[1, 2])
             {
-                //Debug.Log("right");
                 ReBuild(Direction.Right);
             }
             if (number == tiles[2, 1])
             {
-                //Debug.Log("down");
                 ReBuild(Direction.Down);
             }
         }

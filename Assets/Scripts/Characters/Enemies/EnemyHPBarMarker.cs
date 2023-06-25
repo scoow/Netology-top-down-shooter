@@ -4,6 +4,5 @@ namespace TDShooter.UI
 {
     public class EnemyHPBarMarker : MonoBehaviour
     {
-
     }
 }

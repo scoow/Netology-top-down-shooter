@@ -8,7 +8,6 @@ namespace TDShooter.Enemies
     public class EnemyMove : BaseUnit
     {
         [SerializeField] private Transform _target;
-        //private Transform _currentTarget;
         [SerializeField] EnemyAttack _enemyAttack;
        /* [SerializeField] */Animation_Controller _animationController;
 

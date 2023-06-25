@@ -40,30 +40,20 @@ namespace TDShooter.Characters
 
             int randomTalentIndex = UnityEngine.Random.Range(0, _talents.Count - 1);
             talent = _talents[randomTalentIndex];
-            //_talents.RemoveAt(randomTalentIndex);
 
-            //Debug.Log("Вы получили " + talent);
             return true;
         }
 
         public void RemoveTalant(TalentType talent)
         {
-            _talents.Remove(talent);
-/*            foreach (TalentType _talent in _talents)
-            {
-                if(_talent == talent)
-                {
-                    _talents.Remove(_talent);
-                    break;
-                }                    
-            }   */         
+            _talents.Remove(talent);   
         }
         public void PickTwoRandomTalents()
         {
             TryPickRandomTalent(out TalentType? talentOne);
             TryPickRandomTalent(out TalentType? talentTwo);
 
-            _talentControll.EnableTalent(talentOne, talentTwo); //передать два таланта в UI. Могут быть null
+            _talentControll.EnableTalent(talentOne, talentTwo); //передаём два таланта в UI. Могут быть null
         }
 
         private void OnDisable()

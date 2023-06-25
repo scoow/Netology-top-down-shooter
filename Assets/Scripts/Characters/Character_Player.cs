@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TDShooter.Configs;
 using TDShooter.Enemies;
+using TDShooter.UI;
 using UnityEngine;
 using Zenject;
 
@@ -10,7 +11,7 @@ namespace TDShooter.Characters
     public class Character_Player : Character
     {
         [Inject]
-        private SpawnAssistant _spawnAssistant;
+        private readonly SpawnAssistant _spawnAssistant;
 
         public Action OnDie;
         public override void Die()

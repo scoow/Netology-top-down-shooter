@@ -27,9 +27,9 @@ namespace TDShooter.Input
         [Inject]
         private readonly ProjectilesManager _projectilesManager;
         [Inject]
-        private PauseMenu_Controller _pauseMenu_Controller;
+        private readonly PauseMenu_Controller _pauseMenu_Controller;
         [Inject]
-        private PlayerProgress _playerProgress;
+        private readonly PlayerProgress _playerProgress;
 
         public Action<Vector2> OnMove;
 
@@ -70,8 +70,6 @@ namespace TDShooter.Input
         private void Fire()
         {
             _weaponChanger.CurrentWeapon().Shoot();
-
-            //_audioSourceSteps.PlayOneShot(_oneShotSound);
         }
         private void StopFire()
         {

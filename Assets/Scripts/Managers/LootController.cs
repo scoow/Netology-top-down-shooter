@@ -13,7 +13,7 @@ namespace TDShooter.Pools
         [SerializeField] private List<LootData_SO> _arrayLootData_SO;
         [Inject]
         private readonly PlayerProgress _playerProgress;
-        public List<LootData_SO> Loots => _arrayLootData_SO;//Сделать readonlyList
+        public List<LootData_SO> Loots => _arrayLootData_SO;
         /// <summary>
         /// Пул
         /// </summary>
@@ -51,7 +51,6 @@ namespace TDShooter.Pools
             {
                 SpawnRandomLoot(sender.transform.position);
             }
-            
         }
     }
 }

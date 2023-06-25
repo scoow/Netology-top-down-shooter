@@ -55,8 +55,7 @@ namespace TDShooter.Configs
                 timer -= 1;
 
                 _playerData.CurrentHP += hpBonus;
-                //Mathf.Clamp(_playerData.CurrentHP, 0, _playerData.MaxHP);
-                if (_playerData.CurrentHP > _playerData.MaxHP) _playerData.CurrentHP = _playerData.MaxHP;//заменить на Mathf.Clamp? не работает
+                if (_playerData.CurrentHP > _playerData.MaxHP) _playerData.CurrentHP = _playerData.MaxHP;
 
                 _player_UI.UpdateViewHealth(hpBonus, true);
                 await UniTask.Delay(1000);

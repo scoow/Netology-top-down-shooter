@@ -17,7 +17,6 @@ namespace TDShooter.Characters
         /// Пул юнитов
         /// </summary>
         private readonly Dictionary<СharacterType, EnemiesPool> _enemiesPool = new();
-        public Dictionary<СharacterType, EnemiesPool> EnemiesPool => _enemiesPool;
         [Inject]
         private readonly PlayerControl _playerControl;
         [Inject]
@@ -31,7 +30,6 @@ namespace TDShooter.Characters
         private List<EnemiesSpawner> _unitSpawners = new();
         public List<EnemiesSpawner> UnitSpawners => _unitSpawners;//переделать на enumerable
 
-        //todo Добавить таймер спавна для каждого типа врагов
         [SerializeField]
         private float _enemySpawnCooldown = 2;
         [SerializeField, Range(1, 2)]
@@ -96,8 +94,8 @@ namespace TDShooter.Characters
 
         public List<BaseEnemy> FindAllEnemies()
         {
-            List<BaseEnemy> enemies = EnemiesPool[СharacterType.FastMeleeEnemy].GetActiveUnits();
-            enemies.AddRange(EnemiesPool[СharacterType.Spider].GetActiveUnits());
+            List<BaseEnemy> enemies = _enemiesPool[СharacterType.FastMeleeEnemy].GetActiveUnits();
+            enemies.AddRange(_enemiesPool[СharacterType.Spider].GetActiveUnits());
             return enemies;
         }
         private void TurningSpawnOnOrOff(bool toggle)
@@ -107,14 +105,13 @@ namespace TDShooter.Characters
 
         public void OnEvent(GameEventType eventType, Component sender, UnityEngine.Object param = null)
         {
-            //if (eventType != GameEventType.PlayerLevelUp) return;
             switch (eventType)
             {
                 case GameEventType.PlayerLevelUp:
                     _enemySpawnCooldown /= _SpawnLoodownReductionCoefficient;
                     if (_enemySpawnCooldown < 0.5f)
                         _enemySpawnCooldown = 0.5f;
-                    //ограничить время спавна
+                    //ограничили время спавна минимумом в 0.5 сек
                     break;
                 case GameEventType.PortalActivated:
                     TurningSpawnOnOrOff(false);
@@ -123,7 +120,6 @@ namespace TDShooter.Characters
                 default:
                     break;
             }
-            
         }
     }
 }

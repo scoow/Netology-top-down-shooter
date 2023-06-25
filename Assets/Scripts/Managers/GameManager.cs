@@ -7,7 +7,6 @@ using TDShooter.EventManager;
 using TDShooter.Input;
 using TDShooter.Level;
 using TDShooter.Pools;
-using TDShooter.SaveLoad;
 using TDShooter.Talents;
 using TDShooter.UI;
 using TDShooter.Weapons;
@@ -100,9 +99,8 @@ namespace TDShooter.Managers.GameManager
             Container.BindInstance(_effectController).AsSingle();
             Container.BindInstance(_bossController).AsSingle();
 
-            
-            //
             SubscribeToEvents();
+            //начальные параметры для DOTween
             DOTween.SetTweensCapacity(4000, 50);
             #endregion
         }
