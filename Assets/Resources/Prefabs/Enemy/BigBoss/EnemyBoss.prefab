@@ -592,6 +592,7 @@ MonoBehaviour:
   _animator: {fileID: 0}
   _agent: {fileID: 0}
   _playerControl: {fileID: 0}
+  distance: 0
   _checkDistanceTimer: 0
   _attackTimer: 0
 --- !u!195 &1398236617
@@ -1007,21 +1008,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9bf3168150fbca942a82fe9244c030c2, type: 3}
   m_PrefabInstance: {fileID: 758518771}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &919132148705472162 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9bf3168150fbca942a82fe9244c030c2, type: 3}
-  m_PrefabInstance: {fileID: 758518771}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8287724815767694175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148705472162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d9e3cea772912b4da64fff41d6ff3ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _boss_Move: {fileID: 0}
