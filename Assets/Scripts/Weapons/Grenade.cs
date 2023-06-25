@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using TDShooter.Characters;
-using TDShooter.enums;
+using TDShooter.Effects;
 using TDShooter.Input;
 using UnityEngine;
-using Zenject.SpaceFighter;
 
 namespace TDShooter.Weapons
 {

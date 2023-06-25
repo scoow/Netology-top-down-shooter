@@ -2,7 +2,6 @@ using TDShooter.Weapons;
 using UnityEngine.UI;
 using DG.Tweening;
 using Cysharp.Threading.Tasks;
-using System.Threading.Tasks;
 using System;
 using UnityEngine;
 
