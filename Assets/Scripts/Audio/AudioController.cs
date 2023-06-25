@@ -1,12 +1,15 @@
 using TDShooter.Characters;
 using TDShooter.enums;
 using TDShooter.EventManager;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace TDShooter.Audio
 {
     public class AudioController : MonoBehaviour, IEventListener
     {
+        [SerializeField]
+        private AudioSource _backGroundMusic;
         [SerializeField]
         private AudioSource _audioSourceSteps;
         [SerializeField]
@@ -25,6 +28,8 @@ namespace TDShooter.Audio
         private AudioClip _monsterAttack;
         [SerializeField]
         private AudioClip _monsterDeath;
+        [SerializeField]
+        private AudioClip _bigBossLevel;
 
         public void OnEvent(GameEventType eventType, Component sender, Object param = null)
         {
@@ -44,6 +49,10 @@ namespace TDShooter.Audio
                     break;
                 case GameEventType.EnemyDied:
                     PlayEnemyDiedSound(sender);
+                    break;
+                case GameEventType.PortalActivated:
+                    _backGroundMusic.clip = _bigBossLevel;
+                    _backGroundMusic.Play();
                     break;
             }
     }

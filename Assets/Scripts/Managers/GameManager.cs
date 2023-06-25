@@ -125,8 +125,10 @@ namespace TDShooter.Managers.GameManager
 
             _subscribeManager.AddListener(enums.GameEventType.PortalActivated, _bossController, true);
             _subscribeManager.AddListener(enums.GameEventType.PortalActivated, _spawnAssistant, true);
+            _subscribeManager.AddListener(enums.GameEventType.PortalActivated, _audioController, true);
             _subscribeManager.AddListener(enums.GameEventType.EnemyDied, _droneAssist, true);
             
+
 
         }
     }
