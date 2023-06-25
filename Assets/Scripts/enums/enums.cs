@@ -52,13 +52,11 @@ namespace TDShooter.enums
         PlayerLevelUp,
         PortalActivated
     }
-    public enum WeaponType : byte
+    public enum WeaponType : sbyte
     {
-        Sword,
-        Pistol,
         Machinegun,
-        Plasmagun,
         Shothun,
+        Plasmagun,
         BFG
     }
     public enum GrenadeType : byte
