@@ -19,4 +19,4 @@ MonoBehaviour:
   _baseAccuracy: 80
   _rateOfFire: 60
   _maxAmmoCount: 9999
-  _projectileData: {fileID: 11400000, guid: e43aae6101d7daf43bed30489d625414, type: 2}
+  _projectileData: {fileID: 11400000, guid: d18aaa1a1976fc84e9308be49cd8fe37, type: 2}

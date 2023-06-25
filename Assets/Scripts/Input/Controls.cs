@@ -57,9 +57,27 @@ namespace TDShooter.Input
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""WeaponSwitchShotgun"",
+                    ""type"": ""Button"",
+                    ""id"": ""a8e0c90f-9a81-4e50-ae44-d1e0673052c0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""WeaponSwitchPlasmaGun"",
                     ""type"": ""Button"",
                     ""id"": ""0f90089b-f267-4e35-a8a2-aaa5b014cec5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WeaponSwitchBFG"",
+                    ""type"": ""Button"",
+                    ""id"": ""d65ae933-2fba-4a38-a847-e75228823486"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -174,7 +192,7 @@ namespace TDShooter.Input
                 {
                     ""name"": """",
                     ""id"": ""9e493a94-7aca-4ec4-8386-b4b8114c5851"",
-                    ""path"": ""<Keyboard>/2"",
+                    ""path"": ""<Keyboard>/3"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -214,6 +232,28 @@ namespace TDShooter.Input
                     ""action"": ""PauseGame"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6fc68da7-1bce-4441-9db1-3a7ce47cb1cb"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponSwitchShotgun"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""034bc8ed-5d0f-4776-8fc5-6c647b87b1df"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponSwitchBFG"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -225,7 +265,9 @@ namespace TDShooter.Input
             m_Player_WASD = m_Player.FindAction("WASD", throwIfNotFound: true);
             m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
             m_Player_WeaponSwitchMachineGun = m_Player.FindAction("WeaponSwitchMachineGun", throwIfNotFound: true);
+            m_Player_WeaponSwitchShotgun = m_Player.FindAction("WeaponSwitchShotgun", throwIfNotFound: true);
             m_Player_WeaponSwitchPlasmaGun = m_Player.FindAction("WeaponSwitchPlasmaGun", throwIfNotFound: true);
+            m_Player_WeaponSwitchBFG = m_Player.FindAction("WeaponSwitchBFG", throwIfNotFound: true);
             m_Player_ThrowGrenade = m_Player.FindAction("ThrowGrenade", throwIfNotFound: true);
             m_Player_NuclearBomb = m_Player.FindAction("NuclearBomb", throwIfNotFound: true);
             m_Player_PauseGame = m_Player.FindAction("PauseGame", throwIfNotFound: true);
@@ -293,7 +335,9 @@ namespace TDShooter.Input
         private readonly InputAction m_Player_WASD;
         private readonly InputAction m_Player_Shoot;
         private readonly InputAction m_Player_WeaponSwitchMachineGun;
+        private readonly InputAction m_Player_WeaponSwitchShotgun;
         private readonly InputAction m_Player_WeaponSwitchPlasmaGun;
+        private readonly InputAction m_Player_WeaponSwitchBFG;
         private readonly InputAction m_Player_ThrowGrenade;
         private readonly InputAction m_Player_NuclearBomb;
         private readonly InputAction m_Player_PauseGame;
@@ -304,7 +348,9 @@ namespace TDShooter.Input
             public InputAction @WASD => m_Wrapper.m_Player_WASD;
             public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
             public InputAction @WeaponSwitchMachineGun => m_Wrapper.m_Player_WeaponSwitchMachineGun;
+            public InputAction @WeaponSwitchShotgun => m_Wrapper.m_Player_WeaponSwitchShotgun;
             public InputAction @WeaponSwitchPlasmaGun => m_Wrapper.m_Player_WeaponSwitchPlasmaGun;
+            public InputAction @WeaponSwitchBFG => m_Wrapper.m_Player_WeaponSwitchBFG;
             public InputAction @ThrowGrenade => m_Wrapper.m_Player_ThrowGrenade;
             public InputAction @NuclearBomb => m_Wrapper.m_Player_NuclearBomb;
             public InputAction @PauseGame => m_Wrapper.m_Player_PauseGame;
@@ -326,9 +372,15 @@ namespace TDShooter.Input
                 @WeaponSwitchMachineGun.started += instance.OnWeaponSwitchMachineGun;
                 @WeaponSwitchMachineGun.performed += instance.OnWeaponSwitchMachineGun;
                 @WeaponSwitchMachineGun.canceled += instance.OnWeaponSwitchMachineGun;
+                @WeaponSwitchShotgun.started += instance.OnWeaponSwitchShotgun;
+                @WeaponSwitchShotgun.performed += instance.OnWeaponSwitchShotgun;
+                @WeaponSwitchShotgun.canceled += instance.OnWeaponSwitchShotgun;
                 @WeaponSwitchPlasmaGun.started += instance.OnWeaponSwitchPlasmaGun;
                 @WeaponSwitchPlasmaGun.performed += instance.OnWeaponSwitchPlasmaGun;
                 @WeaponSwitchPlasmaGun.canceled += instance.OnWeaponSwitchPlasmaGun;
+                @WeaponSwitchBFG.started += instance.OnWeaponSwitchBFG;
+                @WeaponSwitchBFG.performed += instance.OnWeaponSwitchBFG;
+                @WeaponSwitchBFG.canceled += instance.OnWeaponSwitchBFG;
                 @ThrowGrenade.started += instance.OnThrowGrenade;
                 @ThrowGrenade.performed += instance.OnThrowGrenade;
                 @ThrowGrenade.canceled += instance.OnThrowGrenade;
@@ -351,9 +403,15 @@ namespace TDShooter.Input
                 @WeaponSwitchMachineGun.started -= instance.OnWeaponSwitchMachineGun;
                 @WeaponSwitchMachineGun.performed -= instance.OnWeaponSwitchMachineGun;
                 @WeaponSwitchMachineGun.canceled -= instance.OnWeaponSwitchMachineGun;
+                @WeaponSwitchShotgun.started -= instance.OnWeaponSwitchShotgun;
+                @WeaponSwitchShotgun.performed -= instance.OnWeaponSwitchShotgun;
+                @WeaponSwitchShotgun.canceled -= instance.OnWeaponSwitchShotgun;
                 @WeaponSwitchPlasmaGun.started -= instance.OnWeaponSwitchPlasmaGun;
                 @WeaponSwitchPlasmaGun.performed -= instance.OnWeaponSwitchPlasmaGun;
                 @WeaponSwitchPlasmaGun.canceled -= instance.OnWeaponSwitchPlasmaGun;
+                @WeaponSwitchBFG.started -= instance.OnWeaponSwitchBFG;
+                @WeaponSwitchBFG.performed -= instance.OnWeaponSwitchBFG;
+                @WeaponSwitchBFG.canceled -= instance.OnWeaponSwitchBFG;
                 @ThrowGrenade.started -= instance.OnThrowGrenade;
                 @ThrowGrenade.performed -= instance.OnThrowGrenade;
                 @ThrowGrenade.canceled -= instance.OnThrowGrenade;
@@ -385,7 +443,9 @@ namespace TDShooter.Input
             void OnWASD(InputAction.CallbackContext context);
             void OnShoot(InputAction.CallbackContext context);
             void OnWeaponSwitchMachineGun(InputAction.CallbackContext context);
+            void OnWeaponSwitchShotgun(InputAction.CallbackContext context);
             void OnWeaponSwitchPlasmaGun(InputAction.CallbackContext context);
+            void OnWeaponSwitchBFG(InputAction.CallbackContext context);
             void OnThrowGrenade(InputAction.CallbackContext context);
             void OnNuclearBomb(InputAction.CallbackContext context);
             void OnPauseGame(InputAction.CallbackContext context);

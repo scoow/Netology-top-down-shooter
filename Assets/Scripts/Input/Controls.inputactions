@@ -33,9 +33,27 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "WeaponSwitchShotgun",
+                    "type": "Button",
+                    "id": "a8e0c90f-9a81-4e50-ae44-d1e0673052c0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "WeaponSwitchPlasmaGun",
                     "type": "Button",
                     "id": "0f90089b-f267-4e35-a8a2-aaa5b014cec5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "WeaponSwitchBFG",
+                    "type": "Button",
+                    "id": "d65ae933-2fba-4a38-a847-e75228823486",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -150,7 +168,7 @@
                 {
                     "name": "",
                     "id": "9e493a94-7aca-4ec4-8386-b4b8114c5851",
-                    "path": "<Keyboard>/2",
+                    "path": "<Keyboard>/3",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -188,6 +206,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "PauseGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6fc68da7-1bce-4441-9db1-3a7ce47cb1cb",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WeaponSwitchShotgun",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "034bc8ed-5d0f-4776-8fc5-6c647b87b1df",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WeaponSwitchBFG",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

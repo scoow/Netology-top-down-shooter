@@ -26,7 +26,7 @@ namespace TDShooter.Weapons
         /// </summary>
         private void InitGrenadesPools()
         {
-            GrenadePool.Add(GrenadeType.Explosive, new(Resources.Load<Grenade>("Prefabs/Weapon/Grenade/Grenade Zaria/Prefabs/Zaria"), _projectileContainer.transform, 5));
+            GrenadePool.Add(GrenadeType.Explosive, new(Resources.Load<Grenade>("Prefabs/Weapon/Grenade/Grenade Zaria/Prefabs/Zaria"), _projectileContainer.transform, 2));
         }
 
         /// <summary>
@@ -34,8 +34,9 @@ namespace TDShooter.Weapons
         /// </summary>
         private void InitProjectilesPools()
         {
-            ProjectilePool.Add(ProjectileType.Bullet, new(Resources.Load<Bullet>("Prefabs/Bullet"), _projectileContainer.transform, 20));
-            ProjectilePool.Add(ProjectileType.Plasma, new(Resources.Load<Bullet>("Prefabs/Plasma"), _projectileContainer.transform, 20));
+            ProjectilePool.Add(ProjectileType.Bullet, new(Resources.Load<Bullet>("Prefabs/Bullet"), _projectileContainer.transform, 15));
+            ProjectilePool.Add(ProjectileType.Plasma, new(Resources.Load<Bullet>("Prefabs/Plasma"), _projectileContainer.transform, 10));
+            ProjectilePool.Add(ProjectileType.BFG, new(Resources.Load<Bullet>("Prefabs/BFG"), _projectileContainer.transform, 5));
         }
     }
 }

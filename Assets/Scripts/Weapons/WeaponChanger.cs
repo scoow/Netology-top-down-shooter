@@ -26,9 +26,9 @@ namespace TDShooter.UI
         {
             CurrentWeaponType = WeaponType.Machinegun;
             _weaponsDictionary.Add(WeaponType.Machinegun, (_machineGun, _machineGunSprite));
-            _weaponsDictionary.Add(WeaponType.Shothun, (_machineGun, _machineGunSprite));
+            _weaponsDictionary.Add(WeaponType.Shothun, (_shotgun, _shotgunSprite));
             _weaponsDictionary.Add(WeaponType.Plasmagun, (_plasmaGun, _plasmaGunSprite));
-            _weaponsDictionary.Add(WeaponType.BFG, (_plasmaGun, _plasmaGunSprite));
+            _weaponsDictionary.Add(WeaponType.BFG, (_BFGun, _BFGSprite));
         }
         /// <summary>
         /// Смена модельки и спрайта оружия

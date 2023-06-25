@@ -94,7 +94,7 @@ namespace TDShooter.Weapons
                         break;
                     case WeaponType.Shothun:
                         projectile = _projectilesManager.ProjectilePool[ProjectileType.Bullet].GetAviableOrCreateNew();
-                        Bullet[] projectiles = new Bullet[10];
+                        Bullet[] projectiles = new Bullet[5];
                         for (int i = 0; i < projectiles.Length; i++)
                         {
                             projectiles[i] = _projectilesManager.ProjectilePool[ProjectileType.Bullet].GetAviableOrCreateNew();
@@ -103,7 +103,9 @@ namespace TDShooter.Weapons
 
                             projectiles[i].transform.SetPositionAndRotation(_shootingPoint.transform.position, _shootingPoint.transform.rotation * shutgunInnacuracyQuaternion);
                         }    
-                            
+                        break;
+                    case WeaponType.BFG:
+                        projectile = _projectilesManager.ProjectilePool[ProjectileType.BFG].GetAviableOrCreateNew();
                         break;
                     default:
                         break;
