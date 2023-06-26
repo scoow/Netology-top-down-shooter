@@ -30,7 +30,7 @@ namespace TDShooter.Effects
         {
             _image.DOColor(new UnityEngine.Color(_image.color.r, _image.color.g, _image.color.b, 0), time);
             await UniTask.Delay(Convert.ToInt32(1000 * time));
-            gameObject.SetActive(false);
+            gameObject?.SetActive(false);
         }
     }
 }

@@ -1,9 +1,9 @@
-using System;
 using System.Collections.Generic;
 using TDShooter.enums;
 using TDShooter.Weapons;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace TDShooter.UI
 {
@@ -23,6 +23,9 @@ namespace TDShooter.UI
         [SerializeField] GameObject _shotgun;
         [SerializeField] GameObject _plasmaGun;
         [SerializeField] GameObject _BFGun;
+
+        [Inject]
+        protected readonly UI_Controller _controllerUI;
 
         [SerializeField]
         private float _UIShowTimer;
@@ -80,6 +83,7 @@ namespace TDShooter.UI
             {
                 _nextWeaponImage.sprite = _emptySprite;
             }
+            _controllerUI.UpdateView(CurrentWeapon().Ammo, UpdateViewType.UpdateAmmo);
             HideOrShowNextAndPrevWeaponSprites(true);
         }
         public Weapon CurrentWeapon()

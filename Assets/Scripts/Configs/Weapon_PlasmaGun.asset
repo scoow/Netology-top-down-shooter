@@ -17,6 +17,6 @@ MonoBehaviour:
   _dropChance: 5
   _baseDamage: 60
   _baseAccuracy: 80
-  _rateOfFire: 60
+  _rateOfFire: 20
   _maxAmmoCount: 9999
   _projectileData: {fileID: 11400000, guid: d18aaa1a1976fc84e9308be49cd8fe37, type: 2}

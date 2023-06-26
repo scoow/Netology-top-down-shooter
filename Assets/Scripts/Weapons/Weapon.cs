@@ -41,10 +41,10 @@ namespace TDShooter.Weapons
         /// <summary>
         /// Количество патронов
         /// </summary>
-        protected int Ammo
+        public int Ammo
         {
             get => _ammo;
-            set
+            protected set
             {
                 _ammo--;
                 Mathf.Clamp(_ammo, 0, _maxAmmoCount);
