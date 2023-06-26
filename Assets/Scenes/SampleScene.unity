@@ -8657,6 +8657,7 @@ GameObject:
   - component: {fileID: 652062588}
   - component: {fileID: 652062586}
   - component: {fileID: 652062591}
+  - component: {fileID: 652062592}
   m_Layer: 5
   m_Name: GameUI
   m_TagString: Untagged
@@ -8797,6 +8798,20 @@ MonoBehaviour:
   _plasmaGun: {fileID: 1254977570}
   _BFGun: {fileID: 981531460}
   _UIShowTimer: 0.5
+--- !u!114 &652062592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652062585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46466515dda38d646a9965f3fe3d65ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mesagePanel: {fileID: 0}
+  _cursor: {fileID: 1657435022}
 --- !u!1 &653527214
 GameObject:
   m_ObjectHideFlags: 0
@@ -29184,13 +29199,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1657435021}
+  - component: {fileID: 1657435022}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Cursor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1657435021
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29212,6 +29228,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1657435022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657435020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 716b49788dbecb14e9baf833a0d26589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1705993997
 GameObject:
   m_ObjectHideFlags: 0

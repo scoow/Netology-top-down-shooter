@@ -2,15 +2,16 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using DG.Tweening;
 using TDShooter.Managers;
-using TDShooter.UI;
+using Zenject;
 
-namespace TDShooter.Level
+namespace TDShooter.UI
 {
     public class InfoPanel_Controller : MonoBehaviour
     {        
         [SerializeField] MesagePanel_Marker _mesagePanel;
         [SerializeField] Cursor_Marker _cursor;
-        [SerializeField] PlayerProgress _playerProgress;
+        [Inject] 
+        PlayerProgress _playerProgress;
 
         private void OnEnable()
         {
@@ -24,7 +25,7 @@ namespace TDShooter.Level
 
         private void ShowInfo()
         {
-            ActivateInfoPanel();            
+            //ActivateInfoPanel();            
             _cursor.gameObject.SetActive(true);
         }
 

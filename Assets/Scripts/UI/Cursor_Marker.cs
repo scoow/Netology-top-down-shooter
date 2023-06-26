@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TDShooter.Level
+namespace TDShooter.UI
 {
     public class Cursor_Marker : MonoBehaviour
     {
