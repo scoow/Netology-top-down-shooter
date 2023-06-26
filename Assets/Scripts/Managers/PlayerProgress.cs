@@ -56,7 +56,7 @@ namespace TDShooter.Managers
             _currentKillsCount = 0;
             _controllerUI.UpdateView(_currentKillsCount, UpdateViewType.TargetKills);
             _levelCount++;
-            if (_levelCount == 5)
+            if (_levelCount == 7)
             {
                 _portal.gameObject.SetActive(true);
                 OnPortal?.Invoke();
