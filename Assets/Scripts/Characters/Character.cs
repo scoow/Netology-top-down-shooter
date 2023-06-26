@@ -19,7 +19,7 @@ namespace TDShooter.Characters
         {
             print("Я погиб");          
         }
-        public void TakeDamage(int damage)
+        public virtual void TakeDamage(int damage)
         {
             int incomingDamage = damage - _character_Data.Armor;
             OnHit?.Invoke();

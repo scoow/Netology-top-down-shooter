@@ -15544,8 +15544,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 58da899d89e23d64eaf0348fc9134fba, type: 3}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: 0d106891889a01e4aa651bf02bd64881, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -17717,7 +17717,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bf656b7c0279034d9c8343b78d7b248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetKillsCount: 1
+  _levelCount: 1
+  _targetKillsCount: 4
   _lootDropChance: 15
   _targetKillsMultiplier: 1
   _portal: {fileID: 191105719}
@@ -17797,6 +17798,10 @@ MonoBehaviour:
   _monsterAttack: {fileID: 8300000, guid: 0ba306cec23a5e14b888913648a530e5, type: 3}
   _monsterDeath: {fileID: 8300000, guid: 8d1251f5bc0a464439b7e98c2f26cd3c, type: 3}
   _bigBossLevel: {fileID: 8300000, guid: 58da899d89e23d64eaf0348fc9134fba, type: 3}
+  _shotgunShoot: {fileID: 8300000, guid: 0e9f0988af055954ebac2dbd964f181a, type: 3}
+  _plasmaShoot: {fileID: 8300000, guid: ee782379ff3b7e144974a70cde64db53, type: 3}
+  _grenadeExplosion: {fileID: 8300000, guid: cc30ea21c45ea8d4a9f8768b287eb84d, type: 3}
+  _playerScream: {fileID: 8300000, guid: 66d842e0f3b7d5a42abf49ed02a89f35, type: 3}
 --- !u!114 &1137414726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18072,7 +18077,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1253460655
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18323,7 +18328,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 3072
+    m_Bits: 166912
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 4f86acb80d728304eb22895fd10d8b53, type: 2}
   m_TargetDisplay: 0
@@ -29898,7 +29903,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 32193cb290a0fa14491abd3885d79b28, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cc39b04cf3f9ae940b8628030a976497, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

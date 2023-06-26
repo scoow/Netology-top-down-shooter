@@ -1,5 +1,6 @@
 using TDShooter.Characters;
 using TDShooter.Effects;
+using TDShooter.EventManager;
 using TDShooter.Input;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ namespace TDShooter.Weapons
         [SerializeField] private int _damage;
         [SerializeField] private float _explosionRadius;
         [SerializeField] private ExplosionEffect _explosion;
+        private SubscribeManager _subscribeManager;
 
         private bool _isExplosion;
         private float _timer;
@@ -25,6 +27,7 @@ namespace TDShooter.Weapons
         private void Start()
         {
             _explosion = FindObjectOfType<ExplosionEffect>();
+            _subscribeManager = FindObjectOfType<SubscribeManager>();
         }
 
         private void ResetGrenadeTimer()
@@ -60,6 +63,7 @@ namespace TDShooter.Weapons
         }
         public void Explode()
         {
+            _subscribeManager.PostNotification(enums.GameEventType.GrenadeExplosion, this);
             gameObject.SetActive(false);
 
             Collider[] colliders = Physics.OverlapSphere(transform.position, _explosionRadius);

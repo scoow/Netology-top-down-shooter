@@ -18,7 +18,7 @@ namespace TDShooter.Level
         private void OnTriggerEnter(Collider other)
         {
             if (!other.TryGetComponent<PlayerControl>(out var teleportTarget)) return;
-            
+
             _ = TeleportAsync(teleportTarget);
         }
 
@@ -26,7 +26,7 @@ namespace TDShooter.Level
         {
             await UniTask.Delay(TimeSpan.FromSeconds(_delayBeforeTeleportation));
             teleportTarget.transform.position = _destinationPoint;
-            _subscribeManager.PostNotification(enums.GameEventType.PortalActivated, null);
+            _subscribeManager.PostNotification(enums.GameEventType.PortalActivated, this);
         }
     }
 }

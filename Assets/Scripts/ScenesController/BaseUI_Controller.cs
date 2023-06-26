@@ -10,6 +10,7 @@ namespace TDShooter.UI
         protected void LoadScene(SceneExample sceneExample)
         {
             DOTween.KillAll();
+            Time.timeScale = 1.0f;
             if (sceneExample == SceneExample.NewGame)
                 SceneManager.LoadScene(1);
             if (sceneExample == SceneExample.MainMenu)

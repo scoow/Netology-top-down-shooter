@@ -13,7 +13,7 @@ namespace TDShooter.Managers
 {
     public class PlayerProgress : MonoBehaviour, IEventListener, ISavable
     {
-        private int _levelCount = 1; //счётчик уровней
+        [SerializeField] private int _levelCount; //счётчик уровней
         private int _currentKillsCount = 0; //текущие убийства 
         [SerializeField] private int _targetKillsCount; //колиичество убийств для повышения уровня
         [SerializeField] private int _lootDropChance; //шанс выпадения лута
@@ -21,8 +21,7 @@ namespace TDShooter.Managers
         [SerializeField] private Portal _portal;
         private bool _nuclearChargeIsActive = false;
         public bool NuclearChargeIsActive => _nuclearChargeIsActive;
-        [Inject]
-        private readonly UI_Controller _controllerUI;
+        private UI_Controller _controllerUI;
         [Inject]
         private readonly NuclearChargeEffect _nuclearChargeEffect;
         [Inject]
@@ -56,7 +55,7 @@ namespace TDShooter.Managers
             _currentKillsCount = 0;
             _controllerUI.UpdateView(_currentKillsCount, UpdateViewType.TargetKills);
             _levelCount++;
-            if (_levelCount == 2)/////////////////////////////////////////////////////
+            if (_levelCount == 7)/////////////////////////////////////////////////////
             {
                 _portal.gameObject.SetActive(true);
                 //OnPortal?.Invoke();
@@ -88,6 +87,8 @@ namespace TDShooter.Managers
             Scene scene = SceneManager.GetActiveScene();
             if (scene.name == "StartMenu") return;
 
+            _controllerUI = FindObjectOfType<UI_Controller>();
+
             _controllerUI.UpdateView(0, UpdateViewType.CurrentKills);
             _controllerUI.UpdateView(_targetKillsCount, UpdateViewType.TargetKills);
         }
@@ -114,8 +115,10 @@ namespace TDShooter.Managers
             _levelCount = int.Parse(splittedData[0]);
             _currentKillsCount = int.Parse(splittedData[1]);
 
+            _controllerUI = FindObjectOfType<UI_Controller>();
+
             _controllerUI.UpdateView(_levelCount, UpdateViewType.LevelUp);
-            _controllerUI.UpdateView(_targetKillsCount, UpdateViewType.TargetKills);
+            _controllerUI.UpdateView(_currentKillsCount, UpdateViewType.CurrentKills);
         }
 
         public void ActivateNuclearCharge()

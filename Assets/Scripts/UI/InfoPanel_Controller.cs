@@ -25,10 +25,10 @@ namespace TDShooter.UI
         }*/
 
 
-        private void ShowInfo()
+        private void ShowInfo(bool value)
         {
             //ActivateInfoPanel();            
-            _cursor.gameObject.SetActive(true);
+            _cursor.gameObject.SetActive(value);
         }
 
         private async void ActivateInfoPanel()
@@ -42,7 +42,18 @@ namespace TDShooter.UI
 
         public void OnEvent(GameEventType eventType, Component sender, Object param = null)
         {
-            ShowInfo();
+            switch (eventType)
+            {
+                case GameEventType.PortalOpened:
+                    ShowInfo(true);
+                    break;
+                case GameEventType.PortalActivated:
+                    ShowInfo(false);
+                    break;
+                default:
+                    break;
+            }
+            
         }
     }    
 }

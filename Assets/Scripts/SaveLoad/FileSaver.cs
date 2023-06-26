@@ -9,7 +9,7 @@ namespace TDShooter.SaveLoad
     public class FileSaver : ISaver
     {
         private readonly string _path = "save.txt";
-        private readonly List<ISavable>  _savables;
+        private readonly List<ISavable> _savables;
 
         public FileSaver(List<ISavable> savables)
         {
@@ -30,6 +30,10 @@ namespace TDShooter.SaveLoad
 
         public void Save()
         {
+            if (File.Exists(_path))
+            {
+                File.Delete(_path);
+            }
             using StreamWriter sw = new(_path, false);
             foreach (var savable in _savables)
             {

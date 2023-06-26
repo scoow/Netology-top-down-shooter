@@ -122,6 +122,9 @@ namespace TDShooter.Managers.GameManager
             _subscribeManager.AddListener(GameEventType.EnemySpawned, _audioController, true);
             _subscribeManager.AddListener(GameEventType.EnemyAttacked, _audioController, true);
             _subscribeManager.AddListener(GameEventType.EnemyDied, _audioController, true);
+            _subscribeManager.AddListener(GameEventType.PlayerScream, _audioController, true);
+            _subscribeManager.AddListener(GameEventType.GrenadeExplosion, _audioController, true);
+            _subscribeManager.AddListener(GameEventType.PortalActivated, _audioController, true);
 
             _subscribeManager.AddListener(GameEventType.PlayerLevelUp, _spawnAssistant, true);
             _subscribeManager.AddListener(GameEventType.PlayerLevelUp, _talentsManager, true);
@@ -131,9 +134,10 @@ namespace TDShooter.Managers.GameManager
             _subscribeManager.AddListener(enums.GameEventType.EnemyDied, _lootController, true);
             _subscribeManager.AddListener(enums.GameEventType.EnemyDied, _effectController, true);
 
-            _subscribeManager.AddListener(enums.GameEventType.PortalActivated, _bossController, true);
             _subscribeManager.AddListener(enums.GameEventType.PortalActivated, _spawnAssistant, true);
-            _subscribeManager.AddListener(enums.GameEventType.PortalActivated, _audioController, true);
+            _subscribeManager.AddListener(enums.GameEventType.PortalActivated, _bossController, true);
+
+            _subscribeManager.AddListener(enums.GameEventType.PortalActivated, _infoPanel_Controller, true);
             _subscribeManager.AddListener(enums.GameEventType.PortalOpened, _infoPanel_Controller, true);
 
             _subscribeManager.AddListener(enums.GameEventType.EnemyDied, _droneAssist, true);

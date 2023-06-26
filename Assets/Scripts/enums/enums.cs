@@ -52,7 +52,9 @@ namespace TDShooter.enums
         PlayStepSound,
         PlayerLevelUp,
         PortalActivated,
-        PortalOpened
+        PortalOpened,
+        GrenadeExplosion,
+        PlayerScream
     }
     public enum WeaponType : sbyte
     {

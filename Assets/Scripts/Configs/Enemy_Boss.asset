@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 618796aa10d15a14fb3f9c3eb383cc39, type: 3}
   m_Name: Enemy_Boss
   m_EditorClassIdentifier: 
-  _hp: 1000
-  _damage: 100
+  _hp: 2000
+  _damage: 45
   _armor: 2
   _speedMove: 4
   _missChance: 20

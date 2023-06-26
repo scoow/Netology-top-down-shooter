@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using TDShooter.Configs;
 using TDShooter.Enemies;
+using TDShooter.enums;
+using TDShooter.EventManager;
 using TDShooter.UI;
 using UnityEngine;
 using Zenject;
@@ -12,6 +14,8 @@ namespace TDShooter.Characters
     {
         [Inject]
         private readonly SpawnAssistant _spawnAssistant;
+        [Inject]
+        private SubscribeManager _subscribeManager;
 
         public Action OnDie;
         public override void Die()
@@ -32,6 +36,11 @@ namespace TDShooter.Characters
                 enemy.GetComponent<EnemyMove>().SetNewTarget(randomPositions[i]);
                 i = i >= randomPositions.Count-1 ? 0 : ++i;
             }
+        }
+        public override void TakeDamage(int damage)
+        {
+            base.TakeDamage(damage);
+            _subscribeManager.PostNotification(GameEventType.PlayerScream, null);
         }
         private void Awake()
         {
