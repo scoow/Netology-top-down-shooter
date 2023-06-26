@@ -1,26 +1,35 @@
-using TDShooter.Enemies;
+using TDShooter.Characters;
 using TDShooter.enums;
 using TDShooter.EventManager;
 using UnityEngine;
+using Zenject;
 
-
-public class Boss_Controller : MonoBehaviour, IEventListener
+namespace TDShooter.Enemies
 {
-    private Boss_Move _bossMove;   
+    public class Boss_Controller : MonoBehaviour, IEventListener
+    {
+        //private Boss_Move _bossMove;
+        private BossSpawnPoint _spawnPoint;
+        [Inject]
+        private readonly SpawnAssistant _spawnAssistant;
 
-    private void OnEnable()
-    {
-       _bossMove = FindObjectOfType<Boss_Move>();//переделать
-        _bossMove.gameObject.SetActive(false);
-    }
-    
-    private void ActivateBoss()
-    {
-        _bossMove.gameObject.SetActive(true);
-    }
+        private void OnEnable()
+        {
+            //_bossMove = FindObjectOfType<Boss_Move>();//переделать
+            _spawnPoint = FindFirstObjectByType<BossSpawnPoint>();
+            //_bossMove.gameObject.SetActive(false);
+        }
 
-    public void OnEvent(GameEventType eventType, Component sender, Object param = null)
-    {
-        ActivateBoss();
+        private void ActivateBoss()
+        {
+/*            _bossMove.gameObject.SetActive(true);
+            //_spawnPoint*/
+            _spawnAssistant.SpawnEnemy(_spawnPoint.transform.position, СharacterType.Boss);
+        }
+
+        public void OnEvent(GameEventType eventType, Component sender, Object param = null)
+        {
+            ActivateBoss();
+        }
     }
 }

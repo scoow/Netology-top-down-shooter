@@ -2,6 +2,7 @@ using DG.Tweening;
 using TDShooter.Audio;
 using TDShooter.Characters;
 using TDShooter.Effects;
+using TDShooter.Enemies;
 using TDShooter.enums;
 using TDShooter.EventManager;
 using TDShooter.Input;
@@ -32,7 +33,7 @@ namespace TDShooter.Managers.GameManager
         private LootContainer _lootContainer;
         private TalentsManager _talentsManager;
         private PlayerProgress _playerProgress;
-        private Talent_Controller _talentControll;
+        private Talent_Controller _talentController;
         private Slider _sliderHP;
         private SpawnAssistant _spawnAssistant;
         private PauseMenu_Controller _pauseMenu_Controller;
@@ -41,6 +42,9 @@ namespace TDShooter.Managers.GameManager
         private EffectController _effectController;
         private Boss_Controller _bossController;
         private DroneAssist _droneAssist;
+        private InfoPanel_Controller _infoPanel_Controller;
+        private DeathPanel _deathPanel;
+        private WinPanel _winPanel;
 
         /// <summary>
         /// Внедрение зависимостей
@@ -63,7 +67,7 @@ namespace TDShooter.Managers.GameManager
             _lootContainer = FindObjectOfType<LootContainer>();
             _talentsManager = FindObjectOfType<TalentsManager>();
             _playerProgress = FindObjectOfType<PlayerProgress>();
-            _talentControll = FindObjectOfType<Talent_Controller>();
+            _talentController = FindObjectOfType<Talent_Controller>();
             _sliderHP = FindObjectOfType<HPSlider_Marker>().GetComponent<Slider>();
             _spawnAssistant = FindObjectOfType<SpawnAssistant>();
             _pauseMenu_Controller = FindObjectOfType<PauseMenu_Controller>();
@@ -72,6 +76,9 @@ namespace TDShooter.Managers.GameManager
             _effectController = FindObjectOfType<EffectController>();
             _bossController = FindObjectOfType<Boss_Controller>();
             _droneAssist = FindObjectOfType<DroneAssist>();
+            _infoPanel_Controller = FindObjectOfType<InfoPanel_Controller>();
+            _deathPanel = FindObjectOfType<DeathPanel>();
+            _winPanel = FindObjectOfType<WinPanel>();
 
             #endregion
             #region Добавление ссылок в DI контейнер
@@ -90,7 +97,7 @@ namespace TDShooter.Managers.GameManager
             Container.BindInstance(_lootContainer).AsSingle();
             Container.BindInstance(_talentsManager).AsSingle();
             Container.BindInstance(_playerProgress).AsSingle();
-            Container.BindInstance(_talentControll).AsSingle();
+            Container.BindInstance(_talentController).AsSingle();
             Container.BindInstance(_sliderHP).AsSingle();
             Container.BindInstance(_spawnAssistant).AsSingle();
             Container.BindInstance(_pauseMenu_Controller).AsSingle();
@@ -117,6 +124,7 @@ namespace TDShooter.Managers.GameManager
             _subscribeManager.AddListener(GameEventType.EnemyDied, _audioController, true);
 
             _subscribeManager.AddListener(GameEventType.PlayerLevelUp, _spawnAssistant, true);
+            _subscribeManager.AddListener(GameEventType.PlayerLevelUp, _talentsManager, true);
 
             _subscribeManager.AddListener(enums.GameEventType.EnemyDied, _playerProgress, true);
             //добавляем _playerProgress в слушатели события "смерть врага", параметр true означает что добавляем лишь один раз  
@@ -126,8 +134,14 @@ namespace TDShooter.Managers.GameManager
             _subscribeManager.AddListener(enums.GameEventType.PortalActivated, _bossController, true);
             _subscribeManager.AddListener(enums.GameEventType.PortalActivated, _spawnAssistant, true);
             _subscribeManager.AddListener(enums.GameEventType.PortalActivated, _audioController, true);
+            _subscribeManager.AddListener(enums.GameEventType.PortalOpened, _infoPanel_Controller, true);
+
             _subscribeManager.AddListener(enums.GameEventType.EnemyDied, _droneAssist, true);
-            
+
+            _subscribeManager.AddListener(enums.GameEventType.PlayerDied, _deathPanel, true);
+
+            _subscribeManager.AddListener(enums.GameEventType.EndGame, _winPanel, true);
+
 
 
         }

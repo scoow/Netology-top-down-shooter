@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TDShooter.enums;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,6 +9,7 @@ namespace TDShooter.UI
     {
         protected void LoadScene(SceneExample sceneExample)
         {
+            DOTween.KillAll();
             if (sceneExample == SceneExample.NewGame)
                 SceneManager.LoadScene(1);
             if (sceneExample == SceneExample.MainMenu)

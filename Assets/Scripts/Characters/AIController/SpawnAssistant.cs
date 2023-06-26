@@ -54,9 +54,8 @@ namespace TDShooter.Characters
             _enemiesPool.Add(—haracterType.FastMeleeEnemy, new(Resources.Load<BaseEnemy>("Prefabs/Enemy/FirstEnemy/Enemy"), —haracterType.FastMeleeEnemy, _enemiesContainer, _playerControl, _subscribeManager, 2));
             _enemiesPool.Add(—haracterType.Spider, new(Resources.Load<BaseEnemy>("Prefabs/Enemy/Spiders/Prefabs/Black Widow 1"), —haracterType.Spider, _enemiesContainer, _playerControl, _subscribeManager, 2));
             _enemiesPool.Add(—haracterType.BossAssistant, new(Resources.Load<BaseEnemy>("Prefabs/Enemy/FirstEnemy/Enemy_Assist"), —haracterType.BossAssistant, _enemiesContainer, _playerControl, _subscribeManager, 2));
+            _enemiesPool.Add(—haracterType.Boss, new(Resources.Load<BaseEnemy>("Prefabs/Enemy/BigBoss/EnemyBoss"), —haracterType.Boss, _enemiesContainer, _playerControl, _subscribeManager, 1));
             
-            //ÔÛÎ ‰Îˇ ·ÓÒÒ‡
-            //_enemiesPool.Add(—haracterType.Devil_Bulldog, new(Resources.Load<BossEnemy>("Prefabs/Enemy/BigBoss/DeepNest/Devil_Bulldog_Lite/EnemyBoss"), —haracterType.Devil_Bulldog, _enemiesContainer, _playerControl, 1));
         }
         /// <summary>
         /// —Ô‡‚Ì ÔÓ Ú‡ÈÏÂÛ
@@ -77,7 +76,8 @@ namespace TDShooter.Characters
         private void SpawnEnemyAtRandomTile()
         {
 
-            BaseEnemy enemy = _enemiesPool[(—haracterType)UnityEngine.Random.Range(1,Enum.GetNames(typeof(—haracterType)).Length-1)].GetAviableOrCreateNew();
+            //BaseEnemy enemy = _enemiesPool[(—haracterType)UnityEngine.Random.Range(1,3)].GetAviableOrCreateNew();
+            BaseEnemy enemy = _enemiesPool[(—haracterType)UnityEngine.Random.Range(1, Enum.GetNames(typeof(—haracterType)).Length - 2)].GetAviableOrCreateNew();
 
             int randompoint = UnityEngine.Random.Range(0, _unitSpawners.Count());
             Tile_Marker parentTile = _unitSpawners[randompoint].GetComponentInParent<Tile_Marker>();
@@ -90,7 +90,7 @@ namespace TDShooter.Characters
             }
 
             enemy.transform.position = _unitSpawners[randompoint].transform.position;
-            enemy./*GetComponent<BaseEnemy>().*/Respawn();
+            enemy.Respawn();
         }
         public void SpawnEnemy(Vector3 position, —haracterType ÒharacterType)
         {

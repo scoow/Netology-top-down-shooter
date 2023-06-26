@@ -1,35 +1,35 @@
 using TDShooter.Characters;
+using TDShooter.enums;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-using TDShooter.enums;
 using TDShooter.EventManager;
 
 namespace TDShooter.UI
 {
-    public class DeathPanel : BaseUI_Controller, IEventListener
+    public class WinPanel : BaseUI_Controller, IEventListener
     {
         [SerializeField] private Image _backGround;
-        [SerializeField] private Text _afterDeathMessage;
+        [SerializeField] private Text _WinMessage;
         [SerializeField] private Button _yesButton;
         [SerializeField] private Button _noButton;
 
-        private void OnEnable()
+/*        private void OnEnable()
         {
-            //_character_Player.OnDie += DeathPanelActive;//
+            //_character_Player.OnDie += DeathPanelActive;//subscribe manager?
             _yesButton.onClick.AddListener(delegate { LoadScene(SceneExample.NewGame); });
             _noButton.onClick.AddListener(delegate { LoadScene(SceneExample.MainMenu); });
-        }
+        }*/
 
         private void OnDisable()
         {
-            //_character_Player.OnDie -= DeathPanelActive;
+           // _character_Player.OnDie -= DeathPanelActive;
             _yesButton.onClick.RemoveAllListeners();
             _noButton.onClick.RemoveAllListeners();
         }
         private void DeathPanelActive()
         {
-            _afterDeathMessage.DOColor(new Color32(255, 255, 255, 255), 2);
+            _WinMessage.DOColor(new Color32(255, 255, 255, 255), 2);
             _backGround.DOColor(new Color32(0, 0, 0, 190), 2).OnComplete(SetActive);
         }
 

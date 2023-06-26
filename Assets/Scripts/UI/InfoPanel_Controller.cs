@@ -3,24 +3,26 @@ using UnityEngine;
 using DG.Tweening;
 using TDShooter.Managers;
 using Zenject;
+using TDShooter.EventManager;
+using TDShooter.enums;
 
 namespace TDShooter.UI
 {
-    public class InfoPanel_Controller : MonoBehaviour
+    public class InfoPanel_Controller : MonoBehaviour, IEventListener
     {        
         [SerializeField] MesagePanel_Marker _mesagePanel;
         [SerializeField] Cursor_Marker _cursor;
-        [Inject] 
-        PlayerProgress _playerProgress;
+/*        [Inject] 
+        PlayerProgress _playerProgress;*/
 
-        private void OnEnable()
+/*        private void OnEnable()
         {
             _playerProgress.OnPortal += ShowInfo;
         }
         private void OnDisable()
         {
             _playerProgress.OnPortal -= ShowInfo;
-        }
+        }*/
 
 
         private void ShowInfo()
@@ -36,6 +38,11 @@ namespace TDShooter.UI
             await UniTask.Delay(3000);
             _mesagePanel.transform.DOScale(0, 1);
             _mesagePanel.gameObject.SetActive(false);
+        }
+
+        public void OnEvent(GameEventType eventType, Component sender, Object param = null)
+        {
+            ShowInfo();
         }
     }    
 }

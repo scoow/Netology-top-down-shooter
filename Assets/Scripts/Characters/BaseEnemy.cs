@@ -30,7 +30,7 @@ namespace TDShooter.Characters
             _enemyMove = GetComponent<EnemyMove>();
             _capsuleCollider = GetComponent<CapsuleCollider>();
 
-            _animation_Controller = GetComponentInChildren<Animation_Controller>();
+            _animation_Controller = GetComponent/*InChildren*/<Animation_Controller>();
             if (_animation_Controller == null )
             {
                 _isBoss = true;
@@ -88,6 +88,7 @@ namespace TDShooter.Characters
 
                 var navMeshMove = GetComponent<Enemy_NavMeshMove>();
                 navMeshMove.enabled = false;
+                _subscribeManager?.PostNotification(GameEventType.EndGame, this);
             }
             else
             {

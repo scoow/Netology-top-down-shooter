@@ -29,8 +29,8 @@ namespace TDShooter.Managers
         private readonly SubscribeManager _subscribeManager;
         public int ChanceDroopLoot => _lootDropChance;
 
-       public event UnityAction OnNextLevel;
-       public event UnityAction OnPortal;
+       //public event UnityAction OnNextLevel;
+       //public event UnityAction OnPortal;
 
         public int LevelCount { get; private set; }
         public int CurrentKilledCount
@@ -56,16 +56,17 @@ namespace TDShooter.Managers
             _currentKillsCount = 0;
             _controllerUI.UpdateView(_currentKillsCount, UpdateViewType.TargetKills);
             _levelCount++;
-            if (_levelCount == 7)
+            if (_levelCount == 2)/////////////////////////////////////////////////////
             {
                 _portal.gameObject.SetActive(true);
-                OnPortal?.Invoke();
+                //OnPortal?.Invoke();
+                _subscribeManager.PostNotification(GameEventType.PortalOpened, null);
             }
             _controllerUI.UpdateView(_levelCount, UpdateViewType.LevelUp);
             _targetKillsCount *= _targetKillsMultiplier;//увеличить необходимое количество убийств
             _controllerUI.UpdateView(_targetKillsCount, UpdateViewType.TargetKills);
 
-            OnNextLevel?.Invoke();//todo заменить на _subscribeManager
+            //OnNextLevel?.Invoke();//todo заменить на _subscribeManager
             _subscribeManager.PostNotification(GameEventType.PlayerLevelUp, null);
         }
 

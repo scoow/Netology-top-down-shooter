@@ -15,8 +15,8 @@ namespace TDShooter.enums
         Player,
         FastMeleeEnemy,
         Spider,
-        BossAssistant
-        //Devil_Bulldog
+        BossAssistant,
+        Boss
     }
     public enum EffectType : byte
     {
@@ -51,7 +51,8 @@ namespace TDShooter.enums
         PlayShootSound,
         PlayStepSound,
         PlayerLevelUp,
-        PortalActivated
+        PortalActivated,
+        PortalOpened
     }
     public enum WeaponType : sbyte
     {
