@@ -2,7 +2,6 @@ using TDShooter.Characters;
 using TDShooter.enums;
 using TDShooter.EventManager;
 using TDShooter.UI;
-using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
 
@@ -11,9 +10,9 @@ namespace TDShooter.Audio
     public class AudioController : MonoBehaviour, IEventListener
     {
         [SerializeField]
-        private AudioSource _backGroundMusic;
+        private AudioSource _musicAudioSource;
         [SerializeField]
-        private AudioSource _audioSourceSteps;
+        private AudioSource _soundAudioSource;
         [SerializeField]
         private AudioClip _oneShotSound;
         [SerializeField]
@@ -50,7 +49,7 @@ namespace TDShooter.Audio
                     PlayWeaponShootSound(_weaponChanger.CurrentWeaponType);
                     break;
                 case GameEventType.PlayStepSound:
-                    _audioSourceSteps.PlayOneShot(_oneStepSound);
+                    _soundAudioSource.PlayOneShot(_oneStepSound);
                     break;
                 case GameEventType.EnemySpawned:
                     PlayEnemySpawnedSound(sender);
@@ -62,15 +61,15 @@ namespace TDShooter.Audio
                     PlayEnemyDiedSound(sender);
                     break;
                 case GameEventType.PlayerScream:
-                    _audioSourceSteps.PlayOneShot(_playerScream);
+                    _soundAudioSource.PlayOneShot(_playerScream);
                     break;
                 case GameEventType.GrenadeExplosion:
-                    _audioSourceSteps.PlayOneShot(_grenadeExplosion);
+                    _soundAudioSource.PlayOneShot(_grenadeExplosion);
                     break;
                 case GameEventType.PortalActivated:
-                    _backGroundMusic.Stop();
-                    _backGroundMusic.clip = _bigBossLevel;
-                    _backGroundMusic.Play();
+                    _musicAudioSource.Stop();
+                    _musicAudioSource.clip = _bigBossLevel;
+                    _musicAudioSource.Play();
                     break;
             }
     }
@@ -80,16 +79,16 @@ namespace TDShooter.Audio
             switch (weaponType)
             {
                 case WeaponType.Machinegun:
-                    _audioSourceSteps.PlayOneShot(_oneShotSound);
+                    _soundAudioSource.PlayOneShot(_oneShotSound);
                     break;
                 case WeaponType.Shothun:
-                    _audioSourceSteps.PlayOneShot(_shotgunShoot);
+                    _soundAudioSource.PlayOneShot(_shotgunShoot);
                     break;
                 case WeaponType.Plasmagun:
-                    _audioSourceSteps.PlayOneShot(_plasmaShoot);
+                    _soundAudioSource.PlayOneShot(_plasmaShoot);
                     break;
                 case WeaponType.BFG:
-                    _audioSourceSteps.PlayOneShot(_plasmaShoot);
+                    _soundAudioSource.PlayOneShot(_plasmaShoot);
                     break;
                 default:
                     break;
@@ -103,10 +102,10 @@ namespace TDShooter.Audio
             switch (character)
             {
                 case ÑharacterType.FastMeleeEnemy:
-                    _audioSourceSteps.PlayOneShot(_monsterDeath);
+                    _soundAudioSource.PlayOneShot(_monsterDeath);
                     break;
                 case ÑharacterType.Spider:
-                    _audioSourceSteps.PlayOneShot(_spiderDeath);
+                    _soundAudioSource.PlayOneShot(_spiderDeath);
                     break;
                 default:
                     break;
@@ -120,10 +119,10 @@ namespace TDShooter.Audio
             switch (character)
             {
                 case ÑharacterType.FastMeleeEnemy:
-                    _audioSourceSteps.PlayOneShot(_monsterAttack);
+                    _soundAudioSource.PlayOneShot(_monsterAttack);
                     break;
                 case ÑharacterType.Spider:
-                    _audioSourceSteps.PlayOneShot(_spiderAttack);
+                    _soundAudioSource.PlayOneShot(_spiderAttack);
                     break;
                 default:
                     break;
@@ -137,10 +136,10 @@ namespace TDShooter.Audio
             switch (character)
             {
                 case ÑharacterType.FastMeleeEnemy:
-                    _audioSourceSteps.PlayOneShot(_monsterSpawn);
+                    _soundAudioSource.PlayOneShot(_monsterSpawn);
                     break;
                 case ÑharacterType.Spider:
-                    _audioSourceSteps.PlayOneShot(_spiderSpawn);
+                    _soundAudioSource.PlayOneShot(_spiderSpawn);
                     break;
                 default:
                     break;

@@ -13,9 +13,13 @@ namespace TDShooter.Audio
         public void Swap()
         {
             if (_toggle.isOn)
+            {
                 _backGround.sprite = _activeSprite;
+            }
             else
+            {
                 _backGround.sprite = _noActiveSprite;
+            }
         }
     }
 }
