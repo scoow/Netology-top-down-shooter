@@ -75,8 +75,6 @@ namespace TDShooter.Characters
 
         private void SpawnEnemyAtRandomTile()
         {
-
-            //BaseEnemy enemy = _enemiesPool[(СharacterType)UnityEngine.Random.Range(1,3)].GetAviableOrCreateNew();
             BaseEnemy enemy = _enemiesPool[(СharacterType)UnityEngine.Random.Range(1, Enum.GetNames(typeof(СharacterType)).Length - 2)].GetAviableOrCreateNew();
 
             int randompoint = UnityEngine.Random.Range(0, _unitSpawners.Count());
@@ -119,9 +117,9 @@ namespace TDShooter.Characters
             {
                 case GameEventType.PlayerLevelUp:
                     _enemySpawnCooldown /= _SpawnLoodownReductionCoefficient;
-                    if (_enemySpawnCooldown < 0.5f)
-                        _enemySpawnCooldown = 0.5f;
-                    //ограничили время спавна минимумом в 0.5 сек
+                    if (_enemySpawnCooldown < 1f)
+                        _enemySpawnCooldown = 1f;
+                    //ограничили время спавна минимумом в 1 сек
                     break;
                 case GameEventType.PortalActivated:
                     TurningSpawnOnOrOff(false);

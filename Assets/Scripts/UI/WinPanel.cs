@@ -14,16 +14,8 @@ namespace TDShooter.UI
         [SerializeField] private Button _yesButton;
         [SerializeField] private Button _noButton;
 
-/*        private void OnEnable()
-        {
-            //_character_Player.OnDie += DeathPanelActive;//subscribe manager?
-            _yesButton.onClick.AddListener(delegate { LoadScene(SceneExample.NewGame); });
-            _noButton.onClick.AddListener(delegate { LoadScene(SceneExample.MainMenu); });
-        }*/
-
         private void OnDisable()
         {
-           // _character_Player.OnDie -= DeathPanelActive;
             _yesButton.onClick.RemoveAllListeners();
             _noButton.onClick.RemoveAllListeners();
         }

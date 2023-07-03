@@ -26,6 +26,11 @@ namespace TDShooter.Characters
             _animator.SetBool("Throwing", false);
         }
 
+        private void CreateGrenade()
+        {
+
+        }
+
         private void Start()
         {
             _animator = GetComponent<Animator>();

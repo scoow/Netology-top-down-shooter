@@ -17722,6 +17722,7 @@ MonoBehaviour:
   _lootDropChance: 15
   _targetKillsMultiplier: 1
   _portal: {fileID: 191105719}
+  _levelWhenThePortalOpens: 7
 --- !u!114 &1137414721
 MonoBehaviour:
   m_ObjectHideFlags: 0

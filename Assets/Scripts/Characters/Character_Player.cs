@@ -17,10 +17,9 @@ namespace TDShooter.Characters
         [Inject]
         private SubscribeManager _subscribeManager;
 
-        public Action OnDie;
         public override void Die()
         {
-            OnDie?.Invoke();
+            _subscribeManager.PostNotification(GameEventType.PlayerDied, null);
             print("Игра окончена , монстры вас съели");
 
             List<BaseEnemy> enemies = _spawnAssistant.FindAllEnemies();

@@ -39,12 +39,11 @@ namespace TDShooter.SaveLoad
             {
                 LoadGame();
             }
-
         }
 
         private void LoadGame()
         {
-            _fileSaver = new FileSaver(_savables);//todo упростить
+            _fileSaver = new FileSaver(_savables);
             _fileSaver.Load();
         }
 

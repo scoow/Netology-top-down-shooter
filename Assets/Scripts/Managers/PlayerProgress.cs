@@ -4,10 +4,10 @@ using TDShooter.SaveLoad;
 using TDShooter.Level;
 using TDShooter.UI;
 using UnityEngine;
-using UnityEngine.Events;
 using Zenject;
 using UnityEngine.SceneManagement;
 using TDShooter.Talents;
+using UnityEditor.Experimental.GraphView;
 
 namespace TDShooter.Managers
 {
@@ -19,6 +19,7 @@ namespace TDShooter.Managers
         [SerializeField] private int _lootDropChance; //шанс выпадения лута
         [SerializeField] private int _targetKillsMultiplier = 1;//множитель увеличения количества необходимых убийств        
         [SerializeField] private Portal _portal;
+        [SerializeField] private int _levelWhenThePortalOpens;
         private bool _nuclearChargeIsActive = false;
         public bool NuclearChargeIsActive => _nuclearChargeIsActive;
         private UI_Controller _controllerUI;
@@ -27,9 +28,6 @@ namespace TDShooter.Managers
         [Inject]
         private readonly SubscribeManager _subscribeManager;
         public int ChanceDroopLoot => _lootDropChance;
-
-       //public event UnityAction OnNextLevel;
-       //public event UnityAction OnPortal;
 
         public int LevelCount { get; private set; }
         public int CurrentKilledCount
@@ -55,17 +53,15 @@ namespace TDShooter.Managers
             _currentKillsCount = 0;
             _controllerUI.UpdateView(_currentKillsCount, UpdateViewType.TargetKills);
             _levelCount++;
-            if (_levelCount == 7)/////////////////////////////////////////////////////
+            if (_levelCount == _levelWhenThePortalOpens)
             {
                 _portal.gameObject.SetActive(true);
-                //OnPortal?.Invoke();
                 _subscribeManager.PostNotification(GameEventType.PortalOpened, null);
             }
             _controllerUI.UpdateView(_levelCount, UpdateViewType.LevelUp);
             _targetKillsCount *= _targetKillsMultiplier;//увеличить необходимое количество убийств
             _controllerUI.UpdateView(_targetKillsCount, UpdateViewType.TargetKills);
 
-            //OnNextLevel?.Invoke();//todo заменить на _subscribeManager
             _subscribeManager.PostNotification(GameEventType.PlayerLevelUp, null);
         }
 

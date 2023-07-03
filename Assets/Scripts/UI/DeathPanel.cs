@@ -16,14 +16,12 @@ namespace TDShooter.UI
 
         private void OnEnable()
         {
-            //_character_Player.OnDie += DeathPanelActive;//
             _yesButton.onClick.AddListener(delegate { LoadScene(SceneExample.NewGame); });
             _noButton.onClick.AddListener(delegate { LoadScene(SceneExample.MainMenu); });
         }
 
         private void OnDisable()
         {
-            //_character_Player.OnDie -= DeathPanelActive;
             _yesButton.onClick.RemoveAllListeners();
             _noButton.onClick.RemoveAllListeners();
         }
