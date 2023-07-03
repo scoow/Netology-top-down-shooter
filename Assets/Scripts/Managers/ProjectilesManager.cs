@@ -35,6 +35,7 @@ namespace TDShooter.Weapons
         private void InitProjectilesPools()
         {
             ProjectilePool.Add(ProjectileType.Bullet, new(Resources.Load<Bullet>("Prefabs/Bullet"), _projectileContainer.transform, 15));
+            ProjectilePool.Add(ProjectileType.Shot, new(Resources.Load<Bullet>("Prefabs/Shot"), _projectileContainer.transform, 10));
             ProjectilePool.Add(ProjectileType.Plasma, new(Resources.Load<Bullet>("Prefabs/Plasma"), _projectileContainer.transform, 10));
             ProjectilePool.Add(ProjectileType.BFG, new(Resources.Load<Bullet>("Prefabs/BFG"), _projectileContainer.transform, 5));
         }

@@ -93,11 +93,11 @@ namespace TDShooter.Weapons
                         projectile = _projectilesManager.ProjectilePool[ProjectileType.Plasma].GetAviableOrCreateNew();
                         break;
                     case WeaponType.Shothun:
-                        projectile = _projectilesManager.ProjectilePool[ProjectileType.Bullet].GetAviableOrCreateNew();
+                        projectile = _projectilesManager.ProjectilePool[ProjectileType.Shot].GetAviableOrCreateNew();
                         Bullet[] projectiles = new Bullet[5];
                         for (int i = 0; i < projectiles.Length; i++)
                         {
-                            projectiles[i] = _projectilesManager.ProjectilePool[ProjectileType.Bullet].GetAviableOrCreateNew();
+                            projectiles[i] = _projectilesManager.ProjectilePool[ProjectileType.Shot].GetAviableOrCreateNew();
                             float shothunSpread = 100 / _baseAccuracy;//коэффициент точности оружия
                             Quaternion shutgunInnacuracyQuaternion = Quaternion.Euler(Random.Range(0f, shothunSpread), Random.Range(0f, shothunSpread), Random.Range(0f, shothunSpread));//случайный кватернион для разброса
 

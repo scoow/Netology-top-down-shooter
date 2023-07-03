@@ -8,7 +8,8 @@ namespace TDShooter.enums
     {
         Bullet,
         Plasma,
-        BFG
+        BFG,
+        Shot
     }
     public enum ÑharacterType : byte
     {
