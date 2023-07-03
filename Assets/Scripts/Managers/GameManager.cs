@@ -145,6 +145,7 @@ namespace TDShooter.Managers.GameManager
             _subscribeManager.AddListener(enums.GameEventType.PlayerDied, _deathPanel, true);
 
             _subscribeManager.AddListener(enums.GameEventType.EndGame, _winPanel, true);
+            _subscribeManager.AddListener(enums.GameEventType.GrenadeThrowed, _playerControl, true);
 
 
 

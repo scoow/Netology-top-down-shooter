@@ -28,7 +28,7 @@ namespace TDShooter.Characters
 
         private void CreateGrenade()
         {
-
+            _subscribeManager.PostNotification(GameEventType.GrenadeThrowed, null);
         }
 
         private void Start()

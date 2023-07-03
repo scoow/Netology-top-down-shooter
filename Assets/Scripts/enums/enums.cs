@@ -54,7 +54,8 @@ namespace TDShooter.enums
         PortalActivated,
         PortalOpened,
         GrenadeExplosion,
-        PlayerScream
+        PlayerScream,
+        GrenadeThrowed
     }
     public enum WeaponType : sbyte
     {

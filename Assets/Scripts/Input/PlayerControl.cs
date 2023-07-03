@@ -7,10 +7,11 @@ using Zenject;
 using TDShooter.Configs;
 using System;
 using TDShooter.Managers;
+using TDShooter.EventManager;
 
 namespace TDShooter.Input
 {
-    public class PlayerControl : BaseUnit
+    public class PlayerControl : BaseUnit, IEventListener
     {
         [SerializeField] Player_Data _playerData;
         [SerializeField] Transform _playerHead;
@@ -51,7 +52,7 @@ namespace TDShooter.Input
             _controls.Player.WeaponSwitchBFG.performed += context => _weaponChanger.ChangeWeapon(WeaponType.BFG);
             _controls.Player.NextWeapon.performed += context => _weaponChanger.NextWeapon(context.ReadValue<Vector2>().y);
 
-            _controls.Player.ThrowGrenade.performed += context => ThrowGrenade();
+            _controls.Player.ThrowGrenade.started += context => ThrowGrenade();
 
             _controls.Player.PauseGame.performed += context => _pauseMenu_Controller.ActivatePauseMenu();
             _controls.Player.NuclearBomb.performed += context => ActivateNuclearBomb();
@@ -82,11 +83,7 @@ namespace TDShooter.Input
 
         private void ThrowGrenade()
         {
-            Grenade grenade = _projectilesManager.GrenadePool[GrenadeType.Explosive].GetAviableOrCreateNew();
-            grenade.transform.SetPositionAndRotation(transform.position, transform.rotation);
             _ = _animControl.ThrowAnimationAsync();
-
-            grenade.Throw(_aim.transform.position);
         }
 
         private void OnDrawGizmos()
@@ -116,6 +113,18 @@ namespace TDShooter.Input
                 rotation.z = 0f;
                 _playerHead.transform.rotation = rotation;
             }
+        }
+
+        public void OnEvent(GameEventType eventType, Component sender, UnityEngine.Object param = null)
+        {
+            CreateGrenade();
+        }
+
+        private void CreateGrenade()
+        {
+            Grenade grenade = _projectilesManager.GrenadePool[GrenadeType.Explosive].GetAviableOrCreateNew();
+            grenade.transform.SetPositionAndRotation(transform.position, transform.rotation);
+            grenade.Throw(_aim.transform.position);
         }
     }
 }
