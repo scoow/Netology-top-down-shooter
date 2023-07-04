@@ -20,7 +20,7 @@ namespace TDShooter.Characters
         public override void Die()
         {
             _subscribeManager.PostNotification(GameEventType.PlayerDied, null);
-            print("Игра окончена , монстры вас съели");
+            print("Игра окончена , монстры вас съели");           
 
             List<BaseEnemy> enemies = _spawnAssistant.FindAllEnemies();
             List<Transform> randomPositions = new();
@@ -35,6 +35,7 @@ namespace TDShooter.Characters
                 enemy.GetComponent<EnemyMove>().SetNewTarget(randomPositions[i]);
                 i = i >= randomPositions.Count-1 ? 0 : ++i;
             }
+
         }
         public override void TakeDamage(int damage)
         {

@@ -16099,7 +16099,7 @@ MonoBehaviour:
   _playerData: {fileID: 991209315}
   _playerHead: {fileID: 575208318}
   _playerBody: {fileID: 991209314}
-  _speed: 3
+  _speed: 3.5
   _animControl: {fileID: 575208319}
 --- !u!54 &991209310
 Rigidbody:

@@ -83,7 +83,7 @@ namespace TDShooter.Input
 
         private void ThrowGrenade()
         {
-            _ = _animControl.ThrowAnimationAsync();
+            /*_ = */_animControl.ThrowAnimation();
         }
 
         private void OnDrawGizmos()

@@ -19,16 +19,19 @@ namespace TDShooter.Characters
             _subscribeManager.PostNotification(GameEventType.PlayStepSound, this);
         }
 
-        public async UniTask ThrowAnimationAsync()
+        public void ThrowAnimation()
         {
             _animator.SetBool("Throwing", true);
-            await UniTask.Delay(TimeSpan.FromSeconds(1f));
-            _animator.SetBool("Throwing", false);
         }
 
-        private void CreateGrenade()
+        private void CreateGrenade() //через события в анимации
         {
             _subscribeManager.PostNotification(GameEventType.GrenadeThrowed, null);
+        }
+
+        private void StopAnimationThrow() //через события в анимации
+        {
+            _animator.SetBool("Throwing", false);
         }
 
         private void Start()
