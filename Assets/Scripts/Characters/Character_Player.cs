@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TDShooter.Audio;
 using TDShooter.Configs;
 using TDShooter.Enemies;
 using TDShooter.enums;
@@ -20,6 +21,10 @@ namespace TDShooter.Characters
         private SubscribeManager _subscribeManager;
         [Inject]
         private TilesManager _tilesManager;
+        [Inject] 
+        private AudioController _audioController;
+        [Inject]
+        private PlayerControl _playerControl;
 
         public override void Die()
         {
@@ -45,8 +50,11 @@ namespace TDShooter.Characters
 
         private void ControllPlayerOff()
         {
+
             _tilesManager.DisableMoveRow();
-            gameObject.GetComponent<Player_Data>().SpeedMove = 0f;
+            _audioController.MuteAudio();
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            _playerControl.DisableControl();            
         }
         public override void TakeDamage(int damage)
         {

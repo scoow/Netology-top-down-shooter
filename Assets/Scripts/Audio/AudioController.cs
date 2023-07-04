@@ -41,6 +41,11 @@ namespace TDShooter.Audio
         private AudioClip _playerScream;
         [Inject] private WeaponChanger _weaponChanger;
 
+
+        public void MuteAudio()
+        {
+            _soundAudioSource.mute = true;
+        }
         public void OnEvent(GameEventType eventType, Component sender, Object param = null)
         {
             switch (eventType)
@@ -72,7 +77,7 @@ namespace TDShooter.Audio
                     _musicAudioSource.Play();
                     break;
             }
-    }
+        }
 
         private void PlayWeaponShootSound(WeaponType weaponType)
         {
