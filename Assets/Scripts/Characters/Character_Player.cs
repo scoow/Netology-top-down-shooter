@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using TDShooter.Audio;
 using TDShooter.Configs;
@@ -50,7 +49,6 @@ namespace TDShooter.Characters
 
         private void ControllPlayerOff()
         {
-
             _tilesManager.DisableMoveRow();
             _audioController.MuteAudio();
             gameObject.GetComponent<Rigidbody>().isKinematic = true;

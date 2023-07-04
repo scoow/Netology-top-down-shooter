@@ -8591,7 +8591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 933cd7b982ef93f4d901fa26b108ec19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _musicAudioSource: {fileID: 963194230}
+  _musicAudioSource: {fileID: 1075514380}
   _soundAudioSource: {fileID: 151913875}
   _oneShotSound: {fileID: 8300000, guid: dd0d378cb00eaf94f986ba4c8a0872c3, type: 3}
   _oneStepSound: {fileID: 8300000, guid: d64aa272138cd4147b3e7130cfbafae9, type: 3}
@@ -15618,7 +15618,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0d106891889a01e4aa651bf02bd64881, type: 3}
