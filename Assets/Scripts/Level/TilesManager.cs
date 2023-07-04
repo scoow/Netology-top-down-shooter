@@ -196,7 +196,18 @@ namespace TDShooter.Level
         /// <summary>
         /// отписываемся от реакции на движение
         /// </summary>
-        private void OnDisable()
+        //private void OnDisable()
+        //{
+        //    for (int i = 0; i < _gridSize; i++)
+        //    {
+        //        for (int j = 0; j < _gridSize; j++)
+        //        {
+        //            tiles[i, j].Callback -= MoveRow;
+        //        }
+        //    }
+        //}
+
+        public void DisableMoveRow()
         {
             for (int i = 0; i < _gridSize; i++)
             {
@@ -205,6 +216,7 @@ namespace TDShooter.Level
                     tiles[i, j].Callback -= MoveRow;
                 }
             }
+
         }
     }
 }

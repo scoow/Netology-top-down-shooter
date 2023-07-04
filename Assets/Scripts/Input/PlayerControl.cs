@@ -8,6 +8,7 @@ using TDShooter.Configs;
 using System;
 using TDShooter.Managers;
 using TDShooter.EventManager;
+using TDShooter.Level;
 
 namespace TDShooter.Input
 {
@@ -30,11 +31,11 @@ namespace TDShooter.Input
         [Inject]
         private readonly PauseMenu_Controller _pauseMenu_Controller;
         [Inject]
-        private readonly PlayerProgress _playerProgress;
+        private readonly PlayerProgress _playerProgress;        
 
         public Action<Vector2> OnMove;
 
-        public float Speed { get => _speed; private set => _speed = value; }
+        public float Speed { get => _speed; set => _speed = value; }
 
         private void Awake()
         {
@@ -64,6 +65,11 @@ namespace TDShooter.Input
         }
 
         private void OnDisable()
+        {            
+            DisableControl();
+        }
+
+        public void DisableControl()
         {
             _controls.Player.Disable();
         }

@@ -4,6 +4,8 @@ using TDShooter.Configs;
 using TDShooter.Enemies;
 using TDShooter.enums;
 using TDShooter.EventManager;
+using TDShooter.Input;
+using TDShooter.Level;
 using TDShooter.UI;
 using UnityEngine;
 using Zenject;
@@ -16,11 +18,14 @@ namespace TDShooter.Characters
         private readonly SpawnAssistant _spawnAssistant;
         [Inject]
         private SubscribeManager _subscribeManager;
+        [Inject]
+        private TilesManager _tilesManager;
 
         public override void Die()
         {
             _subscribeManager.PostNotification(GameEventType.PlayerDied, null);
-            print("Игра окончена , монстры вас съели");           
+            print("Игра окончена , монстры вас съели");
+            ControllPlayerOff();
 
             List<BaseEnemy> enemies = _spawnAssistant.FindAllEnemies();
             List<Transform> randomPositions = new();
@@ -36,6 +41,12 @@ namespace TDShooter.Characters
                 i = i >= randomPositions.Count-1 ? 0 : ++i;
             }
 
+        }
+
+        private void ControllPlayerOff()
+        {
+            _tilesManager.DisableMoveRow();
+            gameObject.GetComponent<Player_Data>().SpeedMove = 0f;
         }
         public override void TakeDamage(int damage)
         {
