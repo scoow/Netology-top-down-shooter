@@ -26,6 +26,7 @@ namespace TDShooter.Effects
             BloodStain newBloodStain = _effectsPool[VisualEffectType.BloodStain].GetAviableOrCreateNew();
             position.y += 0.1f;
             newBloodStain.transform.position = position;
+            newBloodStain.BloodLifeTimer.Deactivate();
         }
 
         private void InitBloodstainPool()

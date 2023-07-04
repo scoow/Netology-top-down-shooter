@@ -17,21 +17,21 @@ namespace TDShooter.Effects
         protected override void OnEnable()
         {
             base.OnEnable();
-            _image.color = new UnityEngine.Color(_image.color.r, _image.color.g, _image.color.b, 1);
+            _image.color = new UnityEngine.Color(_image.color.r, _image.color.g, _image.color.b, 1);            
         }
 
         protected override void Update()
-        {
-            _lifeTimeLeft -= Time.deltaTime;
-            if (_lifeTimeLeft < 0)
-            {
-                Deactivate(10);
-            }
-                
+        {            
         }
-        protected void Deactivate(float time)
+
+        public async new void Deactivate()
         {
-            _image.DOColor(new UnityEngine.Color(_image.color.r, _image.color.g, _image.color.b, 0), time);
+            await UniTask.Delay(5000);
+            _image.DOColor(new UnityEngine.Color(_image.color.r, _image.color.g, _image.color.b, 0), 4).OnComplete(EnabledOff); 
+        }
+
+        private void EnabledOff()
+        {
             gameObject.SetActive(false);
         }
     }

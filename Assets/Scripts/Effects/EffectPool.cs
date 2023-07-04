@@ -6,7 +6,7 @@ namespace TDShooter.Pools
     public class EffectPool : BasePool<BloodStain>
     {
 
-        public EffectPool(BloodStain prefab, Transform parent, int count = 20) : base(prefab, parent)
+        public EffectPool(BloodStain prefab, Transform parent, int count = 40) : base(prefab, parent)
         {
             Init(count);
         }
